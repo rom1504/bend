@@ -531,34 +531,54 @@ def main() -> U32:
 HOLDOUT_V8A_MAP_F32_SRC = """\
 import Base
 
-def poly_map(rem: Nat, +i: U32, src: Array<F32>, dst: Array<F32>, +c: F32) -> Array<F32>:
+type ArrPair is Type:
+  APair{src: Array<F32>, dst: Array<F32>}
+
+def poly_step(+x: F32, +c: F32) -> F32:
+  +t0 = F32.add(F32.mul(x, x), c)
+  +t1 = F32.add(F32.mul(t0, x), 0.25)
+  +t2 = F32.add(F32.mul(t1, x), c)
+  F32.sub(F32.mul(t2, x), 0.125)
+
+def poly_map_step(+i: U32, +c: F32, got: Array<F32> & F32, dst: Array<F32>) -> ArrPair:
+  (src1, x) = got
+  APair{src1, Array.set(F32, dst, i, poly_step(x, c))}
+
+def poly_map(rem: Nat, +i: U32, +c: F32, ap: ArrPair) -> ArrPair:
   match rem:
     case 0n:
-      dst
+      ap
     case 1n+p:
-      (src1, +x) = Array.get(F32, src, i)
-      +t0 = F32.add(F32.mul(x, x), c)
-      +t1 = F32.add(F32.mul(t0, x), 0.25)
-      +t2 = F32.add(F32.mul(t1, x), c)
-      +y = F32.sub(F32.mul(t2, x), 0.125)
-      dst1 = Array.set(F32, dst, i, y)
-      poly_map(p, U32.inc(i), src1, dst1, c)
+      APair{src, dst} = ap
+      poly_map(p, U32.inc(i), c, poly_map_step(i, c, Array.get(F32, src, i), dst))
 
-def rd_f32(a: Array<F32>, i: U32) -> U32:
-  (_, v) = Array.get(F32, a, i)
+def rd_f32_k(got: Array<F32> & F32) -> U32:
+  (_, v) = got
   F32.to_u32(v)
 
+def rd_pair(ap: ArrPair) -> U32:
+  APair{_, out} = ap
+  rd_f32_k(Array.get(F32, out, 5))
+
 def main() -> U32:
-  out = poly_map(64n, 0, [1.5 : F32*64n], [0.0 : F32*64n], 0.5)
-  rd_f32(out, 5)
+  rd_pair(poly_map(64n, 0, 0.5, APair{[1.5 : F32*64n], [0.0 : F32*64n]}))
 """
 
 # Contract P holdout: loop-carried 3-field single-ctor record with 2 arrays
 HOLDOUT_WW_REC_ARR_SRC = """\
 import Base
 
-type DualSt is Data:
+type DualSt is Type:
   DualSt{a: Array<U32>, b: Array<U32>, acc: U32}
+
+def scan_dual_k2(a1: Array<U32>, +v: U32, +acc: U32, got2: Array<U32> & U32) -> DualSt:
+  (b1, old) = got2
+  DualSt{a1, b1, U32.add(acc, U32.add(v, old))}
+
+def scan_dual_k1(+i: U32, b: Array<U32>, +acc: U32, got1: Array<U32> & U32) -> DualSt:
+  (a1, +v) = got1
+  nv = U32.xor(v, acc)
+  scan_dual_k2(a1, v, acc, Array.swap(U32, b, i, nv))
 
 def scan_dual(rem: Nat, +i: U32, st: DualSt) -> DualSt:
   match rem:
@@ -566,14 +586,14 @@ def scan_dual(rem: Nat, +i: U32, st: DualSt) -> DualSt:
       st
     case 1n+p:
       DualSt{a, b, +acc} = st
-      (a1, +v) = Array.get(U32, a, i)
-      +nv = U32.xor(v, acc)
-      (b1, +old) = Array.swap(U32, b, i, nv)
-      scan_dual(p, U32.inc(i), DualSt{a1, b1, U32.add(acc, U32.add(v, old))})
+      scan_dual(p, U32.inc(i), scan_dual_k1(i, b, acc, Array.get(U32, a, i)))
+
+def dual_acc(st: DualSt) -> U32:
+  DualSt{_, _, acc} = st
+  acc
 
 def main() -> U32:
-  DualSt{_, _, acc} = scan_dual(64n, 0, DualSt{[5 : U32*64n], [3 : U32*64n], 1})
-  acc
+  dual_acc(scan_dual(64n, 0, DualSt{[5 : U32*64n], [3 : U32*64n], 1}))
 """
 
 

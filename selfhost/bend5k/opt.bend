@@ -2089,10 +2089,23 @@ def opt_tco_blks(+fid: U32, +ar: U32, +hdr: U32, +fu: U32Map, blks: List<&2, IrB
       st1 = opt_if(CfBlksRes, Bool.and(U32.is_eq(cfid, fid), U32.is_eq(b5k_u32_list_len(args), ar)), _ => opt_tco_emit_f(id, hdr, ar, args, acc, nr, opt_tco_fuse_ops(opt_tco_fuse_map(ar, fu, opt_ops_uses(ops, UM0{}), opt_um_inc_list(args, UM0{}), args, 0, UM0{}), ops, UM0{}, Nil{})), _ => CfBlksRes{Con{IrBlock{id, ops, TTailCall{cfid, args}}, acc}, nr})
       opt_tco_blks(fid, ar, hdr, fu, t, st1)
     case Con{b, t} CfBlksRes{acc, nr}: opt_tco_blks(fid, ar, hdr, fu, t, CfBlksRes{Con{b, acc}, nr})
+def opt_self_tc_rev(fid: U32, ar: U32, +id: U32, ops: List<&2, IrOp>, +val: U32, rev: List<&2, IrOp>) -> IrBlock:
+  match rev:
+    case Con{ICallDirect{dst, +cfid, +args}, rest}:
+      Bool.pick(IrBlock, Bool.and(U32.is_eq(dst, val), Bool.and(U32.is_eq(cfid, fid), U32.is_eq(b5k_u32_list_len(args), ar))), IrBlock{id, b5k_list_rev(IrOp, rest), TTailCall{cfid, args}}, IrBlock{id, ops, TRet{val}})
+    case _: IrBlock{id, ops, TRet{val}}
+def opt_self_tc_blk(+fid: U32, +ar: U32, b: IrBlock) -> IrBlock:
+  match b:
+    case IrBlock{id, +ops, TRet{val}}: opt_self_tc_rev(fid, ar, id, ops, val, b5k_list_rev(IrOp, ops))
+    case other: other
+def opt_self_tc_blks(+fid: U32, +ar: U32, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+  match blks:
+    case Nil{}: Nil{}
+    case Con{b, t}: Con{opt_self_tc_blk(fid, ar, b), opt_self_tc_blks(fid, ar, t)}
 def opt_tco_fn(f: IrFn) -> IrFn:
   match f:
     case IrFn{+fid, +nm, +ar, +nregs, +esc, +eff, +is_m, Con{IrBlock{+hdr, ops0, t0}, rest}}:
-      +blks : List<&2, IrBlock> = Con{IrBlock{hdr, ops0, t0}, rest}
+      +blks : List<&2, IrBlock> = opt_self_tc_blks(fid, ar, Con{IrBlock{hdr, ops0, t0}, rest})
       opt_if(IrFn, U32.is_gt(ar, 32), _ => cf_fn_fin(fid, nm, ar, esc, eff, is_m, opt_tco_blks(fid, ar, hdr, opt_blks_uses(blks, UM0{}), blks, CfBlksRes{Nil{}, U32.max(nregs, ar)})), _ => IrFn{fid, nm, ar, nregs, esc, eff, is_m, blks})
     case other: other
 def opt_ru_blk_ud(mb: Maybe<&2, IrBlock>, m: U32Map) -> U32Map:
@@ -2476,7 +2489,7 @@ def b5k_opt_go(small: Bool, +fns: List<&2, IrFn>) -> List<&2, IrFn>:
       +fns0 = b5k_opt_fin(True{}, fns, opt_collect_ip(True{}, fns, ret0))
       +fns2 = opt_inl_r(False{}, True{}, 224, 24, 64, opt_inl_r(False{}, True{}, 160, 24, 64, opt_inl_r(False{}, True{}, 128, 20, 64, opt_inl_beta(ctab, False{}, True{}, 64, 16, 64, fns0))))
       +fns3d = opt_inl_r(True{}, False{}, 512, 64, 48, opt_inl_r(True{}, False{}, 512, 64, 48, opt_inl_r(True{}, False{}, 512, 64, 48, opt_inl_beta(ctab, False{}, False{}, 160, 28, 48, fns2))))
-      +fns3e = opt_inl_r(False{}, True{}, 224, 24, 64, opt_inl_beta(ctab, True{}, False{}, 512, 64, 48, fns3d))
+      +fns3e = opt_map_fns(FMMid{}, opt_ho_beta_fns(ctab, opt_inl_r(False{}, False{}, 32, 4, 16, opt_inl_r(False{}, True{}, 224, 24, 64, opt_inl_beta(ctab, True{}, False{}, 512, 64, 48, fns3d)))))
       +fns4a = opt_map_fns(FMMid{}, opt_map_fns(FMMsroa{}, opt_map_fns(FMMid{}, opt_ww_pass(opt_map_fns(FMMid{}, opt_ww_pass(fns3e))))))
       +fns4b = opt_map_fns(FMMid{}, opt_map_fns(FMInl{False{}, False{}, 4, opt_collect_self_tc(False{}, fns4a, InlBank{UM0{}, RVEmpty{}})}, fns4a))
       +fns4c = opt_map_fns(FMMid{}, opt_map_fns(FMInl{True{}, False{}, 4, opt_collect_self_tc(False{}, fns4b, InlBank{UM0{}, RVEmpty{}})}, fns4b))

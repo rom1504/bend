@@ -145,7 +145,7 @@ def b5k_prelude_src4() -> String:
   "def IO.write(s: String) -> IO(Unit):\n  IO.print(IO.write.strip(s))\n"
 def b5k_prelude_src() -> String:
   "def Bool.not(b: Bool) -> Bool:\n  if b: False{} else: True{}\ndef Bool.and(a: Bool, b: Bool) -> Bool:\n  if a: b else: False{}\n" ++
-  "def Bool.or(a: Bool, b: Bool) -> Bool:\n  if a: True{} else: b\ndef Bool.xor(a: Bool, b: Bool) -> Bool:\n  if a: Bool.not(b) else: b\n" ++
+  "def Bool.or(a: Bool, b: Bool) -> Bool:\n  if a: True{} else: b\ndef Bool.xor(a: Bool, b: Bool) -> Bool:\n  if a: Bool.not(b) else: b\ndef Bool.full_add(a: Bool, b: Bool, c: Bool) -> Bool & Bool:\n  if a: Tuple{Bool.not(Bool.xor(b, c)), Bool.or(b, c)} else: Tuple{Bool.xor(b, c), Bool.and(b, c)}\ndef Word.to_nat(n: Nat, w: Word) -> Nat:\n  if U32.is_ge(n, 32): w else: U32.and(w, U32.sub(U32.shln(1, n), 1))\ndef Word.add(n: Nat, a: Word, b: Word) -> Word:\n  Word.to_nat(n, U32.add(a, b))\ndef Word.add_comm(-n: Nat, -a: Word, -b: Word) -> U32:\n  0\ndef U32.add_comm(-a: U32, -b: U32) -> U32:\n  0\ndef Equal.sym(-T: Data, -a: U32, -b: U32, e: U32) -> U32:\n  e\ndef Equal.trans(-T: Data, -a: U32, -b: U32, -c: U32, e1: U32, e2: U32) -> U32:\n  e2\ndef Equal.cong(-A: Data, -B: Data, -f: U32, -a: U32, -b: U32, e: U32) -> U32:\n  e\n" ++
   "def Bool.to_u32(b: Bool) -> U32:\n  if b: 1 else: 0\ndef Bool.pick(-T: Data, b: Bool, t: T, f: T) -> T:\n  if b: t else: f\n" ++
   "def Char.to_u32(c: Char) -> U32:\n  c\ndef Char.from_u32(n: U32) -> Char:\n  n\ndef Char.show(c: Char) -> String:\n  SCon{c, SNil{}}\n" ++
   "def Char.cmp(a: Char, b: Char) -> Cmp:\n  Tuple{Tuple{a, b}, if U32.is_lt(a, b): LT{} else: if U32.is_gt(a, b): GT{} else: EQ{}}\ndef Cmp.is_eq(c: Cmp) -> Bool:\n  match c:\n    case EQ{}: True{}\n    case _: False{}\n" ++
@@ -210,7 +210,7 @@ def low_intr_specs() -> List<&2, CoreCtorSpec>:
    CoreCtorSpec{"Array.atomic.add", 177}, CoreCtorSpec{"Array.atomic.min", 178}, CoreCtorSpec{"Array.atomic.max", 179}, CoreCtorSpec{"Array.atomic.and", 180}, CoreCtorSpec{"Array.atomic.or", 181}, CoreCtorSpec{"Array.atomic.xor", 182}, CoreCtorSpec{"Array.atomic.exch", 183}, CoreCtorSpec{"Array.atomic.cas", 184}, CoreCtorSpec{"Array.atomic.fadd", 185},
    CoreCtorSpec{"F32.from_nat", 186}]
 def low_kind_specs() -> List<&2, CoreCtorSpec>:
-  [CoreCtorSpec{"False", 1}, CoreCtorSpec{"True", 2}, CoreCtorSpec{"Zero", 3}, CoreCtorSpec{"Succ", 4}, CoreCtorSpec{"Chr", 5}, CoreCtorSpec{"ALeaf", 8}, CoreCtorSpec{"ANode", 9}, CoreCtorSpec{"LT", 10}, CoreCtorSpec{"EQ", 11}, CoreCtorSpec{"GT", 12}, CoreCtorSpec{"Pair", 13}, CoreCtorSpec{"U32", 14}, CoreCtorSpec{"Nat", 15}, CoreCtorSpec{"F32", 16}, CoreCtorSpec{"Char", 17}, CoreCtorSpec{"Bool", 18}]
+  [CoreCtorSpec{"False", 1}, CoreCtorSpec{"True", 2}, CoreCtorSpec{"Zero", 3}, CoreCtorSpec{"Succ", 4}, CoreCtorSpec{"Chr", 5}, CoreCtorSpec{"ALeaf", 8}, CoreCtorSpec{"ANode", 9}, CoreCtorSpec{"LT", 10}, CoreCtorSpec{"EQ", 11}, CoreCtorSpec{"GT", 12}, CoreCtorSpec{"Pair", 13}, CoreCtorSpec{"U32", 14}, CoreCtorSpec{"Nat", 15}, CoreCtorSpec{"F32", 16}, CoreCtorSpec{"Char", 17}, CoreCtorSpec{"Bool", 18}, CoreCtorSpec{"WNil", 19}, CoreCtorSpec{"WCon", 20}, CoreCtorSpec{"Word", 21}]
 def low_is_scalar_type(+skind: U32Map, ty: Expr) -> Bool:
   +s1 = low_expr_sym1(ty)
   Bool.and(U32.is_ne(s1, 0), U32.is_ge(um_get(skind, U32.sub(s1, 1)), 14))
@@ -632,12 +632,27 @@ def low_pat_arr_test(hf: Bool, +kind: U32, st: CfgSt, +r: U32, fb: U32) -> CfgSt
     case True{}:
       +st1 = low_emit_arr_one(st, U32.add(200, kind), [r])
       low_test_bool(st1, True{}, cfg_res(st1), fb)
-def low_pat_arr_step(+kind: U32, st: CfgSt, +fs1: List<&2, Pat>, +pt: List<&2, Pat>, +r: U32, rt: List<&2, U32>, st_tail: List<&2, U32>, tr_tail: List<&2, U32>, +fail_blk: U32, +has_fail: Bool) -> PatStep:
-  +nf = Bool.pick(U32, U32.is_eq(kind, 8), 1, 2)
-  +stK = low_maybe_keep(low_pat_arr_test(has_fail, kind, st, r, fail_blk), Bool.and(has_fail, Bool.or(pat_is_refut(16n, fs1), pat_is_refut(16n, pt))), r)
-  +st2 = low_alloc_regs_go(U32.to_nat(nf), stK, Nil{})
-  +fregs = cfg_rlist(st2)
-  PSNext{cfg_emit(st2, IArrOp{fregs, U32.add(210, kind), [cfg_res(stK)]}), b5k_list_app(Pat, fs1, pt), b5k_list_app(U32, fregs, rt), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), 0, 0), st_tail), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), 0, 0), tr_tail)}
+def low_pat_is_arr(+skind: U32Map, p: Pat) -> Bool:
+  match p:
+    case PCtr{sym, _}:
+      +k = um_get(skind, sym)
+      Bool.or(U32.is_eq(k, 8), U32.is_eq(k, 9))
+    case _: False{}
+def low_pat_arr_defer(skind: U32Map, has_fail: Bool, pt: List<&2, Pat>) -> Bool:
+  match has_fail pt:
+    case True{} Con{+p1, t1}: Bool.and(Bool.not(low_pat_is_arr(skind, p1)), pat_is_refut(16n, Con{p1, t1}))
+    case _ _: False{}
+def low_pat_arr_step_k(defer: Bool, +kind: U32, st: CfgSt, +sym: U32, +fs1: List<&2, Pat>, +pt: List<&2, Pat>, +r: U32, +rt: List<&2, U32>, +sc0: U32, +st_tail: List<&2, U32>, +tr0: U32, +tr_tail: List<&2, U32>, +fail_blk: U32, +has_fail: Bool) -> PatStep:
+  match defer:
+    case True{}: PSNext{st, b5k_list_app(Pat, pt, [PCtr{sym, fs1}]), b5k_list_app(U32, rt, [r]), b5k_list_app(U32, st_tail, [sc0]), b5k_list_app(U32, tr_tail, [tr0])}
+    case False{}:
+      +nf = Bool.pick(U32, U32.is_eq(kind, 8), 1, 2)
+      +stK = low_maybe_keep(low_pat_arr_test(has_fail, kind, st, r, fail_blk), Bool.and(has_fail, Bool.or(pat_is_refut(16n, fs1), pat_is_refut(16n, pt))), r)
+      +st2 = low_alloc_regs_go(U32.to_nat(nf), stK, Nil{})
+      +fregs = cfg_rlist(st2)
+      PSNext{cfg_emit(st2, IArrOp{fregs, U32.add(210, kind), [cfg_res(stK)]}), b5k_list_app(Pat, fs1, pt), b5k_list_app(U32, fregs, rt), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), 0, 0), st_tail), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), 0, 0), tr_tail)}
+def low_pat_arr_step(+kind: U32, +env: LowEnv, st: CfgSt, +sym: U32, +fs1: List<&2, Pat>, +pt: List<&2, Pat>, +r: U32, +rt: List<&2, U32>, +sc0: U32, +st_tail: List<&2, U32>, +tr0: U32, +tr_tail: List<&2, U32>, +fail_blk: U32, +has_fail: Bool) -> PatStep:
+  low_pat_arr_step_k(low_pat_arr_defer(env_map(env, 6), has_fail, pt), kind, st, sym, fs1, pt, r, rt, sc0, st_tail, tr0, tr_tail, fail_blk, has_fail)
 def low_pat_ctr_step(kind: U32, +env: LowEnv, st: CfgSt, +sym: U32, +fs: List<&2, Pat>, +pt: List<&2, Pat>, +r: U32, rt: List<&2, U32>, +sc0: U32, st_tail: List<&2, U32>, tr0: U32, tr_tail: List<&2, U32>, body: Expr, +fail_blk: U32, +has_fail: Bool) -> PatStep:
   match kind fs:
     case 1 _: PSNext{low_opt_test_bool(has_fail, False{}, st, r, fail_blk), pt, rt, st_tail, tr_tail}
@@ -651,8 +666,14 @@ def low_pat_ctr_step(kind: U32, +env: LowEnv, st: CfgSt, +sym: U32, +fs: List<&2
     case 5 _: PSNext{st, b5k_list_app(Pat, fs, pt), Con{r, rt}, Con{1, st_tail}, Con{0, tr_tail}}
     case 14 _: PSNext{st, b5k_list_app(Pat, fs, pt), Con{r, rt}, Con{1, st_tail}, Con{0, tr_tail}}
     case 16 _: PSNext{st, b5k_list_app(Pat, fs, pt), Con{r, rt}, Con{1, st_tail}, Con{0, tr_tail}}
-    case 8 _: low_pat_arr_step(8, st, fs, pt, r, rt, st_tail, tr_tail, fail_blk, has_fail)
-    case 9 _: low_pat_arr_step(9, st, fs, pt, r, rt, st_tail, tr_tail, fail_blk, has_fail)
+    case 19 _: PSNext{st, pt, rt, st_tail, tr_tail}
+    case 20 _:
+      +st1 = low_emit_const(st, 1)
+      +st2 = low_emit_bin_or_cmp(st1, False{}, B5K_OP_AND(), r, cfg_res(st1))
+      +st3 = low_emit_bin_or_cmp(st2, False{}, B5K_OP_SHR(), r, cfg_res(st1))
+      PSNext{st3, b5k_list_app(Pat, fs, pt), Con{cfg_res(st2), Con{cfg_res(st3), rt}}, Con{1, Con{1, st_tail}}, Con{0, Con{0, tr_tail}}}
+    case 8 _: low_pat_arr_step(8, env, st, sym, fs, pt, r, rt, sc0, st_tail, tr0, tr_tail, fail_blk, has_fail)
+    case 9 _: low_pat_arr_step(9, env, st, sym, fs, pt, r, rt, sc0, st_tail, tr0, tr_tail, fail_blk, has_fail)
     case _ Nil{}: PSNext{low_opt_test_tag(Bool.and(has_fail, U32.is_zero(um_get(env_map(env, 1), sym))), st, r, tr0, um_get0(env_map(env, 0), sym), fail_blk), pt, rt, st_tail, tr_tail}
     case _ +fs1:
       +cid = um_get0(env_map(env, 0), sym)
@@ -685,7 +706,7 @@ def low_pat_one(+env: LowEnv, st: CfgSt, p0: Pat, pt: List<&2, Pat>, +r: U32, rt
       +stK = low_maybe_keep(low_opt_test_tag(has_fail, st, r, tr0, 5, fail_blk), has_fail, r)
       low_take2(stK, cfg_res(stK), Con{h, Con{PList{tl}, pt}}, rt, 0, 0, st_tail, tr_tail)
     case PCtr{+sym, +fs}:
-      low_pat_ctr_step(low_special_ctor_kind(env_map(env, 6), sym), env, st, sym, fs, pt, r, rt, sc0, st_tail, tr0, tr_tail, body, fail_blk, has_fail)
+      low_pat_ctr_step(um_get(env_map(env, 6), sym), env, st, sym, fs, pt, r, rt, sc0, st_tail, tr0, tr_tail, body, fail_blk, has_fail)
 def low_match_pats_go(fuel: Nat, +env: LowEnv, step: PatStep, +body: Expr, +fail_blk: U32, +has_fail: Bool) -> CfgSt:
   match fuel step:
     case 1n+p PSNext{st, Con{p0, pt}, Con{r, rt}, Con{sc0, st_tail}, Con{tr0, tr_tail}}:
@@ -735,10 +756,14 @@ def low_str_intern_got(got: Map<&2, U32> & U32, s: String, st: CfgSt, nf: U32, n
 def low_str_lit_bk(bk: CloBank, +s0: String, st: CfgSt) -> CfgSt:
   CloBank{nf, nc, cr, fr, er, ns, sr, sm} = bk
   low_str_intern_got(Map.get(U32, 0, sm, s0), s0, st, nf, nc, cr, fr, er, ns, sr)
+def low_str_has_hi(s: String) -> Bool:
+  match s:
+    case SNil{}: False{}
+    case SCon{c, t}: Bool.or(U32.is_ge(Char.to_u32(c), 2147483648), low_str_has_hi(t))
 def low_str_lit(s: String, +st: CfgSt) -> CfgSt:
   match s:
     case SNil{}: low_emit_ctor(st, 0, Nil{})
-    case SCon{c, t}: low_str_lit_bk(cfg_bank(st), SCon{c, t}, st)
+    case SCon{+c, +t}: Bool.pick(CfgSt, low_str_has_hi(SCon{c, t}), low_str_chain(SCon{c, t}, st), low_str_lit_bk(cfg_bank(st), SCon{c, t}, st))
 def low_filter_erased(es: List<&2, Expr>, +emask: U32, +idx: U32) -> List<&2, Expr>:
   match es:
     case Nil{}: Nil{}
@@ -791,11 +816,30 @@ def low_emit_op_fmod(is_fm: Bool, +is_cmp: Bool, st: CfgSt, +op: U32, va: U32, v
   match is_fm:
     case True{}: low_emit_arr_one(st, 156, [va, vb])
     case False{}: low_emit_bin_or_cmp(st, is_cmp, Bool.pick(U32, is_cmp, U32.sub(op, 20), op), va, vb)
-def low_emit_op_go(is_add: Bool, is_zero: Bool, env: LowEnv, st: CfgSt, +op: U32, +va: U32, +vb: U32) -> CfgSt:
-  match is_add is_zero:
-    case True{} _: low_emit_bin_or_cmp(st, False{}, B5K_OP_ADD(), va, vb)
-    case False{} True{}: low_emit_add_or_cat(env, st, va, vb)
-    case False{} False{}:
+def low_is_nat_sym(syms: SymTab, s1: U32) -> Bool:
+  match s1:
+    case 0: False{}
+    case s:
+      +nm = symtab_name(syms, U32.sub(s, 1))
+      Bool.or(b5k_str_eq(nm, "U32.to_nat"), String.starts_with(nm, "Nat."))
+def low_is_nat_expr(fuel: Nat, +env: LowEnv, e: Expr) -> Bool:
+  match fuel e:
+    case 0n _: False{}
+    case 1n+_ ECtr{sym, _}:
+      +k = um_get(env_map(env, 6), sym)
+      Bool.or(U32.is_eq(k, 3), U32.is_eq(k, 4))
+    case 1n+_ EApp{f, _}: low_is_nat_sym(env_syms(env), low_expr_sym1(f))
+    case 1n++p EOp{0, a, b}: Bool.or(low_is_nat_expr(p, env, a), low_is_nat_expr(p, env, b))
+    case 1n+p EAnn{v, typ}:
+      +s1 = low_expr_sym1(typ)
+      Bool.or(Bool.and(U32.is_ne(s1, 0), U32.is_eq(um_get(env_map(env, 6), U32.sub(s1, 1)), 15)), low_is_nat_expr(p, env, v))
+    case 1n+_ _: False{}
+def low_emit_op_go(is_add: Bool, is_zero: Bool, is_nat: Bool, env: LowEnv, st: CfgSt, +op: U32, +va: U32, +vb: U32) -> CfgSt:
+  match is_add is_zero is_nat:
+    case True{} True{} True{}: low_emit_arr_one(st, 162, [va, vb])
+    case True{} _ _: low_emit_bin_or_cmp(st, False{}, B5K_OP_ADD(), va, vb)
+    case False{} True{} _: low_emit_add_or_cat(env, st, va, vb)
+    case False{} False{} _:
       low_emit_op_fmod(U32.is_eq(op, 156), Bool.and(U32.is_ge(op, 20), U32.is_le(op, 25)), st, op, va, vb)
 def low_lookup_fvs(fvs: List<&2, U32>, +vm: U32Map) -> List<&2, U32>:
   match fvs:
@@ -850,7 +894,7 @@ def low_emit_ctor_kind(kind: U32, +env: LowEnv, st: CfgSt, sym: U32, vfs: List<&
       match vfs:
         case Con{vx, _}:
           +st1 = low_emit_const(st, 1)
-          low_emit_bin_or_cmp(st1, False{}, B5K_OP_ADD(), vx, cfg_res(st1))
+          low_emit_arr_one(st1, 162, [vx, cfg_res(st1)])
         case Nil{}: low_emit_const(st, 1)
     case 5:
       match vfs:
@@ -863,7 +907,19 @@ def low_emit_ctor_kind(kind: U32, +env: LowEnv, st: CfgSt, sym: U32, vfs: List<&
       match vfs:
         case Con{vx, _}: cfg_set_res(st, vx)
         case Nil{}: low_emit_const(st, 0)
-    case 16: low_emit_arr_one(st, 7, vfs)
+    case 16:
+      match vfs:
+        case Con{vx, _}: cfg_set_res(st, vx)
+        case Nil{}: low_emit_const(st, 0)
+    case 19: low_emit_const(st, 0)
+    case 20:
+      match vfs:
+        case Con{vh, Con{vt, _}}:
+          +st1 = low_emit_const(st, 1)
+          +st2 = low_emit_bin_or_cmp(st1, False{}, B5K_OP_SHL(), vt, cfg_res(st1))
+          +st3 = low_emit_bin_or_cmp(st2, False{}, B5K_OP_AND(), vh, cfg_res(st1))
+          low_emit_bin_or_cmp(st3, False{}, B5K_OP_OR(), cfg_res(st2), cfg_res(st3))
+        case _: low_emit_const(st, 0)
     case _: low_emit_ctor(st, um_get0(env_map(env, 0), sym), vfs)
 def low_emit_ctor_expr(+env: LowEnv, st: CfgSt, +sym: U32, vfs: List<&2, U32>) -> CfgSt: low_emit_ctor_kind(um_get(env_map(env, 6), sym), env, st, sym, vfs)
 # Single Self-Recursive Expression -> Flat CFG Lowerer
@@ -960,13 +1016,15 @@ def low_splice_u32(col: Nat, xs: List<&2, U32>, rep: List<&2, U32>) -> List<&2, 
     case _ Nil{}: Nil{}
     case 0n Con{_, t}: b5k_list_app(U32, rep, t)
     case 1n+p Con{h, t}: Con{h, low_splice_u32(p, t, rep)}
+def low_is_tag_ctor(skind: U32Map, sym: U32) -> Bool:
+  +k = um_get(skind, sym)
+  Bool.or(U32.is_zero(k), Bool.and(U32.is_ge(k, 10), U32.is_le(k, 13)))
 def low_grp_pat_m(+env: LowEnv, p: Pat) -> HoistCol:
   match p:
     case PPair{_, _}: HCPair{}
     case PCtr{+sym, +fs}:
-      +k = low_special_ctor_kind(env_map(env, 6), sym)
       +nf = b5k_list_len(Pat, fs)
-      Bool.pick(HoistCol, Bool.and(U32.is_zero(k), U32.is_gt(nf, 0)), HCCtr{sym, nf}, HCNone{})
+      Bool.pick(HoistCol, Bool.and(low_is_tag_ctor(env_map(env, 6), sym), U32.is_gt(nf, 0)), HCCtr{sym, nf}, HCNone{})
     case _: HCNone{}
 type GrpSplit is Data:
   GrpSplit{grp: List<&2, Case>, tail: List<&2, Case>}
@@ -1027,8 +1085,7 @@ def low_mpat_needs_tag(+env: LowEnv, p: Pat) -> U32:
   match p:
     case PList{_}: 1
     case PCtr{+sym, _}:
-      +k = low_special_ctor_kind(env_map(env, 6), sym)
-      Bool.to_u32(Bool.and(Bool.or(U32.is_zero(k), U32.is_gt(k, 5)), U32.is_zero(um_get(env_map(env, 1), sym))))
+      Bool.to_u32(Bool.and(low_is_tag_ctor(env_map(env, 6), sym), U32.is_zero(um_get(env_map(env, 1), sym))))
     case _: 0
 def low_col_tag_uses(+env: LowEnv, +col: U32, cs: List<&2, Case>, +acc: U32) -> U32:
   match cs:
@@ -1052,7 +1109,7 @@ def low_pats_flat_ok(ps: List<&2, Pat>, +env: LowEnv) -> Bool:
     case Con{PList{Con{_, _}}, _}: False{}
     case Con{PCtr{+sym, +fs}, t}:
       +k = low_special_ctor_kind(env_map(env, 6), sym)
-      ok = Bool.or(Bool.and(Bool.and(U32.is_ge(k, 1), U32.is_le(k, 3)), U32.is_zero(b5k_list_len(Pat, fs))), Bool.and(Bool.or(U32.is_zero(k), U32.is_gt(k, 5)), Bool.not(pat_is_refut(16n, fs))))
+      ok = Bool.or(Bool.and(Bool.and(U32.is_ge(k, 1), U32.is_le(k, 3)), U32.is_zero(b5k_list_len(Pat, fs))), Bool.and(low_is_tag_ctor(env_map(env, 6), sym), Bool.not(pat_is_refut(16n, fs))))
       Bool.and(ok, low_pats_flat_ok(t, env))
     case Con{_, t}: low_pats_flat_ok(t, env)
 def low_pretest_pats(ps: List<&2, Pat>, +env: LowEnv, st: CfgSt, rs: List<&2, U32>, trs: List<&2, U32>, +fb: U32) -> CfgSt:
@@ -1294,16 +1351,11 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
     case Succ{+p} LTExpr{EOp{+op, +a, +b}}:
       +st0 = st
       +is_add = Bool.or(U32.is_eq(op, 19), Bool.and(U32.is_zero(op), Bool.or(low_is_num_expr(16n, env, cfg_map(st0, False{}), cfg_map(st0, True{}), a), low_is_num_expr(16n, env, cfg_map(st0, False{}), cfg_map(st0, True{}), b))))
+      +is_nat = Bool.and(U32.is_zero(op), Bool.or(low_is_nat_expr(8n, env, a), low_is_nat_expr(8n, env, b)))
       +st1 = low_go(p, env, st0, LTExpr{a}, False{})
       +st2 = low_go(p, env, st1, LTExpr{b}, False{})
-      low_emit_op_go(is_add, U32.is_zero(op), env, st2, op, cfg_res(st1), cfg_res(st2))
-    case Succ{p} LTExpr{EUnOp{1, ELam{ps, body}}}: low_go(p, env, st, LTExpr{ELam{ps, body}}, is_tail)
-    case Succ{p} LTExpr{EUnOp{1, EVar{+s}}}:
-      +st0 = st
-      low_go(p, env, st0, Bool.pick(LowTask, U32.is_zero(um_get(cfg_map(st0, False{}), s)), LTExpr{EVar{s}}, LTExpr{EUnOp{9, EVar{s}}}), is_tail)
-    case Succ{p} LTExpr{EUnOp{1, ERef{+s}}}:
-      +st0 = st
-      low_go(p, env, st0, Bool.pick(LowTask, U32.is_zero(um_get(cfg_map(st0, False{}), s)), LTExpr{EVar{s}}, LTExpr{EUnOp{9, EVar{s}}}), is_tail)
+      low_emit_op_go(is_add, U32.is_zero(op), is_nat, env, st2, op, cfg_res(st1), cfg_res(st2))
+    case Succ{p} LTExpr{EUnOp{1, a}}: low_go(p, env, st, LTExpr{a}, is_tail)
     case Succ{p} LTExpr{EUnOp{+op, a}}:
       +st1 = low_go(p, env, st, LTExpr{a}, False{})
       low_emit_un(st1, Bool.pick(U32, U32.is_eq(op, 9), 1, op), cfg_res(st1))
@@ -1531,9 +1583,14 @@ def low_subst_lookup(ps: List<&2, Param>, args: List<&2, Expr>, +sym: U32) -> Ma
   match ps args:
     case Con{Param{s, _, _, _}, pt} Con{a, at}: Bool.pick(Maybe<&2, Expr>, U32.is_eq(s, sym), Some{a}, low_subst_lookup(pt, at, sym))
     case _ _: None{}
+type SubstWork is Data:
+  SWOne{e: Expr}
+  SWMany{es: List<&2, Expr>}
+  SWCases{cs: List<&2, Case>}
 type SubstRes is Data:
   SROne{e: Expr}
   SRMany{es: List<&2, Expr>}
+  SRCases{cs: List<&2, Case>}
 def low_subst_app(rf: SubstRes, ra: SubstRes) -> SubstRes:
   match rf ra:
     case SROne{f} SRMany{es}: SROne{EApp{f, es}}
@@ -1554,23 +1611,50 @@ def low_subst_var(m: Maybe<&2, Expr>, s: U32) -> SubstRes:
   match m:
     case Some{a}: SROne{a}
     case None{}: SROne{EVar{s}}
-def low_subst_go(+fuel: Nat, +ps: List<&2, Param>, +args: List<&2, Expr>, w: TyWork) -> SubstRes:
+def low_subst_ctr(s: U32, r: SubstRes) -> SubstRes:
+  match r:
+    case SRMany{es}: SROne{ECtr{s, es}}
+    case _: SROne{ENum{0}}
+def low_subst_mat(rs: SubstRes, rc: SubstRes) -> SubstRes:
+  match rs rc:
+    case SRMany{scrs} SRCases{cs}: SROne{EMat{scrs, cs}}
+    case _ _: SROne{ENum{0}}
+def low_subst_ccons(cps: List<&2, Pat>, rb: SubstRes, rt: SubstRes) -> SubstRes:
+  match rb rt:
+    case SROne{b} SRCases{t}: SRCases{Con{Case{cps, b}, t}}
+    case _ _: SRCases{Nil{}}
+def low_subst_un(op: U32, r: SubstRes) -> SubstRes:
+  match r:
+    case SROne{a}: SROne{EUnOp{op, a}}
+    case _: SROne{ENum{0}}
+def low_subst_ann(rv: SubstRes, rt: SubstRes) -> SubstRes:
+  match rv rt:
+    case SROne{v} SROne{ty}: SROne{EAnn{v, ty}}
+    case _ _: SROne{ENum{0}}
+def low_subst_go(+fuel: Nat, +ps: List<&2, Param>, +args: List<&2, Expr>, w: SubstWork) -> SubstRes:
   match fuel w:
-    case 0n TWOne{e}: SROne{e}
-    case 0n TWMany{es}: SRMany{es}
-    case 1n+_ TWMany{Nil{}}: SRMany{Nil{}}
-    case 1n++p TWMany{Con{h, t}}: low_subst_cons(low_subst_go(p, ps, args, TWOne{h}), low_subst_go(p, ps, args, TWMany{t}))
-    case 1n+_ TWOne{EVar{+s}}: low_subst_var(low_subst_lookup(ps, args, s), s)
-    case 1n++p TWOne{EApp{f, es}}: low_subst_app(low_subst_go(p, ps, args, TWOne{f}), low_subst_go(p, ps, args, TWMany{es}))
-    case 1n++p TWOne{EOp{op, a, b}}: low_subst_op(op, low_subst_go(p, ps, args, TWOne{a}), low_subst_go(p, ps, args, TWOne{b}))
-    case 1n+p TWOne{ELam{lps, b}}: low_subst_lam(lps, low_subst_go(p, ps, args, TWOne{b}))
-    case 1n+_ TWOne{other}: SROne{other}
+    case 0n SWOne{e}: SROne{e}
+    case 0n SWMany{es}: SRMany{es}
+    case 0n SWCases{cs}: SRCases{cs}
+    case 1n+_ SWMany{Nil{}}: SRMany{Nil{}}
+    case 1n++p SWMany{Con{h, t}}: low_subst_cons(low_subst_go(p, ps, args, SWOne{h}), low_subst_go(p, ps, args, SWMany{t}))
+    case 1n+_ SWCases{Nil{}}: SRCases{Nil{}}
+    case 1n++p SWCases{Con{Case{cps, body}, t}}: low_subst_ccons(cps, low_subst_go(p, ps, args, SWOne{body}), low_subst_go(p, ps, args, SWCases{t}))
+    case 1n+_ SWOne{EVar{+s}}: low_subst_var(low_subst_lookup(ps, args, s), s)
+    case 1n++p SWOne{EApp{f, es}}: low_subst_app(low_subst_go(p, ps, args, SWOne{f}), low_subst_go(p, ps, args, SWMany{es}))
+    case 1n+p SWOne{ECtr{s, es}}: low_subst_ctr(s, low_subst_go(p, ps, args, SWMany{es}))
+    case 1n++p SWOne{EOp{op, a, b}}: low_subst_op(op, low_subst_go(p, ps, args, SWOne{a}), low_subst_go(p, ps, args, SWOne{b}))
+    case 1n+p SWOne{ELam{lps, b}}: low_subst_lam(lps, low_subst_go(p, ps, args, SWOne{b}))
+    case 1n+p SWOne{EUnOp{op, a}}: low_subst_un(op, low_subst_go(p, ps, args, SWOne{a}))
+    case 1n++p SWOne{EAnn{v, ty}}: low_subst_ann(low_subst_go(p, ps, args, SWOne{v}), low_subst_go(p, ps, args, SWOne{ty}))
+    case 1n++p SWOne{EMat{scrs, cs}}: low_subst_mat(low_subst_go(p, ps, args, SWMany{scrs}), low_subst_go(p, ps, args, SWCases{cs}))
+    case 1n+_ SWOne{other}: SROne{other}
 def low_subst_one(r: SubstRes) -> Expr:
   match r:
     case SROne{e}: e
-    case SRMany{_}: ENum{0}
+    case _: ENum{0}
 def low_subst_expr(fuel: Nat, ps: List<&2, Param>, args: List<&2, Expr>, e: Expr) -> Expr:
-  low_subst_one(low_subst_go(fuel, ps, args, TWOne{e}))
+  low_subst_one(low_subst_go(fuel, ps, args, SWOne{e}))
 def low_ctors_hdr_len(cs: List<&2, CtorDef>, acc: U32) -> U32:
   match cs:
     case Nil{}: acc
@@ -1609,7 +1693,78 @@ type ShowTask is Data:
   STAdtFs{fs: List<&2, Param>, j: U32, rest_cs: List<&2, CtorDef>, tps: List<&2, Param>, targs: List<&2, Expr>, sub_idx: U32, hdr_acc: List<&2, U32>, sub_acc: List<&2, U32>, names: List<&2, String>, nnames: U32}
   STAdtFHit{hit: Maybe<&2, U32>, ft: Expr, ft_rest: List<&2, Param>, j: U32, rest_cs: List<&2, CtorDef>, tps: List<&2, Param>, targs: List<&2, Expr>, sub_idx: U32, hdr_acc: List<&2, U32>, sub_acc: List<&2, U32>, names: List<&2, String>, nnames: U32}
   STAdtFSub{sb: ShowBuild, ft_rest: List<&2, Param>, j: U32, rest_cs: List<&2, CtorDef>, tps: List<&2, Param>, targs: List<&2, Expr>, sub_idx: U32, hdr_acc: List<&2, U32>, sub_acc: List<&2, U32>}
-def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +cbs: U32Map, +seen: List<&2, ShowSeen>, task: ShowTask) -> ShowBuild:
+def low_find_def(ds: List<&2, Def>, +sym: U32) -> Maybe<&2, Def>:
+  match ds:
+    case Nil{}: None{}
+    case Con{Def{+s, ps, ret, body, imp, uns}, t}: Bool.pick(Maybe<&2, Def>, U32.is_eq(s, sym), Some{Def{s, ps, ret, body, imp, uns}}, low_find_def(t, sym))
+def low_strip_tildes(es: List<&2, Expr>) -> List<&2, Expr>:
+  match es:
+    case Nil{}: Nil{}
+    case Con{EUnOp{1, x}, t}: Con{x, low_strip_tildes(t)}
+    case Con{h, t}: Con{h, low_strip_tildes(t)}
+type PmStep is Data:
+  PmFail{}
+  PmNext{pfs: List<&2, Pat>, efs: List<&2, Expr>, ps: List<&2, Param>, vs: List<&2, Expr>}
+def low_pm_step(+syms: SymTab, pat: Pat, e: Expr, pt: List<&2, Pat>, et: List<&2, Expr>, ps: List<&2, Param>, vs: List<&2, Expr>) -> PmStep:
+  match pat e:
+    case PWild{} _: PmNext{pt, et, ps, vs}
+    case PVar{s, _} ex: PmNext{pt, et, Con{Param{s, None{}, False{}, False{}}, ps}, Con{ex, vs}}
+    case PNum{n} ENum{m}: Bool.pick(PmStep, U32.is_eq(n, m), PmNext{pt, et, ps, vs}, PmFail{})
+    case PCtr{s1, Nil{}} ENum{0}: Bool.pick(PmStep, b5k_str_eq(symtab_name(syms, s1), "Zero"), PmNext{pt, et, ps, vs}, PmFail{})
+    case PCtr{s1, Con{p1, Nil{}}} ENum{+m}: Bool.pick(PmStep, Bool.and(U32.is_gt(m, 0), b5k_str_eq(symtab_name(syms, s1), "Succ")), PmNext{Con{p1, pt}, Con{ENum{U32.sub(m, 1)}, et}, ps, vs}, PmFail{})
+    case PCtr{s1, pfs} ECtr{s2, efs}: Bool.pick(PmStep, U32.is_eq(s1, s2), PmNext{b5k_list_app(Pat, pfs, pt), b5k_list_app(Expr, efs, et), ps, vs}, PmFail{})
+    case PPair{pa, pb} EPair{ea, eb}: PmNext{Con{pa, Con{pb, pt}}, Con{ea, Con{eb, et}}, ps, vs}
+    case _ _: PmFail{}
+type PmRes is Data:
+  PmNone{}
+  PmHit{ps: List<&2, Param>, vs: List<&2, Expr>}
+def low_pm_go(fuel: Nat, +syms: SymTab, st: PmStep) -> PmRes:
+  match fuel st:
+    case 0n _: PmNone{}
+    case _ PmFail{}: PmNone{}
+    case _ PmNext{Nil{}, Nil{}, ps, vs}: PmHit{ps, vs}
+    case 1n+p PmNext{Con{pf, pt}, Con{ef, et}, ps, vs}: low_pm_go(p, syms, low_pm_step(syms, pf, ef, pt, et, ps, vs))
+    case _ _: PmNone{}
+type UnfTask is Data:
+  UTExpr{e: Expr}
+  UTList{es: List<&2, Expr>, acc: List<&2, Expr>, cs: List<&2, Case>, orig: Expr}
+  UTCases{scrs: List<&2, Expr>, cs: List<&2, Case>, orig: Expr}
+  UTCasesK{r: PmRes, scrs: List<&2, Expr>, body: Expr, t: List<&2, Case>, orig: Expr}
+  UTAppDef{md: Maybe<&2, Def>, args: List<&2, Expr>, orig: Expr}
+def low_unf_app_body_k(ok: Bool, dps: List<&2, Param>, body: Expr, +args: List<&2, Expr>) -> Maybe<&2, Expr>:
+  match ok dps body:
+    case True{} _ _: Some{low_subst_expr(16n, dps, low_strip_tildes(args), body)}
+    case False{} Nil{} ELam{+lps, lbody}: Bool.pick(Maybe<&2, Expr>, U32.is_eq(b5k_list_len(Param, lps), b5k_list_len(Expr, args)), Some{low_subst_expr(16n, lps, low_strip_tildes(args), lbody)}, None{})
+    case _ _ _: None{}
+def low_unf_app_body(+dps: List<&2, Param>, body: Expr, +args: List<&2, Expr>) -> Maybe<&2, Expr>:
+  low_unf_app_body_k(U32.is_eq(b5k_list_len(Param, dps), b5k_list_len(Expr, args)), dps, body, args)
+def low_unf_or(me: Maybe<&2, Expr>, orig: Expr) -> UnfTask:
+  match me:
+    case Some{e}: UTExpr{e}
+    case None{}: UTExpr{orig}
+def low_unfold_go(fuel: Nat, +syms: SymTab, +ds: List<&2, Def>, task: UnfTask) -> Expr:
+  match fuel task:
+    case 0n UTExpr{ex}: ex
+    case 0n UTList{_, _, _, orig}: orig
+    case 0n UTCases{_, _, orig}: orig
+    case 0n UTCasesK{_, _, _, _, orig}: orig
+    case 0n UTAppDef{_, _, orig}: orig
+    case 1n+p UTExpr{EUnOp{1, a}}: low_unfold_go(p, syms, ds, UTExpr{a})
+    case 1n+p UTExpr{EAnn{v, _}}: low_unfold_go(p, syms, ds, UTExpr{v})
+    case 1n+p UTExpr{EMat{+scrs, +cs}}: low_unfold_go(p, syms, ds, UTList{scrs, Nil{}, cs, EMat{scrs, cs}})
+    case 1n+p UTExpr{EVar{+s}}: low_unfold_go(p, syms, ds, Bool.pick(UnfTask, U32.is_zero(low_show_code(symtab_name(syms, s))), UTAppDef{low_find_def(ds, s), Nil{}, EVar{s}}, UTExpr{EVar{s}}))
+    case 1n+p UTExpr{EApp{EVar{+s}, +args}}: low_unfold_go(p, syms, ds, Bool.pick(UnfTask, U32.is_zero(low_show_code(symtab_name(syms, s))), UTAppDef{low_find_def(ds, s), args, EApp{EVar{s}, args}}, UTExpr{EApp{EVar{s}, args}}))
+    case _ UTExpr{other}: other
+    case 1n+p UTList{Nil{}, acc, cs, orig}: low_unfold_go(p, syms, ds, UTCases{b5k_list_rev(Expr, acc), cs, orig})
+    case 1n++p UTList{Con{h, t}, acc, cs, orig}: low_unfold_go(p, syms, ds, UTList{t, Con{low_unfold_go(p, syms, ds, UTExpr{h}), acc}, cs, orig})
+    case _ UTCases{_, Nil{}, orig}: orig
+    case 1n+p UTCases{+scrs, Con{Case{pats, body}, t}, orig}: low_unfold_go(p, syms, ds, UTCasesK{low_pm_go(32n, syms, PmNext{pats, scrs, Nil{}, Nil{}}), scrs, body, t, orig})
+    case 1n+p UTCasesK{PmHit{bps, bvs}, _, body, _, _}: low_unfold_go(p, syms, ds, UTExpr{low_subst_expr(16n, bps, bvs, body)})
+    case 1n+p UTCasesK{PmNone{}, scrs, _, t, orig}: low_unfold_go(p, syms, ds, UTCases{scrs, t, orig})
+    case _ UTAppDef{None{}, _, orig}: orig
+    case 1n+p UTAppDef{Some{Def{_, dps, _, body, _, _}}, args, orig}: low_unfold_go(p, syms, ds, low_unf_or(low_unf_app_body(dps, body, args), orig))
+def low_unfold_type(fuel: Nat, syms: SymTab, ds: List<&2, Def>, e: Expr) -> Expr: low_unfold_go(fuel, syms, ds, UTExpr{e})
+def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +defs: List<&2, Def>, +cbs: U32Map, +seen: List<&2, ShowSeen>, task: ShowTask) -> ShowBuild:
   match fuel task:
     case 0n STEnc{_, _, names, nnames, _}: ShowBuild{[0], names, nnames}
     case 0n STHead{_, _, _, names, nnames, _}: ShowBuild{[0], names, nnames}
@@ -1622,29 +1777,29 @@ def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +cbs: U32M
     case 0n STAdtFSub{sb, _, _, _, _, _, _, _, _}: sb
     case 1n+p STTupA{b, nnames, +fst_idx, ShowBuild{+wa, na, nna}, in_adt}:
       +snd_idx = U32.add(fst_idx, b5k_u32_list_len(wa))
-      low_show_tup_b(nnames, fst_idx, snd_idx, wa, low_show_go(p, syms, types, cbs, seen, STEnc{b, snd_idx, na, nna, in_adt}))
+      low_show_tup_b(nnames, fst_idx, snd_idx, wa, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_unfold_type(12n, syms, defs, b), snd_idx, na, nna, in_adt}))
     case 1n+p STBinA{b, nnames, c0, c1, +idx_a, ShowBuild{+wa, na, nna}}:
       +idx_b = U32.add(idx_a, b5k_u32_list_len(wa))
-      low_show_bin2_b(nnames, c0, c1, idx_a, idx_b, wa, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, b), idx_b, na, nna, True{}}))
+      low_show_bin2_b(nnames, c0, c1, idx_a, idx_b, wa, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, b), idx_b, na, nna, True{}}))
     case 1n+_ STAdtOpt{None{}, _, _, names, nnames}: ShowBuild{[0], names, nnames}
     case 1n+p STAdtOpt{Some{TypeDef{tsym, tps, _, +ctors}}, o, +base, names, nnames}:
       +sub_idx = U32.add(base, U32.add(3, low_ctors_hdr_len(ctors, 0)))
-      low_show_go(p, syms, types, cbs, Con{ShowSeen{tsym, base}, seen}, STAdtCs{ctors, tps, low_type_args(o), sub_idx, [7, 1, b5k_list_len(CtorDef, ctors)], Nil{}, names, nnames})
+      low_show_go(p, syms, types, defs, cbs, Con{ShowSeen{tsym, base}, seen}, STAdtCs{ctors, tps, low_type_args(o), sub_idx, [7, 1, b5k_list_len(CtorDef, ctors)], Nil{}, names, nnames})
     case 1n+_ STAdtCs{Nil{}, _, _, _, hdr, sub, names, nnames}: ShowBuild{b5k_list_app(U32, hdr, sub), names, nnames}
     case 1n+p STAdtCs{Con{CtorDef{+csym, _, +fs}, rest_cs}, tps, targs, sub_idx, hdr, sub, names, +nnames}:
       hdr2 = b5k_list_app(U32, hdr, [nnames, um_get0(cbs, csym), b5k_list_len(Param, fs)])
-      low_show_go(p, syms, types, cbs, seen, STAdtFs{fs, 0, rest_cs, tps, targs, sub_idx, hdr2, sub, b5k_list_app(String, names, [symtab_name(syms, csym)]), U32.add(nnames, 1)})
+      low_show_go(p, syms, types, defs, cbs, seen, STAdtFs{fs, 0, rest_cs, tps, targs, sub_idx, hdr2, sub, b5k_list_app(String, names, [symtab_name(syms, csym)]), U32.add(nnames, 1)})
     case 1n+p STAdtFs{Nil{}, _, rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames}:
-      low_show_go(p, syms, types, cbs, seen, STAdtCs{rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames})
+      low_show_go(p, syms, types, defs, cbs, seen, STAdtCs{rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames})
     case 1n+p STAdtFs{Con{Param{_, fty, _, _}, ft_rest}, j, rest_cs, +tps, +targs, sub_idx, hdr, sub, names, nnames}:
-      +ft = low_subst_expr(16n, tps, targs, low_opt_expr(fty))
-      low_show_go(p, syms, types, cbs, seen, STAdtFHit{low_show_seen_hit(seen, ft), ft, ft_rest, j, rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames})
+      +ft = low_unfold_type(12n, syms, defs, low_subst_expr(16n, tps, targs, low_opt_expr(fty)))
+      low_show_go(p, syms, types, defs, cbs, seen, STAdtFHit{low_show_seen_hit(seen, ft), ft, ft_rest, j, rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames})
     case 1n+p STAdtFHit{Some{rec_b}, _, ft_rest, +j, rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames}:
-      low_show_go(p, syms, types, cbs, seen, STAdtFs{ft_rest, U32.add(j, 1), rest_cs, tps, targs, sub_idx, b5k_list_app(U32, hdr, [j, rec_b]), sub, names, nnames})
+      low_show_go(p, syms, types, defs, cbs, seen, STAdtFs{ft_rest, U32.add(j, 1), rest_cs, tps, targs, sub_idx, b5k_list_app(U32, hdr, [j, rec_b]), sub, names, nnames})
     case 1n++p STAdtFHit{None{}, ft, ft_rest, j, rest_cs, tps, targs, +sub_idx, hdr, sub, names, nnames}:
-      low_show_go(p, syms, types, cbs, seen, STAdtFSub{low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, ft), sub_idx, names, nnames, True{}}), ft_rest, j, rest_cs, tps, targs, sub_idx, hdr, sub})
+      low_show_go(p, syms, types, defs, cbs, seen, STAdtFSub{low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, ft), sub_idx, names, nnames, True{}}), ft_rest, j, rest_cs, tps, targs, sub_idx, hdr, sub})
     case 1n+p STAdtFSub{ShowBuild{+sw, sn, snn}, ft_rest, +j, rest_cs, tps, targs, +sub_idx, hdr, sub}:
-      low_show_go(p, syms, types, cbs, seen, STAdtFs{ft_rest, U32.add(j, 1), rest_cs, tps, targs, U32.add(sub_idx, b5k_u32_list_len(sw)), b5k_list_app(U32, hdr, [j, sub_idx]), b5k_list_app(U32, sub, sw), sn, snn})
+      low_show_go(p, syms, types, defs, cbs, seen, STAdtFs{ft_rest, U32.add(j, 1), rest_cs, tps, targs, U32.add(sub_idx, b5k_u32_list_len(sw)), b5k_list_app(U32, hdr, [j, sub_idx]), b5k_list_app(U32, sub, sw), sn, snn})
     case 1n++p STHead{code, +o, +base, +names, +nnames, +in_adt}:
       match code:
         case 2: ShowBuild{[1], names, nnames}
@@ -1654,55 +1809,60 @@ def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +cbs: U32M
         case 6: ShowBuild{[7, 0, 2, nnames, 18, 0, U32.add(nnames, 1), 14, 0], b5k_list_app(String, names, ["False", "True"]), U32.add(nnames, 2)}
         case 7:
           +elem_idx = U32.add(base, 13)
-          low_show_list_fin(base, nnames, elem_idx, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, low_type_elem(o)), elem_idx, b5k_list_app(String, names, ["Nil", "Con"]), U32.add(nnames, 2), True{}}))
+          low_show_list_fin(base, nnames, elem_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_type_elem(o)), elem_idx, b5k_list_app(String, names, ["Nil", "Con"]), U32.add(nnames, 2), True{}}))
         case 8: ShowBuild{[7, 1, 3, nnames, 15, 0, U32.add(nnames, 1), 16, 0, U32.add(nnames, 2), 17, 0], b5k_list_app(String, names, ["LT", "EQ", "GT"]), U32.add(nnames, 3)}
         case 9:
           match o:
             case EApp{_, Con{a, Con{b, Nil{}}}}:
               +fst_idx = U32.add(base, 10)
-              low_show_go(p, syms, types, cbs, seen, STTupA{b, nnames, fst_idx, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, a), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
+              low_show_go(p, syms, types, defs, cbs, seen, STTupA{b, nnames, fst_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, a), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
             case _: ShowBuild{[0], names, nnames}
         case 10: ShowBuild{[7, 1, 1, nnames, 7, 0], b5k_list_app(String, names, ["Unit"]), U32.add(nnames, 1)}
         case 11: ShowBuild{[5], names, nnames}
         case 12:
           +elem_idx = U32.add(base, 11)
-          low_show_mb_fin(nnames, elem_idx, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, low_type_elem(o)), elem_idx, b5k_list_app(String, names, ["None", "Some"]), U32.add(nnames, 2), True{}}))
+          low_show_mb_fin(nnames, elem_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_type_elem(o)), elem_idx, b5k_list_app(String, names, ["None", "Some"]), U32.add(nnames, 2), True{}}))
         case 13:
           +idx_a = U32.add(base, 13)
           +targs = low_type_args(o)
-          low_show_go(p, syms, types, cbs, seen, STBinA{low_last_expr(targs, ENum{0}), nnames, 10, 11, idx_a, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, low_penult_expr(targs, ENum{0})), idx_a, b5k_list_app(String, names, ["Fail", "Done"]), U32.add(nnames, 2), True{}})})
+          low_show_go(p, syms, types, defs, cbs, seen, STBinA{low_last_expr(targs, ENum{0}), nnames, 10, 11, idx_a, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_penult_expr(targs, ENum{0})), idx_a, b5k_list_app(String, names, ["Fail", "Done"]), U32.add(nnames, 2), True{}})})
         case 14:
           +idx_a = U32.add(base, 13)
           +targs = low_type_args(o)
-          low_show_go(p, syms, types, cbs, seen, STBinA{low_last_expr(targs, ENum{0}), nnames, 20, 21, idx_a, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, low_penult_expr(targs, ENum{0})), idx_a, b5k_list_app(String, names, ["Inl", "Inr"]), U32.add(nnames, 2), True{}})})
+          low_show_go(p, syms, types, defs, cbs, seen, STBinA{low_last_expr(targs, ENum{0}), nnames, 20, 21, idx_a, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_penult_expr(targs, ENum{0})), idx_a, b5k_list_app(String, names, ["Inl", "Inr"]), U32.add(nnames, 2), True{}})})
         case 15:
           +targs = low_type_args(o)
           +fst_idx = U32.add(base, 10)
-          low_show_go(p, syms, types, cbs, seen, STTupA{low_unwrap_lam(low_last_expr(targs, ENum{0})), nnames, fst_idx, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, low_penult_expr(targs, ENum{0})), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
+          low_show_go(p, syms, types, defs, cbs, seen, STTupA{low_unwrap_lam(low_last_expr(targs, ENum{0})), nnames, fst_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_penult_expr(targs, ENum{0})), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
         case 16:
           match in_adt:
             case False{}:
               +elem_idx = U32.add(base, 13)
-              low_show_list_fin(base, nnames, elem_idx, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, low_type_elem(o)), elem_idx, b5k_list_app(String, names, ["Nil", "Con"]), U32.add(nnames, 2), True{}}))
+              low_show_list_fin(base, nnames, elem_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_type_elem(o)), elem_idx, b5k_list_app(String, names, ["Nil", "Con"]), U32.add(nnames, 2), True{}}))
             case True{}:
               +elem_idx = U32.add(base, 3)
-              low_show_arr_fin(elem_idx, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, low_type_elem(o)), elem_idx, names, nnames, True{}}))
-        case _: low_show_go(p, syms, types, cbs, seen, STAdtOpt{low_find_type_opt(types, low_type_head_sym(o)), o, base, names, nnames})
+              low_show_arr_fin(elem_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_type_elem(o)), elem_idx, names, nnames, True{}}))
+        case _: low_show_go(p, syms, types, defs, cbs, seen, STAdtOpt{low_find_type_opt(types, low_type_head_sym(o)), o, base, names, nnames})
     case 1n+_ STEnc{EEq{_, _}, _, names, nnames, _}: ShowBuild{[5], names, nnames}
     case 1n+_ STEnc{EOp{20, _, _}, _, names, nnames, _}: ShowBuild{[5], names, nnames}
-    case 1n+p STEnc{EAnn{v, _}, base, names, nnames, in_adt}: low_show_go(p, syms, types, cbs, seen, STEnc{v, base, names, nnames, in_adt})
+    case 1n+p STEnc{EAnn{v, _}, base, names, nnames, in_adt}: low_show_go(p, syms, types, defs, cbs, seen, STEnc{v, base, names, nnames, in_adt})
     case 1n++p STEnc{EOp{5, a, b}, base, names, +nnames, +in_adt}:
       +fst_idx = U32.add(base, 10)
-      low_show_go(p, syms, types, cbs, seen, STTupA{b, nnames, fst_idx, low_show_go(p, syms, types, cbs, seen, STEnc{low_reassoc_amp(64n, a), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
+      low_show_go(p, syms, types, defs, cbs, seen, STTupA{b, nnames, fst_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_unfold_type(12n, syms, defs, a)), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
+    case 1n++p STEnc{EAll{Param{_, Some{a}, _, _}, b}, base, names, +nnames, +in_adt}:
+      +fst_idx = U32.add(base, 10)
+      low_show_go(p, syms, types, defs, cbs, seen, STTupA{b, nnames, fst_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_unfold_type(12n, syms, defs, a)), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
     case 1n+p STEnc{+o, base, names, nnames, in_adt}:
-      low_show_go(p, syms, types, cbs, seen, STHead{low_show_code(low_type_head(syms, o)), o, base, names, nnames, in_adt})
+      low_show_go(p, syms, types, defs, cbs, seen, STHead{low_show_code(low_type_head(syms, o)), o, base, names, nnames, in_adt})
 def low_show_from_sb(is_io: Bool, sb: ShowBuild) -> ShowInfo:
   ShowBuild{ws, ns, _} = sb
   Bool.pick(ShowInfo, is_io, ShowInfo{False{}, Nil{}, Nil{}}, ShowInfo{True{}, ws, ns})
-def low_show_info(+syms: SymTab, types: List<&2, TypeDef>, cbs: U32Map, mret: Maybe<&2, Expr>) -> ShowInfo:
+def low_show_info(+syms: SymTab, types: List<&2, TypeDef>, +defs: List<&2, Def>, cbs: U32Map, mret: Maybe<&2, Expr>) -> ShowInfo:
   match mret:
     case None{}: ShowInfo{True{}, [0], Nil{}}
-    case Some{+e}: low_show_from_sb(U32.is_eq(low_show_code(low_type_head(syms, e)), 1), low_show_go(64n, syms, types, cbs, Nil{}, STEnc{low_reassoc_amp(64n, e), 0, Nil{}, 0, False{}}))
+    case Some{e}:
+      +eu = low_unfold_type(16n, syms, defs, e)
+      low_show_from_sb(U32.is_eq(low_show_code(low_type_head(syms, eu)), 1), low_show_go(64n, syms, types, defs, cbs, Nil{}, STEnc{low_reassoc_amp(64n, eu), 0, Nil{}, 0, False{}}))
 def low_has_arr(+fuel: Nat, +syms: SymTab, e: Expr) -> Bool:
   match fuel e:
     case 0n _: False{}
@@ -1777,7 +1937,7 @@ def b5k_lower_i2(sr: SymRes, sym_tmp: U32, types: List<&2, TypeDef>, +defs: List
   CtorTabAcc{_, _, cbs, _, _, _} = ca
   FnTabAcc{_, _, _, _, _, main_sym} = fa
   +mret = low_find_main_ret(defs, laws, main_sym)
-  b5k_lower_run(s5, sym_tmp, sym_t2, defs, laws, ca, fa, mret, low_show_info(s5, types, cbs, mret))
+  b5k_lower_run(s5, sym_tmp, sym_t2, defs, laws, ca, fa, mret, low_show_info(s5, types, defs, cbs, mret))
 def b5k_lower_i1(sr: SymRes, types: List<&2, TypeDef>, defs: List<&2, Def>, laws: List<&2, LawDef>, ca: CtorTabAcc, fa: FnTabAcc) -> LowerRes:
   SymRes{s4, sym_tmp} = sr
   b5k_lower_i2(symtab_intern(s4, "__b5k_t2"), sym_tmp, types, defs, laws, ca, fa)

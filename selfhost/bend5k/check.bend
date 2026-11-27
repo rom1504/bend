@@ -10,7 +10,10 @@
 #      (return values, call args, ctor fields, match/if branches, let bindings)
 type ChkTy is Data:
   TAny{}
+  TErased{}
   TCon{head: String, args: List<&2, ChkTy>}
+  TFun{pdup: Bool, ret: ChkTy}
+  TEq{lhs: Expr, rhs: Expr}
 type TyPair is Data:
   TyPair{a: ChkTy, b: ChkTy}
 type TyWork is Data:
@@ -182,10 +185,14 @@ def b5k_chk_is_some(-A: Data, m: Maybe<&2, A>) -> Bool:
   match m:
     case Some{_}: True{}
     case None{}: False{}
+def b5k_chk_is_type_flag(m: Maybe<&2, U32>) -> Bool:
+  match m:
+    case Some{v}: U32.is_eq(v, 1)
+    case None{}: False{}
 def b5k_chk_head_sym(syms: SymTab, types: RaVec<Maybe<&2, U32>>, +sym: U32) -> ChkTy:
-  hit = b5k_chk_is_some(U32, ct_get(U32, types, sym))
+  hit = b5k_chk_is_type_flag(ct_get(U32, types, sym))
   +nm = symtab_name(syms, sym)
-  Bool.pick(ChkTy, Bool.and(hit, Bool.not(b5k_chk_is_universe(nm))), b5k_chk_t0(nm), TAny{})
+  Bool.pick(ChkTy, b5k_chk_is_universe(nm), TErased{}, Bool.pick(ChkTy, hit, b5k_chk_t0(nm), TAny{}))
 def b5k_chk_ty_app(rf: TyRes, ra: TyRes) -> TyRes:
   match rf ra:
     case TROne{TCon{h, a0}} TRMany{a1}: TROne{TCon{h, b5k_list_app(ChkTy, a0, a1)}}
@@ -198,6 +205,10 @@ def b5k_chk_ty_sigma(r1: TyRes, r2: TyRes) -> TyRes:
   match r1 r2:
     case TROne{t1} TROne{t2}: TROne{TCon{"Sigma", [t1, t2]}}
     case _ _: TROne{b5k_chk_t0("Sigma")}
+def b5k_chk_ty_fun(pdup: Bool, r: TyRes) -> TyRes:
+  match r:
+    case TROne{rt}: TROne{TFun{pdup, rt}}
+    case _ : TROne{TFun{pdup, TAny{}}}
 def b5k_chk_is_and(e: Expr) -> Bool:
   match e:
     case EOp{op, _, _}: U32.is_eq(op, B5K_OP_AND())
@@ -211,6 +222,9 @@ def b5k_chk_ty_w(+fuel: Nat, +syms: SymTab, +types: RaVec<Maybe<&2, U32>>, w: Ty
     case 1n+_ TWOne{EVar{sym}}: TROne{b5k_chk_head_sym(syms, types, sym)}
     case 1n+_ TWOne{ERef{sym}}: TROne{b5k_chk_head_sym(syms, types, sym)}
     case 1n+f TWOne{EApp{fun, args}}: b5k_chk_ty_app(b5k_chk_ty_w(f, syms, types, TWOne{fun}), b5k_chk_ty_w(f, syms, types, TWMany{args}))
+    case 1n+f TWOne{EAll{Param{_, _, er, dup}, body}}: b5k_chk_ty_fun(Bool.or(er, dup), b5k_chk_ty_w(f, syms, types, TWOne{body}))
+    case 1n+_ TWOne{EEq{a, b}}: TROne{TEq{a, b}}
+    case 1n+_ TWOne{EAnn{EOp{20, a, b}, _}}: TROne{TEq{a, b}}
     case 1n+f TWOne{EOp{op, +a, +b}}:
       Bool.pick(TyRes, U32.is_eq(op, B5K_OP_AND()),
         Bool.pick(TyRes, Bool.or(b5k_chk_is_and(a), b5k_chk_is_and(b)), TROne{b5k_chk_t0("Sigma")},
@@ -227,19 +241,138 @@ def b5k_chk_head_opt(+syms: SymTab, +types: RaVec<Maybe<&2, U32>>, opt: Maybe<&2
   match opt:
     case None{}: TAny{}
     case Some{e}: b5k_chk_head_expr(syms, types, e)
+# Phase-1 Dependent Constant Evaluator (Closed Pure Expressions -> Value)
+type CVal is Data:
+  CVNone{}
+  CVNum{v: U32}
+  CVFlt{b: U32}
+  CVChr{c: U32}
+  CVStr{s: String}
+  CVBool{b: Bool}
+  CVCtr{sym: U32, fs: List<&2, CVal>}
+  CVPair{a: CVal, b: CVal}
+  CVList{es: List<&2, CVal>}
+def b5k_chk_cv_ok(v: CVal) -> Bool:
+  match v:
+    case CVNone{}: False{}
+    case _: True{}
+def b5k_chk_cv_u32_op(a: CVal, b: CVal, op: U32) -> CVal:
+  match a b:
+    case CVNum{+x} CVNum{+y}:
+      match op:
+        case 0: CVNum{U32.add(x, y)}
+        case 1: CVNum{U32.sub(x, y)}
+        case 2: CVNum{U32.mul(x, y)}
+        case 3: Bool.pick(CVal, U32.is_zero(y), CVNone{}, CVNum{U32.div(x, y)})
+        case 4: Bool.pick(CVal, U32.is_zero(y), CVNone{}, CVNum{U32.mod(x, y)})
+        case 5: CVNum{U32.and(x, y)}
+        case 6: CVNum{U32.or(x, y)}
+        case 7: CVNum{U32.xor(x, y)}
+        case 20: CVBool{U32.is_eq(x, y)}
+        case 21: CVBool{U32.is_ne(x, y)}
+        case 22: CVBool{U32.is_lt(x, y)}
+        case 23: CVBool{U32.is_le(x, y)}
+        case 24: CVBool{U32.is_gt(x, y)}
+        case 25: CVBool{U32.is_ge(x, y)}
+        case _: CVNone{}
+    case _ _: CVNone{}
+def b5k_chk_cv_call1(+nm: String, v: CVal) -> CVal:
+  match v:
+    case CVNum{+x}:
+      Bool.pick(CVal, String.eq(nm, "U32.inc"), CVNum{U32.add(x, 1)},
+      Bool.pick(CVal, String.eq(nm, "U32.not"), CVNum{U32.not(x)},
+      Bool.pick(CVal, String.eq(nm, "U32.is_zero"), CVBool{U32.is_zero(x)},
+      Bool.pick(CVal, String.eq(nm, "Nat.double"), CVNum{U32.mul(x, 2)}, CVNone{}))))
+    case CVBool{+b}: Bool.pick(CVal, String.eq(nm, "Bool.not"), CVBool{Bool.not(b)}, CVNone{})
+    case _: CVNone{}
+def b5k_chk_cv_call2(+nm: String, v1: CVal, v2: CVal) -> CVal:
+  match v1 v2:
+    case CVNum{+x} CVNum{+y}:
+      Bool.pick(CVal, Bool.or(String.eq(nm, "U32.add"), String.eq(nm, "Nat.add")), CVNum{U32.add(x, y)},
+      Bool.pick(CVal, Bool.or(String.eq(nm, "U32.sub"), String.eq(nm, "Nat.sub")), CVNum{U32.sub(x, y)},
+      Bool.pick(CVal, Bool.or(String.eq(nm, "U32.mul"), String.eq(nm, "Nat.mul")), CVNum{U32.mul(x, y)},
+      Bool.pick(CVal, String.eq(nm, "U32.is_eq"), CVBool{U32.is_eq(x, y)},
+      Bool.pick(CVal, String.eq(nm, "U32.is_ne"), CVBool{U32.is_ne(x, y)},
+      Bool.pick(CVal, String.eq(nm, "U32.is_lt"), CVBool{U32.is_lt(x, y)}, CVNone{}))))))
+    case CVBool{+a} CVBool{+b}:
+      Bool.pick(CVal, String.eq(nm, "Bool.and"), CVBool{Bool.and(a, b)},
+      Bool.pick(CVal, String.eq(nm, "Bool.or"), CVBool{Bool.or(a, b)},
+      Bool.pick(CVal, String.eq(nm, "Bool.xor"), CVBool{Bool.xor(a, b)}, CVNone{})))
+    case CVStr{+a} CVStr{+b}:
+      Bool.pick(CVal, String.eq(nm, "String.append"), CVStr{a ++ b},
+      Bool.pick(CVal, String.eq(nm, "String.eq"), CVBool{String.eq(a, b)}, CVNone{}))
+    case _ _: CVNone{}
+def b5k_chk_cv_ctr(+syms: SymTab, +sym: U32, fs: List<&2, CVal>) -> CVal:
+  match fs:
+    case Nil{}:
+      +nm = symtab_name(syms, sym)
+      Bool.pick(CVal, String.eq(nm, "Zero"), CVNum{0},
+      Bool.pick(CVal, String.eq(nm, "True"), CVBool{True{}},
+      Bool.pick(CVal, String.eq(nm, "False"), CVBool{False{}}, CVCtr{sym, Nil{}})))
+    case Con{CVNum{+k}, Nil{}}: Bool.pick(CVal, String.eq(symtab_name(syms, sym), "Succ"), CVNum{U32.add(k, 1)}, CVCtr{sym, [CVNum{k}]})
+    case other: CVCtr{sym, other}
+def b5k_chk_eval_c(+fuel: Nat, +syms: SymTab, e: Expr) -> CVal:
+  match fuel e:
+    case 0n _: CVNone{}
+    case 1n+_ ENum{v}: CVNum{v}
+    case 1n+_ EFlt{b}: CVFlt{b}
+    case 1n+_ EChr{c}: CVChr{c}
+    case 1n+_ EStr{s}: CVStr{s}
+    case 1n+f EAnn{v, _}: b5k_chk_eval_c(f, syms, v)
+    case 1n+f EOp{op, a, b}: b5k_chk_cv_u32_op(b5k_chk_eval_c(f, syms, a), b5k_chk_eval_c(f, syms, b), op)
+    case 1n+f ECtr{sym, Nil{}}: b5k_chk_cv_ctr(syms, sym, Nil{})
+    case 1n+f ECtr{sym, Con{a, Nil{}}}:
+      +va = b5k_chk_eval_c(f, syms, a)
+      Bool.pick(CVal, b5k_chk_cv_ok(va), b5k_chk_cv_ctr(syms, sym, [va]), CVNone{})
+    case 1n+f ECtr{sym, Con{a, Con{b, Nil{}}}}:
+      +va = b5k_chk_eval_c(f, syms, a)
+      +vb = b5k_chk_eval_c(f, syms, b)
+      Bool.pick(CVal, Bool.and(b5k_chk_cv_ok(va), b5k_chk_cv_ok(vb)), b5k_chk_cv_ctr(syms, sym, [va, vb]), CVNone{})
+    case 1n+f EPair{a, b}:
+      +va = b5k_chk_eval_c(f, syms, a)
+      +vb = b5k_chk_eval_c(f, syms, b)
+      Bool.pick(CVal, Bool.and(b5k_chk_cv_ok(va), b5k_chk_cv_ok(vb)), CVPair{va, vb}, CVNone{})
+    case 1n+f EApp{EVar{sym}, Con{a, Nil{}}}: b5k_chk_cv_call1(symtab_name(syms, sym), b5k_chk_eval_c(f, syms, a))
+    case 1n+f EApp{EVar{sym}, Con{a, Con{b, Nil{}}}}: b5k_chk_cv_call2(symtab_name(syms, sym), b5k_chk_eval_c(f, syms, a), b5k_chk_eval_c(f, syms, b))
+    case _ _: CVNone{}
+def b5k_chk_cv_neq(+fuel: Nat, a: CVal, b: CVal) -> Bool:
+  match fuel a b:
+    case 0n _ _: False{}
+    case _ CVNum{x} CVNum{y}: U32.is_ne(x, y)
+    case _ CVFlt{x} CVFlt{y}: U32.is_ne(x, y)
+    case _ CVChr{x} CVChr{y}: U32.is_ne(x, y)
+    case _ CVStr{x} CVStr{y}: Bool.not(String.eq(x, y))
+    case _ CVBool{x} CVBool{y}: Bool.xor(x, y)
+    case 1n+f CVPair{a1, b1} CVPair{a2, b2}: Bool.or(b5k_chk_cv_neq(f, a1, a2), b5k_chk_cv_neq(f, b1, b2))
+    case 1n+f CVCtr{s1, Nil{}} CVCtr{s2, Nil{}}: U32.is_ne(s1, s2)
+    case 1n+f CVCtr{s1, Con{x1, Nil{}}} CVCtr{s2, Con{x2, Nil{}}}: Bool.or(U32.is_ne(s1, s2), b5k_chk_cv_neq(f, x1, x2))
+    case 1n+f CVCtr{s1, Con{x1, Con{y1, Nil{}}}} CVCtr{s2, Con{x2, Con{y2, Nil{}}}}: Bool.or(U32.is_ne(s1, s2), Bool.or(b5k_chk_cv_neq(f, x1, x2), b5k_chk_cv_neq(f, y1, y2)))
+    case _ CVCtr{s1, _} CVCtr{s2, _}: U32.is_ne(s1, s2)
+    case _ _ _: False{}
+def b5k_chk_expr_neq(+syms: SymTab, a: Expr, b: Expr) -> Bool:
+  b5k_chk_cv_neq(16n, b5k_chk_eval_c(24n, syms, a), b5k_chk_eval_c(24n, syms, b))
 def b5k_chk_ty_zip(a1: List<&2, ChkTy>, a2: List<&2, ChkTy>, acc: List<&2, TyPair>) -> List<&2, TyPair>:
   match a1 a2:
     case Con{h1, t1} Con{h2, t2}: b5k_chk_ty_zip(t1, t2, Con{TyPair{h1, h2}, acc})
     case _ _: acc
-def b5k_chk_ty_ok_go(fuel: Nat, q: List<&2, TyPair>) -> Bool:
+def b5k_chk_ty_ok_go(+fuel: Nat, +syms: SymTab, q: List<&2, TyPair>) -> Bool:
   match fuel q:
     case 0n _: True{}
     case _ Nil{}: True{}
-    case 1n+f Con{TyPair{TAny{}, _}, rest}: b5k_chk_ty_ok_go(f, rest)
-    case 1n+f Con{TyPair{_, TAny{}}, rest}: b5k_chk_ty_ok_go(f, rest)
+    case 1n+f Con{TyPair{TAny{}, _}, rest}: b5k_chk_ty_ok_go(f, syms, rest)
+    case 1n+f Con{TyPair{_, TAny{}}, rest}: b5k_chk_ty_ok_go(f, syms, rest)
+    case 1n+f Con{TyPair{TErased{}, _}, rest}: b5k_chk_ty_ok_go(f, syms, rest)
+    case 1n+f Con{TyPair{_, TErased{}}, rest}: b5k_chk_ty_ok_go(f, syms, rest)
+    case 1n+f Con{TyPair{TFun{_, _}, _}, rest}: b5k_chk_ty_ok_go(f, syms, rest)
+    case 1n+f Con{TyPair{_, TFun{_, _}}, rest}: b5k_chk_ty_ok_go(f, syms, rest)
+    case 1n+f Con{TyPair{TEq{a1, b1}, TEq{a2, b2}}, rest}:
+      Bool.pick(Bool, Bool.or(b5k_chk_expr_neq(syms, a1, a2), b5k_chk_expr_neq(syms, b1, b2)), False{}, b5k_chk_ty_ok_go(f, syms, rest))
+    case 1n+f Con{TyPair{TEq{_, _}, TCon{h, _}}, rest}: Bool.pick(Bool, String.eq(h, "Equal"), b5k_chk_ty_ok_go(f, syms, rest), False{})
+    case 1n+f Con{TyPair{TCon{h, _}, TEq{_, _}}, rest}: Bool.pick(Bool, String.eq(h, "Equal"), b5k_chk_ty_ok_go(f, syms, rest), False{})
     case 1n+f Con{TyPair{TCon{h1, a1}, TCon{h2, a2}}, rest}:
-      Bool.pick(Bool, String.eq(h1, h2), b5k_chk_ty_ok_go(f, b5k_chk_ty_zip(a1, a2, rest)), False{})
-def b5k_chk_head_ok(got: ChkTy, goal: ChkTy) -> Bool: b5k_chk_ty_ok_go(64n, [TyPair{got, goal}])
+      Bool.pick(Bool, String.eq(h1, h2), b5k_chk_ty_ok_go(f, syms, b5k_chk_ty_zip(a1, a2, rest)), False{})
+    case 1n+f Con{_, rest}: b5k_chk_ty_ok_go(f, syms, rest)
+def b5k_chk_head_ok(syms: SymTab, got: ChkTy, goal: ChkTy) -> Bool: b5k_chk_ty_ok_go(64n, syms, [TyPair{got, goal}])
 def b5k_chk_ty_show_args(ts: List<&2, ChkTy>, tail: List<&2, TyShow>) -> List<&2, TyShow>:
   match ts:
     case Nil{}: tail
@@ -251,13 +384,16 @@ def b5k_chk_ty_show_go(fuel: Nat, q: List<&2, TyShow>) -> String:
     case _ Nil{}: ""
     case 1n+f Con{TSSep{s}, rest}: s ++ b5k_chk_ty_show_go(f, rest)
     case 1n+f Con{TSOne{TAny{}}, rest}: "_" ++ b5k_chk_ty_show_go(f, rest)
+    case 1n+f Con{TSOne{TErased{}}, rest}: "Type" ++ b5k_chk_ty_show_go(f, rest)
+    case 1n+f Con{TSOne{TFun{_, _}}, rest}: "Fn" ++ b5k_chk_ty_show_go(f, rest)
+    case 1n+f Con{TSOne{TEq{_, _}}, rest}: "Equal" ++ b5k_chk_ty_show_go(f, rest)
     case 1n+f Con{TSOne{TCon{h, Nil{}}}, rest}: h ++ b5k_chk_ty_show_go(f, rest)
     case 1n+f Con{TSOne{TCon{h, args}}, rest}: h ++ "<" ++ b5k_chk_ty_show_go(f, b5k_chk_ty_show_args(args, Con{TSSep{">"}, rest}))
 def b5k_chk_ty_show(t: ChkTy) -> String: b5k_chk_ty_show_go(64n, [TSOne{t}])
 def b5k_chk_head_err(fn_name: String, got: ChkTy, goal: ChkTy) -> String:
   "check: " ++ fn_name ++ ": type mismatch (expected " ++ b5k_chk_ty_show(goal) ++ ", got " ++ b5k_chk_ty_show(got) ++ ")"
-def b5k_chk_expect(fn_name: String, +got: ChkTy, +goal: ChkTy, res: ExprRes) -> ExprRes:
-  Bool.pick(ExprRes, b5k_chk_head_ok(got, goal), res, ExprErr{b5k_chk_head_err(fn_name, got, goal)})
+def b5k_chk_expect(syms: SymTab, fn_name: String, +got: ChkTy, +goal: ChkTy, res: ExprRes) -> ExprRes:
+  Bool.pick(ExprRes, b5k_chk_head_ok(syms, got, goal), res, ExprErr{b5k_chk_head_err(fn_name, got, goal)})
 # Symbol, Type, Constructor, Def & Law Indexing
 def b5k_chk_param_dups(ps: List<&2, Param>) -> List<&2, Bool>:
   match ps:
@@ -298,10 +434,14 @@ def b5k_chk_index_types(ts: List<&2, TypeDef>, tm: RaVec<Maybe<&2, U32>>) -> RaV
   match ts:
     case Nil{}: tm
     case Con{TypeDef{tsym, _, _, _}, rest}: b5k_chk_index_types(rest, ct_set(U32, tm, tsym, 1))
+def b5k_chk_unseed_pms(ps: List<&2, Param>, tm: RaVec<Maybe<&2, U32>>) -> RaVec<Maybe<&2, U32>>:
+  match ps:
+    case Nil{}: tm
+    case Con{Param{sym, _, _, _}, rest}: b5k_chk_unseed_pms(rest, ct_set(U32, tm, sym, 0))
 def b5k_chk_index_all_ctors(+syms: SymTab, +tm: RaVec<Maybe<&2, U32>>, ts: List<&2, TypeDef>, cm: RaVec<Maybe<&2, CtorInfo>>) -> RaVec<Maybe<&2, CtorInfo>>:
   match ts:
     case Nil{}: cm
-    case Con{TypeDef{tsym, _, _, ctors}, rest}: b5k_chk_index_all_ctors(syms, tm, rest, b5k_chk_index_ctors(syms, tm, symtab_name(syms, tsym), ctors, cm))
+    case Con{TypeDef{tsym, tps, _, ctors}, rest}: b5k_chk_index_all_ctors(syms, tm, rest, b5k_chk_index_ctors(syms, b5k_chk_unseed_pms(tps, tm), symtab_name(syms, tsym), ctors, cm))
 def b5k_chk_count_live(ps: List<&2, Param>, +acc: U32) -> U32:
   match ps:
     case Nil{}: acc
@@ -340,8 +480,13 @@ def b5k_chk_index_laws(ls: List<&2, LawDef>, lm: RaVec<Maybe<&2, LawDef>>) -> Ra
   match ls:
     case Nil{}: lm
     case Con{LawDef{+lsym, lps, lret}, rest}: b5k_chk_index_laws(rest, ct_set(LawDef, lm, lsym, LawDef{lsym, lps, lret}))
-def b5k_chk_build_ctx(+types: List<&2, TypeDef>, defs: List<&2, Def>, laws: List<&2, LawDef>, +syms: SymTab) -> CheckCtx:
-  +tm = b5k_chk_index_types(types, b5k_chk_seed_base_types(syms, b5k_chk_base_type_names(), RVEmpty{}))
+def b5k_chk_unseed_defs(ds: List<&2, Def>, tm: RaVec<Maybe<&2, U32>>) -> RaVec<Maybe<&2, U32>>:
+  match ds:
+    case Nil{}: tm
+    case Con{Def{dsym, _, _, _, _, _}, rest}: b5k_chk_unseed_defs(rest, ct_set(U32, tm, dsym, 0))
+def b5k_chk_build_ctx(+types: List<&2, TypeDef>, +defs: List<&2, Def>, laws: List<&2, LawDef>, +syms: SymTab) -> CheckCtx:
+  +tm0 = b5k_chk_unseed_defs(defs, b5k_chk_seed_base_types(syms, b5k_chk_base_type_names(), RVEmpty{}))
+  +tm = b5k_chk_index_types(types, tm0)
   cm = b5k_chk_index_all_ctors(syms, tm, types, b5k_chk_seed_base_ctors(syms, b5k_chk_base_ctors(), RVEmpty{}))
   +lm = b5k_chk_index_laws(laws, RVEmpty{})
   CheckCtx{syms, tm, cm, b5k_chk_index_defs(syms, tm, lm, defs, RVEmpty{}), lm}
@@ -403,12 +548,20 @@ def b5k_chk_params_binds(+ctx: CheckCtx, +all_dup: Bool, ps: List<&2, Param>) ->
     case Con{Param{sym, typ, erased, dup}, rest}:
       Con{VarBind{sym, Bool.or(all_dup, Bool.or(erased, dup)), b5k_chk_head_opt(syms, types, typ)}, b5k_chk_params_binds(ctx, all_dup, rest)}
 # Pattern Checking & Binding Extraction (with Parametric Ctor Field Propagation)
+def b5k_chk_env_all_dup(env: List<&2, VarBind>) -> List<&2, VarBind>:
+  match env:
+    case Nil{}: Nil{}
+    case Con{VarBind{s, _, t}, rest}: Con{VarBind{s, True{}, t}, b5k_chk_env_all_dup(rest)}
 def b5k_chk_ctor_err(fn_name: String) -> String: "check: " ++ fn_name ++ ": constructor does not belong to goal or field count differs"
+def b5k_chk_ctor_tmatch(+tname: String, +g: String) -> Bool:
+  Bool.or(String.eq(tname, g), Bool.and(String.eq(g, "Word"), Bool.or(String.eq(tname, "Word.Nil"), String.eq(tname, "Word.Con"))))
 def b5k_chk_ctor_ok(info: Maybe<&2, CtorInfo>, nargs: U32, goal: ChkTy) -> Bool:
   match info goal:
     case None{} _: False{}
     case Some{CtorInfo{_, arity, _, _}} TAny{}: U32.is_eq(nargs, arity)
-    case Some{CtorInfo{tname, arity, _, _}} TCon{g, _}: Bool.and(U32.is_eq(nargs, arity), String.eq(tname, g))
+    case Some{CtorInfo{_, arity, _, _}} TErased{}: U32.is_eq(nargs, arity)
+    case Some{CtorInfo{tname, arity, _, _}} TCon{g, _}: Bool.and(U32.is_eq(nargs, arity), b5k_chk_ctor_tmatch(tname, g))
+    case Some{CtorInfo{_, _, _, _}} _: False{}
 def b5k_chk_ctor_fdups(info: Maybe<&2, CtorInfo>) -> List<&2, Bool>:
   match info:
     case None{}: Nil{}
@@ -486,6 +639,12 @@ def b5k_chk_scruts_syms(es: List<&2, Expr>) -> List<&2, U32>:
     case Nil{}: Nil{}
     case Con{EVar{sym}, t}: Con{U32.add(sym, 1), b5k_chk_scruts_syms(t)}
     case Con{_, t}: Con{0, b5k_chk_scruts_syms(t)}
+def b5k_chk_pats_all_dup(ps: List<&2, Pat>) -> Bool:
+  match ps:
+    case Nil{}: False{}
+    case Con{PVar{_, d}, Nil{}}: d
+    case Con{PVar{_, d}, t}: Bool.and(d, b5k_chk_pats_all_dup(t))
+    case _: False{}
 def b5k_chk_wild_strip(ps: List<&2, Pat>, ss: List<&2, U32>) -> List<&2, VarBind>:
   match ps ss:
     case Con{PWild{}, pt} Con{+s, st}:
@@ -493,6 +652,13 @@ def b5k_chk_wild_strip(ps: List<&2, Pat>, ss: List<&2, U32>) -> List<&2, VarBind
       Bool.pick(List<&2, VarBind>, U32.is_zero(s), rest, Con{VarBind{U32.sub(s, 1), False{}, TAny{}}, rest})
     case Con{_, pt} Con{_, st}: b5k_chk_wild_strip(pt, st)
     case _ _: Nil{}
+def b5k_chk_redup_binds(ps: List<&2, Pat>, ss: List<&2, U32>, ts: List<&2, ChkTy>) -> List<&2, VarBind>:
+  match ps ss ts:
+    case Con{PCtr{_, fs}, pt} Con{+s, st} Con{ty, tt}:
+      +rest = b5k_chk_redup_binds(pt, st, tt)
+      Bool.pick(List<&2, VarBind>, Bool.and(b5k_chk_pats_all_dup(fs), Bool.not(U32.is_zero(s))), Con{VarBind{U32.sub(s, 1), True{}, ty}, rest}, rest)
+    case Con{_, pt} Con{_, st} Con{_, tt}: b5k_chk_redup_binds(pt, st, tt)
+    case _ _ _: Nil{}
 def b5k_chk_pats(fuel: Nat, +ctx: CheckCtx, +fn_name: String, ps: List<&2, PatItem>, acc: List<&2, VarBind>) -> PatRes:
   match fuel ps:
     case 0n _: PatOk{acc}
@@ -568,12 +734,29 @@ def b5k_chk_sig_ers(cs: CallSig) -> List<&2, Bool>:
 def b5k_chk_sig_ret(cs: CallSig) -> ChkTy:
   CallSig{_, _, rty} = cs
   rty
+def b5k_chk_is_cmp_expr(e: Expr) -> Bool:
+  match e:
+    case EOp{+op, a, b}:
+      Bool.or(U32.is_ge(op, 20), Bool.and(Bool.or(U32.is_eq(op, B5K_OP_AND()), U32.is_eq(op, B5K_OP_OR())), Bool.or(b5k_chk_is_cmp_expr(a), b5k_chk_is_cmp_expr(b))))
+    case _: False{}
 def b5k_chk_ann_cmp_ty(e: Expr, def_ty: ChkTy) -> ChkTy:
   match e:
-    case EOp{+op, _, _}:
+    case EOp{+op, a, b}:
       Bool.pick(ChkTy, U32.is_ge(op, 22), b5k_chk_t0("Bool"),
-      Bool.pick(ChkTy, U32.is_ge(op, 20), TAny{}, def_ty))
+      Bool.pick(ChkTy, U32.is_ge(op, 20), TAny{},
+      Bool.pick(ChkTy, Bool.and(Bool.or(U32.is_eq(op, B5K_OP_AND()), U32.is_eq(op, B5K_OP_OR())), Bool.or(b5k_chk_is_cmp_expr(a), b5k_chk_is_cmp_expr(b))), b5k_chk_t0("Bool"), def_ty)))
     case _: def_ty
+def b5k_chk_eq_call_ret(+ctx: CheckCtx, fun: Expr, args: List<&2, Expr>) -> Maybe<&2, ChkTy>:
+  match fun args:
+    case EVar{sym} Con{_, Con{a, Con{b, Con{_, Nil{}}}}}:
+      Bool.pick(Maybe<&2, ChkTy>, String.eq(b5k_chk_sym_name(ctx, sym), "Equal.sym"), Some{TEq{b, a}}, None{})
+    case EVar{sym} Con{_, Con{a, Con{_, Con{c, Con{_, Con{_, Nil{}}}}}}}:
+      Bool.pick(Maybe<&2, ChkTy>, String.eq(b5k_chk_sym_name(ctx, sym), "Equal.trans"), Some{TEq{a, c}}, None{})
+    case _ _: None{}
+def b5k_chk_opt_ty(m: Maybe<&2, ChkTy>, def_t: ChkTy) -> ChkTy:
+  match m:
+    case Some{t}: t
+    case None{}: def_t
 def b5k_chk_infer_head(+ctx: CheckCtx, +env: List<&2, VarBind>, e: Expr) -> ChkTy:
   match e:
     case EFlt{_}: b5k_chk_t0("F32")
@@ -587,7 +770,7 @@ def b5k_chk_infer_head(+ctx: CheckCtx, +env: List<&2, VarBind>, e: Expr) -> ChkT
     case ECtr{sym, _}: b5k_chk_ctor_tname(b5k_chk_lookup_ctor(ctx, sym))
     case EAnn{val, typ}: b5k_chk_ann_cmp_ty(val, b5k_chk_goal_expr(ctx, typ))
     case EOp{op, _, _}: Bool.pick(ChkTy, U32.is_ge(op, 20), b5k_chk_t0("Bool"), TAny{})
-    case EApp{fun, args}: b5k_chk_sig_ret(b5k_chk_call_sig(ctx, env, fun, b5k_list_len(Expr, args)))
+    case EApp{+fun, +args}: b5k_chk_opt_ty(b5k_chk_eq_call_ret(ctx, fun, args), b5k_chk_sig_ret(b5k_chk_call_sig(ctx, env, fun, b5k_list_len(Expr, args))))
     case _: TAny{}
 def b5k_chk_scruts_tys(+ctx: CheckCtx, +env: List<&2, VarBind>, es: List<&2, Expr>) -> List<&2, ChkTy>:
   match es:
@@ -599,10 +782,13 @@ def b5k_chk_var_gk(ok: Bool, is_ref: Bool, ctx: CheckCtx, fn_name: String, sym: 
     case True{} _: ExprOk{Nil{}}
     case False{} True{}: ExprErr{"check: " ++ fn_name ++ ": unbound reference: " ++ b5k_chk_sym_name(ctx, sym)}
     case False{} False{}: ExprErr{"check: " ++ fn_name ++ ": unbound variable: " ++ b5k_chk_sym_name(ctx, sym)}
+def b5k_chk_ctx_syms(ctx: CheckCtx) -> SymTab:
+  CheckCtx{syms, _, _, _, _} = ctx
+  syms
 def b5k_chk_var_lookup(lr: LookupRes, +ctx: CheckCtx, +fn_name: String, goal: ChkTy, +sym: U32, is_ref: Bool) -> ExprRes:
   match lr:
-    case LFoundDup{vty}: b5k_chk_expect(fn_name, vty, goal, ExprOk{Nil{}})
-    case LFoundLin{vty}: b5k_chk_expect(fn_name, vty, goal, ExprOk{Con{sym, Nil{}}})
+    case LFoundDup{vty}: b5k_chk_expect(b5k_chk_ctx_syms(ctx), fn_name, vty, goal, ExprOk{Nil{}})
+    case LFoundLin{vty}: b5k_chk_expect(b5k_chk_ctx_syms(ctx), fn_name, vty, goal, ExprOk{Con{sym, Nil{}}})
     case LNotFound{}: b5k_chk_var_gk(b5k_chk_is_known_global(ctx, sym), is_ref, ctx, fn_name, sym)
 def b5k_chk_var(+ctx: CheckCtx, fn_name: String, env: List<&2, VarBind>, goal: ChkTy, +sym: U32, is_ref: Bool) -> ExprRes:
   b5k_chk_var_lookup(b5k_chk_env_lookup(env, sym), ctx, fn_name, goal, sym, is_ref)
@@ -638,11 +824,16 @@ def b5k_chk_lit_k(ok: Bool, fn_name: String, got: String) -> ExprRes:
 def b5k_chk_lit(ctx: CheckCtx, goal: ChkTy, fn_name: String, +got: String, +is_num: Bool) -> ExprRes:
   match goal:
     case TAny{}: ExprOk{Nil{}}
+    case TErased{}: ExprOk{Nil{}}
     case TCon{+g, _}: b5k_chk_lit_k(Bool.or(b5k_str_eq(g, got), Bool.and(is_num, Bool.or(b5k_str_eq(g, "Nat"), b5k_chk_u32_ctor_is(ctx, g)))), fn_name, got)
+    case _: ExprErr{"check: " ++ fn_name ++ ": literal type mismatch (" ++ got ++ ")"}
 def b5k_chk_pair_goal_ok(goal: ChkTy) -> Bool:
   match goal:
     case TAny{}: True{}
-    case TCon{+g, _}: Bool.or(String.eq(g, "Sigma"), String.eq(g, "Pair"))
+    case TErased{}: True{}
+    case TFun{_, _}: True{}
+    case TCon{+g, _}: Bool.or(String.eq(g, "Sigma"), Bool.or(String.eq(g, "Pair"), String.eq(g, "Tuple")))
+    case _: False{}
 def b5k_chk_ty_nth(n: Nat, xs: List<&2, ChkTy>) -> ChkTy:
   match n xs:
     case 0n Con{h, _}: h
@@ -654,39 +845,36 @@ def b5k_chk_monad_inner(goal: ChkTy) -> ChkTy:
       Bool.pick(ChkTy, String.eq(h, "IO"), b5k_chk_ty_nth(0n, args),
       Bool.pick(ChkTy, String.eq(h, "Maybe"), b5k_chk_ty_nth(1n, args),
       Bool.pick(ChkTy, String.eq(h, "Result"), b5k_chk_ty_nth(3n, args), TAny{})))
-    case TAny{}: TAny{}
-def b5k_chk_refl_bad_eq(lhs: Expr, rhs: Expr) -> Bool:
-  match lhs rhs:
-    case ENum{a} ENum{b}: U32.is_ne(a, b)
-    case EFlt{a} EFlt{b}: U32.is_ne(a, b)
-    case EChr{a} EChr{b}: U32.is_ne(a, b)
-    case EStr{a} EStr{b}: Bool.not(String.eq(a, b))
-    case ECtr{a, Nil{}} ECtr{b, Nil{}}: U32.is_ne(a, b)
-    case _ _: False{}
-def b5k_chk_refl_bad_op(e: Expr) -> Bool:
-  match e:
-    case EOp{op, a, b}: Bool.pick(Bool, U32.is_eq(op, 20), b5k_chk_refl_bad_eq(a, b), False{})
+    case _: TAny{}
+def b5k_chk_refl_goal(syms: SymTab, fn_name: String, goal: ChkTy) -> ExprRes:
+  match goal:
+    case TEq{a, b}: Bool.pick(ExprRes, b5k_chk_expr_neq(syms, a, b), ExprErr{"check: " ++ fn_name ++ ": reflexivity mismatch"}, ExprOk{Nil{}})
+    case TCon{+g, _}: Bool.pick(ExprRes, String.eq(g, "Equal"), ExprOk{Nil{}}, ExprErr{b5k_chk_head_err(fn_name, b5k_chk_t0("Equal"), TCon{g, Nil{}})})
+    case TFun{_, _}: ExprErr{b5k_chk_head_err(fn_name, b5k_chk_t0("Equal"), TFun{False{}, TAny{}})}
+    case _: ExprOk{Nil{}}
+def b5k_chk_is_erased_ty(t: ChkTy) -> Bool:
+  match t:
+    case TErased{}: True{}
     case _: False{}
-def b5k_chk_refl_bad_expr(e: Expr) -> Bool:
-  match e:
-    case EAnn{v, _}: b5k_chk_refl_bad_op(v)
-    case EEq{a, b}: b5k_chk_refl_bad_eq(a, b)
+def b5k_chk_lam_dup(goal: ChkTy) -> Bool:
+  match goal:
+    case TErased{}: True{}
+    case TFun{d, r}: Bool.or(d, b5k_chk_is_erased_ty(r))
     case _: False{}
-def b5k_chk_refl_bad(mret: Maybe<&2, Expr>) -> Bool:
-  match mret:
-    case Some{e}: b5k_chk_refl_bad_expr(e)
-    case None{}: False{}
+def b5k_chk_lam_ret(goal: ChkTy) -> ChkTy:
+  match goal:
+    case TErased{}: TErased{}
+    case TFun{_, r}: r
+    case _: TAny{}
 def b5k_chk_is_cmp_op(e: Expr) -> Bool:
-  match e:
-    case EOp{op, _, _}: U32.is_ge(op, 20)
-    case _: False{}
+  b5k_chk_is_cmp_expr(e)
 def b5k_chk_is_refl(e: Expr) -> Bool:
   match e:
     case ERefl{}: True{}
     case _: False{}
 def b5k_chk_expr_is_erased(+syms: SymTab, e: Expr) -> Bool:
   match e:
-    case EVar{sym}: b5k_chk_is_universe(symtab_name(syms, sym))
+    case EVar{+sym}: Bool.or(b5k_chk_is_universe(symtab_name(syms, sym)), String.eq(symtab_name(syms, sym), "Empty"))
     case EApp{EVar{sym}, _}: b5k_chk_is_universe(symtab_name(syms, sym))
     case EAnn{v, _}: b5k_chk_is_cmp_op(v)
     case EEq{_, _}: True{}
@@ -701,13 +889,17 @@ def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> Ex
     case 0n _: ExprOk{Nil{}}
     case 1n+f WArgs{_, _, _, Nil{}}: ExprOk{Nil{}}
     case 1n+f WArgs{+env, +gs, +ers, Con{h, t}}:
-      r1 = b5k_chk_erased_res(b5k_chk_head_b(ers, False{}), b5k_chk_work(f, ctx, fn_name, WExpr{env, b5k_chk_head_t(gs), h}))
+      +er = b5k_chk_head_b(ers, False{})
+      +env_a = Bool.pick(List<&2, VarBind>, er, b5k_chk_env_all_dup(env), env)
+      +g_a = Bool.pick(ChkTy, er, TErased{}, b5k_chk_head_t(gs))
+      r1 = b5k_chk_erased_res(er, b5k_chk_work(f, ctx, fn_name, WExpr{env_a, g_a, h}))
       b5k_chk_merge(False{}, fn_name, r1, b5k_chk_work(f, ctx, fn_name, WArgs{env, b5k_chk_tail_t(gs), b5k_chk_tail_b(ers), t}))
     case 1n+f WCases{_, _, _, _, _, Nil{}}: ExprOk{Nil{}}
     case 1n+f WCases{+env, +goal, +sdups, +stys, +ssyms, Con{Case{+pats, body}, rest}}:
-      pr = b5k_chk_pats(U32.to_nat(256), ctx, fn_name, b5k_chk_zip_pats(pats, sdups, stys, False{}), Nil{})
+      pr = b5k_chk_pats(U32.to_nat(1024), ctx, fn_name, b5k_chk_zip_pats(pats, sdups, stys, False{}), Nil{})
       ws = b5k_chk_wild_strip(pats, ssyms)
-      b5k_chk_merge(True{}, fn_name, b5k_chk_work(f, ctx, fn_name, WCasePat{env, goal, pr, ws, body}), b5k_chk_work(f, ctx, fn_name, WCases{env, goal, sdups, stys, ssyms, rest}))
+      env2 = b5k_list_app(VarBind, b5k_chk_redup_binds(pats, ssyms, stys), env)
+      b5k_chk_merge(True{}, fn_name, b5k_chk_work(f, ctx, fn_name, WCasePat{env2, goal, pr, ws, body}), b5k_chk_work(f, ctx, fn_name, WCases{env, goal, sdups, stys, ssyms, rest}))
     case 1n+f WCasePat{_, _, PatErr{err}, _, _}: ExprErr{err}
     case 1n+f WCasePat{env, goal, PatOk{+bs}, ws, body}:
       b5k_chk_strip_res(b5k_list_app(VarBind, bs, ws), b5k_chk_work(f, ctx, fn_name, WExpr{b5k_list_app(VarBind, bs, env), goal, body}))
@@ -718,11 +910,11 @@ def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> Ex
       b5k_chk_merge(False{}, fn_name, r1, r2)
     case 1n+f WStmts{_, _, Nil{}}: ExprOk{Nil{}}
     case 1n+f WStmts{env, goal, Con{StBind{pat, val}, rest}}:
-      b5k_chk_work(f, ctx, fn_name, WStmtPat{env, goal, b5k_chk_pats(U32.to_nat(256), ctx, fn_name, [PatItem{pat, False{}, TAny{}}], Nil{}), val, rest})
+      b5k_chk_work(f, ctx, fn_name, WStmtPat{env, goal, b5k_chk_pats(U32.to_nat(1024), ctx, fn_name, [PatItem{pat, False{}, TAny{}}], Nil{}), val, rest})
     case 1n+f WStmts{+env, goal, Con{StLet{pat, +val}, rest}}:
       inh = b5k_chk_expr_is_dup(env, val)
       vty = b5k_chk_infer_head(ctx, env, val)
-      b5k_chk_work(f, ctx, fn_name, WStmtPat{env, goal, b5k_chk_pats(U32.to_nat(256), ctx, fn_name, [PatItem{pat, inh, vty}], Nil{}), val, rest})
+      b5k_chk_work(f, ctx, fn_name, WStmtPat{env, goal, b5k_chk_pats(U32.to_nat(1024), ctx, fn_name, [PatItem{pat, inh, vty}], Nil{}), val, rest})
     case 1n+f WStmts{env, goal, Con{StExpr{val}, Nil{}}}: b5k_chk_work(f, ctx, fn_name, WExpr{env, goal, val})
     case 1n+f WStmts{+env, goal, Con{StExpr{val}, rest}}: b5k_chk_merge(False{}, fn_name, b5k_chk_work(f, ctx, fn_name, WExpr{env, TAny{}, val}), b5k_chk_work(f, ctx, fn_name, WStmts{env, goal, rest}))
     case 1n+f WStmts{env, goal, Con{StRet{val}, Nil{}}}: b5k_chk_work(f, ctx, fn_name, WExpr{env, b5k_chk_monad_inner(goal), val})
@@ -732,23 +924,25 @@ def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> Ex
     case 1n+f WExpr{_, goal, EChr{_}}: b5k_chk_lit(ctx, goal, fn_name, "Char", False{})
     case 1n+f WExpr{_, goal, EStr{_}}: b5k_chk_lit(ctx, goal, fn_name, "String", False{})
     case 1n+f WExpr{_, goal, EUnit{}}: b5k_chk_lit(ctx, goal, fn_name, "Unit", False{})
+    case 1n+f WExpr{_, goal, ERefl{}}: b5k_chk_refl_goal(b5k_chk_ctx_syms(ctx), fn_name, goal)
     case 1n+f WExpr{env, goal, EVar{sym}}: b5k_chk_var(ctx, fn_name, env, goal, sym, False{})
     case 1n+f WExpr{env, goal, ERef{sym}}: b5k_chk_var(ctx, fn_name, env, goal, sym, True{})
     case 1n+f WExpr{+env, goal, EApp{+fun, +args}}:
       +nargs = b5k_list_len(Expr, args)
       +aerr = b5k_chk_call_arity(ctx, fn_name, env, fun, nargs)
       +cs = b5k_chk_call_sig(ctx, env, fun, nargs)
+      +rty = b5k_chk_opt_ty(b5k_chk_eq_call_ret(ctx, fun, args), b5k_chk_sig_ret(cs))
       res = b5k_chk_merge(False{}, fn_name, b5k_chk_work(f, ctx, fn_name, WExpr{env, TAny{}, fun}), b5k_chk_work(f, ctx, fn_name, WArgs{env, b5k_chk_sig_args(cs), b5k_chk_sig_ers(cs), args}))
-      res2 = b5k_chk_expect(fn_name, b5k_chk_sig_ret(cs), goal, res)
+      res2 = b5k_chk_expect(b5k_chk_ctx_syms(ctx), fn_name, rty, goal, res)
       Bool.pick(ExprRes, String.is_empty(aerr), res2, ExprErr{aerr})
-    case 1n+f WExpr{env, _, ELam{params, body}}:
-      +bs = b5k_chk_params_binds(ctx, False{}, params)
-      b5k_chk_strip_res(bs, b5k_chk_work(f, ctx, fn_name, WExpr{b5k_list_app(VarBind, bs, env), TAny{}, body}))
+    case 1n+f WExpr{env, +goal, ELam{params, body}}:
+      +bs = b5k_chk_params_binds(ctx, b5k_chk_lam_dup(goal), params)
+      b5k_chk_strip_res(bs, b5k_chk_work(f, ctx, fn_name, WExpr{b5k_list_app(VarBind, bs, env), b5k_chk_lam_ret(goal), body}))
     case 1n+f WExpr{+env, +goal, ELet{pat, +val, body}}:
       inh = b5k_chk_expr_is_dup(env, val)
       vty = b5k_chk_infer_head(ctx, env, val)
       g2 = Bool.pick(ChkTy, b5k_chk_is_refl(val), TAny{}, goal)
-      b5k_chk_work(f, ctx, fn_name, WStmtPat{env, g2, b5k_chk_pats(U32.to_nat(256), ctx, fn_name, [PatItem{pat, inh, vty}], Nil{}), val, [StExpr{body}]})
+      b5k_chk_work(f, ctx, fn_name, WStmtPat{env, g2, b5k_chk_pats(U32.to_nat(1024), ctx, fn_name, [PatItem{pat, inh, vty}], Nil{}), val, [StExpr{body}]})
     case 1n+f WExpr{+env, goal, EMat{+scruts, cases}}:
       sdups = b5k_chk_scruts_dups(env, scruts)
       stys = b5k_chk_scruts_tys(ctx, env, scruts)
@@ -758,18 +952,20 @@ def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> Ex
       +info = b5k_chk_lookup_ctor(ctx, sym)
       ok = b5k_chk_ctor_ok(info, b5k_list_len(Expr, fields), goal)
       Bool.pick(ExprRes, ok, b5k_chk_work(f, ctx, fn_name, WArgs{env, b5k_chk_ctor_fgoals(info, goal), Nil{}, fields}), ExprErr{b5k_chk_ctor_err(fn_name)})
-    case 1n+f WExpr{env, goal, EAnn{+val, +typ}}:
+    case 1n+f WExpr{+env, goal, EAnn{+val, +typ}}:
       +is_er = b5k_chk_is_refl(typ)
       +is_cmp = b5k_chk_is_cmp_op(val)
       +aty = b5k_chk_ann_cmp_ty(val, b5k_chk_goal_expr(ctx, typ))
-      res = b5k_chk_erased_res(is_er, b5k_chk_work(f, ctx, fn_name, WExpr{env, Bool.pick(ChkTy, Bool.or(is_cmp, is_er), TAny{}, aty), val}))
-      b5k_chk_expect(fn_name, aty, goal, res)
+      +env_v = Bool.pick(List<&2, VarBind>, is_er, b5k_chk_env_all_dup(env), env)
+      +g_v = Bool.pick(ChkTy, is_er, TErased{}, Bool.pick(ChkTy, is_cmp, TAny{}, aty))
+      res = b5k_chk_erased_res(is_er, b5k_chk_work(f, ctx, fn_name, WExpr{env_v, g_v, val}))
+      b5k_chk_expect(b5k_chk_ctx_syms(ctx), fn_name, aty, goal, res)
     case 1n+f WExpr{env, _, EEq{a, b}}: b5k_chk_work(f, ctx, fn_name, WArgs{env, Nil{}, Nil{}, [a, b]})
     case 1n+f WExpr{env, goal, EOp{op, a, b}}:
       oty = Bool.pick(ChkTy, U32.is_ge(op, 20), b5k_chk_t0("Bool"), TAny{})
-      b5k_chk_expect(fn_name, oty, goal, b5k_chk_work(f, ctx, fn_name, WArgs{env, Nil{}, Nil{}, [a, b]}))
-    case 1n+f WExpr{env, _, EUnOp{_, val}}: b5k_chk_work(f, ctx, fn_name, WExpr{env, TAny{}, val})
-    case 1n+f WExpr{env, goal, EArrNew{elems}}: b5k_chk_expect(fn_name, b5k_chk_t0("Array"), goal, b5k_chk_work(f, ctx, fn_name, WArgs{env, Nil{}, Nil{}, elems}))
+      b5k_chk_expect(b5k_chk_ctx_syms(ctx), fn_name, oty, goal, b5k_chk_work(f, ctx, fn_name, WArgs{env, Nil{}, Nil{}, [a, b]}))
+    case 1n+f WExpr{env, goal, EUnOp{_, val}}: b5k_chk_work(f, ctx, fn_name, WExpr{env, Bool.pick(ChkTy, b5k_chk_is_erased_ty(goal), TErased{}, TAny{}), val})
+    case 1n+f WExpr{env, goal, EArrNew{elems}}: b5k_chk_expect(b5k_chk_ctx_syms(ctx), fn_name, b5k_chk_t0("Array"), goal, b5k_chk_work(f, ctx, fn_name, WArgs{env, Nil{}, Nil{}, elems}))
     case 1n+f WExpr{env, _, EArrGet{arr, idx}}: b5k_chk_work(f, ctx, fn_name, WArgs{env, Nil{}, Nil{}, [arr, idx]})
     case 1n+f WExpr{env, _, EArrSet{arr, idx, val}}: b5k_chk_work(f, ctx, fn_name, WArgs{env, Nil{}, Nil{}, [arr, idx, val]})
     case 1n+f WExpr{+env, +goal, EIf{cond, then_e, else_e}}:
@@ -781,13 +977,17 @@ def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> Ex
       res = b5k_chk_work(f, ctx, fn_name, WArgs{env, b5k_chk_pair_goals(goal), Nil{}, [a, b]})
       Bool.pick(ExprRes, b5k_chk_pair_goal_ok(goal), res, ExprErr{b5k_chk_head_err(fn_name, b5k_chk_t0("Sigma"), goal)})
     case 1n+f WExpr{env, +goal, EList{+elems}}:
-      b5k_chk_expect(fn_name, b5k_chk_t0("List"), goal, b5k_chk_work(f, ctx, fn_name, WArgs{env, b5k_chk_list_elem_goals(elems, goal), Nil{}, elems}))
+      b5k_chk_expect(b5k_chk_ctx_syms(ctx), fn_name, b5k_chk_t0("List"), goal, b5k_chk_work(f, ctx, fn_name, WArgs{env, b5k_chk_list_elem_goals(elems, goal), Nil{}, elems}))
     case 1n+_ WExpr{_, _, _}: ExprOk{Nil{}}
 # Top-Level Book Entrypoint
 def b5k_chk_expr_err(r: ExprRes) -> String:
   match r:
     case ExprOk{_}: ""
     case ExprErr{err}: err
+def b5k_chk_erased_goal(is_er: Bool, g: ChkTy) -> ChkTy:
+  match is_er g:
+    case True{} TAny{}: TErased{}
+    case _ other: other
 def b5k_chk_def(+ctx: CheckCtx, d: Def) -> String:
   CheckCtx{syms, _, _, _, laws} = ctx
   Def{+sym, params, ret, body, is_import, _} = d
@@ -799,10 +999,10 @@ def b5k_chk_def(+ctx: CheckCtx, d: Def) -> String:
       +fn_name = b5k_chk_sym_name(ctx, sym)
       +ld = ct_get(LawDef, laws, sym)
       +mret = b5k_chk_apply_law_ret(ret, ld)
-      env = b5k_chk_params_binds(ctx, b5k_chk_ret_is_erased(syms, mret), b5k_chk_apply_law_params(params, ld))
-      goal = b5k_chk_goal_opt(ctx, mret)
-      Bool.pick(String, b5k_chk_refl_bad(mret), "check: " ++ fn_name ++ ": reflexivity mismatch",
-        b5k_chk_expr_err(b5k_chk_work(U32.to_nat(4096), ctx, fn_name, WExpr{env, goal, body})))
+      +is_er = b5k_chk_ret_is_erased(syms, mret)
+      env = b5k_chk_params_binds(ctx, is_er, b5k_chk_apply_law_params(params, ld))
+      goal = b5k_chk_erased_goal(is_er, b5k_chk_goal_opt(ctx, mret))
+      b5k_chk_expr_err(b5k_chk_work(U32.to_nat(4096), ctx, fn_name, WExpr{env, goal, body}))
 def b5k_chk_defs(+ctx: CheckCtx, ds: List<&2, Def>) -> String:
   match ds:
     case Nil{}: ""

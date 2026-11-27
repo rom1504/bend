@@ -53,7 +53,7 @@ type PKont is Data:
   KParams{cc: U32, acc: List<&2, Param>}
   KExprList{cc: U32, acc: List<&2, Expr>}
   KWrapExprs{is_list: Bool}
-  KParenTy{e: Expr}
+  KParenTy{acc: List<&2, Expr>, e: Expr}
   KBrace{}
   KBraceTy{e: Expr}
   KBrackFirst{}
@@ -89,8 +89,8 @@ type PKont is Data:
   KILetVal{pt: Pat}
   KLam{no_gt: Bool}
   KLamBody{pms: List<&2, Param>}
-  KPiPm{no_gt: Bool}
-  KPiBody{pm: Param}
+  KPiPm{no_gt: Bool, is_sig: Bool}
+  KPiBody{pm: Param, is_sig: Bool}
   KBinOnly{no_gt: Bool}
   KRewrite{}
   KRewriteMotive{}
@@ -205,7 +205,7 @@ def p_scan_assign_go(toks: List<&2, Tok>, done: Bool, hit: Bool, +target: U32, +
     case Con{Tok{TkSym{+c}, _}, t} False{}:
       +z = U32.is_zero(d)
       +eq = Bool.and(z, U32.is_eq(c, target))
-      s = Bool.or(Bool.or(U32.is_eq(c, 59), Bool.or(U32.is_eq(c, 257), U32.is_eq(c, 256))), Bool.or(U32.is_eq(c, 61), Bool.or(U32.is_eq(c, 266), Bool.or(U32.is_eq(c, 41), Bool.or(U32.is_eq(c, 93), U32.is_eq(c, 125))))))
+      s = Bool.or(Bool.or(U32.is_eq(c, 59), U32.is_eq(c, 257)), Bool.or(U32.is_eq(c, 61), Bool.or(U32.is_eq(c, 266), Bool.or(U32.is_eq(c, 41), Bool.or(U32.is_eq(c, 93), U32.is_eq(c, 125))))))
       p_scan_assign_go(t, Bool.or(eq, Bool.and(z, s)), eq, target, lex_depth_delta(c, d))
     case Con{_, t} False{}: p_scan_assign_go(t, False{}, False{}, target, d)
 def p_scan_assign(toks: List<&2, Tok>, target: U32) -> Bool:
@@ -235,28 +235,31 @@ def p_after_targs(toks: List<&2, Tok>) -> Bool:
     case Con{Tok{TkEof{}, _}, _}: True{}
     case Con{Tok{TkSym{+c}, _}, _}: Bool.or(Bool.or(U32.is_eq(c, 40), Bool.or(U32.is_eq(c, 123), Bool.or(U32.is_eq(c, 44), U32.is_eq(c, 41)))), Bool.or(Bool.or(U32.is_eq(c, 93), Bool.or(U32.is_eq(c, 125), Bool.or(U32.is_eq(c, 58), Bool.or(U32.is_eq(c, 62), U32.is_eq(c, 270))))), Bool.or(U32.is_eq(c, 256), Bool.or(U32.is_eq(c, 38), Bool.or(U32.is_eq(c, 59), Bool.or(U32.is_eq(c, 266), Bool.or(U32.is_eq(c, 61), Bool.or(U32.is_eq(c, 42), U32.is_eq(c, 94)))))))))
     case _: False{}
-def p_scan_targs(toks: List<&2, Tok>, done: Bool, hit: Bool, +d: U32) -> Bool:
+def p_scan_targs(toks: List<&2, Tok>, done: Bool, hit: Bool, +d: U32, +pd: U32) -> Bool:
   match toks done:
     case _ True{}: hit
     case Nil{} False{}: False{}
-    case Con{Tok{TkNewline{}, _}, t} False{}: p_scan_targs(t, False{}, False{}, d)
-    case Con{Tok{TkIndent{}, _}, t} False{}: p_scan_targs(t, False{}, False{}, d)
-    case Con{Tok{TkDedent{}, _}, t} False{}: p_scan_targs(t, False{}, False{}, d)
+    case Con{Tok{TkNewline{}, _}, t} False{}: p_scan_targs(t, False{}, False{}, d, pd)
+    case Con{Tok{TkIndent{}, _}, t} False{}: p_scan_targs(t, False{}, False{}, d, pd)
+    case Con{Tok{TkDedent{}, _}, t} False{}: p_scan_targs(t, False{}, False{}, d, pd)
     case Con{Tok{TkEof{}, _}, _} False{}: False{}
-    case Con{Tok{TkSym{59}, _}, _} False{}: False{}
-    case Con{Tok{TkSym{60}, _}, t} False{}: p_scan_targs(t, False{}, False{}, U32.add(d, 1))
+    case Con{Tok{TkSym{59}, _}, t} False{}: Bool.pick(Bool, U32.is_zero(pd), False{}, p_scan_targs(t, False{}, False{}, d, pd))
+    case Con{Tok{TkSym{60}, _}, t} False{}: p_scan_targs(t, False{}, False{}, Bool.pick(U32, U32.is_zero(pd), U32.add(d, 1), d), pd)
     case Con{Tok{TkSym{62}, _}, +t} False{}:
-      +is1 = U32.is_eq(d, 1)
-      p_scan_targs(t, is1, Bool.and(is1, p_after_targs(t)), U32.sub(d, 1))
+      +z = U32.is_zero(pd)
+      +is1 = Bool.and(z, U32.is_eq(d, 1))
+      p_scan_targs(t, is1, Bool.and(is1, p_after_targs(t)), Bool.pick(U32, z, U32.sub(d, 1), d), pd)
     case Con{Tok{TkSym{270}, l}, +t} False{}:
-      +is1 = U32.is_eq(d, 1)
-      +is2 = U32.is_eq(d, 2)
+      +z = U32.is_zero(pd)
+      +is1 = Bool.and(z, U32.is_eq(d, 1))
+      +is2 = Bool.and(z, U32.is_eq(d, 2))
       h = Bool.pick(Bool, is2, p_after_targs(t), Bool.and(is1, p_after_targs(Con{Tok{TkSym{62}, l}, t})))
-      p_scan_targs(t, Bool.or(is1, is2), h, U32.sub(d, 2))
-    case Con{_, t} False{}: p_scan_targs(t, False{}, False{}, d)
+      p_scan_targs(t, Bool.or(is1, is2), h, Bool.pick(U32, z, U32.sub(d, 2), d), pd)
+    case Con{Tok{TkSym{c}, _}, t} False{}: p_scan_targs(t, False{}, False{}, d, lex_depth_delta(c, pd))
+    case Con{_, t} False{}: p_scan_targs(t, False{}, False{}, d, pd)
 def p_is_targs(toks: List<&2, Tok>) -> Bool:
   match toks:
-    case Con{Tok{TkSym{60}, _}, t}: p_scan_targs(t, False{}, False{}, 1)
+    case Con{Tok{TkSym{60}, _}, t}: p_scan_targs(t, False{}, False{}, 1, 0)
     case _: False{}
 # Operator Precedence & Pair Builders
 def p_binop_info(c: U32) -> U32:
@@ -434,8 +437,8 @@ def p_ev_expr(+st: PState, +ks: List<&2, PKont>, k: TokKind) -> PStep:
     case TkKw{9}:
       +st4 = p_skip_nls(p_eat_sym(p_skip(2, p_drop(st)), 58, "expected ':' after do"))
       SEval{GDo{Nil{}}, Bool.pick(PState, p_is_indent(st4), p_drop(st4), st4), Con{KDoWrap{}, ks}}
-    case TkSym{64}: SEval{GParam{False{}, False{}, 2}, p_drop(st), Con{KPiPm{False{}}, ks}}
-    case TkSym{38}: SEval{GParam{False{}, False{}, 2}, p_drop(st), Con{KPiPm{False{}}, ks}}
+    case TkSym{64}: SEval{GParam{False{}, False{}, 2}, p_drop(st), Con{KPiPm{False{}, False{}}, ks}}
+    case TkSym{38}: SEval{GParam{False{}, False{}, 2}, p_drop(st), Con{KPiPm{False{}, True{}}, ks}}
     case _:
       +ts = p_toks(st)
       Bool.pick(PStep, p_is_lam(ts), p_ev_lam(st, ks, False{}), Bool.pick(PStep, p_scan_assign(ts, 61), SEval{GPat{}, st, Con{KILetPat{}, ks}}, SEval{GArrow{False{}}, st, ks}))
@@ -460,10 +463,17 @@ def p_type_body_go(+tsym: U32, +pms: List<&2, Param>, +st: PState, +ts: List<&2,
   Bool.pick(PStep, p_is_indent(st3), SEval{GCtors{True{}, Nil{}}, p_drop(st3), Con{KTypeCtors{tsym, pms, is_data, ts, ds, ls}, Nil{}}},
   Bool.pick(PStep, p_is_ident(st3), SEval{GCtors{False{}, Nil{}}, st3, Con{KTypeCtors{tsym, pms, is_data, ts, ds, ls}, Nil{}}},
     SEval{GTop{Con{TypeDef{tsym, pms, is_data, Nil{}}, ts}, ds, ls}, st3, Nil{}}))
+def p_is_nl(st: PState) -> Bool:
+  match st:
+    case PState{Con{Tok{TkNewline{}, _}, _}, _, _, _}: True{}
+    case _: False{}
 def p_def_body_go(+dsym: U32, +pms: List<&2, Param>, +ret: Maybe<&2, Expr>, st: PState, +ts: List<&2, TypeDef>, +ds: List<&2, Def>, +ls: List<&2, LawDef>) -> PStep:
-  +st2 = p_skip_nls(p_eat_sym(p_skip_ws(st), 58, "expected ':' in def"))
-  +st3 = p_skip_nls(p_drop(st2))
-  Bool.pick(PStep, p_is_indent(st2), Bool.pick(PStep, p_is_kw(st3, 11), SEval{GFimp{""}, st3, Con{KDefBody{dsym, pms, ret, ts, ds, ls}, Nil{}}}, SEval{GBlock{}, st3, Con{KDefBody{dsym, pms, ret, ts, ds, ls}, Nil{}}}), SEval{GExpr{}, st2, Con{KDefBody{dsym, pms, ret, ts, ds, ls}, Nil{}}})
+  +st1 = p_eat_sym(p_skip_ws(st), 58, "expected ':' in def")
+  +is_ml = p_is_nl(st1)
+  +st2 = p_skip_nls(st1)
+  +ind = p_is_indent(st2)
+  +st3 = p_skip_nls(Bool.pick(PState, ind, p_drop(st2), st2))
+  Bool.pick(PStep, Bool.or(ind, is_ml), Bool.pick(PStep, p_is_kw(st3, 11), SEval{GFimp{""}, st3, Con{KDefBody{dsym, pms, ret, ts, ds, ls}, Nil{}}}, SEval{GBlock{}, st3, Con{KDefBody{dsym, pms, ret, ts, ds, ls}, Nil{}}}), SEval{GExpr{}, st2, Con{KDefBody{dsym, pms, ret, ts, ds, ls}, Nil{}}})
 def p_def_ret_go(+dsym: U32, +pms: List<&2, Param>, +st: PState, +ts: List<&2, TypeDef>, +ds: List<&2, Def>, +ls: List<&2, LawDef>) -> PStep:
   +st1 = p_skip_ws(st)
   Bool.pick(PStep, p_is_sym(st1, 256), SEval{GExpr{}, p_skip_ws(p_drop(st1)), Con{KDefRet{dsym, pms, ts, ds, ls}, Nil{}}}, p_def_body_go(dsym, pms, None{}, st, ts, ds, ls))
@@ -501,14 +511,15 @@ def p_eval(g: PGoal, +st: PState, +ks: List<&2, PKont>) -> PStep:
     case GBin{min_p, +lhs}: Bool.pick(PStep, p_has_err(st), SApply{VExpr{lhs}, st, ks}, p_ev_bin(min_p, lhs, st, ks, p_peek(st)))
     case GArrow{+no_gt}:
       Bool.pick(PStep, Bool.or(p_is_sym(st, 64), p_is_sym(st, 38)),
-        SEval{GParam{False{}, False{}, Bool.pick(U32, no_gt, 3, 2)}, p_drop(st), Con{KPiPm{no_gt}, ks}},
+        SEval{GParam{False{}, False{}, Bool.pick(U32, no_gt, 3, 2)}, p_drop(st), Con{KPiPm{no_gt, p_is_sym(st, 38)}, ks}},
         SEval{GUnary{}, st, Con{KArrowBin{no_gt}, ks}})
     case GTypeArg{}:
-      Bool.pick(PStep, Bool.or(p_is_sym(st, 64), p_is_sym(st, 38)), SEval{GParam{False{}, False{}, 3}, p_drop(st), Con{KPiPm{True{}}, ks}},
+      Bool.pick(PStep, Bool.or(p_is_sym(st, 64), p_is_sym(st, 38)), SEval{GParam{False{}, False{}, 3}, p_drop(st), Con{KPiPm{True{}, p_is_sym(st, 38)}, ks}},
       Bool.pick(PStep, p_is_lam(p_toks(st)), p_ev_lam(st, ks, True{}), SEval{GArrow{True{}}, st, ks}))
     case GSuite{}:
       +st1 = p_skip_nls(st)
-      Bool.pick(PStep, p_is_indent(st1), SEval{GBlock{}, p_drop(st1), ks}, SEval{GExpr{}, st1, ks})
+      +st2 = Bool.pick(PState, U32.is_eq(p_tok_tag(st1), 2), p_drop(st1), st1)
+      Bool.pick(PStep, p_is_indent(st2), SEval{GBlock{}, p_drop(st2), ks}, SEval{GExpr{}, st2, ks})
     case GBlock{}:
       +st1 = p_skip_nls(st)
       Bool.pick(PStep, p_at_end(st1), SApply{VExpr{EUnit{}}, p_eat_dedent(st1), ks}, Bool.pick(PStep, p_scan_assign(p_toks(st1), 61), SEval{GPat{}, st1, Con{KBlkLetPat{p_is_sym(st1, 45)}, ks}}, SEval{GExpr{}, st1, Con{KBlkExpr{}, ks}}))
@@ -523,27 +534,39 @@ def p_eval(g: PGoal, +st: PState, +ks: List<&2, PKont>) -> PStep:
       Bool.pick(PStep, p_stop_at(st1, cc), SApply{VParams{b5k_list_rev(Param, acc)}, p_eat_close(st1, cc, "expected closing delimiter"), ks}, SEval{GParam{False{}, False{}, Bool.pick(U32, U32.is_eq(cc, 62), 1, 0)}, st1, Con{KParams{cc, acc}, ks}})
     case GCases{+acc}:
       +st1 = p_skip_nls(st)
-      Bool.pick(PStep, p_at_end(st1), SApply{VCases{b5k_list_rev(Case, acc)}, p_eat_dedent(st1), ks}, SEval{GPatList{58, False{}, Nil{}}, p_eat_kw(st1, 6, "expected 'case'"), Con{KCaseHead{acc}, ks}})
+      +st2 = Bool.pick(PState, Bool.and(p_is_indent(st1), p_is_kw(p_drop(st1), 6)), p_drop(st1),
+        Bool.pick(PState, Bool.and(U32.is_eq(p_tok_tag(st1), 2), p_is_kw(p_drop(st1), 6)), p_drop(st1), st1))
+      Bool.pick(PStep, p_at_end(st2), SApply{VCases{b5k_list_rev(Case, acc)}, p_eat_dedent(st2), ks}, SEval{GPatList{58, False{}, Nil{}}, p_eat_kw(st2, 6, "expected 'case'"), Con{KCaseHead{acc}, ks}})
     case GLamMat{+acc}:
       +st1 = p_skip_ws(st)
       Bool.pick(PStep, p_stop_at(st1, 125), SApply{VExpr{ELam{Con{Param{0, None{}, False{}, True{}}, Nil{}}, EMat{Con{EVar{0}, Nil{}}, b5k_list_rev(Case, acc)}}}, p_eat_sym(st1, 125, "expected '}'"), ks}, p_lam_mat_step(acc, st1, ks))
     case GDo{+acc}:
-      +st1 = p_skip_nls(st)
+      +st0 = p_skip_nls(st)
+      +st1 = Bool.pick(PState, p_is_indent(st0), p_drop(st0), st0)
       +ts = p_toks(st1)
-      Bool.pick(PStep, p_at_end(st1), SApply{VStmts{b5k_list_rev(Stmt, acc)}, p_eat_dedent(st1), ks}, Bool.pick(PStep, p_is_kw(st1, 10), SEval{GExpr{}, p_drop(st1), Con{KDoStmt{acc, True{}}, ks}}, Bool.pick(PStep, p_scan_assign(ts, 266), SEval{GPat{}, st1, Con{KDoPat{acc, True{}}, ks}}, Bool.pick(PStep, p_scan_assign(ts, 61), SEval{GPat{}, st1, Con{KDoPat{acc, False{}}, ks}}, SEval{GExpr{}, st1, Con{KDoStmt{acc, False{}}, ks}}))))
+      +do_end = Bool.or(p_at_end(st1), Bool.or(p_is_sym(st1, 41), Bool.or(p_is_sym(st1, 93), Bool.or(p_is_sym(st1, 125), p_is_sym(st1, 44)))))
+      Bool.pick(PStep, do_end, SApply{VStmts{b5k_list_rev(Stmt, acc)}, p_eat_dedent(st1), ks}, Bool.pick(PStep, p_is_kw(st1, 10), SEval{GExpr{}, p_drop(st1), Con{KDoStmt{acc, True{}}, ks}}, Bool.pick(PStep, p_scan_assign(ts, 266), SEval{GPat{}, st1, Con{KDoPat{acc, True{}}, ks}}, Bool.pick(PStep, p_scan_assign(ts, 61), SEval{GPat{}, st1, Con{KDoPat{acc, False{}}, ks}}, SEval{GExpr{}, st1, Con{KDoStmt{acc, False{}}, ks}}))))
     case GCtors{True{}, +acc}:
       +st1 = p_skip_nls(st)
       Bool.pick(PStep, p_at_end(st1), SApply{VCtors{b5k_list_rev(CtorDef, acc)}, p_eat_dedent(st1), ks}, p_ev_ctor_k(True{}, acc, st1, ks))
     case GCtors{False{}, +acc}:
-      Bool.pick(PStep, Bool.or(p_has_err(st), Bool.not(p_is_ident(st))), SApply{VCtors{b5k_list_rev(CtorDef, acc)}, st, ks}, p_ev_ctor_k(False{}, acc, st, ks))
+      +st1 = p_skip_nls(st)
+      Bool.pick(PStep, Bool.or(p_has_err(st1), Bool.not(p_is_ident(st1))), SApply{VCtors{b5k_list_rev(CtorDef, acc)}, st1, ks}, p_ev_ctor_k(False{}, acc, st1, ks))
     case GLawBody{+lsym, +pms, +ts, +ds, +ls}:
       +st1 = p_skip_nls(st)
-      Bool.pick(PStep, Bool.or(p_is_kw(st1, 13), p_is_ident_eq(st1, "exs")), SEval{GParam{False{}, False{}, 0}, p_drop(st1), Con{KLawPm{lsym, pms, ts, ds, ls}, Nil{}}},
+      Bool.pick(PStep, p_is_kw(st1, 13), SEval{GParam{False{}, False{}, 0}, p_drop(st1), Con{KLawPm{lsym, pms, ts, ds, ls}, Nil{}}},
+      Bool.pick(PStep, p_is_ident_eq(st1, "exs"), SEval{GParam{False{}, False{}, 0}, p_drop(st1), Con{KLawWhere{lsym, pms, ts, ds, ls}, Nil{}}},
       Bool.pick(PStep, p_is_ident_eq(st1, "where"), SEval{GExpr{}, p_drop(st1), Con{KLawWhere{lsym, pms, ts, ds, ls}, Nil{}}},
-        SEval{GExpr{}, st1, Con{KLawRet{lsym, pms, ts, ds, ls}, Nil{}}}))
+        SEval{GExpr{}, st1, Con{KLawRet{lsym, pms, ts, ds, ls}, Nil{}}})))
     case GFimp{+path}:
       +st1 = p_skip_nls(st)
       Bool.pick(PStep, U32.is_ge(p_tok_tag(st1), 2), SApply{VStr{path}, p_eat_dedent(st1), ks}, Bool.pick(PStep, p_is_kw(st1, 11), p_ev_fimp_k(path, p_drop(st1), ks), SEval{GFimp{path}, p_skip(1, st1), ks}))
+def p_clear_hd_ty(ps: List<&2, Param>) -> List<&2, Param>:
+  match ps:
+    case Con{Param{sym, _, er, dup}, t}: Con{Param{sym, None{}, er, dup}, t}
+    case Nil{}: Nil{}
+def p_ilet_cont(+st: PState) -> Bool:
+  Bool.not(Bool.or(p_at_end(st), Bool.or(p_is_nl(st), Bool.or(p_is_sym(st, 41), Bool.or(p_is_sym(st, 93), Bool.or(p_is_sym(st, 125), p_is_sym(st, 44)))))))
 def p_fork_start(ps: List<&2, Pat>, st: PState, ks: List<&2, PKont>) -> PStep:
   match ps:
     case Con{p0, rest}: SEval{GExpr{}, st, Con{KBlkForkExprs{p0, rest, False{}}, ks}}
@@ -557,9 +580,9 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
     case KPWrap{is_list} VPats{+ps}: p_pat_done(Bool.pick(Pat, is_list, PList{ps}, p_pair_pat(ps)), st, ks)
     case KParamTy{id, er, dup} VExpr{ty}: SApply{VParam{Param{id, Some{ty}, er, dup}}, st, ks}
     case KParams{cc, acc} VParam{pm}: SEval{GParams{cc, Con{pm, acc}}, p_opt_drop(st, 44), ks}
-    case KExprList{+cc, +acc} VExpr{+e}: Bool.pick(PStep, Bool.and(U32.is_eq(cc, 41), p_is_sym(st, 58)), SEval{GExpr{}, p_drop(st), Con{KParenTy{e}, ks}}, SEval{GExprList{cc, Con{e, acc}}, p_opt_drop(st, 44), ks})
+    case KExprList{+cc, +acc} VExpr{+e}: Bool.pick(PStep, Bool.and(U32.is_eq(cc, 41), p_is_sym(st, 58)), SEval{GExpr{}, p_drop(st), Con{KParenTy{acc, e}, ks}}, SEval{GExprList{cc, Con{e, acc}}, p_opt_drop(st, 44), ks})
     case KWrapExprs{is_list} VExprs{+es}: SEval{GPost{Bool.pick(Expr, is_list, EList{es}, p_pair_expr(es))}, st, ks}
-    case KParenTy{e} VExpr{ty}: SApply{VExprs{Con{EAnn{e, ty}, Nil{}}}, p_eat_sym(st, 41, "expected ')'"), ks}
+    case KParenTy{acc, e} VExpr{ty}: SApply{VExprs{b5k_list_rev(Expr, Con{EAnn{e, ty}, acc})}, p_eat_sym(st, 41, "expected ')'"), ks}
     case KBrace{} VExpr{+e}: Bool.pick(PStep, p_is_sym(st, 58), SEval{GExpr{}, p_drop(st), Con{KBraceTy{e}, ks}}, SEval{GPost{e}, p_eat_sym(st, 125, "expected '}'"), ks})
     case KBraceTy{e} VExpr{ty}: SEval{GPost{EAnn{e, ty}}, p_eat_sym(st, 125, "expected '}'"), ks}
     case KBrackFirst{} VExpr{+e0}: Bool.pick(PStep, p_is_sym(st, 58), SEval{GUnary{}, p_drop(st), Con{KArrTy{e0}, ks}}, SEval{GExprList{93, Con{e0, Nil{}}}, p_opt_drop(st, 44), Con{KWrapExprs{True{}}, ks}})
@@ -578,7 +601,7 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
     case KBinRhs{mp, 30, lhs} VExpr{rhs}: p_bin_cons(mp, lhs, rhs, p_intern(st, "Con"), ks)
     case KBinRhs{mp, op, lhs} VExpr{rhs}: SEval{GBin{mp, EOp{op, lhs, rhs}}, st, ks}
     case KArrowBin{+no_gt} VExpr{e0}: SEval{GBin{Bool.pick(U32, no_gt, 17, 1), e0}, st, Con{KArrowLhs{no_gt}, ks}}
-    case KArrowLhs{no_gt} VExpr{+lhs}: Bool.pick(PStep, p_is_sym(st, 256), SEval{Bool.pick(PGoal, no_gt, GTypeArg{}, GExpr{}), p_skip_nls(p_drop(st)), Con{KPiBody{Param{0, Some{lhs}, False{}, False{}}}, ks}}, SApply{VExpr{lhs}, st, ks})
+    case KArrowLhs{no_gt} VExpr{+lhs}: Bool.pick(PStep, p_is_sym(st, 256), SEval{Bool.pick(PGoal, no_gt, GTypeArg{}, GExpr{}), p_skip_nls(p_drop(st)), Con{KPiBody{Param{0, Some{lhs}, False{}, False{}}, False{}}, ks}}, SApply{VExpr{lhs}, st, ks})
     case KMatchScruts{} VExprs{+sc}:
       +st3 = p_skip_nls(p_eat_sym(st, 58, "expected ':' after match"))
       Bool.pick(PStep, p_is_indent(st3), SEval{GCases{Nil{}}, p_drop(st3), Con{KMatchCases{sc}, ks}},
@@ -593,7 +616,8 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
       els = Bool.pick(PStep, p_is_kw(st5, 7), SEval{GExpr{}, p_drop(st5), Con{KIfCond{}, Con{KIfElse{cond, thn}, ks}}}, SEval{GSuite{}, p_eat_sym(st5, 58, "expected ':' after else"), Con{KIfElse{cond, thn}, ks}})
       Bool.pick(PStep, p_is_kw(st4, 8), els, SApply{VExpr{EIf{cond, thn, EUnit{}}}, st4, ks})
     case KIfElse{cond, thn} VExpr{els}: SApply{VExpr{EIf{cond, thn, els}}, st, ks}
-    case KDoStmt{acc, is_ret} VExpr{val}: SEval{GDo{Con{p_do_stmt_mk(is_ret, val), acc}}, p_opt_drop(st, 59), ks}
+    case KDoStmt{acc, True{}} VExpr{val}: SApply{VStmts{b5k_list_rev(Stmt, Con{StRet{val}, acc})}, p_eat_dedent(p_opt_drop(st, 59)), ks}
+    case KDoStmt{acc, False{}} VExpr{val}: SEval{GDo{Con{p_do_stmt_mk(False{}, val), acc}}, p_opt_drop(st, 59), ks}
     case KDoPat{+acc, +is_bind} VPat{+pt}:
       +sym = Bool.pick(U32, is_bind, 266, 61)
       +msg = Bool.pick(String, is_bind, "expected '<-'", "expected '='")
@@ -619,12 +643,14 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
     case KILetPat{} VPat{+pt}:
       Bool.pick(PStep, p_is_sym(st, 58), SEval{GArrow{False{}}, p_drop(st), Con{KEatExpr{61, "expected '=' in let"}, Con{KILetVal{pt}, ks}}},
         SEval{GExpr{}, p_eat_sym(st, 61, "expected '=' in let"), Con{KILetVal{pt}, ks}})
-    case KILetVal{+pt} VExpr{+val}: Bool.pick(PStep, p_is_sym(st, 59), SEval{GExpr{}, p_drop(st), Con{KBlkLetBody{pt, val}, ks}}, SApply{VExpr{ELet{pt, val, EUnit{}}}, st, ks})
+    case KILetVal{+pt} VExpr{+val}:
+      Bool.pick(PStep, p_is_sym(st, 59), SEval{GExpr{}, p_drop(st), Con{KBlkLetBody{pt, val}, ks}},
+      Bool.pick(PStep, p_ilet_cont(st), SEval{GExpr{}, st, Con{KBlkLetBody{pt, val}, ks}}, SApply{VExpr{ELet{pt, val, EUnit{}}}, st, ks}))
     case KLam{no_gt} VParams{pms}: SEval{Bool.pick(PGoal, no_gt, GTypeArg{}, GSuite{}), p_eat_sym(st, 257, "expected '=>'"), Con{KLamBody{pms}, ks}}
     case KLam{no_gt} VParam{pm}: SEval{Bool.pick(PGoal, no_gt, GTypeArg{}, GSuite{}), p_eat_sym(st, 257, "expected '=>'"), Con{KLamBody{Con{pm, Nil{}}}, ks}}
     case KLamBody{pms} VExpr{body}: SApply{VExpr{ELam{pms, body}}, st, ks}
-    case KPiPm{no_gt} VParam{pm}: SEval{Bool.pick(PGoal, no_gt, GTypeArg{}, GArrow{False{}}), p_skip_nls(p_eat_sym(st, 256, "expected '->'")), Con{KPiBody{pm}, ks}}
-    case KPiBody{pm} VExpr{body}: SApply{VExpr{EAll{pm, body}}, st, ks}
+    case KPiPm{no_gt, _} VParam{pm}: SEval{Bool.pick(PGoal, no_gt, GTypeArg{}, GArrow{False{}}), p_skip_nls(p_eat_sym(st, 256, "expected '->'")), Con{KPiBody{pm, False{}}, ks}}
+    case KPiBody{pm, _} VExpr{body}: SApply{VExpr{EAll{pm, body}}, st, ks}
     case KBinOnly{no_gt} VExpr{e0}: SEval{GBin{Bool.pick(U32, no_gt, 17, 1), e0}, st, ks}
     case KRewrite{} VExpr{_}:
       Bool.pick(PStep, p_is_sym(st, 64), SEval{GUnary{}, p_drop(st), Con{KRewrite{}, ks}},
@@ -636,7 +662,8 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
     case KTypePms{tsym, ts, ds, ls} VParams{pms}: p_type_body_go(tsym, pms, st, ts, ds, ls)
     case KTypeCtors{tsym, pms, is_data, ts, ds, ls} VCtors{cs}: SEval{GTop{Con{TypeDef{tsym, pms, is_data, cs}, ts}, ds, ls}, st, Nil{}}
     case KLawPm{lsym, pms, ts, ds, ls} VParam{pm}: SEval{GLawBody{lsym, Con{pm, pms}, ts, ds, ls}, st, Nil{}}
-    case KLawWhere{lsym, pms, ts, ds, ls} VExpr{_}: SEval{GLawBody{lsym, pms, ts, ds, ls}, st, Nil{}}
+    case KLawWhere{lsym, pms, ts, ds, ls} VExpr{_}: SEval{GLawBody{lsym, p_clear_hd_ty(pms), ts, ds, ls}, st, Nil{}}
+    case KLawWhere{lsym, pms, ts, ds, ls} VParam{_}: SEval{GLawBody{lsym, pms, ts, ds, ls}, st, Nil{}}
     case KLawRet{lsym, pms, ts, ds, ls} VExpr{ret}: SEval{GTop{ts, ds, Con{LawDef{lsym, b5k_list_rev(Param, pms), ret}, ls}}, p_eat_dedent(st), Nil{}}
     case KDefPms{dsym, ts, ds, ls} VParams{pms}: p_def_ret_go(dsym, pms, st, ts, ds, ls)
     case KDefRet{dsym, pms, ts, ds, ls} VExpr{ret}: p_def_body_go(dsym, pms, Some{ret}, st, ts, ds, ls)

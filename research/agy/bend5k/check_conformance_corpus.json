@@ -565,5 +565,91 @@
       "expect_upstream": "accept",
       "code": "import Base\ndef maybe_map(-A: Data, -B: Data, f: A -> B, m: Maybe<&2, A>) -> Maybe<&2, B>:\n  match m:\n    case None{}: None{}\n    case Some{x}: Some{f(x)}\ndef inc(x: U32) -> U32:\n  U32.add(x, 1)\ndef unwrap0(m: Maybe<&2, U32>) -> U32:\n  match m:\n    case None{}: 0\n    case Some{v}: v\ndef main() -> U32:\n  unwrap0(maybe_map(U32, U32, inc, Some{41}))\n"
     }
+  ],
+  "v3_dependent_cases": [
+    {
+      "id": "v3_neg_refl_u32_add",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\nlaw bad:\n  {U32.add(2, 3) == 6 : U32}\ndef bad():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_refl_op_add",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\nlaw bad:\n  {(2 + 3 : U32) == 6 : U32}\ndef bad():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_refl_nat_succ",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\nlaw bad:\n  {Succ{Succ{Zero{}}} == Succ{Zero{}} : Nat}\ndef bad():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_refl_bool_not",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\nlaw bad:\n  {Bool.not(True{}) == True{} : Bool}\ndef bad():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_refl_non_eq_goal",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad() -> U32:\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_eq_var_mismatch",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(e: {0 == 0 : U32}) -> {0 == 1 : U32}:\n  e\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_eq_sym_wrong_dir",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(e: {1 == 2 : U32}) -> {2 == 1 : U32}:\n  e\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_eq_ret_u32",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(e: {0 == 0 : U32}) -> U32:\n  e\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_pos_refl_u32_add",
+      "group": "v3_dependent_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "code": "import Base\nlaw ok:\n  {U32.add(2, 3) == 5 : U32}\ndef ok():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_pos_refl_nat_succ",
+      "group": "v3_dependent_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "code": "import Base\nlaw ok:\n  {Succ{Succ{Zero{}}} == 2n : Nat}\ndef ok():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_pos_refl_bool_and",
+      "group": "v3_dependent_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "code": "import Base\nlaw ok:\n  {Bool.and(True{}, False{}) == False{} : Bool}\ndef ok():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_pos_eq_sym",
+      "group": "v3_dependent_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef ok(e: {1 == 1 : U32}) -> {1 == 1 : U32}:\n  Equal.sym(U32, 1, 1, e)\ndef main() -> U32:\n  0\n"
+    }
   ]
 }

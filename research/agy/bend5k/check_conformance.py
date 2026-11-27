@@ -76,7 +76,7 @@ def main() -> int:
     ap.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
     ap.add_argument("--cpu", type=int, default=2)
     ap.add_argument("--timeout", type=int, default=30)
-    ap.add_argument("--suite", choices=("frozen60", "v2_parametric", "all"), default="frozen60")
+    ap.add_argument("--suite", choices=("frozen60", "v2_parametric", "v3_dependent", "all"), default="frozen60")
     ap.add_argument("--json-out", type=Path, default=None)
     ap.add_argument("--label", type=str, default="run")
     args = ap.parse_args()
@@ -86,8 +86,10 @@ def main() -> int:
         cases = corpus["cases"]
     elif args.suite == "v2_parametric":
         cases = corpus.get("v2_parametric_cases", [])
+    elif args.suite == "v3_dependent":
+        cases = corpus.get("v3_dependent_cases", [])
     else:
-        cases = list(corpus["cases"]) + list(corpus.get("v2_parametric_cases", []))
+        cases = list(corpus["cases"]) + list(corpus.get("v2_parametric_cases", [])) + list(corpus.get("v3_dependent_cases", []))
 
     outcomes = collections.Counter()
     by_category = collections.defaultdict(collections.Counter)

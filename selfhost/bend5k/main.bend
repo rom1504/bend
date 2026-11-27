@@ -86,6 +86,13 @@ def b5k_imp_line(+dir: String, r1: StrScan, +acc: List<&2, ImpReq>) -> List<&2, 
   is_base = Bool.and(String.eq(rel, "Base"), Bool.not(String.starts_with(rest, " as ")))
   alias = opt_if(String, String.starts_with(rest, " as "), _ => b5k_scan_fst(b5k_take_word(b5k_skip_sp(String.drop(rest, 4n)), False{}, Chr{0}, SNil{})), _ => b5k_stem_of(rel))
   opt_if(List<&2, ImpReq>, is_base, _ => acc, _ => Con{ImpReq{dir, rel, alias}, acc})
+def b5k_has_base_go(fuel: Nat, +s: String) -> Bool:
+  match fuel s:
+    case 0n _: False{}
+    case _ SNil{}: False{}
+    case 1n+p _:
+      hit = Bool.and(String.starts_with(s, "import "), String.eq(b5k_scan_fst(b5k_take_word(b5k_skip_sp(String.drop(s, 7n)), False{}, Chr{0}, SNil{})), "Base"))
+      opt_if(Bool, hit, _ => True{}, _ => b5k_has_base_go(p, b5k_skip_line(s)))
 def b5k_scan_imp_go(fuel: Nat, +dir: String, +s: String, +acc: List<&2, ImpReq>) -> List<&2, ImpReq>:
   match fuel s:
     case 0n _: b5k_list_rev(ImpReq, acc)
@@ -249,7 +256,7 @@ def b5k_bk_has_prefix(bk: Book, +pre: String) -> Bool:
   Bool.or(t_hit, Bool.or(d_hit, l_hit))
 def b5k_imp_full(+dir: String, +rel: String) -> String:
   Bool.pick(String, String.starts_with(rel, "/"), rel, dir ++ rel)
-def b5k_check_top_imps(reqs: List<&2, ImpReq>, +seen_al: List<&2, String>, +bk: Book) -> String:
+def b5k_check_top_imps(+has_base: Bool, reqs: List<&2, ImpReq>, +seen_al: List<&2, String>, +bk: Book) -> String:
   match reqs:
     case Nil{}: ""
     case Con{ImpReq{_, +rel, +alias}, rest}:
@@ -259,20 +266,7 @@ def b5k_check_top_imps(reqs: List<&2, ImpReq>, +seen_al: List<&2, String>, +bk: 
       Bool.pick(String, bad_ext, "import: expected a .bend file: " ++ rel,
       Bool.pick(String, bad_dup, "import: duplicate alias: " ++ alias,
       Bool.pick(String, bad_col, "import: declaration collides with alias: " ++ alias,
-        b5k_check_top_imps(rest, Con{alias, seen_al}, bk))))
-def b5k_load_imports(fuel: Nat, reqs: List<&2, ImpReq>, +seen: List<&2, String>, +bk: Book, +is_o2: Bool, +check_only: Bool, +out_path: String) -> IO(Unit):
-  match fuel reqs:
-    case 0n _: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, b5k_check(bk)))
-    case _ Nil{}: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, b5k_check(bk)))
-    case 1n++p Con{ImpReq{dir, +rel, +alias}, +rest}:
-      +full = b5k_imp_full(dir, rel)
-      b5k_if_io(Bool.not(String.ends_with(rel, ".bend")),
-        _ => b5k_die("import: expected a .bend file: " ++ rel),
-        _ => b5k_if_io(b5k_chk_str_match(False{}, seen, alias),
-          _ => b5k_load_imports(p, rest, seen, bk, is_o2, check_only, out_path),
-          _ => IO.bind(B5kIoRes<String>, Unit, b5k_read_file(full), r => b5k_io_bind(String, r, +src =>
-            b5k_parse_bind(b5k_parse(String.reverse(String.reverse(src)), b5k_book_syms(bk)), imp_bk =>
-              b5k_load_imports(p, b5k_list_app(ImpReq, b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(full), String.reverse(String.reverse(src)), Nil{}), rest), Con{alias, seen}, b5k_merge_imp_book(alias, imp_bk, bk), is_o2, check_only, out_path))))))
+        b5k_check_top_imps(has_base, rest, Con{alias, seen_al}, bk))))
 def b5k_check_base_shadow_defs(+syms: SymTab, +ts: List<&2, TypeDef>, ds: List<&2, Def>) -> String:
   match ds:
     case Nil{}: ""
@@ -283,12 +277,41 @@ def b5k_check_base_shadow_defs(+syms: SymTab, +ts: List<&2, TypeDef>, ds: List<&
 def b5k_check_base_shadow(has_base: Bool, bk: Book) -> String:
   Book{ts, ds, _, syms} = bk
   Bool.pick(String, has_base, b5k_check_base_shadow_defs(syms, ts, ds), "")
+def b5k_check_alias_shadow_defs(+msyms: SymTab, +syms: SymTab, +ts: List<&2, TypeDef>, ds: List<&2, Def>) -> String:
+  match ds:
+    case Nil{}: ""
+    case Con{Def{s, _, _, _, _, _}, t}:
+      +nm = symtab_name(syms, s)
+      used = b5k_chk_is_some(U32, symtab_lookup(msyms, nm))
+      bad = Bool.and(used, b5k_chk_is_reserved_def(syms, ts, nm))
+      Bool.pick(String, bad, "import: alias shadows Base declaration: " ++ nm, b5k_check_alias_shadow_defs(msyms, syms, ts, t))
+def b5k_check_alias_shadow(msyms: SymTab, bk: Book) -> String:
+  Book{ts, ds, _, syms} = bk
+  b5k_check_alias_shadow_defs(msyms, syms, ts, ds)
+def b5k_load_imports(fuel: Nat, reqs: List<&2, ImpReq>, +seen: List<&2, String>, +bk: Book, +has_base: Bool, +is_o2: Bool, +check_only: Bool, +out_path: String) -> IO(Unit):
+  match fuel reqs:
+    case 0n _: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, b5k_check_ex(has_base, bk)))
+    case _ Nil{}: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, b5k_check_ex(has_base, bk)))
+    case 1n++p Con{ImpReq{dir, +rel, +alias}, +rest}:
+      +full = b5k_imp_full(dir, rel)
+      b5k_if_io(Bool.not(String.ends_with(rel, ".bend")),
+        _ => b5k_die("import: expected a .bend file: " ++ rel),
+        _ => b5k_if_io(b5k_chk_str_match(False{}, seen, alias),
+          _ => b5k_load_imports(p, rest, seen, bk, has_base, is_o2, check_only, out_path),
+          _ => IO.bind(B5kIoRes<String>, Unit, b5k_read_file(full), r => b5k_io_bind(String, r, +src =>
+            b5k_parse_bind(b5k_parse(String.reverse(String.reverse(src)), b5k_book_syms(bk)), +imp_bk =>
+              b5k_if_io(String.is_empty(b5k_check_base_shadow(b5k_has_base_go(U32.to_nat(2048), src), imp_bk)),
+                _ => b5k_if_io(String.is_empty(b5k_check_alias_shadow(b5k_book_syms(bk), b5k_merge_imp_book(alias, imp_bk, Book{Nil{}, Nil{}, Nil{}, b5k_book_syms(imp_bk)}))),
+                  _ => b5k_load_imports(p, b5k_list_app(ImpReq, b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(full), String.reverse(String.reverse(src)), Nil{}), rest), Con{alias, seen}, b5k_merge_imp_book(alias, imp_bk, bk), Bool.or(has_base, b5k_has_base_go(U32.to_nat(2048), src)), is_o2, check_only, out_path),
+                  _ => b5k_die("import: alias shadows Base declaration: " ++ alias)),
+                _ => b5k_die(b5k_check_base_shadow(b5k_has_base_go(U32.to_nat(2048), src), imp_bk))))))))
 def b5k_run_src_k(is_o2: Bool, check_only: Bool, src_path: String, out_path: String, +src2: String, +bk: Book) -> IO(Unit):
   +reqs = b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(src_path), src2, Nil{})
-  +berr = b5k_check_base_shadow(String.contains(src2, "import Base"), bk)
-  +ierr = Bool.pick(String, String.is_empty(berr), b5k_check_top_imps(reqs, Nil{}, bk), berr)
+  +has_base = b5k_has_base_go(U32.to_nat(2048), src2)
+  +berr = b5k_check_base_shadow(has_base, bk)
+  +ierr = Bool.pick(String, String.is_empty(berr), b5k_check_top_imps(has_base, reqs, Nil{}, bk), berr)
   b5k_if_io(String.is_empty(ierr),
-    _ => b5k_load_imports(32n, reqs, Nil{}, bk, is_o2, check_only, out_path),
+    _ => b5k_load_imports(32n, reqs, Nil{}, bk, has_base, is_o2, check_only, out_path),
     _ => b5k_die(ierr))
 def b5k_run_src(is_o2: Bool, check_only: Bool, src_path: String, out_path: String, +src2: String) -> IO(Unit):
   b5k_parse_bind(b5k_parse(src2, symtab_new()), bk => b5k_run_src_k(is_o2, check_only, src_path, out_path, src2, bk))

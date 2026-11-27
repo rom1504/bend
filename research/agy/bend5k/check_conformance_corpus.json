@@ -916,6 +916,216 @@
       "category": "dependent_proof",
       "expect_upstream": "accept",
       "code": "import Base\ndef idb(b: Bool) -> Bool:\n  b\nlaw ok:\n  for b: Bool\n  {idb(b) == b : Bool}\ndef ok(b):\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_parse_glued_plus",
+      "group": "l20_soundness_neg",
+      "category": "parse_lexer",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef g(y: U32) -> U32:\n  y\ndef add(x: U32, y: U32) -> U32:\n  x+g(y)\ndef main() -> U32:\n  add(1, 2)\n"
+    },
+    {
+      "id": "l20_neg_parse_hex_literal",
+      "group": "l20_soundness_neg",
+      "category": "parse_lexer",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> U32:\n  0x10\n"
+    },
+    {
+      "id": "l20_neg_parse_invalid_escape",
+      "group": "l20_soundness_neg",
+      "category": "parse_lexer",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> String:\n  \"\\q\"\n"
+    },
+    {
+      "id": "l20_neg_parse_u32_overflow",
+      "group": "l20_soundness_neg",
+      "category": "parse_lexer",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> U32:\n  4294967296\n"
+    },
+    {
+      "id": "l20_neg_parse_bare_caret",
+      "group": "l20_soundness_neg",
+      "category": "parse_lexer",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> U32:\n  (1 ^ 2 : U32)\n"
+    },
+    {
+      "id": "l20_neg_parse_unary_minus",
+      "group": "l20_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> U32:\n  -1\n"
+    },
+    {
+      "id": "l20_neg_parse_empty_pat",
+      "group": "l20_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef f(u: Unit) -> U32:\n  match u:\n    case (): 0\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_parse_inline_block",
+      "group": "l20_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> U32:\n  { x = 1; x }\n"
+    },
+    {
+      "id": "l20_neg_parse_type_arg_parens",
+      "group": "l20_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(r: Maybe<U32 & U32>) -> U32:\n  0\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_parse_nat_succ_u32",
+      "group": "l20_soundness_neg",
+      "category": "parse_lexer",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> Nat:\n  1n+5\n"
+    },
+    {
+      "id": "l20_neg_flatten_multi_scrut_nontotal",
+      "group": "l20_soundness_neg",
+      "category": "flatten_exhaustiveness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(a: Bool, b: Bool, c: Bool) -> U32:\n  match a b c:\n    case True{} _ _: 1\n    case False{} True{} _: 2\n    case False{} False{} True{}: 3\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_flatten_ctor_call_syntax",
+      "group": "l20_soundness_neg",
+      "category": "flatten_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad() -> Maybe<U32>:\n  Some(1)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_import_no_base_num",
+      "group": "l20_soundness_neg",
+      "category": "import_hygiene",
+      "expect_upstream": "reject",
+      "code": "type T is Data:\n  Mk{}\ndef main() -> T:\n  0\n"
+    },
+    {
+      "id": "l20_neg_comptime_capture",
+      "group": "l20_soundness_neg",
+      "category": "comptime_soundness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef f(~x: U32) -> U32:\n  x\ndef bad(y: U32) -> U32:\n  f(~y)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_comptime_grow",
+      "group": "l20_soundness_neg",
+      "category": "comptime_soundness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef grow(~n: Nat) -> Nat:\n  grow(~1n+n)\ndef main() -> Nat:\n  grow(~0n)\n"
+    },
+    {
+      "id": "l20_neg_comptime_base_tilde",
+      "group": "l20_soundness_neg",
+      "category": "comptime_soundness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> Nat:\n  Nat.add(~1n, 2n)\n"
+    },
+    {
+      "id": "l20_neg_grade_type_to_data",
+      "group": "l20_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(T: Type) -> Data:\n  T\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_grade_local_mismatch",
+      "group": "l20_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Bad<a: Quant, b: Quant, x: Kind(b)> is Kind(a):\n  Mk{v: x}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_halt_escaping_self",
+      "group": "l20_soundness_neg",
+      "category": "halt_termination",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef loop(n: Nat) -> Nat -> Nat:\n  loop\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_halt_field_order",
+      "group": "l20_soundness_neg",
+      "category": "halt_termination",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef f(a: Nat, b: Nat) -> Nat:\n  match a b:\n    case 0n _: 0n\n    case 1n+p q: f(q, p)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_proof_no_funext",
+      "group": "l20_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\nlaw bad:\n  {(b => b) == (b => b) : Bool -> Bool}\ndef bad():\n  b => {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_check_fits_adt_invar",
+      "group": "l20_soundness_neg",
+      "category": "dependent_conversion",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Box<A: Type> is Type:\n  Mk{x: A}\ndef bad(b: Box<Data>) -> Box<Type>:\n  b\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_check_hoas_alpha",
+      "group": "l20_soundness_neg",
+      "category": "dependent_conversion",
+      "expect_upstream": "reject",
+      "code": "import Base\nlaw bad:\n  {(x => y => x) == (x => y => y) : U32 -> U32 -> U32}\ndef bad():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_check_glam_mat_missing",
+      "group": "l20_soundness_neg",
+      "category": "match_soundness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad() -> Bool -> U32:\n  case True{}: 1\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_neg_check_erased_binder_use",
+      "group": "l20_soundness_neg",
+      "category": "erasure_soundness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad() -> (-x: U32) -> U32:\n  -x => x\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_pos_string_literal_descends",
+      "group": "l20_soundness_pos",
+      "category": "halt_termination",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef strip(s: String) -> String:\n  match s:\n    case \"ab\": \"\"\n    case SCon{_, t}: strip(t)\n    case SNil{}: \"\"\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l20_pos_closure_match_lambda",
+      "group": "l20_soundness_pos",
+      "category": "higher_order",
+      "expect_upstream": "accept",
+      "code": "import Base\nlaw run:\n  (Nat -> U32) -> U32\ndef run():\n  f => f(3n)\ndef main() -> U32:\n  run(\\{Zero: 9; n => U32.add(U32.from_nat(n), 100)})\n"
+    },
+    {
+      "id": "l20_pos_let_alias_descent",
+      "group": "l20_soundness_pos",
+      "category": "halt_termination",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef walk(n: Nat, +k: U32) -> U32:\n  kk = k\n  match n:\n    case 0n: kk\n    case 1n+p: walk(p, kk)\ndef main() -> U32:\n  walk(3n, 7)\n"
+    },
+    {
+      "id": "l20_pos_dotted_bitwise",
+      "group": "l20_soundness_pos",
+      "category": "parse_lexer",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef main() -> U32:\n  a = (1 .&. 3 : U32)\n  b = (a .|. 2 : U32)\n  (b .^. 1 : U32)\n"
+    },
+    {
+      "id": "l20_pos_multi_scrut_total",
+      "group": "l20_soundness_pos",
+      "category": "flatten_exhaustiveness",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef f(a: Bool, b: Bool, c: Bool) -> U32:\n  match a b c:\n    case True{} _ _: 1\n    case False{} True{} _: 2\n    case False{} False{} True{}: 3\n    case False{} False{} False{}: 4\ndef main() -> U32:\n  f(False{}, False{}, False{})\n"
     }
   ]
 }

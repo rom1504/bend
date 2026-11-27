@@ -67,29 +67,45 @@ def ra_vec_get_q(-A: Data, d: Nat, +idx: U32, defv: A, t: RaVec<A>, q: U32) -> A
     case 1n+p RVNode{_, _, c2, _} 2: ra_vec_get_q(A, p, U32.shrn(idx, 2n), defv, c2, U32.and(U32.shrn(idx, 2n), 3))
     case 1n+p RVNode{_, _, _, c3} _: ra_vec_get_q(A, p, U32.shrn(idx, 2n), defv, c3, U32.and(U32.shrn(idx, 2n), 3))
 def ra_vec_get(-A: Data, d: Nat, defv: A, +idx: U32, t: RaVec<A>) -> A: ra_vec_get_q(A, d, idx, defv, t, U32.and(idx, 3))
+# Fast Hash-Bucketed String->U32 Map (14-bit DJB2 hash, depth 7 = 16,384 buckets)
+type StrEnt is Data:
+  StrEnt{key: String, val: U32}
+def str_hash_go(s: String, +h: U32) -> U32:
+  match s:
+    case SNil{}: h
+    case SCon{c, t}: str_hash_go(t, U32.xor(U32.mul(h, 33), Char.to_u32(c)))
+def str_hash(s: String) -> U32: U32.and(str_hash_go(s, 5381), 16383)
+def strmap_find_go(xs: List<&2, StrEnt>, hit: Bool, v: U32, +k: String) -> U32:
+  match xs hit:
+    case _ True{}: v
+    case Nil{} False{}: 0
+    case Con{StrEnt{ek, ev}, t} False{}: strmap_find_go(t, String.eq(ek, k), ev, k)
+def strmap_get(m: RaVec<List<&2, StrEnt>>, +k: String) -> U32:
+  strmap_find_go(ra_vec_get(List<&2, StrEnt>, 7n, Nil{}, str_hash(k), m), False{}, 0, k)
+def strmap_set(+m: RaVec<List<&2, StrEnt>>, +k: String, v: U32) -> RaVec<List<&2, StrEnt>>:
+  +h = str_hash(k)
+  ra_vec_set(List<&2, StrEnt>, 7n, h, Con{StrEnt{k, v}, ra_vec_get(List<&2, StrEnt>, 7n, Nil{}, h, m)}, m)
 # String Interner (SymTab: String <-> U32)
 type SymTab is Data:
-  SymTab{next: U32, by_name: Map<&2, U32>, by_id: RaVec<String>}
+  SymTab{next: U32, by_name: RaVec<List<&2, StrEnt>>, by_id: RaVec<String>}
 type SymRes is Data:
   SymRes{tab: SymTab, id: U32}
-def symtab_new() -> SymTab: SymTab{0, Map.new(&2, U32), RVEmpty{}}
+def symtab_new() -> SymTab: SymTab{0, RVEmpty{}, RVEmpty{}}
 def symtab_name(st: SymTab, +id: U32) -> String:
   SymTab{_, _, by_id} = st
   ra_vec_get(String, 8n, "", id, by_id)
-def symtab_intern_got(+next: U32, by_id: RaVec<String>, +name: String, got: Map<&2, U32> & U32) -> SymRes:
-  (m1, found) = got
+def symtab_intern_got(+next: U32, by_name: RaVec<List<&2, StrEnt>>, by_id: RaVec<String>, +name: String, found: U32) -> SymRes:
   match found:
-    case 0: SymRes{SymTab{U32.add(next, 1), Map.set(&2, U32, m1, name, U32.add(next, 1)), ra_vec_set(String, 8n, next, name, by_id)}, next}
-    case f: SymRes{SymTab{next, m1, by_id}, U32.sub(f, 1)}
+    case 0: SymRes{SymTab{U32.add(next, 1), strmap_set(by_name, name, U32.add(next, 1)), ra_vec_set(String, 8n, next, name, by_id)}, next}
+    case f: SymRes{SymTab{next, by_name, by_id}, U32.sub(f, 1)}
 def symtab_intern(st: SymTab, +name: String) -> SymRes:
-  SymTab{next, by_name, by_id} = st
-  symtab_intern_got(next, by_id, name, Map.get(U32, 0, by_name, name))
-def symtab_lookup_got(got: Map<&2, U32> & U32) -> Maybe<&2, U32>:
-  (_, +found) = got
+  SymTab{next, +by_name, by_id} = st
+  symtab_intern_got(next, by_name, by_id, name, strmap_get(by_name, name))
+def symtab_lookup_got(+found: U32) -> Maybe<&2, U32>:
   Bool.pick(Maybe<&2, U32>, U32.is_zero(found), None{}, Some{U32.sub(found, 1)})
 def symtab_lookup(st: SymTab, name: String) -> Maybe<&2, U32>:
   SymTab{_, by_name, _} = st
-  symtab_lookup_got(Map.get(U32, 0, by_name, name))
+  symtab_lookup_got(strmap_get(by_name, name))
 # Growable Byte Buffer (ByteBuf)
 type ByteBuf is Data:
   ByteBuf{len: U32, rev: List<&2, U32>}

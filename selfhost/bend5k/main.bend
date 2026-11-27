@@ -24,10 +24,10 @@ def b5k_write_file(+path: String, bs: List<&2, U32>) -> IO(B5kIoRes<Unit>): IO.b
 def b5k_compile_lower(is_o2: Bool, lr: LowerRes) -> B5kIoRes<List<&2, U32>>:
   match is_o2 lr:
     case _ LowerRes{False{}, err, _}: B5kErr{err}
-    case False{} LowerRes{True{}, _, +prog}: B5kOk{bb_to_bytes(b5k_emit_elf(prog, b5k_codegen(prog)))}
+    case False{} LowerRes{True{}, _, +prog}: B5kOk{b5k_emit_elf_bytes(prog, b5k_codegen(prog))}
     case True{} LowerRes{True{}, _, prog}:
       +prog2 = b5k_opt(prog)
-      B5kOk{bb_to_bytes(b5k_emit_elf(prog2, b5k_peep(b5k_codegen_o2(prog2))))}
+      B5kOk{b5k_emit_elf_bytes(prog2, b5k_peep(b5k_codegen_o2(prog2)))}
 def b5k_compile_check(is_o2: Bool, check_only: Bool, cr: CheckRes) -> B5kIoRes<List<&2, U32>>:
   match check_only cr:
     case _ CheckRes{False{}, err, _}: B5kErr{err}
@@ -267,16 +267,22 @@ def b5k_check_top_imps(+has_base: Bool, reqs: List<&2, ImpReq>, +seen_al: List<&
       Bool.pick(String, bad_dup, "import: duplicate alias: " ++ alias,
       Bool.pick(String, bad_col, "import: declaration collides with alias: " ++ alias,
         b5k_check_top_imps(has_base, rest, Con{alias, seen_al}, bk))))
-def b5k_check_base_shadow_defs(+syms: SymTab, +ts: List<&2, TypeDef>, ds: List<&2, Def>) -> String:
+def b5k_is_res_fast(+no_nat: Bool, +no_u32: Bool, +nm: String) -> Bool:
+  match no_nat no_u32:
+    case False{} False{}: False{}
+    case True{} False{}: Bool.or(String.eq(nm, "Nat.add"), Bool.or(String.eq(nm, "Nat.sub"), String.eq(nm, "Nat.mul")))
+    case False{} True{}: String.eq(nm, "U32")
+    case True{} True{}: Bool.or(String.eq(nm, "U32"), Bool.or(String.eq(nm, "Nat.add"), Bool.or(String.eq(nm, "Nat.sub"), String.eq(nm, "Nat.mul"))))
+def b5k_check_base_shadow_defs(+syms: SymTab, +no_nat: Bool, +no_u32: Bool, ds: List<&2, Def>) -> String:
   match ds:
     case Nil{}: ""
     case Con{Def{s, _, _, _, _, _}, t}:
       +nm = symtab_name(syms, s)
-      bad = b5k_chk_is_reserved_def(syms, ts, nm)
-      Bool.pick(String, bad, "check: duplicate declaration: " ++ nm, b5k_check_base_shadow_defs(syms, ts, t))
+      opt_if(String, b5k_is_res_fast(no_nat, no_u32, nm), _ => "check: duplicate declaration: " ++ nm, _ => b5k_check_base_shadow_defs(syms, no_nat, no_u32, t))
 def b5k_check_base_shadow(has_base: Bool, bk: Book) -> String:
-  Book{ts, ds, _, syms} = bk
-  Bool.pick(String, has_base, b5k_check_base_shadow_defs(syms, ts, ds), "")
+  match has_base bk:
+    case False{} _: ""
+    case True{} Book{+ts, ds, _, +syms}: b5k_check_base_shadow_defs(syms, Bool.not(b5k_chk_has_tdef(syms, ts, "Nat")), Bool.not(b5k_chk_has_tdef(syms, ts, "U32")), ds)
 def b5k_check_alias_shadow_defs(+msyms: SymTab, +syms: SymTab, +ts: List<&2, TypeDef>, ds: List<&2, Def>) -> String:
   match ds:
     case Nil{}: ""

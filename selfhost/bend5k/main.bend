@@ -21,18 +21,34 @@ def b5k_read_sized(path: String, got: File & Result<&1, &1, U32 & String, U32>) 
     case (f, Done{sz}): IO.bind(File & Result<&1, &1, U32 & String, String>, B5kIoRes<String>, File.read(f, U32.add(sz, 1)), r => b5k_close_got(String, "read", path, r))
 def b5k_read_file(+path: String) -> IO(B5kIoRes<String>): IO.bind(Result<&1, &1, U32 & String, File>, B5kIoRes<String>, File.open(path, "r"), r => b5k_opened(String, path, f => IO.bind(File & Result<&1, &1, U32 & String, U32>, B5kIoRes<String>, File.size(f), r2 => b5k_read_sized(path, r2)), r))
 def b5k_write_file(+path: String, bs: List<&2, U32>) -> IO(B5kIoRes<Unit>): IO.bind(Result<&1, &1, U32 & String, File>, B5kIoRes<Unit>, File.open(path, "w"), r => b5k_opened(Unit, path, f => IO.bind(File & Result<&1, &1, U32 & String, Unit>, B5kIoRes<Unit>, File.write_bytes(f, bs), r2 => b5k_close_got(Unit, "write", path, r2)), r))
-def b5k_compile_lower(is_o2: Bool, lr: LowerRes) -> B5kIoRes<List<&2, U32>>:
+type StemMap is Data:
+  StemMap{al: String, st: String}
+def b5k_rw_sname_one(stems: List<&2, StemMap>, +s: String) -> String:
+  match stems:
+    case Nil{}: s
+    case Con{StemMap{+al, +st}, t}:
+      opt_if(String, String.starts_with(s, al),
+        _ => st ++ String.drop(s, String.length(al)),
+        _ => b5k_rw_sname_one(t, s))
+def b5k_rw_snames(+stems: List<&2, StemMap>, xs: List<&2, String>) -> List<&2, String>:
+  match xs:
+    case Nil{}: Nil{}
+    case Con{h, t}: Con{b5k_rw_sname_one(stems, h), b5k_rw_snames(stems, t)}
+def b5k_rw_prog_snames(stems: List<&2, StemMap>, prog: IrProg) -> IrProg:
+  IrProg{fns, ctors, stats, mfid, mpure, effs, sdesc, snames} = prog
+  IrProg{fns, ctors, stats, mfid, mpure, effs, sdesc, b5k_rw_snames(stems, snames)}
+def b5k_compile_lower(is_o2: Bool, stems: List<&2, StemMap>, lr: LowerRes) -> B5kIoRes<List<&2, U32>>:
   match is_o2 lr:
     case _ LowerRes{False{}, err, _}: B5kErr{err}
-    case False{} LowerRes{True{}, _, +prog}: B5kOk{bb_to_bytes(b5k_emit_elf(prog, b5k_codegen(prog)))}
-    case True{} LowerRes{True{}, _, prog}:
-      +prog2 = b5k_opt(prog)
+    case False{} LowerRes{True{}, _, prog0}: (+prog = b5k_rw_prog_snames(stems, prog0); B5kOk{bb_to_bytes(b5k_emit_elf(prog, b5k_codegen(prog)))})
+    case True{} LowerRes{True{}, _, prog0}:
+      +prog2 = b5k_opt(b5k_rw_prog_snames(stems, prog0))
       B5kOk{bb_to_bytes(b5k_emit_elf(prog2, b5k_peep(b5k_codegen_o2(prog2))))}
-def b5k_compile_check(is_o2: Bool, check_only: Bool, cr: CheckRes) -> B5kIoRes<List<&2, U32>>:
+def b5k_compile_check(is_o2: Bool, check_only: Bool, stems: List<&2, StemMap>, cr: CheckRes) -> B5kIoRes<List<&2, U32>>:
   match check_only cr:
     case _ CheckRes{False{}, err, _}: B5kErr{err}
     case True{} CheckRes{True{}, _, _}: B5kOk{Nil{}}
-    case False{} CheckRes{True{}, _, book}: b5k_compile_lower(is_o2, b5k_lower(book))
+    case False{} CheckRes{True{}, _, book}: b5k_compile_lower(is_o2, stems, b5k_lower(book))
 def b5k_io_bind(-A: Data, res: B5kIoRes<A>, k: A -> IO(Unit)) -> IO(Unit):
   match res:
     case B5kErr{msg}: b5k_die(msg)
@@ -49,7 +65,7 @@ def b5k_run_res(check_only: Bool, out_path: String, res: B5kIoRes<List<&2, U32>>
 type ImpReq is Data:
   ImpReq{dir: String, rel: String, alias: String}
 type RemapTab is Data:
-  RemapTab{syms: SymTab, rmap: RaVec<Maybe<&2, U32>>}
+  RemapTab{syms: SymTab, rmap: RaVec<Maybe<&2, U32>>, crmap: RaVec<Maybe<&2, U32>>}
 def b5k_slash(take: Bool, s: String, acc: String) -> String:
   match take s:
     case _ SNil{}: acc
@@ -98,28 +114,29 @@ def b5k_scan_imp_go(fuel: Nat, +dir: String, +s: String, +acc: List<&2, ImpReq>)
     case 0n _: b5k_list_rev(ImpReq, acc)
     case _ SNil{}: b5k_list_rev(ImpReq, acc)
     case 1n+p _: b5k_scan_imp_go(p, dir, b5k_skip_line(s), opt_if(List<&2, ImpReq>, String.starts_with(s, "import "), _ => b5k_imp_line(dir, b5k_take_word(b5k_skip_sp(String.drop(s, 7n)), False{}, Chr{0}, SNil{}), acc), _ => acc))
-def b5k_rm_add_k(old: U32, rmap: RaVec<Maybe<&2, U32>>, sr: SymRes) -> RemapTab:
-  SymRes{syms2, nid} = sr
-  RemapTab{syms2, ct_set(U32, rmap, old, nid)}
-def b5k_rm_add(rt: RemapTab, +alias: String, +old: U32) -> RemapTab:
-  RemapTab{+syms, rmap} = rt
-  b5k_rm_add_k(old, rmap, symtab_intern(syms, alias ++ "." ++ symtab_name(syms, old)))
+def b5k_rm_add_k(is_c: Bool, old: U32, rmap: RaVec<Maybe<&2, U32>>, crmap: RaVec<Maybe<&2, U32>>, sr: SymRes) -> RemapTab:
+  match is_c sr:
+    case True{} SymRes{syms2, nid}: RemapTab{syms2, rmap, ct_set(U32, crmap, old, nid)}
+    case False{} SymRes{syms2, nid}: RemapTab{syms2, ct_set(U32, rmap, old, nid), crmap}
+def b5k_rm_add(is_c: Bool, rt: RemapTab, +alias: String, +old: U32) -> RemapTab:
+  RemapTab{+syms, rmap, crmap} = rt
+  b5k_rm_add_k(is_c, old, rmap, crmap, symtab_intern(syms, alias ++ "." ++ symtab_name(syms, old)))
 def b5k_rm_ctors(cs: List<&2, CtorDef>, +alias: String, rt: RemapTab) -> RemapTab:
   match cs:
     case Nil{}: rt
-    case Con{CtorDef{csym, _, _}, t}: b5k_rm_ctors(t, alias, b5k_rm_add(rt, alias, csym))
+    case Con{CtorDef{csym, _, _}, t}: b5k_rm_ctors(t, alias, b5k_rm_add(True{}, rt, alias, csym))
 def b5k_rm_types(ts: List<&2, TypeDef>, +alias: String, rt: RemapTab) -> RemapTab:
   match ts:
     case Nil{}: rt
-    case Con{TypeDef{tsym, _, _, cs}, t}: b5k_rm_types(t, alias, b5k_rm_ctors(cs, alias, b5k_rm_add(rt, alias, tsym)))
+    case Con{TypeDef{tsym, _, _, cs}, t}: b5k_rm_types(t, alias, b5k_rm_ctors(cs, alias, b5k_rm_add(False{}, rt, alias, tsym)))
 def b5k_rm_defs(ds: List<&2, Def>, +alias: String, rt: RemapTab) -> RemapTab:
   match ds:
     case Nil{}: rt
-    case Con{Def{dsym, _, _, _, _, _}, t}: b5k_rm_defs(t, alias, b5k_rm_add(rt, alias, dsym))
+    case Con{Def{dsym, _, _, _, _, _}, t}: b5k_rm_defs(t, alias, b5k_rm_add(False{}, rt, alias, dsym))
 def b5k_rm_laws(ls: List<&2, LawDef>, +alias: String, rt: RemapTab) -> RemapTab:
   match ls:
     case Nil{}: rt
-    case Con{LawDef{lsym, _, _}, t}: b5k_rm_laws(t, alias, b5k_rm_add(rt, alias, lsym))
+    case Con{LawDef{lsym, _, _}, t}: b5k_rm_laws(t, alias, b5k_rm_add(False{}, rt, alias, lsym))
 def b5k_rm_sym(rmap: RaVec<Maybe<&2, U32>>, +s: U32) -> U32: Maybe.default(&2, U32, ct_get(U32, rmap, s), s)
 def b5k_rm_sym_ub(rmap: RaVec<Maybe<&2, U32>>, bnd: List<&2, U32>, +s: U32) -> U32: Bool.pick(U32, b5k_chk_u32_mem(bnd, s), s, b5k_rm_sym(rmap, s))
 def b5k_cons_plist(h: Pat, p: Pat) -> Pat:
@@ -174,59 +191,59 @@ def b5k_cons_do(s: Stmt, e: Expr) -> Expr:
   match e:
     case EDo{ss}: EDo{Con{s, ss}}
     case _: EDo{Con{s, Nil{}}}
-def b5k_rm_e(+fuel: Nat, +rmap: RaVec<Maybe<&2, U32>>, +bnd: List<&2, U32>, e: Expr) -> Expr:
+def b5k_rm_e(+fuel: Nat, +rmap: RaVec<Maybe<&2, U32>>, +crmap: RaVec<Maybe<&2, U32>>, +bnd: List<&2, U32>, e: Expr) -> Expr:
   match fuel e:
     case 0n x: x
     case 1n+_ EVar{s}: EVar{b5k_rm_sym_ub(rmap, bnd, s)}
-    case 1n+_ ERef{s}: ERef{b5k_rm_sym_ub(rmap, bnd, s)}
-    case 1n++f EApp{fn, args}: EApp{b5k_rm_e(f, rmap, bnd, fn), b5k_un_list(b5k_rm_e(f, rmap, bnd, EList{args}))}
-    case 1n++f ELam{Nil{}, body}: ELam{Nil{}, b5k_rm_e(f, rmap, bnd, body)}
-    case 1n++f ELam{Con{Param{+s, ty, er, dp}, ps}, body}: b5k_cons_lam(Param{s, opt_maybe(Expr, Maybe<&2, Expr>, ty, _ => None{}, x => Some{b5k_rm_e(f, rmap, bnd, x)}), er, dp}, b5k_rm_e(f, rmap, Con{s, bnd}, ELam{ps, body}))
-    case 1n++f ELet{+pat, val, body}: ELet{b5k_rm_pat(64n, rmap, pat), b5k_rm_e(f, rmap, bnd, val), b5k_rm_e(f, rmap, b5k_pat_syms(32n, [pat], bnd), body)}
-    case 1n++f EMat{sc, Nil{}}: EMat{b5k_un_list(b5k_rm_e(f, rmap, bnd, EList{sc})), Nil{}}
-    case 1n++f EMat{sc, Con{Case{+pats, body}, cs}}: b5k_cons_mat(Case{b5k_un_plist(b5k_rm_pat(64n, rmap, PList{pats})), b5k_rm_e(f, rmap, b5k_pat_syms(32n, pats, bnd), body)}, b5k_rm_e(f, rmap, bnd, EMat{sc, cs}))
-    case 1n++f ECtr{s, fs}: ECtr{b5k_rm_sym(rmap, s), b5k_un_list(b5k_rm_e(f, rmap, bnd, EList{fs}))}
-    case 1n++f EAnn{v, ty}: EAnn{b5k_rm_e(f, rmap, bnd, v), b5k_rm_e(f, rmap, bnd, ty)}
-    case 1n++f EAll{Param{+s, ty, er, dp}, body}: EAll{Param{s, opt_maybe(Expr, Maybe<&2, Expr>, ty, _ => None{}, x => Some{b5k_rm_e(f, rmap, bnd, x)}), er, dp}, b5k_rm_e(f, rmap, Con{s, bnd}, body)}
-    case 1n++f EEq{a, b}: EEq{b5k_rm_e(f, rmap, bnd, a), b5k_rm_e(f, rmap, bnd, b)}
-    case 1n++f EArrNew{es}: EArrNew{b5k_un_list(b5k_rm_e(f, rmap, bnd, EList{es}))}
-    case 1n++f EArrGet{a, i}: EArrGet{b5k_rm_e(f, rmap, bnd, a), b5k_rm_e(f, rmap, bnd, i)}
-    case 1n++f EArrSet{a, i, v}: EArrSet{b5k_rm_e(f, rmap, bnd, a), b5k_rm_e(f, rmap, bnd, i), b5k_rm_e(f, rmap, bnd, v)}
-    case 1n++f EOp{op, a, b}: EOp{op, b5k_rm_e(f, rmap, bnd, a), b5k_rm_e(f, rmap, bnd, b)}
-    case 1n++f EUnOp{op, a}: EUnOp{op, b5k_rm_e(f, rmap, bnd, a)}
-    case 1n++f EIf{c, t, el}: EIf{b5k_rm_e(f, rmap, bnd, c), b5k_rm_e(f, rmap, bnd, t), b5k_rm_e(f, rmap, bnd, el)}
-    case 1n++f EDo{Con{StBind{+p, v}, ss}}: b5k_cons_do(StBind{b5k_rm_pat(64n, rmap, p), b5k_rm_e(f, rmap, bnd, v)}, b5k_rm_e(f, rmap, b5k_pat_syms(32n, [p], bnd), EDo{ss}))
-    case 1n++f EDo{Con{StLet{+p, v}, ss}}: b5k_cons_do(StLet{b5k_rm_pat(64n, rmap, p), b5k_rm_e(f, rmap, bnd, v)}, b5k_rm_e(f, rmap, b5k_pat_syms(32n, [p], bnd), EDo{ss}))
-    case 1n++f EDo{Con{StExpr{v}, ss}}: b5k_cons_do(StExpr{b5k_rm_e(f, rmap, bnd, v)}, b5k_rm_e(f, rmap, bnd, EDo{ss}))
-    case 1n++f EDo{Con{StRet{v}, ss}}: b5k_cons_do(StRet{b5k_rm_e(f, rmap, bnd, v)}, b5k_rm_e(f, rmap, bnd, EDo{ss}))
-    case 1n++f EPair{a, b}: EPair{b5k_rm_e(f, rmap, bnd, a), b5k_rm_e(f, rmap, bnd, b)}
-    case 1n++f EList{Con{h, t}}: b5k_cons_list(b5k_rm_e(f, rmap, bnd, h), b5k_rm_e(f, rmap, bnd, EList{t}))
+    case 1n+_ ERef{s}: ERef{b5k_rm_sym(crmap, s)}
+    case 1n++f EApp{fn, args}: EApp{b5k_rm_e(f, rmap, crmap, bnd, fn), b5k_un_list(b5k_rm_e(f, rmap, crmap, bnd, EList{args}))}
+    case 1n++f ELam{Nil{}, body}: ELam{Nil{}, b5k_rm_e(f, rmap, crmap, bnd, body)}
+    case 1n++f ELam{Con{Param{+s, ty, er, dp}, ps}, body}: b5k_cons_lam(Param{s, opt_maybe(Expr, Maybe<&2, Expr>, ty, _ => None{}, x => Some{b5k_rm_e(f, rmap, crmap, bnd, x)}), er, dp}, b5k_rm_e(f, rmap, crmap, Con{s, bnd}, ELam{ps, body}))
+    case 1n++f ELet{+pat, val, body}: ELet{b5k_rm_pat(64n, crmap, pat), b5k_rm_e(f, rmap, crmap, bnd, val), b5k_rm_e(f, rmap, crmap, b5k_pat_syms(32n, [pat], bnd), body)}
+    case 1n++f EMat{sc, Nil{}}: EMat{b5k_un_list(b5k_rm_e(f, rmap, crmap, bnd, EList{sc})), Nil{}}
+    case 1n++f EMat{sc, Con{Case{+pats, body}, cs}}: b5k_cons_mat(Case{b5k_un_plist(b5k_rm_pat(64n, crmap, PList{pats})), b5k_rm_e(f, rmap, crmap, b5k_pat_syms(32n, pats, bnd), body)}, b5k_rm_e(f, rmap, crmap, bnd, EMat{sc, cs}))
+    case 1n++f ECtr{s, fs}: ECtr{b5k_rm_sym(crmap, s), b5k_un_list(b5k_rm_e(f, rmap, crmap, bnd, EList{fs}))}
+    case 1n++f EAnn{v, ty}: EAnn{b5k_rm_e(f, rmap, crmap, bnd, v), b5k_rm_e(f, rmap, crmap, bnd, ty)}
+    case 1n++f EAll{Param{+s, ty, er, dp}, body}: EAll{Param{s, opt_maybe(Expr, Maybe<&2, Expr>, ty, _ => None{}, x => Some{b5k_rm_e(f, rmap, crmap, bnd, x)}), er, dp}, b5k_rm_e(f, rmap, crmap, Con{s, bnd}, body)}
+    case 1n++f EEq{a, b}: EEq{b5k_rm_e(f, rmap, crmap, bnd, a), b5k_rm_e(f, rmap, crmap, bnd, b)}
+    case 1n++f EArrNew{es}: EArrNew{b5k_un_list(b5k_rm_e(f, rmap, crmap, bnd, EList{es}))}
+    case 1n++f EArrGet{a, i}: EArrGet{b5k_rm_e(f, rmap, crmap, bnd, a), b5k_rm_e(f, rmap, crmap, bnd, i)}
+    case 1n++f EArrSet{a, i, v}: EArrSet{b5k_rm_e(f, rmap, crmap, bnd, a), b5k_rm_e(f, rmap, crmap, bnd, i), b5k_rm_e(f, rmap, crmap, bnd, v)}
+    case 1n++f EOp{op, a, b}: EOp{op, b5k_rm_e(f, rmap, crmap, bnd, a), b5k_rm_e(f, rmap, crmap, bnd, b)}
+    case 1n++f EUnOp{op, a}: EUnOp{op, b5k_rm_e(f, rmap, crmap, bnd, a)}
+    case 1n++f EIf{c, t, el}: EIf{b5k_rm_e(f, rmap, crmap, bnd, c), b5k_rm_e(f, rmap, crmap, bnd, t), b5k_rm_e(f, rmap, crmap, bnd, el)}
+    case 1n++f EDo{Con{StBind{+p, v}, ss}}: b5k_cons_do(StBind{b5k_rm_pat(64n, crmap, p), b5k_rm_e(f, rmap, crmap, bnd, v)}, b5k_rm_e(f, rmap, crmap, b5k_pat_syms(32n, [p], bnd), EDo{ss}))
+    case 1n++f EDo{Con{StLet{+p, v}, ss}}: b5k_cons_do(StLet{b5k_rm_pat(64n, crmap, p), b5k_rm_e(f, rmap, crmap, bnd, v)}, b5k_rm_e(f, rmap, crmap, b5k_pat_syms(32n, [p], bnd), EDo{ss}))
+    case 1n++f EDo{Con{StExpr{v}, ss}}: b5k_cons_do(StExpr{b5k_rm_e(f, rmap, crmap, bnd, v)}, b5k_rm_e(f, rmap, crmap, bnd, EDo{ss}))
+    case 1n++f EDo{Con{StRet{v}, ss}}: b5k_cons_do(StRet{b5k_rm_e(f, rmap, crmap, bnd, v)}, b5k_rm_e(f, rmap, crmap, bnd, EDo{ss}))
+    case 1n++f EPair{a, b}: EPair{b5k_rm_e(f, rmap, crmap, bnd, a), b5k_rm_e(f, rmap, crmap, bnd, b)}
+    case 1n++f EList{Con{h, t}}: b5k_cons_list(b5k_rm_e(f, rmap, crmap, bnd, h), b5k_rm_e(f, rmap, crmap, bnd, EList{t}))
     case 1n+_ x: x
-def b5k_rm_ctor_defs(+rmap: RaVec<Maybe<&2, U32>>, +bnd: List<&2, U32>, cs: List<&2, CtorDef>) -> List<&2, CtorDef>:
+def b5k_rm_ctor_defs(+rmap: RaVec<Maybe<&2, U32>>, +crmap: RaVec<Maybe<&2, U32>>, +bnd: List<&2, U32>, cs: List<&2, CtorDef>) -> List<&2, CtorDef>:
   match cs:
     case Nil{}: Nil{}
-    case Con{CtorDef{s, cid, fs}, t}: Con{CtorDef{b5k_rm_sym(rmap, s), cid, b5k_un_lam(b5k_rm_e(128n, rmap, bnd, ELam{fs, EHole{}}))}, b5k_rm_ctor_defs(rmap, bnd, t)}
-def b5k_rm_type_defs(+rmap: RaVec<Maybe<&2, U32>>, ts: List<&2, TypeDef>) -> List<&2, TypeDef>:
+    case Con{CtorDef{s, cid, fs}, t}: Con{CtorDef{b5k_rm_sym(crmap, s), cid, b5k_un_lam(b5k_rm_e(128n, rmap, crmap, bnd, ELam{fs, EHole{}}))}, b5k_rm_ctor_defs(rmap, crmap, bnd, t)}
+def b5k_rm_type_defs(+rmap: RaVec<Maybe<&2, U32>>, +crmap: RaVec<Maybe<&2, U32>>, ts: List<&2, TypeDef>) -> List<&2, TypeDef>:
   match ts:
     case Nil{}: Nil{}
-    case Con{TypeDef{s, +ps, is_d, cs}, t}: Con{TypeDef{b5k_rm_sym(rmap, s), b5k_un_lam(b5k_rm_e(128n, rmap, Nil{}, ELam{ps, EHole{}})), is_d, b5k_rm_ctor_defs(rmap, b5k_pm_syms(ps, Nil{}), cs)}, b5k_rm_type_defs(rmap, t)}
-def b5k_rm_def_list(+rmap: RaVec<Maybe<&2, U32>>, ds: List<&2, Def>) -> List<&2, Def>:
+    case Con{TypeDef{s, +ps, is_d, cs}, t}: Con{TypeDef{b5k_rm_sym(rmap, s), b5k_un_lam(b5k_rm_e(128n, rmap, crmap, Nil{}, ELam{ps, EHole{}})), is_d, b5k_rm_ctor_defs(rmap, crmap, b5k_pm_syms(ps, Nil{}), cs)}, b5k_rm_type_defs(rmap, crmap, t)}
+def b5k_rm_def_list(+rmap: RaVec<Maybe<&2, U32>>, +crmap: RaVec<Maybe<&2, U32>>, ds: List<&2, Def>) -> List<&2, Def>:
   match ds:
     case Nil{}: Nil{}
     case Con{Def{s, +ps, ret, body, is_i, ip}, t}:
       +bnd = b5k_pm_syms(ps, Nil{})
-      Con{Def{b5k_rm_sym(rmap, s), b5k_un_lam(b5k_rm_e(128n, rmap, Nil{}, ELam{ps, EHole{}})), opt_maybe(Expr, Maybe<&2, Expr>, ret, _ => None{}, x => Some{b5k_rm_e(128n, rmap, bnd, x)}), b5k_rm_e(U32.to_nat(512), rmap, bnd, body), is_i, ip}, b5k_rm_def_list(rmap, t)}
-def b5k_rm_law_list(+rmap: RaVec<Maybe<&2, U32>>, ls: List<&2, LawDef>) -> List<&2, LawDef>:
+      Con{Def{b5k_rm_sym(rmap, s), b5k_un_lam(b5k_rm_e(128n, rmap, crmap, Nil{}, ELam{ps, EHole{}})), opt_maybe(Expr, Maybe<&2, Expr>, ret, _ => None{}, x => Some{b5k_rm_e(128n, rmap, crmap, bnd, x)}), b5k_rm_e(U32.to_nat(512), rmap, crmap, bnd, body), is_i, ip}, b5k_rm_def_list(rmap, crmap, t)}
+def b5k_rm_law_list(+rmap: RaVec<Maybe<&2, U32>>, +crmap: RaVec<Maybe<&2, U32>>, ls: List<&2, LawDef>) -> List<&2, LawDef>:
   match ls:
     case Nil{}: Nil{}
-    case Con{LawDef{s, +ps, ret}, t}: Con{LawDef{b5k_rm_sym(rmap, s), b5k_un_lam(b5k_rm_e(128n, rmap, Nil{}, ELam{ps, EHole{}})), b5k_rm_e(128n, rmap, b5k_pm_syms(ps, Nil{}), ret)}, b5k_rm_law_list(rmap, t)}
+    case Con{LawDef{s, +ps, ret}, t}: Con{LawDef{b5k_rm_sym(rmap, s), b5k_un_lam(b5k_rm_e(128n, rmap, crmap, Nil{}, ELam{ps, EHole{}})), b5k_rm_e(128n, rmap, crmap, b5k_pm_syms(ps, Nil{}), ret)}, b5k_rm_law_list(rmap, crmap, t)}
 def b5k_merge_imp_k(its: List<&2, TypeDef>, ids: List<&2, Def>, ils: List<&2, LawDef>, mts: List<&2, TypeDef>, mds: List<&2, Def>, mls: List<&2, LawDef>, rt: RemapTab) -> Book:
-  RemapTab{syms3, +rmap} = rt
-  Book{b5k_list_app(TypeDef, b5k_rm_type_defs(rmap, its), mts), b5k_list_app(Def, b5k_rm_def_list(rmap, ids), mds), b5k_list_app(LawDef, b5k_rm_law_list(rmap, ils), mls), syms3}
+  RemapTab{syms3, +rmap, +crmap} = rt
+  Book{b5k_list_app(TypeDef, b5k_rm_type_defs(rmap, crmap, its), mts), b5k_list_app(Def, b5k_rm_def_list(rmap, crmap, ids), mds), b5k_list_app(LawDef, b5k_rm_law_list(rmap, crmap, ils), mls), syms3}
 def b5k_merge_imp_book(+alias: String, imp_bk: Book, main_bk: Book) -> Book:
   Book{+its, +ids, +ils, syms2} = imp_bk
   Book{mts, mds, mls, _} = main_bk
-  b5k_merge_imp_k(its, ids, ils, mts, mds, mls, b5k_rm_laws(ils, alias, b5k_rm_defs(ids, alias, b5k_rm_types(its, alias, RemapTab{syms2, RVEmpty{}}))))
+  b5k_merge_imp_k(its, ids, ils, mts, mds, mls, b5k_rm_laws(ils, alias, b5k_rm_defs(ids, alias, b5k_rm_types(its, alias, RemapTab{syms2, RVEmpty{}, RVEmpty{}}))))
 def b5k_parse_bind(pr: ParseRes, k: Book -> IO(Unit)) -> IO(Unit):
   match pr:
     case ParseRes{False{}, err, _}: b5k_die(err)
@@ -288,21 +305,21 @@ def b5k_check_alias_shadow_defs(+msyms: SymTab, +syms: SymTab, +ts: List<&2, Typ
 def b5k_check_alias_shadow(msyms: SymTab, bk: Book) -> String:
   Book{ts, ds, _, syms} = bk
   b5k_check_alias_shadow_defs(msyms, syms, ts, ds)
-def b5k_load_imports(fuel: Nat, reqs: List<&2, ImpReq>, +seen: List<&2, String>, +bk: Book, +has_base: Bool, +is_o2: Bool, +check_only: Bool, +out_path: String) -> IO(Unit):
+def b5k_load_imports(fuel: Nat, reqs: List<&2, ImpReq>, +seen: List<&2, String>, +stems: List<&2, StemMap>, +bk: Book, +has_base: Bool, +is_o2: Bool, +check_only: Bool, +out_path: String) -> IO(Unit):
   match fuel reqs:
-    case 0n _: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, b5k_check_ex(has_base, bk)))
-    case _ Nil{}: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, b5k_check_ex(has_base, bk)))
+    case 0n _: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, stems, b5k_check_ex(has_base, bk)))
+    case _ Nil{}: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, stems, b5k_check_ex(has_base, bk)))
     case 1n++p Con{ImpReq{dir, +rel, +alias}, +rest}:
       +full = b5k_imp_full(dir, rel)
       b5k_if_io(Bool.not(String.ends_with(rel, ".bend")),
         _ => b5k_die("import: expected a .bend file: " ++ rel),
         _ => b5k_if_io(b5k_chk_str_match(False{}, seen, alias),
-          _ => b5k_load_imports(p, rest, seen, bk, has_base, is_o2, check_only, out_path),
+          _ => b5k_load_imports(p, rest, seen, stems, bk, has_base, is_o2, check_only, out_path),
           _ => IO.bind(B5kIoRes<String>, Unit, b5k_read_file(full), r => b5k_io_bind(String, r, +src =>
             b5k_parse_bind(b5k_parse(String.reverse(String.reverse(src)), b5k_book_syms(bk)), +imp_bk =>
               b5k_if_io(String.is_empty(b5k_check_base_shadow(b5k_has_base_go(U32.to_nat(2048), src), imp_bk)),
                 _ => b5k_if_io(String.is_empty(b5k_check_alias_shadow(b5k_book_syms(bk), b5k_merge_imp_book(alias, imp_bk, Book{Nil{}, Nil{}, Nil{}, b5k_book_syms(imp_bk)}))),
-                  _ => b5k_load_imports(p, b5k_list_app(ImpReq, b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(full), String.reverse(String.reverse(src)), Nil{}), rest), Con{alias, seen}, b5k_merge_imp_book(alias, imp_bk, bk), Bool.or(has_base, b5k_has_base_go(U32.to_nat(2048), src)), is_o2, check_only, out_path),
+                  _ => b5k_load_imports(p, b5k_list_app(ImpReq, b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(full), String.reverse(String.reverse(src)), Nil{}), rest), Con{alias, seen}, Con{StemMap{alias ++ ".", b5k_stem_of(rel) ++ "."}, stems}, b5k_merge_imp_book(alias, imp_bk, bk), Bool.or(has_base, b5k_has_base_go(U32.to_nat(2048), src)), is_o2, check_only, out_path),
                   _ => b5k_die("import: alias shadows Base declaration: " ++ alias)),
                 _ => b5k_die(b5k_check_base_shadow(b5k_has_base_go(U32.to_nat(2048), src), imp_bk))))))))
 def b5k_run_src_k(is_o2: Bool, check_only: Bool, src_path: String, out_path: String, +src2: String, +bk: Book) -> IO(Unit):
@@ -311,7 +328,7 @@ def b5k_run_src_k(is_o2: Bool, check_only: Bool, src_path: String, out_path: Str
   +berr = b5k_check_base_shadow(has_base, bk)
   +ierr = Bool.pick(String, String.is_empty(berr), b5k_check_top_imps(has_base, reqs, Nil{}, bk), berr)
   b5k_if_io(String.is_empty(ierr),
-    _ => b5k_load_imports(32n, reqs, Nil{}, bk, has_base, is_o2, check_only, out_path),
+    _ => b5k_load_imports(32n, reqs, Nil{}, Nil{}, bk, has_base, is_o2, check_only, out_path),
     _ => b5k_die(ierr))
 def b5k_run_src(is_o2: Bool, check_only: Bool, src_path: String, out_path: String, +src2: String) -> IO(Unit):
   b5k_parse_bind(b5k_parse(src2, symtab_new()), bk => b5k_run_src_k(is_o2, check_only, src_path, out_path, src2, bk))

@@ -610,6 +610,39 @@ def b5k_chk_pair_goal_ok(goal: ChkTy) -> Bool:
   match goal:
     case TAny{}: True{}
     case TCon{+g, _}: Bool.or(String.eq(g, "Sigma"), String.eq(g, "Pair"))
+def b5k_chk_ty_nth(n: Nat, xs: List<&2, ChkTy>) -> ChkTy:
+  match n xs:
+    case 0n Con{h, _}: h
+    case 1n+p Con{_, t}: b5k_chk_ty_nth(p, t)
+    case _ Nil{}: TAny{}
+def b5k_chk_monad_inner(goal: ChkTy) -> ChkTy:
+  match goal:
+    case TCon{+h, +args}:
+      Bool.pick(ChkTy, String.eq(h, "IO"), b5k_chk_ty_nth(0n, args),
+      Bool.pick(ChkTy, String.eq(h, "Maybe"), b5k_chk_ty_nth(1n, args),
+      Bool.pick(ChkTy, String.eq(h, "Result"), b5k_chk_ty_nth(3n, args), TAny{})))
+    case TAny{}: TAny{}
+def b5k_chk_refl_bad_eq(lhs: Expr, rhs: Expr) -> Bool:
+  match lhs rhs:
+    case ENum{a} ENum{b}: U32.is_ne(a, b)
+    case EFlt{a} EFlt{b}: U32.is_ne(a, b)
+    case EChr{a} EChr{b}: U32.is_ne(a, b)
+    case EStr{a} EStr{b}: Bool.not(String.eq(a, b))
+    case ECtr{a, Nil{}} ECtr{b, Nil{}}: U32.is_ne(a, b)
+    case _ _: False{}
+def b5k_chk_refl_bad_op(e: Expr) -> Bool:
+  match e:
+    case EOp{op, a, b}: Bool.pick(Bool, U32.is_eq(op, 20), b5k_chk_refl_bad_eq(a, b), False{})
+    case _: False{}
+def b5k_chk_refl_bad_expr(e: Expr) -> Bool:
+  match e:
+    case EAnn{v, _}: b5k_chk_refl_bad_op(v)
+    case EEq{a, b}: b5k_chk_refl_bad_eq(a, b)
+    case _: False{}
+def b5k_chk_refl_bad(mret: Maybe<&2, Expr>) -> Bool:
+  match mret:
+    case Some{e}: b5k_chk_refl_bad_expr(e)
+    case None{}: False{}
 def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> ExprRes:
   match fuel w:
     case 0n _: ExprOk{Nil{}}
@@ -638,7 +671,7 @@ def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> Ex
       b5k_chk_work(f, ctx, fn_name, WStmtPat{env, goal, b5k_chk_pats(U32.to_nat(256), ctx, fn_name, [PatItem{pat, inh, vty}], Nil{}), val, rest})
     case 1n+f WStmts{env, goal, Con{StExpr{val}, Nil{}}}: b5k_chk_work(f, ctx, fn_name, WExpr{env, goal, val})
     case 1n+f WStmts{+env, goal, Con{StExpr{val}, rest}}: b5k_chk_merge(False{}, fn_name, b5k_chk_work(f, ctx, fn_name, WExpr{env, TAny{}, val}), b5k_chk_work(f, ctx, fn_name, WStmts{env, goal, rest}))
-    case 1n+f WStmts{env, goal, Con{StRet{val}, Nil{}}}: b5k_chk_work(f, ctx, fn_name, WExpr{env, goal, val})
+    case 1n+f WStmts{env, goal, Con{StRet{val}, Nil{}}}: b5k_chk_work(f, ctx, fn_name, WExpr{env, b5k_chk_monad_inner(goal), val})
     case 1n+f WStmts{+env, goal, Con{StRet{val}, rest}}: b5k_chk_merge(False{}, fn_name, b5k_chk_work(f, ctx, fn_name, WExpr{env, TAny{}, val}), b5k_chk_work(f, ctx, fn_name, WStmts{env, goal, rest}))
     case 1n+f WExpr{_, goal, ENum{_}}: b5k_chk_lit(goal, fn_name, "U32", True{})
     case 1n+f WExpr{_, goal, EFlt{_}}: b5k_chk_lit(goal, fn_name, "F32", False{})
@@ -708,15 +741,64 @@ def b5k_chk_def(+ctx: CheckCtx, d: Def) -> String:
       +fn_name = b5k_chk_sym_name(ctx, sym)
       +ld = ct_get(LawDef, laws, sym)
       env = b5k_chk_params_binds(ctx, b5k_chk_apply_law_params(params, ld))
-      goal = b5k_chk_goal_opt(ctx, b5k_chk_apply_law_ret(ret, ld))
-      b5k_chk_expr_err(b5k_chk_work(U32.to_nat(4096), ctx, fn_name, WExpr{env, goal, body}))
+      +mret = b5k_chk_apply_law_ret(ret, ld)
+      goal = b5k_chk_goal_opt(ctx, mret)
+      Bool.pick(String, b5k_chk_refl_bad(mret), "check: " ++ fn_name ++ ": reflexivity mismatch",
+        b5k_chk_expr_err(b5k_chk_work(U32.to_nat(4096), ctx, fn_name, WExpr{env, goal, body})))
 def b5k_chk_defs(+ctx: CheckCtx, ds: List<&2, Def>) -> String:
   match ds:
     case Nil{}: ""
     case Con{h, t}:
       +err = b5k_chk_def(ctx, h)
       Bool.pick(String, String.is_empty(err), b5k_chk_defs(ctx, t), err)
+# Data-Kind Field Discipline Check (rejects non-Data live fields in `is Data` types)
+def b5k_chk_is_nondata_kind(+syms: SymTab, e: Expr) -> Bool:
+  match e:
+    case EVar{sym}:
+      +nm = symtab_name(syms, sym)
+      Bool.or(String.eq(nm, "Type"), String.eq(nm, "Kind"))
+    case EApp{fun, _}: b5k_chk_is_nondata_kind(syms, fun)
+    case _: False{}
+def b5k_chk_is_nondata_opt(syms: SymTab, opt: Maybe<&2, Expr>) -> Bool:
+  match opt:
+    case Some{ty}: b5k_chk_is_nondata_kind(syms, ty)
+    case None{}: False{}
+def b5k_chk_nondata_syms(+syms: SymTab, ps: List<&2, Param>, +acc: List<&2, U32>) -> List<&2, U32>:
+  match ps:
+    case Nil{}: acc
+    case Con{Param{sym, mty, _, _}, rest}:
+      acc2 = Bool.pick(List<&2, U32>, b5k_chk_is_nondata_opt(syms, mty), Con{sym, acc}, acc)
+      b5k_chk_nondata_syms(syms, rest, acc2)
+def b5k_chk_field_is_nondata(+nd: List<&2, U32>, ty: Expr) -> Bool:
+  match ty:
+    case EAll{_, _}: True{}
+    case EVar{sym}: b5k_chk_u32_mem(nd, sym)
+    case _: False{}
+def b5k_chk_field_nondata_opt(nd: List<&2, U32>, opt: Maybe<&2, Expr>) -> Bool:
+  match opt:
+    case Some{ty}: b5k_chk_field_is_nondata(nd, ty)
+    case None{}: False{}
+def b5k_chk_data_fields(+tname: String, +nd: List<&2, U32>, fs: List<&2, Param>) -> String:
+  match fs:
+    case Nil{}: ""
+    case Con{Param{_, mty, erased, _}, rest}:
+      bad = Bool.and(Bool.not(erased), b5k_chk_field_nondata_opt(nd, mty))
+      Bool.pick(String, bad, "check: " ++ tname ++ ": non-Data field in Data type", b5k_chk_data_fields(tname, nd, rest))
+def b5k_chk_data_ctors(+syms: SymTab, +tname: String, +nd: List<&2, U32>, cs: List<&2, CtorDef>) -> String:
+  match cs:
+    case Nil{}: ""
+    case Con{CtorDef{_, _, +fs}, rest}:
+      +nd2 = b5k_chk_nondata_syms(syms, fs, nd)
+      +err = b5k_chk_data_fields(tname, nd2, fs)
+      Bool.pick(String, String.is_empty(err), b5k_chk_data_ctors(syms, tname, nd, rest), err)
+def b5k_chk_types(+syms: SymTab, ts: List<&2, TypeDef>) -> String:
+  match ts:
+    case Nil{}: ""
+    case Con{TypeDef{tsym, tps, is_data, ctors}, rest}:
+      +err = Bool.pick(String, is_data, b5k_chk_data_ctors(syms, symtab_name(syms, tsym), b5k_chk_nondata_syms(syms, tps, Nil{}), ctors), "")
+      Bool.pick(String, String.is_empty(err), b5k_chk_types(syms, rest), err)
 def b5k_check(+book: Book) -> CheckRes:
-  Book{types, +defs, laws, syms} = book
-  +err = b5k_chk_defs(b5k_chk_build_ctx(types, defs, laws, syms), defs)
+  Book{+types, +defs, laws, +syms} = book
+  +terr = b5k_chk_types(syms, types)
+  +err = Bool.pick(String, String.is_empty(terr), b5k_chk_defs(b5k_chk_build_ctx(types, defs, laws, syms), defs), terr)
   CheckRes{String.is_empty(err), err, book}

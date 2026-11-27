@@ -42,12 +42,15 @@ x86-64 ELF `.o` output from `bend5k`:
     rejects ill-typed `wrong(x: U32) -> Bool: x` and
     `bad_list(xs: List<&2, U32>) -> List<&2, Bool>: xs` (and emits NO `.o`
     under `-O2`) while accepting their valid neighbors.
+  - Contract K (`Dependent Equality Proof Gate`, STRICT PASS): verifies
+    `bend5k --check-only` rejects `{0 + 1 == 2 : U32}` `{==}` (and emits NO `.o`
+    under `-O2`) while accepting `{1 + 1 == 2 : U32}` `{==}`.
   - Harder Generality Matrix (`[GEN-MATRIX]`, 10 cells): 5 Contract E cells +
     6-arg borrow-walk (`arity=6`), 2-arg tree-zip borrow, nested-match reuse,
     holdout pure-F32 `$v4` SIMD kernel, holdout 1-pass TRMC `List.map`.
 
-Run with `--self-test-fault-injection` to verify that all 8 strict contracts
-(`A`, `B`, `C`, `D`, `E`, `H`, `I`, `J`) fail loudly when optimizations are
+Run with `--self-test-fault-injection` to verify that all 9 strict contracts
+(`A`, `B`, `C`, `D`, `E`, `H`, `I`, `J`, `K`) fail loudly when optimizations are
 disabled (`-O0`) or synthetic faults are injected.
 """
 from __future__ import annotations
@@ -444,6 +447,27 @@ import Base
 
 def good_list(xs: List<&2, U32>) -> List<&2, U32>:
   xs
+
+def main() -> U32:
+  0
+"""
+
+# Contract K (Dependent Equality Proof Gate): false reflexivity rejection + valid reflexivity acceptance
+DEP_EQ_BAD_SRC = """\
+import Base
+
+def bad_eq() -> {0 + 1 == 2 : U32}:
+  {==}
+
+def main() -> U32:
+  0
+"""
+
+DEP_EQ_GOOD_SRC = """\
+import Base
+
+def good_eq() -> {1 + 1 == 2 : U32}:
+  {==}
 
 def main() -> U32:
   0
@@ -1374,6 +1398,58 @@ def check_contract_j(
     )
 
 
+def check_contract_k(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract K (`Dependent Equality Proof Gate`): verifies `bend5k --check-only`
+    rejects `{0 + 1 == 2 : U32}` `{==}` (and emits NO `.o` under `-O2`) while
+    accepting `{1 + 1 == 2 : U32}` `{==}`.
+    """
+    neg_cases = [("bad_eq", DEP_EQ_BAD_SRC)]
+    pos_cases = [("good_eq", DEP_EQ_GOOD_SRC)]
+
+    ok = True
+    parts: list[str] = []
+
+    for name, src in neg_cases:
+        sp = tmpdir / f"dep_{name}.bend"
+        sp.write_text(src, encoding="utf-8")
+        op = tmpdir / f"dep_{name}_{opt_flag}.o"
+        if op.exists():
+            op.unlink()
+        r_chk = _run_bend5k_raw(bend5k_bin, ["--check-only", str(sp)], cpu_pin)
+        r_opt = _run_bend5k_raw(bend5k_bin, [opt_flag, str(sp), str(op)], cpu_pin)
+        obj_emitted = op.exists()
+        case_ok = r_chk.returncode != 0 and r_opt.returncode != 0 and not obj_emitted
+        if not case_ok:
+            ok = False
+        parts.append(
+            f"{name}(chk_rc={r_chk.returncode}, o2_rc={r_opt.returncode}, obj={obj_emitted})"
+        )
+
+    for name, src in pos_cases:
+        sp = tmpdir / f"dep_{name}.bend"
+        sp.write_text(src, encoding="utf-8")
+        op = tmpdir / f"dep_{name}_{opt_flag}.o"
+        if op.exists():
+            op.unlink()
+        r_chk = _run_bend5k_raw(bend5k_bin, ["--check-only", str(sp)], cpu_pin)
+        r_opt = _run_bend5k_raw(bend5k_bin, [opt_flag, str(sp), str(op)], cpu_pin)
+        obj_emitted = op.exists()
+        case_ok = r_chk.returncode == 0 and r_opt.returncode == 0 and obj_emitted
+        if not case_ok:
+            ok = False
+        parts.append(
+            f"{name}(chk_rc={r_chk.returncode}, o2_rc={r_opt.returncode}, obj={obj_emitted})"
+        )
+
+    return ContractResult(
+        "Contract K (dependent-proof)",
+        "PASS" if ok else "FAIL",
+        "; ".join(parts),
+    )
+
+
 PRELUDE_PREFIXES = (
     "$direct.__b5k_",
     "$direct.Bool.",
@@ -1705,21 +1781,23 @@ def run_fault_injection_self_test(
     if not synth_hi_ok:
         all_tripped = False
 
-    #    (e) Contract J (conformance) fault injection: permissive stub compiler
-    #        that accepts ill-typed programs without error must FAIL Contract J.
+    #    (e) Contract J (conformance) & Contract K (dependent-proof) fault
+    #        injection: permissive stub compiler that accepts ill-typed / false
+    #        proofs without error must FAIL both Contract J and Contract K.
     fake_permissive = tmpdir / "fake_permissive_bend5k.sh"
     fake_permissive.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
     fake_permissive.chmod(0o755)
-    res_j = check_contract_j(fake_permissive, tmpdir, "-O2", cpu_pin)
-    tripped_j = res_j.status == "FAIL"
-    print(
-        f"  [{'TRIPPED-OK' if tripped_j else 'MISSED-FAULT'}] {res_j.name} (permissive-stub): {res_j.detail}"
-    )
-    if not tripped_j:
-        all_tripped = False
+    for fn in (check_contract_j, check_contract_k):
+        res_jk = fn(fake_permissive, tmpdir, "-O2", cpu_pin)
+        tripped_jk = res_jk.status == "FAIL"
+        print(
+            f"  [{'TRIPPED-OK' if tripped_jk else 'MISSED-FAULT'}] {res_jk.name} (permissive-stub): {res_jk.detail}"
+        )
+        if not tripped_jk:
+            all_tripped = False
 
     print(
-        f"=== FAULT-INJECTION RESULT: {'PASS (all 8 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
+        f"=== FAULT-INJECTION RESULT: {'PASS (all 9 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
     )
     return all_tripped
 
@@ -1850,6 +1928,7 @@ def main() -> int:
             check_contract_h(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_i(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_j(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_k(bend5k_bin, tmpdir, "-O2", cpu_pin),
         ]
 
         failed = False

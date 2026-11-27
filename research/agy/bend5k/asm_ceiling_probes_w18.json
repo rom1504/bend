@@ -1,0 +1,121 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v18",
+  "host_pin": "taskset -c 4",
+  "host_isa": ["sse4_1", "sse4_2", "popcnt", "avx"],
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2 (Proven-17, base commit 031f8405)",
+  "c_baselines": {
+    "gcc10_o2": "gcc-10 -O2 -ffp-contract=off (direct paired 5-run median on CPU 4)",
+    "gcc10_o3_native": "gcc-10 -O3 -march=native -ffp-contract=off (direct paired 5-run median on CPU 4)"
+  },
+  "measurement_note": "Every variant redirects only the target symbol(s) inside the unmodified Proven-17 bend5k_o2 -O2 ELF .o (same runtime-agy.o, same +RTS --threads 1 --gpu off -RTS) via ELF64 SHT_SYMTAB SHN_UNDEF redirection to the patch object. All timings are 5-run medians on CPU 4 with exact stdout checksums verified bit-identical against baseline, gcc-10 -O2, and gcc-10 -O3 -march=native.",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "bench/runtime/raytrace/main.bend (scaled ROWS=7, WIDTH=6000; 1/32nd of full ROWS=12, exact horizontal ray distribution)",
+      "checksum": "31632184",
+      "baseline_ms": 697.67,
+      "c_o2_ms": 716.06,
+      "c_o3_native_ms": 450.27,
+      "baseline_vs_c_o2": 0.974,
+      "baseline_vs_c_o3_native": 1.549,
+      "raw_baseline_ms": [697.67, 698.04, 697.45, 695.72, 708.76],
+      "raw_c_o2_ms": [785.3, 714.71, 713.51, 716.06, 718.71],
+      "raw_c_o3_native_ms": [450.18, 452.24, 450.27, 462.24, 445.06],
+      "primary_mechanism": "Proven-17 emits $v8r.nearest (87 insns) and $v8r.nearest.t (83 insns), beating gcc-10 -O2 (0.974x), but loses to gcc-10 -O3 -march=native (1.549x; full 18.47s vs 11.77s) because: (1) $direct.nearest heap-allocates a Hit{ms, t, i} ADT node on every ray and $direct.trace unpacks/frees it with p111_rt_take fallback; (2) $direct.nearest / $direct.nearest.t / $direct.trace are called out-of-line with 7 stack-pushed args and vzeroupper on every bounce; (3) $direct.colf executes a 14-deep binary tree recursion and calls p111_rt_op for F32.to_u32 on every pixel; (4) rays are traced 1-at-a-time instead of exploiting the 4-subray-per-pixel or 8-ray AVX1 packet coherence.",
+      "variants": [
+        {
+          "name": "a_inline_v8r_unboxed_hit_in_subray",
+          "redirected_symbol": "$direct.subray",
+          "ms": 366.47,
+          "vs_c_o2": 0.512,
+          "vs_c_o3_native": 0.814,
+          "speedup_vs_base": 1.904,
+          "pct_saved": 47.5,
+          "raw_ms": [366.19, 364.55, 373.82, 381.2, 366.47],
+          "note": "ALREADY BEATS gcc-10 -O3 -march=native BY 1.23x (0.814x O3-native, 1.904x speedup vs Proven-17; projects full ROWS=12 from 18.47s down to ~9.70s vs 11.77s O3-native)! Leaves $direct.colf and $direct.rowf 100% untouched. Eliminates Hit heap boxing (ret2), inlines $v8r.nearest/$v8r.nearest.t into $direct.trace with SIMD horizontal min for nearest.t, and eliminates call/vzeroupper overhead per bounce."
+        },
+        {
+          "name": "b_plus_flat_colf_inline_f2u_4ray_sse_packet",
+          "redirected_symbol": "$direct.colf",
+          "ms": 131.62,
+          "vs_c_o2": 0.184,
+          "vs_c_o3_native": 0.292,
+          "speedup_vs_base": 5.301,
+          "pct_saved": 81.1,
+          "raw_ms": [135.55, 131.2, 131.62, 131.79, 131.53],
+          "note": "3.42x FASTER THAN gcc-10 -O3 -march=native (0.292x O3-native, 5.301x speedup; projects full ROWS=12 down to ~3.48s vs 11.77s O3-native)! Flattens colf recursion, inlines F32.to_u32 (0 p111_rt_op), and traces all 4 subrays of each 2x2 supersampled pixel simultaneously in 4-wide SSE4.1 (__m128 packet with active-lane masking)."
+        },
+        {
+          "name": "c_8ray_avx1_packet_2pixels",
+          "redirected_symbol": "$direct.colf",
+          "ms": 95.47,
+          "vs_c_o2": 0.133,
+          "vs_c_o3_native": 0.212,
+          "speedup_vs_base": 7.308,
+          "pct_saved": 86.3,
+          "raw_ms": [97.97, 95.47, 88.7, 93.39, 101.18],
+          "note": "4.72x FASTER THAN gcc-10 -O3 -march=native (0.212x O3-native, 7.308x speedup; projects full ROWS=12 down to ~2.53s vs 11.77s O3-native)! Traces 8 coherent rays simultaneously in 8-wide AVX1 (__m256 = 2 adjacent pixels x 4 subrays) with vblendvps/vmovmskps active-lane early-out across all 9 spheres."
+        }
+      ],
+      "general_compiler_pass": "Tier 1 (already <1.0x vs gcc-10 -O3 -march=native): extend ret2/ret3 unboxed small-ADT return to 3-word Hit{ms,t,i} + inline $v8r.<fn> into self-TCO callers + SIMD horizontal-min + inline F32.to_u32. Tier 2 (4.7x faster than O3-native): outer-loop 4-wide/8-wide coherent FP task vectorization (predicated $v8 SIMD over independent subray/pixel calls, extending the existing nbody $v8 pass).",
+      "verdict": "STRONG GO (1.90x -> 0.814x O3-native from Tier 1 inlining + unboxed Hit alone; 7.31x -> 0.212x O3-native with 8-ray AVX1 packet!)",
+      "estimated_loc": "~90 LOC for Tier 1 (unboxed 3-word Hit return + inline $v8r into caller + inline F32.to_u32); ~140 LOC for Tier 2 (predicated 8-wide outer-loop $v8 SIMD)"
+    },
+    {
+      "id": "2",
+      "benchmark": "bench/runtime/terrain/main.bend (scaled SIZE=11, EPASS=5; 2,048 tiles x 64x64 fill + 5 Gauss-Seidel erode sweeps + 64-bin hist)",
+      "checksum": "1662600704",
+      "baseline_ms": 420.72,
+      "c_o2_ms": 253.52,
+      "c_o3_native_ms": 195.04,
+      "baseline_vs_c_o2": 1.66,
+      "baseline_vs_c_o3_native": 2.157,
+      "raw_baseline_ms": [417.47, 419.83, 420.72, 434.86, 432.06],
+      "raw_c_o2_ms": [257.33, 253.52, 254.93, 251.6, 251.55],
+      "raw_c_o3_native_ms": [195.98, 197.76, 194.05, 194.52, 195.04],
+      "primary_mechanism": "gcc-10 -O3 -march=native auto-vectorizes tile_fill (69 vec ops), dropping C from 253.52 ms (-O2) to 195.04 ms (-O3 -march=native; full 8.02s -> 6.18s). Meanwhile bend5k operates on heap-allocated 64-bit Array<U32> (32 KB = L1D thrash), runs scalar fill, and $direct.erode carries 113 spills, 32 jcc/0 cmov edge clamps, and 24 mask `and`s.",
+      "variants": [
+        {
+          "name": "a_stack_u32_4096_nowrap_cmov_erode",
+          "redirected_symbol": "$direct.batch",
+          "ms": 232.44,
+          "vs_c_o2": 0.917,
+          "vs_c_o3_native": 1.192,
+          "speedup_vs_base": 1.81,
+          "pct_saved": 44.8,
+          "raw_ms": [236.47, 232.44, 230.54, 231.07, 241.36],
+          "note": "Beats gcc-10 -O2 (0.917x) via non-escaping stack u32[4096] + u32[64] (16 KB L1D-resident, 0 heap alloc, 0 mask `and`) + branchless cmov erode, but stays 1.192x vs gcc-10 -O3 -march=native because fill is still scalar."
+        },
+        {
+          "name": "b_plus_interior_unclamped_gauss_seidel_erode",
+          "redirected_symbol": "$direct.batch",
+          "ms": 178.33,
+          "vs_c_o2": 0.703,
+          "vs_c_o3_native": 0.914,
+          "speedup_vs_base": 2.359,
+          "pct_saved": 57.6,
+          "raw_ms": [179.33, 178.17, 178.33, 178.32, 178.51],
+          "note": "BEATS gcc-10 -O3 -march=native EVEN WITH SCALAR FILL (0.914x O3-native, 0.703x O2, 2.359x speedup; projects full SIZE=16 from 13.44s down to ~5.70s vs 6.18s O3-native)! Boundary-splitting x=0,63 from unclamped interior x=1..62 + Gauss-Seidel sliding-window scalar promotion (hl=nv, hc=hr -> 3 loads/cell instead of 5)."
+        },
+        {
+          "name": "c_plus_sse41_4wide_fill",
+          "redirected_symbol": "$direct.batch",
+          "ms": 139.27,
+          "vs_c_o2": 0.549,
+          "vs_c_o3_native": 0.714,
+          "speedup_vs_base": 3.021,
+          "pct_saved": 66.9,
+          "raw_ms": [139.27, 138.16, 139.92, 143.57, 139.01],
+          "note": "CRUSHES gcc-10 -O3 -march=native BY 1.40x (0.714x O3-native, 0.549x O2, 3.021x speedup; projects full SIZE=16 down to ~4.45s vs 6.18s O3-native)! Adding 4-wide SSE4.1 (pmulld/pslld/psrld/pxor) counted U32 fill vectorization on top of stack u32[4096] + unclamped Gauss-Seidel erode."
+        }
+      ],
+      "general_compiler_pass": "Non-escaping fixed-size local Array<U32> stack-promotion (u32[N] on stack; shared with bfs, editdist, local-fold) + boundary-split unclamped interior with loop-carried sliding-window scalar promotion (shared with editdist) + 4-wide SSE4.1 counted U32 array-fill vectorization (shared with histogram, bfs).",
+      "verdict": "STRONG GO (2.36x -> 0.914x O3-native with stack u32[4096] + unclamped Gauss-Seidel erode alone; 3.02x -> 0.714x O3-native with 4-wide SSE4.1 fill!)",
+      "estimated_loc": "~110 LOC (shared across terrain, local-fold, bfs, editdist, histogram)"
+    }
+  ],
+  "wave18_o3_native_summary": {
+    "raytrace_to_beat_o3_native": "Inline $v8r.nearest/$v8r.nearest.t + unbox 3-word Hit (ret3) -> 0.814x vs gcc-10 -O3 -march=native (~9.70s vs 11.77s); 8-ray AVX1 packet -> 0.212x (~2.53s vs 11.77s).",
+    "terrain_to_beat_o3_native": "Stack u32[4096] + unclamped interior Gauss-Seidel scalar promotion -> 0.914x vs gcc-10 -O3 -march=native (~5.70s vs 6.18s); + 4-wide SSE4.1 fill -> 0.714x (~4.45s vs 6.18s)."
+  }
+}

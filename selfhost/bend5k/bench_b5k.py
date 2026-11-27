@@ -8,6 +8,7 @@ against gcc-10 -O2 with exact output/checksum verification. Reusable for both
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -28,6 +29,8 @@ PROXY_DIR = ROOT / "research/agy/wave4_bench"
 INPUTS_UP = PROXY_DIR / "inputs/upstream"
 INPUTS_TUNED = PROXY_DIR / "inputs/tuned"
 C_REF_DIR = ROOT / "selfhost/build/agy/wave4_bench/c_ref"
+C_REF_O3_DIR = ROOT / "selfhost/build/agy/wave4_bench/c_ref_o3"
+O3_NATIVE_FLAGS = ["-std=gnu11", "-O3", "-march=native", "-ffp-contract=off", "-fno-lto"]
 
 UPSTREAM_FAMILIES = ("gameoflife", "nbody", "histogram")
 TUNED_FAMILIES = ("expression", "list", "bst", "editdist")
@@ -108,6 +111,119 @@ def prepare_upstream_bend(family: str, up_spec: dict) -> str:
             rf"\g<1>{new}n",
         )
     return text
+
+
+def prepare_upstream_c(family: str, up_spec: dict) -> tuple[str, list[str]]:
+    desc = up_spec[family]
+    c_text = (INPUTS_UP / family / "main.c").read_text(encoding="utf-8")
+    defines: list[str] = []
+    for cname, old, new in zip(desc["cKnobs"], desc["upstream"], desc["medium"]):
+        if family == "gameoflife":
+            c_text = replace_once(
+                c_text,
+                rf"(  uint32_t {cname} = ){old}u;",
+                rf"\g<1>{new}u;",
+            )
+        else:
+            defines.append(f"-D{cname}={new}u")
+    c_text = c_text.replace("__attribute__((musttail)) ", "")
+    return c_text, defines
+
+
+def _sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def _sha256_file(path: Path) -> str:
+    return _sha256_bytes(path.read_bytes())
+
+
+def ensure_c_ref_o3_native(up_spec: dict, cpu: int, timeout: int) -> dict[str, Path]:
+    """Build & cache gcc-10 -O3 -march=native -ffp-contract=off C reference binaries."""
+    C_REF_O3_DIR.mkdir(parents=True, exist_ok=True)
+    manifest_path = C_REF_O3_DIR / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.is_file() else {}
+    cc_sha = _sha256_file(Path(CC))
+    driver_c = INPUTS_TUNED / "driver.c"
+    driver_sha = _sha256_file(driver_c)
+
+    binaries: dict[str, Path] = {}
+    dirty = False
+
+    for fam in ALL_PROXY:
+        if fam in UPSTREAM_FAMILIES:
+            key = f"{fam}-medium-o3-native"
+            c_text, defines = prepare_upstream_c(fam, up_spec)
+            src_sha = _sha256_bytes(c_text.encode("utf-8"))
+            recipe = _sha256_bytes(
+                json.dumps(
+                    {"cc": cc_sha, "flags": O3_NATIVE_FLAGS, "defines": defines, "src": src_sha},
+                    sort_keys=True,
+                ).encode("utf-8")
+            )
+            out_bin = C_REF_O3_DIR / key
+            entry = manifest.get(key)
+            if not (out_bin.is_file() and entry and entry.get("recipe") == recipe and _sha256_file(out_bin) == entry.get("bin_sha256")):
+                src_path = C_REF_O3_DIR / f"{key}.c"
+                src_path.write_text(c_text, encoding="utf-8")
+                subprocess.run(
+                    ["timeout", "-k", "5", str(timeout), "taskset", "-c", str(cpu), CC, *O3_NATIVE_FLAGS, *defines, str(src_path), "-o", str(out_bin), "-lm", "-pthread"],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                    timeout=timeout + 10,
+                )
+                manifest[key] = {"recipe": recipe, "bin_sha256": _sha256_file(out_bin), "flags": O3_NATIVE_FLAGS}
+                dirty = True
+            binaries[fam] = out_bin
+        else:
+            key = f"{fam}-tuned-o3-native"
+            kernel_c = INPUTS_TUNED / "kernels" / f"{fam}.c"
+            src_sha = _sha256_file(kernel_c)
+            recipe = _sha256_bytes(
+                json.dumps(
+                    {"cc": cc_sha, "flags": O3_NATIVE_FLAGS, "driver": driver_sha, "src": src_sha},
+                    sort_keys=True,
+                ).encode("utf-8")
+            )
+            out_bin = C_REF_O3_DIR / key
+            entry = manifest.get(key)
+            if not (out_bin.is_file() and entry and entry.get("recipe") == recipe and _sha256_file(out_bin) == entry.get("bin_sha256")):
+                subprocess.run(
+                    ["timeout", "-k", "5", str(timeout), "taskset", "-c", str(cpu), CC, *O3_NATIVE_FLAGS, str(driver_c), str(kernel_c), "-o", str(out_bin), "-lm", "-pthread"],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                    timeout=timeout + 10,
+                )
+                manifest[key] = {"recipe": recipe, "bin_sha256": _sha256_file(out_bin), "flags": O3_NATIVE_FLAGS}
+                dirty = True
+            binaries[fam] = out_bin
+
+    for name, (_, c_rel, _) in HOLDOUT_SPECS.items():
+        key = f"{name}-o3-native"
+        c_src = ROOT / c_rel
+        src_sha = _sha256_file(c_src)
+        recipe = _sha256_bytes(
+            json.dumps({"cc": cc_sha, "flags": O3_NATIVE_FLAGS, "src": src_sha}, sort_keys=True).encode("utf-8")
+        )
+        out_bin = C_REF_O3_DIR / key
+        entry = manifest.get(key)
+        if not (out_bin.is_file() and entry and entry.get("recipe") == recipe and _sha256_file(out_bin) == entry.get("bin_sha256")):
+            subprocess.run(
+                ["timeout", "-k", "5", str(timeout), "taskset", "-c", str(cpu), CC, *O3_NATIVE_FLAGS, str(c_src), "-lm", "-o", str(out_bin)],
+                check=True,
+                capture_output=True,
+                text=True,
+                timeout=timeout + 10,
+            )
+            manifest[key] = {"recipe": recipe, "bin_sha256": _sha256_file(out_bin), "flags": O3_NATIVE_FLAGS}
+            dirty = True
+        binaries[name] = out_bin
+
+    if dirty:
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    return binaries
 
 
 def prepare_tuned_bend(family: str) -> str:
@@ -330,8 +446,12 @@ def main() -> int:
     try:
         up_spec = json.loads((INPUTS_UP / "suite.json").read_text(encoding="utf-8"))
         seed_banks = load_tuned_seed_banks()
+        c_o3_bins = ensure_c_ref_o3_native(up_spec, args.cpu, args.timeout)
 
-        print(f"=== {args.label}: 7-Family Proxy Suite (CPU {args.cpu}, {args.runs}-run median vs gcc-10 -O2) ===", flush=True)
+        print(
+            f"=== {args.label}: 7-Family Proxy Suite (CPU {args.cpu}, {args.runs}-run median vs gcc-10 -O2 & -O3 -march=native) ===",
+            flush=True,
+        )
         proxy_rows = []
         for fam in ALL_PROXY:
             src_path = args.work_dir / f"{fam}.bend"
@@ -339,11 +459,13 @@ def main() -> int:
                 src_path.write_text(prepare_upstream_bend(fam, up_spec), encoding="utf-8")
                 c_bin = C_REF_DIR / f"{fam}-medium"
                 c_res = measure_upstream([str(c_bin)], fam, args.cpu, args.runs, args.timeout)
+                c_o3_res = measure_upstream([str(c_o3_bins[fam])], fam, args.cpu, args.runs, args.timeout)
                 expected = UPSTREAM_EXPECTED[fam]
             else:
                 src_path.write_text(prepare_tuned_bend(fam), encoding="utf-8")
                 c_bin = C_REF_DIR / f"{fam}-tuned"
                 c_res = measure_tuned([str(c_bin)], fam, seed_banks[fam], TUNED_POINTS[fam]["init_reps_c"], args.cpu, args.runs, args.timeout)
+                c_o3_res = measure_tuned([str(c_o3_bins[fam])], fam, seed_banks[fam], TUNED_POINTS[fam]["init_reps_c"], args.cpu, args.runs, args.timeout)
                 expected = TUNED_POINTS[fam]["expected"]
 
             obj = args.work_dir / f"{fam}.o"
@@ -366,35 +488,50 @@ def main() -> int:
 
             b_ms = rinfo.get("ms") if rinfo.get("ok") else None
             c_ms = c_res.get("ms") if c_res.get("ok") else None
-            ratio = round(b_ms / c_ms, 4) if (b_ms is not None and c_ms) else None
+            c_o3_ms = c_o3_res.get("ms") if c_o3_res.get("ok") else None
+            ratio_o2 = round(b_ms / c_ms, 4) if (b_ms is not None and c_ms) else None
+            ratio_o3 = round(b_ms / c_o3_ms, 4) if (b_ms is not None and c_o3_ms) else None
             row = {
                 "name": fam,
                 "group": "upstream" if fam in UPSTREAM_FAMILIES else "tuned",
                 "expected_checksum": expected,
-                "checksum_ok": bool(rinfo.get("ok") and c_res.get("ok")),
+                "checksum_ok": bool(rinfo.get("ok") and c_res.get("ok") and c_o3_res.get("ok")),
                 "bend5k_ms": b_ms,
                 "c_gcc10_ms": c_ms,
-                "ratio_vs_gcc10": ratio,
+                "c_gcc10_o3_native_ms": c_o3_ms,
+                "ratio_vs_gcc10": ratio_o2,
+                "ratio_vs_gcc10_o2": ratio_o2,
+                "ratio_vs_gcc10_o3_native": ratio_o3,
                 "compile_ms": cinfo.get("compile_ms"),
                 "link_ms": link_ms,
                 "obj_bytes": cinfo.get("obj_bytes", 0),
                 "error": None if rinfo.get("ok") else rinfo.get("error"),
-                "details": {"c_gcc10": c_res, "bend5k": {"compile": cinfo, "run": rinfo}},
+                "details": {"c_gcc10": c_res, "c_gcc10_o3_native": c_o3_res, "bend5k": {"compile": cinfo, "run": rinfo}},
             }
             proxy_rows.append(row)
             status = "OK" if row["checksum_ok"] else f"FAIL ({row['error']})"
             print(
-                f"  {fam:12s} | b5k={str(b_ms):>10s} ms | gcc10={str(c_ms):>9s} ms | "
-                f"ratio={str(ratio):>8s}x | cmp={str(cinfo.get('compile_ms')):>7s} ms | "
+                f"  {fam:12s} | b5k={str(b_ms):>9s} ms | o2={str(c_ms):>8s} ms ({str(ratio_o2):>7s}x) | "
+                f"o3n={str(c_o3_ms):>8s} ms ({str(ratio_o3):>7s}x) | cmp={str(cinfo.get('compile_ms')):>7s} ms | "
                 f"obj={row['obj_bytes']:>7d} B | {status}",
                 flush=True,
             )
 
-        gm_proxy = geomean([r["ratio_vs_gcc10"] for r in proxy_rows if r["ratio_vs_gcc10"] is not None])
-        gm_proxy = round(gm_proxy, 4) if gm_proxy is not None else None
-        print(f"\n=> 7-Family Geomean ({args.label} / gcc-10 -O2): {gm_proxy}x (ok={sum(r['checksum_ok'] for r in proxy_rows)}/7)\n", flush=True)
+        gm_proxy_o2 = geomean([r["ratio_vs_gcc10_o2"] for r in proxy_rows if r["ratio_vs_gcc10_o2"] is not None])
+        gm_proxy_o2 = round(gm_proxy_o2, 4) if gm_proxy_o2 is not None else None
+        gm_proxy_o3 = geomean([r["ratio_vs_gcc10_o3_native"] for r in proxy_rows if r["ratio_vs_gcc10_o3_native"] is not None])
+        gm_proxy_o3 = round(gm_proxy_o3, 4) if gm_proxy_o3 is not None else None
+        ok_proxy = sum(r["checksum_ok"] for r in proxy_rows)
+        print(
+            f"\n=> 7-Family Geomean ({args.label} / gcc-10 -O2): {gm_proxy_o2}x | "
+            f"(/ gcc-10 -O3 -march=native): {gm_proxy_o3}x (ok={ok_proxy}/7)\n",
+            flush=True,
+        )
 
-        print(f"=== {args.label}: Terrain Holdout (CPU {args.cpu}, {args.runs}-run median vs gcc-10 -O2) ===", flush=True)
+        print(
+            f"=== {args.label}: Terrain Holdout (CPU {args.cpu}, {args.runs}-run median vs gcc-10 -O2 & -O3 -march=native) ===",
+            flush=True,
+        )
         holdout_rows = []
         for name, (b_rel, c_rel, expected_str) in HOLDOUT_SPECS.items():
             src_path = ROOT / b_rel
@@ -409,6 +546,7 @@ def main() -> int:
             )
             c_res = measure_holdout([str(c_exe)], expected_str, args.cpu, args.runs, args.holdout_timeout)
             c_exe.unlink(missing_ok=True)
+            c_o3_res = measure_holdout([str(c_o3_bins[name])], expected_str, args.cpu, args.runs, args.holdout_timeout)
 
             obj = args.work_dir / f"{name}.o"
             exe = args.work_dir / f"{name}.bin"
@@ -427,28 +565,47 @@ def main() -> int:
 
             b_s = b_run.get("s") if b_run.get("ok") else None
             c_s = c_res.get("s") if c_res.get("ok") else None
-            ratio = round(b_s / c_s, 4) if (b_s is not None and c_s) else None
+            c_o3_s = c_o3_res.get("s") if c_o3_res.get("ok") else None
+            ratio_o2 = round(b_s / c_s, 4) if (b_s is not None and c_s) else None
+            ratio_o3 = round(b_s / c_o3_s, 4) if (b_s is not None and c_o3_s) else None
             hrow = {
                 "name": name,
                 "expected": expected_str,
-                "checksum_ok": bool(b_run.get("ok") and c_res.get("ok")),
+                "checksum_ok": bool(b_run.get("ok") and c_res.get("ok") and c_o3_res.get("ok")),
                 "bend5k_s": b_s,
                 "c_gcc10_o2_s": c_s,
-                "ratio_vs_gcc10": ratio,
+                "c_gcc10_o3_native_s": c_o3_s,
+                "ratio_vs_gcc10": ratio_o2,
+                "ratio_vs_gcc10_o2": ratio_o2,
+                "ratio_vs_gcc10_o3_native": ratio_o3,
                 "compile_ms": cinfo.get("compile_ms"),
                 "link_ms": link_ms,
                 "obj_bytes": cinfo.get("obj_bytes", 0),
                 "error": None if b_run.get("ok") else b_run.get("error"),
-                "details": {"c_o2": c_res, "bend5k": {"compile": cinfo, "run": b_run}},
+                "details": {"c_o2": c_res, "c_o3_native": c_o3_res, "bend5k": {"compile": cinfo, "run": b_run}},
             }
             holdout_rows.append(hrow)
             status = "OK" if hrow["checksum_ok"] else f"FAIL ({hrow['error']})"
             print(
-                f"  {name:12s} | b5k={str(b_s):>8s} s | gcc10={str(c_s):>7s} s | "
-                f"ratio={str(ratio):>8s}x | cmp={str(cinfo.get('compile_ms')):>7s} ms | "
+                f"  {name:12s} | b5k={str(b_s):>8s} s | o2={str(c_s):>7s} s ({str(ratio_o2):>7s}x) | "
+                f"o3n={str(c_o3_s):>7s} s ({str(ratio_o3):>7s}x) | cmp={str(cinfo.get('compile_ms')):>7s} ms | "
                 f"obj={hrow['obj_bytes']:>7d} B | {status}",
                 flush=True,
             )
+
+        gm_all8_o2 = geomean(
+            [r["ratio_vs_gcc10_o2"] for r in proxy_rows + holdout_rows if r["ratio_vs_gcc10_o2"] is not None]
+        )
+        gm_all8_o2 = round(gm_all8_o2, 4) if gm_all8_o2 is not None else None
+        gm_all8_o3 = geomean(
+            [r["ratio_vs_gcc10_o3_native"] for r in proxy_rows + holdout_rows if r["ratio_vs_gcc10_o3_native"] is not None]
+        )
+        gm_all8_o3 = round(gm_all8_o3, 4) if gm_all8_o3 is not None else None
+        print(
+            f"\n=> 7-Fam+Terrain Geomean ({args.label} / gcc-10 -O2): {gm_all8_o2}x | "
+            f"(/ gcc-10 -O3 -march=native): {gm_all8_o3}x\n",
+            flush=True,
+        )
 
         all_ok = all(r["checksum_ok"] for r in proxy_rows) and all(r["checksum_ok"] for r in holdout_rows)
         total_wall_s = round(time.perf_counter() - t_all, 2)
@@ -459,7 +616,11 @@ def main() -> int:
             "cpu": args.cpu,
             "runs": args.runs,
             "all_ok": all_ok,
-            "proxy_geomean_vs_gcc10": gm_proxy,
+            "proxy_geomean_vs_gcc10": gm_proxy_o2,
+            "proxy_geomean_vs_gcc10_o2": gm_proxy_o2,
+            "proxy_geomean_vs_gcc10_o3_native": gm_proxy_o3,
+            "all8_geomean_vs_gcc10_o2": gm_all8_o2,
+            "all8_geomean_vs_gcc10_o3_native": gm_all8_o3,
             "total_wall_s": total_wall_s,
             "proxy_7": proxy_rows,
             "holdouts": holdout_rows,

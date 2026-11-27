@@ -285,20 +285,20 @@ def p_binop_info(c: U32) -> U32:
     case 261: U32.add(192, U32.add(20, B5K_CMP_GE()))
     case 124: U32.add(256, B5K_OP_OR())
     case 274: U32.add(256, B5K_OP_OR())
-    case 275: U32.add(256, B5K_OP_XOR())
-    case 38: U32.add(256, B5K_OP_AND())
-    case 273: U32.add(256, B5K_OP_AND())
-    case 272: U32.add(256, B5K_OP_AND())
-    case 269: U32.add(320, B5K_OP_SHL())
-    case 270: U32.add(320, B5K_OP_SHR())
-    case 265: U32.add(320, 30)
-    case 276: U32.add(384, B5K_OP_ADD())
-    case 277: U32.add(384, 32)
-    case 45: U32.add(384, B5K_OP_SUB())
-    case 264: U32.add(384, 31)
-    case 42: U32.add(448, B5K_OP_MUL())
-    case 47: U32.add(448, B5K_OP_DIV())
-    case 37: U32.add(448, B5K_OP_MOD())
+    case 275: U32.add(320, B5K_OP_XOR())
+    case 38: U32.add(384, B5K_OP_AND())
+    case 273: U32.add(384, B5K_OP_AND())
+    case 272: U32.add(384, B5K_OP_AND())
+    case 269: U32.add(448, B5K_OP_SHL())
+    case 270: U32.add(448, B5K_OP_SHR())
+    case 265: U32.add(448, 30)
+    case 276: U32.add(512, B5K_OP_ADD())
+    case 277: U32.add(512, 32)
+    case 45: U32.add(512, B5K_OP_SUB())
+    case 264: U32.add(512, 31)
+    case 42: U32.add(576, B5K_OP_MUL())
+    case 47: U32.add(576, B5K_OP_DIV())
+    case 37: U32.add(576, B5K_OP_MOD())
     case _: 0
 def p_pair_pat(ps: List<&2, Pat>) -> Pat:
   match ps:
@@ -498,7 +498,7 @@ def p_ev_bin(+min_p: U32, +lhs: Expr, +st: PState, +ks: List<&2, PKont>, k: TokK
     case TkNewline{}:
       +st1 = p_skip_ws(st)
       +mp = Bool.pick(U32, U32.is_ge(min_p, 16), U32.sub(min_p, 16), min_p)
-      Bool.pick(PStep, Bool.and(p_is_sym(st1, 264), U32.is_ge(6, mp)), SEval{GUnary{}, p_skip_nls(p_drop(st1)), Con{KBinRhs0{min_p, 6, 31, lhs}, ks}}, Bool.pick(PStep, Bool.and(p_is_sym(st1, 38), U32.is_ge(4, mp)), SEval{GUnary{}, p_skip_nls(p_drop(st1)), Con{KBinRhs0{min_p, 4, B5K_OP_AND(), lhs}, ks}}, SApply{VExpr{lhs}, st, ks}))
+      Bool.pick(PStep, Bool.and(p_is_sym(st1, 264), U32.is_ge(8, mp)), SEval{GUnary{}, p_skip_nls(p_drop(st1)), Con{KBinRhs0{min_p, 8, 31, lhs}, ks}}, Bool.pick(PStep, Bool.and(p_is_sym(st1, 38), U32.is_ge(6, mp)), SEval{GUnary{}, p_skip_nls(p_drop(st1)), Con{KBinRhs0{min_p, 6, B5K_OP_AND(), lhs}, ks}}, SApply{VExpr{lhs}, st, ks}))
     case _: SApply{VExpr{lhs}, st, ks}
 def p_bin_nsucc(mp: U32, lhs: Expr, rhs: Expr, r: PSym, ks: List<&2, PKont>) -> PStep:
   match lhs r:
@@ -821,9 +821,9 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
     case KArrTy{e0} VExpr{ty}:
       +is_m = p_is_sym(st, 42)
       SEval{GExpr{}, Bool.pick(PState, Bool.or(is_m, p_is_sym(st, 94)), p_drop(st), p_fail(st, "expected '*' or '^' in array literal")), Con{KArrLen{EAnn{e0, ty}, is_m}, ks}}
-    case KArrLen{e0, is_m} VExpr{+len}:
+    case KArrLen{e0, +is_m} VExpr{+len}:
       +st_al = Bool.pick(PState, p_bad_arr_len(is_m, len), p_fail(st, "array count must be a power of two"), p_eat_sym(st, 93, "expected ']'"))
-      SEval{GPost{EArrNew{Con{e0, Con{p_unwrap_nat_lit(len), Nil{}}}}}, st_al, ks}
+      SEval{GPost{EArrNew{Con{e0, Con{p_unwrap_nat_lit(len), Bool.pick(List<&2, Expr>, is_m, Nil{}, Con{EUnit{}, Nil{}})}}}}, st_al, ks}
     case KPostCall{+lhs, is_ctr} VExprs{+args}: SEval{GPost{Bool.pick(Expr, is_ctr, p_ctr_wrap(lhs, args), EApp{lhs, args})}, st, ks}
     case KPostArrIdx{+lhs} VExpr{+idx}:
       +st2 = p_eat_sym(st, 93, "expected ']'")
@@ -831,7 +831,7 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
     case KPostArrSet{lhs, idx} VExpr{val}: SEval{GPost{EArrSet{lhs, idx, val}}, st, ks}
     case KUnOp{op} VExpr{e}: SApply{VExpr{EUnOp{op, e}}, st, ks}
     case KBinRhs0{+mp, +prec, +op, lhs} VExpr{r0}:
-      +next_p = Bool.pick(U32, U32.is_eq(op, 30), prec, U32.add(prec, 1))
+      +next_p = Bool.pick(U32, Bool.or(U32.is_eq(op, 30), U32.is_eq(op, 31)), prec, U32.add(prec, 1))
       rhs_mp = Bool.pick(U32, U32.is_ge(mp, 16), U32.add(16, next_p), next_p)
       SEval{GBin{rhs_mp, r0}, st, Con{KBinRhs{mp, op, lhs}, ks}}
     case KBinRhs{mp, 30, lhs} VExpr{rhs}: p_bin_cons(mp, lhs, rhs, p_intern(st, "Con"), ks)

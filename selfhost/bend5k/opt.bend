@@ -2323,6 +2323,7 @@ def opt_cadt_rp_safe_op(+rp: U32, op: IrOp) -> Bool:
   match op:
     case ITag{_, _}: True{}
     case ITake{_, _}: True{}
+    case ISink{_}: True{}
     case o: opt_alll(~U32, ~U32, ~(r => u => U32.is_ne(u, r)), rp, opt_op_uses_list(o))
 def opt_cadt_rp_safe(+rp: U32, blks: List<&2, IrBlock>) -> Bool:
   match blks:

@@ -20,7 +20,26 @@ def b5k_read_sized(path: String, got: File & Result<&1, &1, U32 & String, U32>) 
     case (f, Fail{(_, msg)}): b5k_close_res(String, f, B5kErr{"stat failed: " ++ path ++ ": " ++ msg})
     case (f, Done{sz}): IO.bind(File & Result<&1, &1, U32 & String, String>, B5kIoRes<String>, File.read(f, U32.add(sz, 1)), r => b5k_close_got(String, "read", path, r))
 def b5k_read_file(+path: String) -> IO(B5kIoRes<String>): IO.bind(Result<&1, &1, U32 & String, File>, B5kIoRes<String>, File.open(path, "r"), r => b5k_opened(String, path, f => IO.bind(File & Result<&1, &1, U32 & String, U32>, B5kIoRes<String>, File.size(f), r2 => b5k_read_sized(path, r2)), r))
-def b5k_write_file(+path: String, bs: List<&2, U32>) -> IO(B5kIoRes<Unit>): IO.bind(Result<&1, &1, U32 & String, File>, B5kIoRes<Unit>, File.open(path, "w"), r => b5k_opened(Unit, path, f => IO.bind(File & Result<&1, &1, U32 & String, Unit>, B5kIoRes<Unit>, File.write_bytes(f, bs), r2 => b5k_close_got(Unit, "write", path, r2)), r))
+def b5k_write_step(+path: String, got: File & Result<&1, &1, U32 & String, Unit>, k: File -> IO(B5kIoRes<Unit>)) -> IO(B5kIoRes<Unit>):
+  match got:
+    case (f, Fail{(_, msg)}): b5k_close_res(Unit, f, B5kErr{"write failed: " ++ path ++ ": " ++ msg})
+    case (f, Done{_}): k(f)
+def b5k_write_chunks(+path: String, chunks: List<&2, PChunk>, f: File, k: File -> IO(B5kIoRes<Unit>)) -> IO(B5kIoRes<Unit>):
+  match chunks:
+    case Nil{}: k(f)
+    case Con{c, t}: IO.bind(File & Result<&1, &1, U32 & String, Unit>, B5kIoRes<Unit>, File.write_bytes(f, elf_unpack_chunk(c)), r => b5k_write_step(path, r, f2 => b5k_write_chunks(path, t, f2, k)))
+def b5k_write_secs(+path: String, secs: List<&2, ElfSec>, f: File) -> IO(B5kIoRes<Unit>):
+  match secs:
+    case Nil{}: b5k_close_res(Unit, f, B5kOk{Unit{}})
+    case Con{ElfSec{buf, pad}, t}: IO.bind(File & Result<&1, &1, U32 & String, Unit>, B5kIoRes<Unit>, File.write_bytes(f, elf_prepend_bb(buf, elf_prepend_zeros(U32.to_nat(pad), Nil{}))), r => b5k_write_step(path, r, f2 => b5k_write_secs(path, t, f2)))
+def b5k_write_pad_go(is_z: Bool, +path: String, pad: U32, secs: List<&2, ElfSec>, f: File) -> IO(B5kIoRes<Unit>):
+  match is_z:
+    case True{}: b5k_write_secs(path, secs, f)
+    case False{}: IO.bind(File & Result<&1, &1, U32 & String, Unit>, B5kIoRes<Unit>, File.write_bytes(f, elf_prepend_zeros(U32.to_nat(pad), Nil{})), r => b5k_write_step(path, r, f2 => b5k_write_secs(path, secs, f2)))
+def b5k_write_pad(path: String, +pad: U32, secs: List<&2, ElfSec>, f: File) -> IO(B5kIoRes<Unit>): b5k_write_pad_go(U32.is_zero(pad), path, pad, secs, f)
+def b5k_write_elf(+path: String, out: ElfOut) -> IO(B5kIoRes<Unit>):
+  ElfOut{ehdr, chunks, tpad, secs} = out
+  IO.bind(Result<&1, &1, U32 & String, File>, B5kIoRes<Unit>, File.open(path, "w"), r => b5k_opened(Unit, path, f => IO.bind(File & Result<&1, &1, U32 & String, Unit>, B5kIoRes<Unit>, File.write_bytes(f, bb_to_bytes(ehdr)), r1 => b5k_write_step(path, r1, f1 => b5k_write_chunks(path, chunks, f1, f2 => b5k_write_pad(path, tpad, secs, f2)))), r))
 type StemMap is Data:
   StemMap{al: String, st: String}
 def b5k_rw_sname_one(stems: List<&2, StemMap>, +s: String) -> String:
@@ -37,17 +56,14 @@ def b5k_rw_snames(+stems: List<&2, StemMap>, xs: List<&2, String>) -> List<&2, S
 def b5k_rw_prog_snames(stems: List<&2, StemMap>, prog: IrProg) -> IrProg:
   IrProg{fns, ctors, stats, mfid, mpure, effs, sdesc, snames} = prog
   IrProg{fns, ctors, stats, mfid, mpure, effs, sdesc, b5k_rw_snames(stems, snames)}
-def b5k_compile_lower(is_o2: Bool, stems: List<&2, StemMap>, lr: LowerRes) -> B5kIoRes<List<&2, U32>>:
-  match is_o2 lr:
-    case _ LowerRes{False{}, err, _}: B5kErr{err}
-    case False{} LowerRes{True{}, _, prog0}: (+prog = b5k_rw_prog_snames(stems, prog0); B5kOk{b5k_emit_elf_bytes(prog, b5k_codegen(prog))})
-    case True{} LowerRes{True{}, _, prog0}:
-      +prog2 = b5k_opt(b5k_rw_prog_snames(stems, prog0))
-      B5kOk{b5k_emit_elf_bytes(prog2, b5k_peep(b5k_codegen_o2(prog2)))}
-def b5k_compile_check(is_o2: Bool, check_only: Bool, stems: List<&2, StemMap>, cr: CheckRes) -> B5kIoRes<List<&2, U32>>:
+def b5k_compile_lower(is_o2: Bool, stems: List<&2, StemMap>, lr: LowerRes) -> B5kIoRes<ElfOut>:
+  match lr:
+    case LowerRes{False{}, err, _}: B5kErr{err}
+    case LowerRes{True{}, _, prog0}: B5kOk{b5k_emit_elf_stream(is_o2, b5k_rw_prog_snames(stems, prog0))}
+def b5k_compile_check(is_o2: Bool, check_only: Bool, stems: List<&2, StemMap>, cr: CheckRes) -> B5kIoRes<ElfOut>:
   match check_only cr:
     case _ CheckRes{False{}, err, _}: B5kErr{err}
-    case True{} CheckRes{True{}, _, _}: B5kOk{Nil{}}
+    case True{} CheckRes{True{}, _, _}: B5kOk{ElfOut{bb_new(), Nil{}, 0, Nil{}}}
     case False{} CheckRes{True{}, _, book}: b5k_compile_lower(is_o2, stems, b5k_lower(book))
 def b5k_io_bind(-A: Data, res: B5kIoRes<A>, k: A -> IO(Unit)) -> IO(Unit):
   match res:
@@ -57,10 +73,10 @@ def b5k_if_io(cond: Bool, thn: Unit -> IO(Unit), els: Unit -> IO(Unit)) -> IO(Un
   match cond:
     case True{}: thn(Unit{})
     case False{}: els(Unit{})
-def b5k_run_res(check_only: Bool, out_path: String, res: B5kIoRes<List<&2, U32>>) -> IO(Unit):
-  b5k_io_bind(List<&2, U32>, res, bs => b5k_if_io(check_only,
+def b5k_run_res(check_only: Bool, out_path: String, res: B5kIoRes<ElfOut>) -> IO(Unit):
+  b5k_io_bind(ElfOut, res, out => b5k_if_io(check_only,
     _ => IO.print("CHECK OK (bend5k 1-pass: scope, arity, affine, head-types; no BendTT kernel proof)"),
-    _ => IO.bind(B5kIoRes<Unit>, Unit, b5k_write_file(out_path, bs), r => b5k_io_bind(Unit, r, _ => IO.pure(Unit, Unit{})))))
+    _ => IO.bind(B5kIoRes<Unit>, Unit, b5k_write_elf(out_path, out), r => b5k_io_bind(Unit, r, _ => IO.pure(Unit, Unit{})))))
 # Local Relative Multi-File Import Loader (./ and ../)
 type ImpReq is Data:
   ImpReq{dir: String, rel: String, alias: String}
@@ -328,16 +344,16 @@ def b5k_load_imports(fuel: Nat, reqs: List<&2, ImpReq>, +seen: List<&2, String>,
                   _ => b5k_load_imports(p, b5k_list_app(ImpReq, b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(full), String.reverse(String.reverse(src)), Nil{}), rest), Con{alias, seen}, Con{StemMap{alias ++ ".", b5k_stem_of(rel) ++ "."}, stems}, b5k_merge_imp_book(alias, imp_bk, bk), Bool.or(has_base, b5k_has_base_go(U32.to_nat(2048), src)), is_o2, check_only, out_path),
                   _ => b5k_die("import: alias shadows Base declaration: " ++ alias)),
                 _ => b5k_die(b5k_check_base_shadow(b5k_has_base_go(U32.to_nat(2048), src), imp_bk))))))))
-def b5k_run_src_k(is_o2: Bool, check_only: Bool, src_path: String, out_path: String, +src2: String, +bk: Book) -> IO(Unit):
-  +reqs = b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(src_path), src2, Nil{})
-  +has_base = b5k_has_base_go(U32.to_nat(2048), src2)
+def b5k_run_src_k(is_o2: Bool, check_only: Bool, out_path: String, +reqs: List<&2, ImpReq>, +has_base: Bool, +bk: Book) -> IO(Unit):
   +berr = b5k_check_base_shadow(has_base, bk)
   +ierr = Bool.pick(String, String.is_empty(berr), b5k_check_top_imps(has_base, reqs, Nil{}, bk), berr)
   b5k_if_io(String.is_empty(ierr),
     _ => b5k_load_imports(32n, reqs, Nil{}, Nil{}, bk, has_base, is_o2, check_only, out_path),
     _ => b5k_die(ierr))
 def b5k_run_src(is_o2: Bool, check_only: Bool, src_path: String, out_path: String, +src2: String) -> IO(Unit):
-  b5k_parse_bind(b5k_parse(src2, symtab_new()), bk => b5k_run_src_k(is_o2, check_only, src_path, out_path, src2, bk))
+  reqs = b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(src_path), src2, Nil{})
+  has_base = b5k_has_base_go(U32.to_nat(2048), src2)
+  b5k_parse_bind(b5k_parse(src2, symtab_new()), bk => b5k_run_src_k(is_o2, check_only, out_path, reqs, has_base, bk))
 # Native Multi-File Manifest Loader (0 Python bundler, O(N) reverse-fold concat)
 def b5k_srev_app(s: String, acc: String) -> String:
   match s:

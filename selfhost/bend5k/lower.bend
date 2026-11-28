@@ -155,12 +155,24 @@ def count_uses_go(fuel: Nat, +sym: U32, item: UseItem) -> U32:
     case Succ{_} UICases{Nil{}}: 0
     case Succ{+p} UICases{Con{Case{ps, body}, t}}: U32.max(Bool.pick(U32, pat_binds_all(64n, sym, ps), 0, count_uses_go(p, sym, UIExpr{body})), count_uses_go(p, sym, UICases{t}))
     case Succ{_} UIStmts{Nil{}}: 0
-    case Succ{+p} UIStmts{Con{StBind{pat, v}, t}}: U32.add(count_uses_go(p, sym, UIExpr{v}), Bool.pick(U32, pat_binds_all(64n, sym, Con{pat, Nil{}}), 0, count_uses_go(p, sym, UIStmts{t})))
-    case Succ{+p} UIStmts{Con{StLet{pat, v}, t}}: U32.add(count_uses_go(p, sym, UIExpr{v}), Bool.pick(U32, pat_binds_all(64n, sym, Con{pat, Nil{}}), 0, count_uses_go(p, sym, UIStmts{t})))
-    case Succ{+p} UIStmts{Con{StExpr{v}, t}}: U32.add(count_uses_go(p, sym, UIExpr{v}), count_uses_go(p, sym, UIStmts{t}))
-    case Succ{+p} UIStmts{Con{StRet{v}, t}}: U32.add(count_uses_go(p, sym, UIExpr{v}), count_uses_go(p, sym, UIStmts{t}))
+    case Succ{+p} UIStmts{Con{StBind{pat, v}, t}}:
+      U32.add(count_uses_go(p, sym, UIExpr{v}),
+        Bool.pick(U32, pat_binds_all(64n, sym, Con{pat, Nil{}}), 0,
+          Bool.to_u32(U32.is_ne(count_uses_go(p, sym, UIStmts{t}), 0))))
+    case Succ{+p} UIStmts{Con{StLet{pat, v}, t}}:
+      U32.add(count_uses_go(p, sym, UIExpr{v}),
+        Bool.pick(U32, pat_binds_all(64n, sym, Con{pat, Nil{}}), 0, count_uses_go(p, sym, UIStmts{t})))
+    case Succ{p} UIStmts{Con{StExpr{v}, Nil{}}}: count_uses_go(p, sym, UIExpr{v})
+    case Succ{+p} UIStmts{Con{StExpr{v}, Con{s2, t}}}:
+      U32.add(count_uses_go(p, sym, UIExpr{v}),
+        Bool.to_u32(U32.is_ne(count_uses_go(p, sym, UIStmts{Con{s2, t}}), 0)))
+    case Succ{+p} UIStmts{Con{StRet{v}, t}}:
+      U32.add(count_uses_go(p, sym, UIExpr{v}), count_uses_go(p, sym, UIStmts{t}))
     case Succ{_} UIExpr{EVar{s}}: Bool.to_u32(U32.is_eq(sym, s))
-    case Succ{p} UIExpr{ELam{ps, body}}: Bool.pick(U32, chk_any(~Param, ~U32, ~(s => pm => U32.is_eq(chk_pm_sym(pm), s)), sym, ps), 0, count_uses_go(p, sym, UIExpr{body}))
+    case Succ{p} UIExpr{ELam{Nil{}, body}}: count_uses_go(p, sym, UIExpr{body})
+    case Succ{p} UIExpr{ELam{Con{p0, pt}, body}}:
+      Bool.pick(U32, chk_any(~Param, ~U32, ~(s => pm => U32.is_eq(chk_pm_sym(pm), s)), sym, Con{p0, pt}), 0,
+        Bool.to_u32(U32.is_ne(count_uses_go(p, sym, UIExpr{body}), 0)))
     case Succ{+p} UIExpr{ELet{pat, v, body}}: U32.add(count_uses_go(p, sym, UIExpr{v}), Bool.pick(U32, pat_binds_all(64n, sym, Con{pat, Nil{}}), 0, count_uses_go(p, sym, UIExpr{body})))
     case Succ{+p} UIExpr{EMat{scruts, cs}}: U32.add(count_uses_go(p, sym, UIExprs{scruts}), count_uses_go(p, sym, UICases{cs}))
     case Succ{+p} UIExpr{EIf{c, t, f}}: U32.add(count_uses_go(p, sym, UIExpr{c}), U32.max(count_uses_go(p, sym, UIExpr{t}), count_uses_go(p, sym, UIExpr{f})))
@@ -256,6 +268,12 @@ def cfg_seal(st: CfgSt, term: IrTerm) -> CfgSt:
     case s: s
 def cfg_start(st: CfgSt, blk_id: U32) -> CfgSt:
   CfgSt{f, nr, nb, _, _, blks, _, r, rl, vm, nvm, mg, bk} = st; CfgSt{f, nr, nb, blk_id, Nil{}, blks, False{}, r, rl, vm, nvm, mg, bk}
+def cfg_flush_cblks(cblks: List<&2, IrBlock>, st: CfgSt) -> CfgSt:
+  match st:
+    case CfgSt{f, nr, nb, cb, cops, Nil{}, s, r, rl, vm, nvm, mg, bk}:
+      CfgSt{f, nr, nb, cb, cops, Nil{}, s, r, rl, vm, nvm, mg, bk}
+    case CfgSt{f, nr, nb, cb, cops, Con{bh, bt}, s, r, rl, vm, nvm, mg, bk}:
+      CfgSt{f, nr, nb, cb, cops, b5k_list_app(IrBlock, cblks, Con{bh, bt}), s, r, rl, vm, nvm, mg, bk}
 def cfg_end_merge(+st: CfgSt, base_vm: U32Map, base_nvm: U32Map, blk: U32, res_reg: U32) -> CfgSt: cfg_set_res(cfg_set_vm_nvm(Bool.pick(CfgSt, cfg_flag(st, True{}), cfg_start(st, blk), st), base_vm, base_nvm), res_reg)
 def cfg_fin_branch(st: CfgSt, sld: Bool, res_reg: U32, v: U32, merge_blk: U32, prev_mg: Bool) -> CfgSt:
   match sld:
@@ -265,6 +283,72 @@ def cfg_emit_keeps_go(k: Nat, st: CfgSt, +v: U32) -> CfgSt:
   match k:
     case 0n: st
     case 1n+p: cfg_emit_keeps_go(p, cfg_emit(st, IKeep{v, v}), v)
+def cfg_emit_sinks_go(k: Nat, st: CfgSt, +r: U32) -> CfgSt:
+  match k:
+    case 0n: st
+    case 1n+p: cfg_emit_sinks_go(p, cfg_emit(st, ISink{r}), r)
+type BranchDrop is Data:
+  BDrop{sym: U32, reg: U32, max_u: U32}
+def low_mat_drop_add(mu: U32, s: U32, r: U32, rest: List<&2, BranchDrop>) -> List<&2, BranchDrop>:
+  match mu:
+    case 0: rest
+    case n: Con{BDrop{s, r, n}, rest}
+def low_mat_drop_one(is_sc: Bool, vm: U32Map, +s: U32, cs: List<&2, Case>, rest: List<&2, BranchDrop>) -> List<&2, BranchDrop>:
+  match is_sc:
+    case True{}: rest
+    case False{}: low_mat_drop_add(count_uses_go(U32.to_nat(2048), s, UICases{cs}), s, um_get0(vm, s), rest)
+def low_mat_drops(fvs: List<&2, U32>, +vm: U32Map, +nvm: U32Map, +cs: List<&2, Case>) -> List<&2, BranchDrop>:
+  match fvs:
+    case Nil{}: Nil{}
+    case Con{+s, t}:
+      rest = low_mat_drops(t, vm, nvm, cs)
+      low_mat_drop_one(U32.is_eq(um_get(nvm, s), 1), vm, s, cs, rest)
+def low_mat_drops_cs(+vm: U32Map, +nvm: U32Map, cs: List<&2, Case>) -> List<&2, BranchDrop>:
+  match cs:
+    case Con{+c1, Con{+c2, +t}}:
+      fvs = fv_go(U32.to_nat(2048), vm, UM0{}, UICases{Con{c1, Con{c2, t}}}, Nil{})
+      low_mat_drops(fvs, vm, nvm, Con{c1, Con{c2, t}})
+    case _: Nil{}
+def low_sink_diff(lt: Bool, st: CfgSt, r: U32, mu: U32, uc: U32) -> CfgSt:
+  match lt:
+    case True{}: cfg_emit_sinks_go(U32.to_nat(U32.sub(mu, uc)), st, r)
+    case False{}: st
+def low_case_uses(bound: Bool, s: U32, body: Expr) -> U32:
+  match bound:
+    case True{}: 0
+    case False{}: count_uses_go(U32.to_nat(2048), s, UIExpr{body})
+def low_emit_case_sinks(drops: List<&2, BranchDrop>, st: CfgSt, +ps: List<&2, Pat>, +body: Expr) -> CfgSt:
+  match drops:
+    case Nil{}: st
+    case Con{BDrop{+s, +r, +mu}, t}:
+      +uc = low_case_uses(pat_binds_all(64n, s, ps), s, body)
+      low_emit_case_sinks(t, low_sink_diff(U32.is_lt(uc, mu), st, r, mu, uc), ps, body)
+def low_if_sink_one(is_sc: Bool, st: CfgSt, vm: U32Map, +s: U32, cur: Expr, oth: Expr) -> CfgSt:
+  match is_sc:
+    case True{}: st
+    case False{}:
+      +uc = count_uses_go(U32.to_nat(2048), s, UIExpr{cur})
+      +uo = count_uses_go(U32.to_nat(2048), s, UIExpr{oth})
+      low_sink_diff(U32.is_lt(uc, uo), st, um_get0(vm, s), uo, uc)
+def low_emit_if_sinks(fvs: List<&2, U32>, st: CfgSt, +vm: U32Map, +nvm: U32Map, +cur: Expr, +oth: Expr) -> CfgSt:
+  match fvs:
+    case Nil{}: st
+    case Con{+s, t}:
+      st1 = low_if_sink_one(U32.is_eq(um_get(nvm, s), 1), st, vm, s, cur, oth)
+      low_emit_if_sinks(t, st1, vm, nvm, cur, oth)
+def low_pick_sink_one(is_sc: Bool, st: CfgSt, vm: U32Map, +s: U32, t: Expr, f: Expr) -> CfgSt:
+  match is_sc:
+    case True{}: st
+    case False{}:
+      +ut = count_uses_go(U32.to_nat(2048), s, UIExpr{t})
+      +uf = count_uses_go(U32.to_nat(2048), s, UIExpr{f})
+      cfg_emit_sinks_go(U32.to_nat(U32.min(ut, uf)), st, um_get0(vm, s))
+def low_emit_pick_sinks(fvs: List<&2, U32>, st: CfgSt, +vm: U32Map, +nvm: U32Map, +t: Expr, +f: Expr) -> CfgSt:
+  match fvs:
+    case Nil{}: st
+    case Con{+s, rest}:
+      st1 = low_pick_sink_one(U32.is_eq(um_get(nvm, s), 1), st, vm, s, t, f)
+      low_emit_pick_sinks(rest, st1, vm, nvm, t, f)
 # Intrinsics (U32.*, F32.*, IO.*) — O(1) via precomputed sym_intr U32Map
 def low_intr_code(sintr: U32Map, sym: U32) -> U32:
   +raw = um_get(sintr, sym); Bool.pick(U32, Bool.or(U32.is_le(raw, 65), U32.is_ge(raw, 100)), raw, 0)
@@ -396,22 +480,87 @@ def low_pat_ctr_step(+kind: U32, +env: LowEnv, +st: CfgSt, +sym: U32, +fs: List<
       _ => (+cid = um_get0(env_map(env, 0), sym); +nf = b5k_list_len(Pat, fs0); sm = Bool.pick(U32, U32.is_eq(cid, 6), U32.shrn(sc0, 1n), um_get(env_map(env, 7), sym)); +stK = low_maybe_keep(low_opt_test_tag(Bool.and(has_fail, U32.is_zero(um_get(env_map(env, 1), sym))), st, r, tr0, cid, fail_blk), Bool.and(has_fail, Bool.or(pat_is_refut(16n, fs0), pat_is_refut(16n, pt))), r); +st2 = low_alloc_regs_go(U32.to_nat(nf), stK, Nil{}); +fregs = cfg_rlist(st2); PSNext{cfg_emit(st2, ITake{fregs, cfg_res(stK)}), b5k_list_app(Pat, fs0, pt), b5k_list_app(U32, fregs, rt), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), sm, 0), st_tail), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), 0, 0), tr_tail)}))))
 def low_take2(st: CfgSt, r: U32, ps: List<&2, Pat>, rt: List<&2, U32>, sc0: U32, sc1: U32, st_tail: List<&2, U32>, tr_tail: List<&2, U32>) -> PatStep:
   +st1 = cfg_alloc(st, False{}); +st2 = cfg_alloc(st1, False{}); PSNext{cfg_emit(st2, ITake{[cfg_res(st1), cfg_res(st2)], r}), ps, Con{cfg_res(st1), Con{cfg_res(st2), rt}}, Con{sc0, Con{sc1, st_tail}}, Con{0, Con{0, tr_tail}}}
-def low_pat_one(+env: LowEnv, st: CfgSt, p0: Pat, pt: List<&2, Pat>, +r: U32, rt: List<&2, U32>, +sc0: U32, st_tail: List<&2, U32>, tr0: U32, tr_tail: List<&2, U32>, body: Expr, fail_blk: U32, +has_fail: Bool) -> PatStep:
+def low_pat_one(+env: LowEnv, st: CfgSt, p0: Pat, +pt: List<&2, Pat>, +r: U32, rt: List<&2, U32>, +sc0: U32, st_tail: List<&2, U32>, tr0: U32, tr_tail: List<&2, U32>, body: Expr, fail_blk: U32, +has_fail: Bool) -> PatStep:
   match p0:
     case PWild{}: (+st0 = st; PSNext{Bool.pick(CfgSt, Bool.or(has_fail, U32.is_eq(sc0, 1)), st0, cfg_emit(st0, ISink{r})), pt, rt, st_tail, tr_tail})
     case PVar{+sym, _}: (+uses = count_uses_go(U32.to_nat(2048), sym, UIExpr{body}); +st1 = low_opt_rc(Bool.or(U32.is_eq(sc0, 1), Bool.and(has_fail, U32.is_zero(uses))), st, r, uses); PSNext{cfg_set_vm_nvm(st1, um_set(cfg_map(st1, False{}), sym, U32.add(r, 1)), um_set(cfg_map(st1, True{}), sym, sc0)), pt, rt, st_tail, tr_tail})
     case PNum{v}: PSNext{low_opt_test_eq(has_fail, st, r, v, fail_blk), pt, rt, st_tail, tr_tail}
     case PChr{c}: PSNext{low_opt_test_eq(has_fail, st, r, c, fail_blk), pt, rt, st_tail, tr_tail}
-    case PPair{+a, +b}: (+st0 = low_maybe_keep(st, Bool.and(has_fail, pat_is_refut(16n, [a, b])), r); low_take2(st0, cfg_res(st0), Con{a, Con{b, pt}}, rt, Bool.to_u32(U32.is_ne(U32.and(sc0, 2), 0)), Bool.to_u32(U32.is_ne(U32.and(sc0, 4), 0)), st_tail, tr_tail))
+    case PPair{+a, +b}: (+st0 = low_maybe_keep(st, Bool.and(has_fail, Bool.or(pat_is_refut(16n, [a, b]), pat_is_refut(16n, pt))), r); low_take2(st0, cfg_res(st0), Con{a, Con{b, pt}}, rt, Bool.to_u32(U32.is_ne(U32.and(sc0, 2), 0)), Bool.to_u32(U32.is_ne(U32.and(sc0, 4), 0)), st_tail, tr_tail))
     case PList{Nil{}}: PSNext{low_opt_test_tag(has_fail, st, r, tr0, 4, fail_blk), pt, rt, st_tail, tr_tail}
     case PList{Con{h, tl}}: (+stK = low_maybe_keep(low_opt_test_tag(has_fail, st, r, tr0, 5, fail_blk), has_fail, r); low_take2(stK, cfg_res(stK), Con{h, Con{PList{tl}, pt}}, rt, 0, 0, st_tail, tr_tail))
     case PCtr{+sym, +fs}: low_pat_ctr_step(um_get(env_map(env, 6), sym), env, st, sym, fs, pt, r, rt, sc0, st_tail, tr0, tr_tail, body, fail_blk, has_fail)
-def low_match_pats_go(fuel: Nat, +env: LowEnv, step: PatStep, +body: Expr, +fail_blk: U32, +has_fail: Bool) -> CfgSt:
-  match fuel step:
-    case 1n+p PSNext{st, Con{p0, pt}, Con{r, rt}, Con{sc0, st_tail}, Con{tr0, tr_tail}}: low_match_pats_go(p, env, low_pat_one(env, st, p0, pt, r, rt, sc0, st_tail, tr0, tr_tail, body, fail_blk, has_fail), body, fail_blk, has_fail)
-    case _ PSNext{st, _, _, _, _}: st
-def low_match_pats_sct(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, regs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt: low_match_pats_go(fuel, env, PSNext{st, ps, regs, scs, trs}, body, fail_blk, has_fail)
-def low_match_pats_sc(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, +regs: List<&2, U32>, scs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt: low_match_pats_go(fuel, env, PSNext{st, ps, regs, scs, low_mask_scs(U32.to_nat(b5k_u32_list_len(regs)), 0, 0)}, body, fail_blk, has_fail)
+def cfg_emit_sink_list(rs: List<&2, U32>, st: CfgSt) -> CfgSt:
+  match rs:
+    case Nil{}: st
+    case Con{r, t}: cfg_emit_sink_list(t, cfg_emit(st, ISink{r}))
+def low_push_sink(cond: Bool, r: U32, sinks: List<&2, U32>) -> List<&2, U32>:
+  match cond:
+    case True{}: Con{r, sinks}
+    case False{}: sinks
+def low_pat_did_keep(+env: LowEnv, +has_fail: Bool, p0: Pat, +pt: List<&2, Pat>) -> Bool:
+  match has_fail p0:
+    case False{} _: False{}
+    case True{} PPair{a, b}: Bool.or(pat_is_refut(16n, [a, b]), pat_is_refut(16n, pt))
+    case True{} PList{Con{_, _}}: True{}
+    case True{} PCtr{sym, +fs}:
+      +k = um_get(env_map(env, 6), sym)
+      +is_arr = Bool.or(U32.is_eq(k, 8), U32.is_eq(k, 9))
+      +is_sp = Bool.or(Bool.and(U32.is_ge(k, 1), U32.is_le(k, 5)),
+        Bool.or(U32.is_eq(k, 14), Bool.or(U32.is_eq(k, 16), Bool.or(U32.is_eq(k, 19), U32.is_eq(k, 20)))))
+      +refut = Bool.or(pat_is_refut(16n, fs), pat_is_refut(16n, pt))
+      Bool.pick(Bool, is_arr,
+        Bool.and(Bool.not(low_pat_arr_defer(env_map(env, 6), True{}, pt)), refut),
+        Bool.and(Bool.not(is_sp), Bool.and(U32.is_gt(b5k_list_len(Pat, fs), 0), refut)))
+    case True{} _: False{}
+def low_take_heap_sinks(n: Nat, rs: List<&2, U32>, scs: List<&2, U32>) -> List<&2, IrOp>:
+  match n rs scs:
+    case 0n _ _: Nil{}
+    case 1n+p Con{r, rt} Con{1, st}: low_take_heap_sinks(p, rt, st)
+    case 1n+p Con{r, rt} Con{_, st}: Con{ISink{r}, low_take_heap_sinks(p, rt, st)}
+    case _ _ _: Nil{}
+type FailWrap is Data:
+  FWrap{step: PatStep, fb: U32, cblks: List<&2, IrBlock>}
+def low_wrap_fail_ops(ops: List<&2, IrOp>, st: CfgSt, ps: List<&2, Pat>, regs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>, +fail_blk: U32, cblks: List<&2, IrBlock>) -> FailWrap:
+  match ops:
+    case Nil{}: FWrap{PSNext{st, ps, regs, scs, trs}, fail_blk, cblks}
+    case Con{h, t}:
+      +st1 = cfg_alloc(st, True{})
+      +nb = cfg_res(st1)
+      FWrap{PSNext{st1, ps, regs, scs, trs}, nb, Con{IrBlock{nb, Con{h, t}, TJmp{fail_blk}}, cblks}}
+def low_wrap_fail(did_keep: Bool, step: PatStep, n_old: U32, fail_blk: U32, cblks: List<&2, IrBlock>) -> FailWrap:
+  match did_keep step:
+    case False{} s: FWrap{s, fail_blk, cblks}
+    case True{} PSNext{st, ps, +regs, +scs, trs}:
+      +n_new = U32.sub(b5k_u32_list_len(regs), n_old)
+      ops = low_take_heap_sinks(U32.to_nat(n_new), regs, scs)
+      low_wrap_fail_ops(ops, st, ps, regs, scs, trs, fail_blk, cblks)
+def low_match_pats_go(fuel: Nat, +env: LowEnv, fw: FailWrap, sinks: List<&2, U32>, +body: Expr, +has_fail: Bool) -> CfgSt:
+  match fuel fw:
+    case 1n+p FWrap{PSNext{st, Con{PWild{}, pt}, Con{+r, rt}, Con{+sc0, st_tail}, Con{_, tr_tail}}, fb, cblks}:
+      +is_sc = U32.is_eq(sc0, 1)
+      st1 = low_opt_rc(Bool.or(has_fail, is_sc), st, r, 0)
+      sinks1 = low_push_sink(Bool.and(has_fail, Bool.not(is_sc)), r, sinks)
+      low_match_pats_go(p, env, FWrap{PSNext{st1, pt, rt, st_tail, tr_tail}, fb, cblks}, sinks1, body, has_fail)
+    case 1n+p FWrap{PSNext{st, Con{PVar{+sym, _}, pt}, Con{+r, rt}, Con{+sc0, st_tail}, Con{_, tr_tail}}, fb, cblks}:
+      +uses = count_uses_go(U32.to_nat(2048), sym, UIExpr{body})
+      +is_sc = U32.is_eq(sc0, 1)
+      +defer = Bool.and(has_fail, Bool.and(U32.is_zero(uses), Bool.not(is_sc)))
+      +st1 = low_opt_rc(Bool.or(is_sc, defer), st, r, uses)
+      st2 = cfg_set_vm_nvm(st1, um_set(cfg_map(st1, False{}), sym, U32.add(r, 1)), um_set(cfg_map(st1, True{}), sym, sc0))
+      sinks1 = low_push_sink(defer, r, sinks)
+      low_match_pats_go(p, env, FWrap{PSNext{st2, pt, rt, st_tail, tr_tail}, fb, cblks}, sinks1, body, has_fail)
+    case 1n+p FWrap{PSNext{st, Con{+p0, +pt}, Con{+r, +rt}, Con{sc0, st_tail}, Con{tr0, tr_tail}}, +fb, cblks}:
+      +dk = low_pat_did_keep(env, has_fail, p0, pt)
+      sinks1 = low_push_sink(dk, r, sinks)
+      step1 = low_pat_one(env, st, p0, pt, r, rt, sc0, st_tail, tr0, tr_tail, body, fb, has_fail)
+      fw2 = low_wrap_fail(dk, step1, b5k_u32_list_len(rt), fb, cblks)
+      low_match_pats_go(p, env, fw2, sinks1, body, has_fail)
+    case _ FWrap{PSNext{st, _, _, _, _}, _, cblks}: cfg_flush_cblks(cblks, cfg_emit_sink_list(sinks, st))
+def low_match_pats_sct(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, regs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt:
+  low_match_pats_go(fuel, env, FWrap{PSNext{st, ps, regs, scs, trs}, fail_blk, Nil{}}, Nil{}, body, has_fail)
+def low_match_pats_sc(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, +regs: List<&2, U32>, scs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt:
+  low_match_pats_go(fuel, env, FWrap{PSNext{st, ps, regs, scs, low_mask_scs(U32.to_nat(b5k_u32_list_len(regs)), 0, 0)}, fail_blk, Nil{}}, Nil{}, body, has_fail)
 def low_apply_chain(vargs: List<&2, U32>, st: CfgSt, vfn: U32) -> CfgSt:
   match vargs:
     case Nil{}: cfg_set_res(st, vfn)
@@ -691,13 +840,15 @@ def low_match_case_pats(+env: LowEnv, +st: CfgSt, +ps: List<&2, Pat>, +rs: List<
 type LowTask is Data:
   LTExpr{e: Expr}
   LTExprs{es: List<&2, Expr>, acc: List<&2, U32>}
-  LTCases{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, vscruts: List<&2, U32>, sc_scruts: List<&2, U32>, tregs: List<&2, U32>, res_reg: U32, merge_blk: U32}
-  LTCasesGrp{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, vscruts: List<&2, U32>, sc_scruts: List<&2, U32>, tregs: List<&2, U32>, res_reg: U32, merge_blk: U32, pick: GrpPick}
-  LTCasesTake{base_vm: U32Map, base_nvm: U32Map, gtr: GrpTakeRes, grp: List<&2, Case>, tail: List<&2, Case>, tail_blk: U32, orig_vs: List<&2, U32>, orig_scs: List<&2, U32>, orig_trs: List<&2, U32>, res_reg: U32, merge_blk: U32}
-  LTCmpCases{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, va: U32, vb: U32, res_reg: U32, merge_blk: U32}
+  LTCases{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, vscruts: List<&2, U32>, sc_scruts: List<&2, U32>, tregs: List<&2, U32>, res_reg: U32, merge_blk: U32, drops: List<&2, BranchDrop>}
+  LTCasesGrp{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, vscruts: List<&2, U32>, sc_scruts: List<&2, U32>, tregs: List<&2, U32>, res_reg: U32, merge_blk: U32, pick: GrpPick, drops: List<&2, BranchDrop>}
+  LTCasesTake{base_vm: U32Map, base_nvm: U32Map, gtr: GrpTakeRes, grp: List<&2, Case>, tail: List<&2, Case>, tail_blk: U32, orig_vs: List<&2, U32>, orig_scs: List<&2, U32>, orig_trs: List<&2, U32>, res_reg: U32, merge_blk: U32, drops: List<&2, BranchDrop>}
+  LTCmpCases{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, va: U32, vb: U32, res_reg: U32, merge_blk: U32, drops: List<&2, BranchDrop>}
   LTMatStart{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, vscruts: List<&2, U32>, sc_scruts: List<&2, U32>}
   LTMatOne{base_vm: U32Map, base_nvm: U32Map, s0: Expr, cs: List<&2, Case>, bkind: U32, cinfo: CmpMatchInfo}
   LTAppSym{sym: U32, args: List<&2, Expr>, lv: U32, icode: U32, fv: U32}
+  LTAppPick{is_pick: Bool, sym: U32, args: List<&2, Expr>, c: Expr, t: Expr, f: Expr, fv: U32}
+  LTAppDef{sym: U32, args: List<&2, Expr>, fv: U32}
   LTAppIntr1{sym: U32, a: Expr, icode: U32, is_bin: Bool}
   LTAppFn{sym: U32, args: List<&2, Expr>, fid: U32, ar: U32, vargs: List<&2, U32>, is_sat: Bool, is_over: Bool}
   LTVar{sym: U32, lv: U32, fv: U32}
@@ -816,36 +967,107 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
     case Zero{} _: st
     case Succ{_} LTExprs{Nil{}, acc}: cfg_set_rlist(st, b5k_list_rev(U32, acc))
     case Succ{+p} LTExprs{Con{h, t}, acc}: (+st1 = low_go(p, env, st, LTExpr{h}, False{}); low_go(p, env, st1, LTExprs{t, Con{cfg_res(st1), acc}}, False{}))
-    case Succ{_} LTCases{_, _, Nil{}, _, _, _, _, _}: cfg_seal(st, TFail{1})
-    case Succ{+p} LTCases{+base_vm, +base_nvm, Con{Case{+ps, +body}, rest}, +vscruts, +sc_scruts, +tregs, +res_reg, +merge_blk}:
+    case Succ{_} LTCases{_, _, Nil{}, _, _, _, _, _, _}: cfg_seal(st, TFail{1})
+    case Succ{+p} LTCases{+base_vm, +base_nvm, Con{Case{+ps, +body}, rest}, +vscruts, +sc_scruts, +tregs, +res_reg, +merge_blk, +drops}:
       match rest:
-        case Nil{}: (+st0 = st; prev_mg = cfg_flag(st0, True{}); st1 = low_match_pats_sct(64n, env, cfg_set_vm_nvm(st0, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, 0, False{}); +st2 = low_go(p, env, st1, LTExpr{body}, is_tail); cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg))
-        case Con{+rh, +rt}: low_go(p, env, st, LTCasesGrp{base_vm, base_nvm, Con{Case{ps, body}, Con{rh, rt}}, vscruts, sc_scruts, tregs, res_reg, merge_blk, low_grp_find(vscruts, GPNone{}, env, ps, Con{Case{ps, body}, Con{rh, rt}}, 0)}, is_tail)
-    case Succ{+p} LTCasesGrp{+base_vm, +base_nvm, Con{Case{ps, +body}, rest}, +vscruts, +sc_scruts, +tregs, +res_reg, +merge_blk, GPNone{}}:
-      +st0 = st; prev_mg = cfg_flag(st0, True{}); +st_f = cfg_alloc(st0, True{}); +nxt_blk = cfg_res(st_f); +st2 = low_go(p, env, low_match_case_pats(env, cfg_set_vm_nvm(st_f, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, nxt_blk), LTExpr{body}, is_tail)
-      low_go(p, env, cfg_start(cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg), nxt_blk), LTCases{base_vm, base_nvm, rest, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail)
-    case Succ{p} LTCasesGrp{base_vm, base_nvm, _, +vscruts, +sc_scruts, +tregs, res_reg, merge_blk, GPHit{+col, spec, grp, Nil{}}}: (+st0 = st; low_go(p, env, st0, LTCasesTake{base_vm, base_nvm, low_grp_emit_take(env, st0, spec, col, vscruts, sc_scruts, tregs), opt_mapl(~Case, ~U32, ~Case, ~(cl => c => low_splice_case(cl, c)), col, grp), Nil{}, 0, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail))
-    case Succ{p} LTCasesGrp{base_vm, base_nvm, _, +vscruts, +sc_scruts, +tregs, res_reg, merge_blk, GPHit{+col, HCCtr{+sym, +nf}, grp, Con{th, tt}}}: (+st_f = cfg_alloc(st, True{}); +tail_blk = cfg_res(st_f); +st_ok = low_opt_test_tag(True{}, st_f, low_nth(U32, U32.to_nat(col), 0, vscruts), low_nth(U32, U32.to_nat(col), 0, tregs), um_get0(env_map(env, 0), sym), tail_blk); low_go(p, env, st_ok, LTCasesTake{base_vm, base_nvm, low_grp_emit_take(env, st_ok, HCCtr{sym, nf}, col, vscruts, sc_scruts, tregs), opt_mapl(~Case, ~U32, ~Case, ~(cl => c => low_splice_case(cl, c)), col, grp), Con{th, tt}, tail_blk, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail))
-    case Succ{_} LTCasesGrp{_, _, _, _, _, _, _, _, _}: cfg_seal(st, TFail{1})
-    case Succ{p} LTCasesTake{base_vm, base_nvm, GrpTakeRes{st1, vs1, scs1, trs1}, grp, Nil{}, _, _, _, _, res_reg, merge_blk}: low_go(p, env, st1, LTCases{base_vm, base_nvm, grp, vs1, scs1, trs1, res_reg, merge_blk}, is_tail)
-    case Succ{+p} LTCasesTake{+base_vm, +base_nvm, GrpTakeRes{st1, vs1, scs1, trs1}, grp, Con{th, tt}, tail_blk, orig_vs, orig_scs, orig_trs, +res_reg, +merge_blk}: low_go(p, env, cfg_start(low_go(p, env, st1, LTCases{base_vm, base_nvm, grp, vs1, scs1, trs1, res_reg, merge_blk}, is_tail), tail_blk), LTCases{base_vm, base_nvm, Con{th, tt}, orig_vs, orig_scs, orig_trs, res_reg, merge_blk}, is_tail)
-    case Succ{_} LTCmpCases{_, _, Nil{}, _, _, _, _}: cfg_seal(st, TFail{1})
-    case Succ{+p} LTCmpCases{+base_vm, +base_nvm, Con{Case{Con{_, Nil{}}, body}, Nil{}}, _, _, +res_reg, +merge_blk}: (+st0 = st; prev_mg = cfg_flag(st0, True{}); +st2 = low_go(p, env, cfg_set_vm_nvm(st0, base_vm, base_nvm), LTExpr{body}, is_tail); cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg))
-    case Succ{p} LTCmpCases{base_vm, base_nvm, Con{Case{Con{PWild{}, Nil{}}, body}, Con{_, _}}, va, vb, res_reg, merge_blk}: low_go(p, env, st, LTCmpCases{base_vm, base_nvm, [Case{[PWild{}], body}], va, vb, res_reg, merge_blk}, is_tail)
-    case Succ{+p} LTCmpCases{+base_vm, +base_nvm, Con{Case{Con{p_other, Nil{}}, body}, Con{rh, rt}}, +va, +vb, +res_reg, +merge_blk}:
-      +st0 = st; prev_mg = cfg_flag(st0, True{}); +code = low_pat_code(env_map(env, 6), True{}, p_other); cop = Bool.pick(U32, U32.is_eq(code, 1), B5K_CMP_LT(), Bool.pick(U32, U32.is_eq(code, 2), B5K_CMP_EQ(), B5K_CMP_GT()))
-      +st_c = cfg_alloc(st0, False{}); +st_o = cfg_alloc(cfg_emit(st_c, ICmp{cfg_res(st_c), cop, va, vb}), True{}); +st_f = cfg_alloc(st_o, True{}); +nxt_blk = cfg_res(st_f); +st2 = low_go(p, env, cfg_set_vm_nvm(cfg_start(cfg_seal(st_f, TBr{cfg_res(st_c), cfg_res(st_o), nxt_blk}), cfg_res(st_o)), base_vm, base_nvm), LTExpr{body}, is_tail)
-      low_go(p, env, cfg_start(cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg), nxt_blk), LTCmpCases{base_vm, base_nvm, Con{rh, rt}, va, vb, res_reg, merge_blk}, is_tail)
-    case Succ{+p} LTMatStart{+base_vm, +base_nvm, +cs1, +vscruts1, sc_scruts1}: (+st_t = low_emit_tag_cache(vscruts1, env, st, cs1, 0, Nil{}); +st2 = cfg_alloc(st_t, False{}); +st3 = cfg_alloc(st2, True{}); cfg_end_merge(low_go(p, env, cfg_set_merged(st3, False{}), LTCases{base_vm, base_nvm, cs1, vscruts1, sc_scruts1, cfg_rlist(st_t), cfg_res(st2), cfg_res(st3)}, is_tail), base_vm, base_nvm, cfg_res(st3), cfg_res(st2)))
+        case Nil{}:
+          +st0 = st
+          prev_mg = cfg_flag(st0, True{})
+          st1 = low_match_pats_sct(64n, env, cfg_set_vm_nvm(st0, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, 0, False{})
+          st1b = low_emit_case_sinks(drops, st1, ps, body)
+          +st2 = low_go(p, env, st1b, LTExpr{body}, is_tail)
+          cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg)
+        case Con{+rh, +rt}:
+          pick = low_grp_find(vscruts, GPNone{}, env, ps, Con{Case{ps, body}, Con{rh, rt}}, 0)
+          low_go(p, env, st, LTCasesGrp{base_vm, base_nvm, Con{Case{ps, body}, Con{rh, rt}},
+            vscruts, sc_scruts, tregs, res_reg, merge_blk, pick, drops}, is_tail)
+    case Succ{+p} LTCasesGrp{+base_vm, +base_nvm, Con{Case{+ps, +body}, rest}, +vscruts, +sc_scruts, +tregs, +res_reg, +merge_blk, GPNone{}, +drops}:
+      +st0 = st
+      prev_mg = cfg_flag(st0, True{})
+      +st_f = cfg_alloc(st0, True{})
+      +nxt_blk = cfg_res(st_f)
+      st1 = low_match_case_pats(env, cfg_set_vm_nvm(st_f, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, nxt_blk)
+      st1b = low_emit_case_sinks(drops, st1, ps, body)
+      +st2 = low_go(p, env, st1b, LTExpr{body}, is_tail)
+      st3 = cfg_start(cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg), nxt_blk)
+      low_go(p, env, st3, LTCases{base_vm, base_nvm, rest, vscruts, sc_scruts, tregs, res_reg, merge_blk, drops}, is_tail)
+    case Succ{p} LTCasesGrp{base_vm, base_nvm, _, +vscruts, +sc_scruts, +tregs, res_reg, merge_blk, GPHit{+col, spec, grp, Nil{}}, drops}:
+      +st0 = st
+      gtr = low_grp_emit_take(env, st0, spec, col, vscruts, sc_scruts, tregs)
+      sgrp = opt_mapl(~Case, ~U32, ~Case, ~(cl => c => low_splice_case(cl, c)), col, grp)
+      low_go(p, env, st0, LTCasesTake{base_vm, base_nvm, gtr, sgrp, Nil{}, 0, vscruts, sc_scruts, tregs, res_reg, merge_blk, drops}, is_tail)
+    case Succ{p} LTCasesGrp{base_vm, base_nvm, _, +vscruts, +sc_scruts, +tregs, res_reg, merge_blk, GPHit{+col, HCCtr{+sym, +nf}, grp, Con{th, tt}}, drops}:
+      +st_f = cfg_alloc(st, True{})
+      +tail_blk = cfg_res(st_f)
+      +st_ok = low_opt_test_tag(True{}, st_f, low_nth(U32, U32.to_nat(col), 0, vscruts), low_nth(U32, U32.to_nat(col), 0, tregs), um_get0(env_map(env, 0), sym), tail_blk)
+      gtr = low_grp_emit_take(env, st_ok, HCCtr{sym, nf}, col, vscruts, sc_scruts, tregs)
+      sgrp = opt_mapl(~Case, ~U32, ~Case, ~(cl => c => low_splice_case(cl, c)), col, grp)
+      low_go(p, env, st_ok, LTCasesTake{base_vm, base_nvm, gtr, sgrp, Con{th, tt}, tail_blk, vscruts, sc_scruts, tregs, res_reg, merge_blk, drops}, is_tail)
+    case Succ{_} LTCasesGrp{_, _, _, _, _, _, _, _, _, _}: cfg_seal(st, TFail{1})
+    case Succ{p} LTCasesTake{base_vm, base_nvm, GrpTakeRes{st1, vs1, scs1, trs1}, grp, Nil{}, _, _, _, _, res_reg, merge_blk, drops}:
+      low_go(p, env, st1, LTCases{base_vm, base_nvm, grp, vs1, scs1, trs1, res_reg, merge_blk, drops}, is_tail)
+    case Succ{+p} LTCasesTake{+base_vm, +base_nvm, GrpTakeRes{st1, vs1, scs1, trs1}, grp, Con{th, tt}, tail_blk, orig_vs, orig_scs, orig_trs, +res_reg, +merge_blk, +drops}:
+      st_g = low_go(p, env, st1, LTCases{base_vm, base_nvm, grp, vs1, scs1, trs1, res_reg, merge_blk, drops}, is_tail)
+      low_go(p, env, cfg_start(st_g, tail_blk), LTCases{base_vm, base_nvm, Con{th, tt}, orig_vs, orig_scs, orig_trs, res_reg, merge_blk, drops}, is_tail)
+    case Succ{_} LTCmpCases{_, _, Nil{}, _, _, _, _, _}: cfg_seal(st, TFail{1})
+    case Succ{+p} LTCmpCases{+base_vm, +base_nvm, Con{Case{Con{_, Nil{}}, +body}, Nil{}}, _, _, +res_reg, +merge_blk, drops}:
+      +st0 = st
+      prev_mg = cfg_flag(st0, True{})
+      st1 = low_emit_case_sinks(drops, cfg_set_vm_nvm(st0, base_vm, base_nvm), Nil{}, body)
+      +st2 = low_go(p, env, st1, LTExpr{body}, is_tail)
+      cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg)
+    case Succ{p} LTCmpCases{base_vm, base_nvm, Con{Case{Con{PWild{}, Nil{}}, body}, Con{_, _}}, va, vb, res_reg, merge_blk, drops}:
+      low_go(p, env, st, LTCmpCases{base_vm, base_nvm, [Case{[PWild{}], body}], va, vb, res_reg, merge_blk, drops}, is_tail)
+    case Succ{+p} LTCmpCases{+base_vm, +base_nvm, Con{Case{Con{p_other, Nil{}}, +body}, Con{rh, rt}}, +va, +vb, +res_reg, +merge_blk, +drops}:
+      +st0 = st
+      prev_mg = cfg_flag(st0, True{})
+      +code = low_pat_code(env_map(env, 6), True{}, p_other)
+      cop = Bool.pick(U32, U32.is_eq(code, 1), B5K_CMP_LT(), Bool.pick(U32, U32.is_eq(code, 2), B5K_CMP_EQ(), B5K_CMP_GT()))
+      +st_c = cfg_alloc(st0, False{})
+      +st_o = cfg_alloc(cfg_emit(st_c, ICmp{cfg_res(st_c), cop, va, vb}), True{})
+      +st_f = cfg_alloc(st_o, True{})
+      +nxt_blk = cfg_res(st_f)
+      st_b0 = cfg_set_vm_nvm(cfg_start(cfg_seal(st_f, TBr{cfg_res(st_c), cfg_res(st_o), nxt_blk}), cfg_res(st_o)), base_vm, base_nvm)
+      +st2 = low_go(p, env, low_emit_case_sinks(drops, st_b0, Nil{}, body), LTExpr{body}, is_tail)
+      st3 = cfg_start(cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg), nxt_blk)
+      low_go(p, env, st3, LTCmpCases{base_vm, base_nvm, Con{rh, rt}, va, vb, res_reg, merge_blk, drops}, is_tail)
+    case Succ{+p} LTMatStart{+base_vm, +base_nvm, +cs1, +vscruts1, sc_scruts1}:
+      +st_t = low_emit_tag_cache(vscruts1, env, st, cs1, 0, Nil{})
+      +st2 = cfg_alloc(st_t, False{})
+      +st3 = cfg_alloc(st2, True{})
+      drops = low_mat_drops_cs(base_vm, base_nvm, cs1)
+      st4 = low_go(p, env, cfg_set_merged(st3, False{}), LTCases{base_vm, base_nvm, cs1, vscruts1, sc_scruts1, cfg_rlist(st_t), cfg_res(st2), cfg_res(st3), drops}, is_tail)
+      cfg_end_merge(st4, base_vm, base_nvm, cfg_res(st3), cfg_res(st2))
     case Succ{+p} LTMatOne{_, _, s0, _, 1, _}: low_go(p, env, st, LTExpr{s0}, is_tail)
     case Succ{+p} LTMatOne{_, _, s0, _, 2, _}: (+st1 = low_go(p, env, st, LTExpr{s0}, False{}); low_emit_u32_intr(st1, 21, [cfg_res(st1)]))
-    case Succ{+p} LTMatOne{+base_vm, +base_nvm, _, cs, _, CMHit{ea, eb}}: (+st1 = low_go(p, env, st, LTExpr{ea}, False{}); +st2 = low_go(p, env, st1, LTExpr{eb}, False{}); +st3 = cfg_alloc(st2, False{}); +st4 = cfg_alloc(st3, True{}); cfg_end_merge(low_go(p, env, cfg_set_merged(st4, False{}), LTCmpCases{base_vm, base_nvm, cs, cfg_res(st1), cfg_res(st2), cfg_res(st3), cfg_res(st4)}, is_tail), base_vm, base_nvm, cfg_res(st4), cfg_res(st3)))
+    case Succ{+p} LTMatOne{+base_vm, +base_nvm, _, +cs, _, CMHit{ea, eb}}:
+      +st1 = low_go(p, env, st, LTExpr{ea}, False{})
+      +st2 = low_go(p, env, st1, LTExpr{eb}, False{})
+      +st3 = cfg_alloc(st2, False{})
+      +st4 = cfg_alloc(st3, True{})
+      drops = low_mat_drops_cs(base_vm, base_nvm, cs)
+      st5 = low_go(p, env, cfg_set_merged(st4, False{}), LTCmpCases{base_vm, base_nvm, cs, cfg_res(st1), cfg_res(st2), cfg_res(st3), cfg_res(st4), drops}, is_tail)
+      cfg_end_merge(st5, base_vm, base_nvm, cfg_res(st4), cfg_res(st3))
     case Succ{+p} LTMatOne{+base_vm, +base_nvm, +s0, cs, _, CMNone{}}: (+st1 = low_go(p, env, st, LTExprs{[s0], Nil{}}, False{}); low_go(p, env, st1, LTMatStart{base_vm, base_nvm, cs, cfg_rlist(st1), low_exprs_sc_codes(env, base_vm, base_nvm, [s0])}, is_tail))
     case Succ{_} LTAppFn{_, _, fid, _, vargs, True{}, _}: low_app_direct(st, fid, vargs, is_tail)
     case Succ{_} LTAppFn{_, _, fid, +ar, +vargs, False{}, True{}}: (+st1 = low_app_direct(st, fid, low_take_u32(U32.to_nat(ar), vargs), False{}); low_apply_chain(low_drop(U32, U32.to_nat(ar), vargs), st1, cfg_res(st1)))
     case Succ{p} LTAppFn{sym, +args, _, _, _, False{}, False{}}: (+tmp = U32.add(env_sym(env, 0), U32.add(b5k_list_len(Expr, args), 2)); low_go(p, env, st, LTExpr{ELam{[Param{tmp, None{}, False{}, False{}}], EApp{EVar{sym}, b5k_list_app(Expr, args, [EVar{tmp}])}}}, False{}))
     case Succ{p} LTAppSym{sym, args, 0, 0, 0}: (+st1 = low_go(p, env, st, LTExprs{args, Nil{}}, False{}); low_emit_ctor_expr(env, st1, sym, cfg_rlist(st1)))
-    case Succ{+p} LTAppSym{+sym, +args, 0, 0, fv}:
+    case Succ{p} LTAppSym{+sym, Con{+ty, Con{+c, Con{+t, Con{+f, Nil{}}}}}, 0, 0, fv}:
+      +is_bp = b5k_str_eq(symtab_name(env_syms(env), sym), "Bool.pick")
+      low_go(p, env, st, LTAppPick{is_bp, sym, Con{ty, Con{c, Con{t, Con{f, Nil{}}}}}, c, t, f, fv}, is_tail)
+    case Succ{p} LTAppPick{True{}, _, _, c, +t, +f, _}:
+      +st0 = st
+      +base_vm = cfg_map(st0, False{})
+      +base_nvm = cfg_map(st0, True{})
+      fvs = fv_go(U32.to_nat(2048), base_vm, UM0{}, UIExprs{[t, f]}, Nil{})
+      st1 = low_emit_pick_sinks(fvs, st0, base_vm, base_nvm, t, f)
+      low_go(p, env, st1, LTExpr{EIf{c, t, f}}, is_tail)
+    case Succ{p} LTAppPick{False{}, sym, args, _, _, _, fv}:
+      low_go(p, env, st, LTAppDef{sym, args, fv}, is_tail)
+    case Succ{p} LTAppSym{sym, args, 0, 0, fv}:
+      low_go(p, env, st, LTAppDef{sym, args, fv}, is_tail)
+    case Succ{+p} LTAppDef{+sym, +args, fv}:
       +fid0 = U32.sub(fv, 1); +ar0 = um_get0(env_map(env, 3), fid0); +sa_fid1 = um_get(env_map(env, 2), env_sym(env, 2)); +use_sa = Bool.and(Bool.and(U32.is_ne(ar0, 2), U32.is_eq(b5k_list_len(Expr, args), 2)), Bool.and(U32.is_ne(sa_fid1, 0), b5k_str_eq(symtab_name(env_syms(env), sym), "String.append")))
       +fid = Bool.pick(U32, use_sa, U32.sub(sa_fid1, 1), fid0); +ar = Bool.pick(U32, use_sa, 2, ar0); +st1 = low_go(p, env, st, LTExprs{low_filter_erased(args, um_get(env_map(env, 4), fid), 0), Nil{}}, False{}); +vargs = cfg_rlist(st1); +nargs = b5k_u32_list_len(vargs)
       low_go(p, env, st1, LTAppFn{sym, args, fid, ar, vargs, U32.is_eq(nargs, ar), U32.is_gt(nargs, ar)}, is_tail)
@@ -881,10 +1103,25 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
     case Succ{+p} LTExpr{ELet{pat, val, body}}: low_go(p, env, st, LTLetPat{pat, val, body}, is_tail)
     case Succ{+p} LTExpr{EIf{cond, ENum{1}, ENum{0}}}: low_go(p, env, st, LTExpr{cond}, is_tail)
     case Succ{+p} LTExpr{EIf{cond, ENum{0}, ENum{1}}}: (+st1 = low_go(p, env, st, LTExpr{cond}, False{}); low_emit_u32_intr(st1, 21, [cfg_res(st1)]))
-    case Succ{+p} LTExpr{EIf{cond, t, f}}:
-      +st0 = st; +base_vm = cfg_map(st0, False{}); +base_nvm = cfg_map(st0, True{}); +st1 = low_go(p, env, st0, LTExpr{cond}, False{}); +st2 = cfg_alloc(st1, True{}); +st3 = cfg_alloc(st2, True{}); +st4 = cfg_alloc(st3, True{}); +st5 = cfg_alloc(st4, False{})
-      +st6 = low_go(p, env, cfg_start(cfg_seal(st5, TBr{cfg_res(st1), cfg_res(st2), cfg_res(st3)}), cfg_res(st2)), LTExpr{t}, is_tail); +st7 = cfg_fin_branch(st6, cfg_flag(st6, False{}), cfg_res(st5), cfg_res(st6), cfg_res(st4), False{})
-      +st8 = low_go(p, env, cfg_set_vm_nvm(cfg_start(st7, cfg_res(st3)), base_vm, base_nvm), LTExpr{f}, is_tail); cfg_end_merge(cfg_fin_branch(st8, cfg_flag(st8, False{}), cfg_res(st5), cfg_res(st8), cfg_res(st4), cfg_flag(st7, True{})), base_vm, base_nvm, cfg_res(st4), cfg_res(st5))
+    case Succ{+p} LTExpr{EIf{cond, +t, +f}}:
+      +st0 = st
+      +base_vm = cfg_map(st0, False{})
+      +base_nvm = cfg_map(st0, True{})
+      +fvs = fv_go(U32.to_nat(2048), base_vm, UM0{}, UIExprs{[t, f]}, Nil{})
+      +st1 = low_go(p, env, st0, LTExpr{cond}, False{})
+      +st2 = cfg_alloc(st1, True{})
+      +st3 = cfg_alloc(st2, True{})
+      +st4 = cfg_alloc(st3, True{})
+      +st5 = cfg_alloc(st4, False{})
+      st_t0 = cfg_start(cfg_seal(st5, TBr{cfg_res(st1), cfg_res(st2), cfg_res(st3)}), cfg_res(st2))
+      st_t1 = low_emit_if_sinks(fvs, st_t0, base_vm, base_nvm, t, f)
+      +st6 = low_go(p, env, st_t1, LTExpr{t}, is_tail)
+      +st7 = cfg_fin_branch(st6, cfg_flag(st6, False{}), cfg_res(st5), cfg_res(st6), cfg_res(st4), False{})
+      st_f0 = cfg_set_vm_nvm(cfg_start(st7, cfg_res(st3)), base_vm, base_nvm)
+      st_f1 = low_emit_if_sinks(fvs, st_f0, base_vm, base_nvm, f, t)
+      +st8 = low_go(p, env, st_f1, LTExpr{f}, is_tail)
+      st9 = cfg_fin_branch(st8, cfg_flag(st8, False{}), cfg_res(st5), cfg_res(st8), cfg_res(st4), cfg_flag(st7, True{}))
+      cfg_end_merge(st9, base_vm, base_nvm, cfg_res(st4), cfg_res(st5))
     case Succ{p} LTExpr{ECtr{sym, fs}}: (+st1 = low_go(p, env, st, LTExprs{fs, Nil{}}, False{}); low_emit_ctor_expr(env, st1, sym, cfg_rlist(st1)))
     case Succ{p} LTExpr{EApp{ERef{sym}, args}}: low_go(p, env, st, LTExpr{EApp{EVar{sym}, args}}, is_tail)
     case Succ{p} LTExpr{EApp{EVar{+sym}, args}}: (+st0 = st; low_go(p, env, st0, LTAppSym{sym, args, um_get(cfg_map(st0, False{}), sym), low_intr_code(env_map(env, 5), sym), um_get(env_map(env, 2), sym)}, is_tail))

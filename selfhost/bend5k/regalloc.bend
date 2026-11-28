@@ -20,7 +20,7 @@ def ra_touch_upd(cur: RaIv, +v: U32, +idx: U32, +dw: U32, +ldw: U32) -> RaIv:
   Bool.pick(RaIv, seen, RaIv{v, U32.min(s, idx), U32.max(e, idx), U32.add(u, dw), U32.add(lu, ldw), True{}}, RaIv{v, idx, idx, 1, ldw, True{}})
 def ra_touch_w(+vd: Nat, +ib: U32, +ivs: RaVec<RaIv>, +v: U32, +idx: U32, +dw: U32) -> RaVec<RaIv>: ra_vec_set(RaIv, vd, v, ra_touch_upd(ra_vec_get(RaIv, vd, RaIv{v, idx, idx, 0, 0, False{}}, v, ivs), v, idx, dw, Bool.pick(U32, U32.is_zero(ib), 0, dw)), ivs)
 def ra_touch(vd: Nat, ib: U32, ivs: RaVec<RaIv>, v: U32, idx: U32) -> RaVec<RaIv>: ra_touch_w(vd, ib, ivs, v, idx, 1)
-def ra_touch_rhs(+vd: Nat, ib: U32, +ivs: RaVec<RaIv>, +r: U32, idx: U32, +bop: U32, cvals: RaVec<U32>) -> RaVec<RaIv>: (+cv = ra_vec_get(U32, vd, 0, r, cvals); skip = Bool.or(Bool.and(Bool.or(U32.is_le(bop, 1), Bool.and(U32.is_ge(bop, 5), U32.is_le(bop, 7))), U32.is_ne(cv, 0)), Bool.and(Bool.or(U32.is_eq(bop, 8), U32.is_eq(bop, 9)), U32.is_eq(cv, 1))); opt_if(RaVec<RaIv>, skip, _ => ivs, _ => ra_touch_w(vd, ib, ivs, r, idx, 2)))
+def ra_touch_rhs(+vd: Nat, ib: U32, +ivs: RaVec<RaIv>, +r: U32, idx: U32, +bop: U32, cvals: RaVec<U32>) -> RaVec<RaIv>: (+cv = ra_vec_get(U32, vd, 0, r, cvals); skip = Bool.or(Bool.and(Bool.or(U32.is_le(bop, 1), Bool.or(U32.is_eq(bop, 15), Bool.and(U32.is_ge(bop, 5), U32.is_le(bop, 7)))), U32.is_ne(cv, 0)), Bool.and(Bool.or(U32.is_eq(bop, 8), U32.is_eq(bop, 9)), U32.is_eq(cv, 1))); opt_if(RaVec<RaIv>, skip, _ => ivs, _ => ra_touch_w(vd, ib, ivs, r, idx, 2)))
 def ra_vec_set_if(-A: Data, d: Nat, cond: Bool, idx: U32, val: A, t: RaVec<A>) -> RaVec<A>: opt_rv_put(A, cond, d, idx, val, t)
 def ra_vec_set_all(-A: Data, +vd: Nat, +val: A, vs: List<&2, U32>, t: RaVec<A>) -> RaVec<A>:
   match vs:

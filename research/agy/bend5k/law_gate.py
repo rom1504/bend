@@ -2189,6 +2189,132 @@ def check_contract_r(
     return ContractResult("Contract R (W22 O0==O2 Sound)", "PASS" if ok else "FAIL", "; ".join(parts))
 
 
+HOLDOUT_W23_SW_LEAF_SRC = """\
+import Base
+
+type SwTree is Data:
+  SLeaf{v: U32}
+  SNode{k: U32, l: SwTree, r: SwTree}
+
+def mk_sw_tree(+d: Nat, +s: U32) -> SwTree:
+  match d:
+    case 0n:
+      SLeaf{s}
+    case 1n+p:
+      SNode{s, mk_sw_tree(p, U32.add(U32.mul(s, 3), 1)), mk_sw_tree(p, U32.add(U32.mul(s, 5), 2))}
+
+def fold_sw(+t: SwTree, +acc: U32) -> U32:
+  match t:
+    case SLeaf{+v}:
+      U32.xor(U32.mul(U32.xor(v, acc), 16777619), v)
+    case SNode{+k, l, r}:
+      +a = fold_sw(l, U32.add(acc, k))
+      +b = fold_sw(r, U32.xor(acc, k))
+      U32.add(U32.xor(U32.mul(a, 16777619), b), k)
+
+def main() -> U32:
+  +tr = mk_sw_tree(6n, 7)
+  fold_sw(tr, 2166136261)
+"""
+
+HOLDOUT_W23_CADT_SRC = """\
+import Base
+
+type KVTree is Data:
+  KVEmp{}
+  KVNode{k: U32, v: U32, l: KVTree, r: KVTree}
+
+type KVReq is Data:
+  KRoot{t: KVTree}
+  KCmp{c: Cmp, v: U32, l: KVTree, r: KVTree}
+
+def kv_find(+fuel: Nat, req: KVReq, +key: U32) -> U32:
+  match fuel:
+    case 0n:
+      0
+    case 1n+f:
+      match req:
+        case KRoot{t}:
+          match t:
+            case KVEmp{}:
+              0
+            case KVNode{+tk, +tv, l, r}:
+              kv_find(f, KCmp{U32.cmp(key, tk), tv, l, r}, key)
+        case KCmp{c, +tv, l, r}:
+          match c:
+            case LT{}:
+              kv_find(f, KRoot{l}, key)
+            case GT{}:
+              kv_find(f, KRoot{r}, key)
+            case EQ{}:
+              tv
+
+def main() -> U32:
+  t : KVTree = KVNode{10, 100, KVNode{5, 50, KVEmp{}, KVEmp{}}, KVNode{15, 150, KVEmp{}, KVEmp{}}}
+  kv_find(32n, KRoot{t}, 15)
+"""
+
+
+def check_contract_s(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract S (Law L23-1: Shrink-Wrapped Pure Leaf Fast-Path):
+    On an unrelated non-tail binary tree fold with ALU work in the leaf arm,
+    verify `$bor.fold_sw` executes `ret` on the inline leaf fast-path BEFORE
+    any `push` or `sub $imm, %rsp` frame allocation.
+    """
+    src = tmpdir / "holdout_w23_sw_leaf.bend"
+    obj = tmpdir / f"holdout_w23_sw_leaf_{opt_flag}.o"
+    src.write_text(HOLDOUT_W23_SW_LEAF_SRC, encoding="utf-8")
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    sym = "$bor.fold_sw" if "$bor.fold_sw" in fns else "$direct.fold_sw"
+    lines = fns.get(sym, [])
+    first_ret = -1
+    first_push_or_sub = -1
+    for i, ln in enumerate(lines):
+        if "\t" not in ln or ln.strip().startswith("R_X86_64"):
+            continue
+        if first_ret < 0 and re.search(r"\tretq?\b", ln):
+            first_ret = i
+        if first_push_or_sub < 0 and (
+            re.search(r"\tpush\s", ln) or re.search(r"\tsub\s+\$0x[0-9a-f]+,%rsp", ln)
+        ):
+            first_push_or_sub = i
+    ok = (
+        sym == "$bor.fold_sw"
+        and first_ret >= 0
+        and (first_push_or_sub < 0 or first_ret < first_push_or_sub)
+    )
+    return ContractResult(
+        "Contract S (W23 Shrink-Wrap Leaf)",
+        "PASS" if ok else "FAIL",
+        f"sym={sym} first_ret={first_ret} first_push_or_sub={first_push_or_sub}",
+    )
+
+
+def check_contract_t(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract T (Law L23-3: Continuation-ADT Deforestation):
+    On an unrelated fuel-bounded 2-constructor continuation-ADT lookup
+    (`KRoot | KCmp`), verify 0 `p111_rt_ctor` calls in `$direct.kv_find`.
+    """
+    src = tmpdir / "holdout_w23_cadt.bend"
+    obj = tmpdir / f"holdout_w23_cadt_{opt_flag}.o"
+    src.write_text(HOLDOUT_W23_CADT_SRC, encoding="utf-8")
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    lines = fns.get("$direct.kv_find", [])
+    m = analyze_func("$direct.kv_find", lines)
+    ok = len(lines) > 0 and m.total_ctor_calls == 0
+    return ContractResult(
+        "Contract T (W23 Cont-ADT Deforest)",
+        "PASS" if ok else "FAIL",
+        f"kv_find(total_ctor={m.total_ctor_calls}, hot_ctor={m.hot_ctor_calls}, insns={len(lines)})",
+    )
+
+
 def run_fault_injection_self_test(
     bend5k_bin: Path, tmpdir: Path, cpu_pin: str | None
 ) -> bool:
@@ -2212,6 +2338,8 @@ def run_fault_injection_self_test(
         check_contract_p,
         check_contract_q,
         check_contract_r,
+        check_contract_s,
+        check_contract_t,
     ):
         res = fn(bend5k_bin, tmpdir, "-O0", cpu_pin)
         tripped = res.status == "FAIL"
@@ -2513,6 +2641,8 @@ def main() -> int:
             check_contract_p(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_q(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_r(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_s(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_t(bend5k_bin, tmpdir, "-O2", cpu_pin),
         ]
 
         failed = False

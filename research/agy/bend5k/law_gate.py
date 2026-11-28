@@ -1763,9 +1763,24 @@ def check_generality_matrix(
         compile_to_obj(bend5k_bin, UNSEEN_W19_DIR / "u5_matvec_f32.bend", obj_u5, opt_flag, cpu_pin)
         fu5 = disassemble_obj(obj_u5)
         if "$direct.dot_row" in fu5:
-            # Count movd inside loop body (between first backward-branch target and back-branch)
+            # Count movd inside loop body (between backward-branch target and back-branch)
             dlines = fu5["$direct.dot_row"]
-            movd_cnt = sum(1 for ln in dlines if "\tmovd " in ln or "\tvmovd " in ln)
+            loop_addrs: list[tuple[int, int]] = []
+            for ln in dlines:
+                m_a = re.match(r"\s*([0-9a-f]+):", ln)
+                m_j = re.search(r"\t(j[a-z]+)\s+([0-9a-f]+)\s+<", ln)
+                if m_a and m_j and not m_j.group(1).startswith("jmp"):
+                    a_cur, a_tgt = int(m_a.group(1), 16), int(m_j.group(2), 16)
+                    if a_tgt < a_cur:
+                        loop_addrs.append((a_tgt, a_cur))
+            movd_cnt = 0
+            for ln in dlines:
+                if "\tmovd " in ln or "\tvmovd " in ln:
+                    m_a = re.match(r"\s*([0-9a-f]+):", ln)
+                    if m_a:
+                        a_cur = int(m_a.group(1), 16)
+                        if not loop_addrs or any(lo <= a_cur <= hi for lo, hi in loop_addrs):
+                            movd_cnt += 1
             cells.append(
                 MatrixCell(
                     "W19 Unseen Law 8 (XMM)",
@@ -1952,6 +1967,228 @@ def check_contract_p(
     return ContractResult("Contract P (WW Rec+DualArr)", "PASS" if ok else "FAIL", detail)
 
 
+HOLDOUT_W22_LAWS_SRC = """\
+import Base
+
+type Inner2 is Data:
+  I2{a: U32, b: U32}
+
+type Outer2 is Data:
+  O2{x: Inner2, y: Inner2}
+
+def step_nested(m: Outer2) -> Outer2:
+  O2{I2{+a, +b}, I2{+c, +d}} = m
+  O2{I2{U32.add(a, b), U32.xor(b, c)}, I2{U32.add(c, d), U32.xor(d, a)}}
+
+def nested_rec_loop(+rem: Nat, m: Outer2) -> Outer2:
+  match rem:
+    case 0n: m
+    case 1n+p: nested_rec_loop(p, step_nested(m))
+
+type FiveSt is Type:
+  F5{a0: Array<U32>, a1: Array<U32>, a2: Array<U32>, a3: Array<U32>, a4: Array<U32>, acc: U32}
+
+def five_arr_loop(+rem: Nat, +i: U32, a0: Array<U32>, a1: Array<U32>, a2: Array<U32>, a3: Array<U32>, a4: Array<U32>, +acc: U32) -> FiveSt:
+  match rem:
+    case 0n: F5{a0, a1, a2, a3, a4, acc}
+    case 1n+p:
+      +idx = U32.and(i, 15)
+      na0 = Array.set(U32, a0, idx, U32.add(i, 1))
+      na1 = Array.set(U32, a1, idx, U32.add(i, 2))
+      na2 = Array.set(U32, a2, idx, U32.add(i, 3))
+      na3 = Array.set(U32, a3, idx, U32.add(i, 4))
+      na4 = Array.set(U32, a4, idx, U32.add(i, 5))
+      five_arr_loop(p, U32.inc(i), na0, na1, na2, na3, na4, U32.add(acc, i))
+
+def main() -> U32:
+  O2{I2{+a, +b}, I2{+c, +d}} = nested_rec_loop(10n, O2{I2{1, 2}, I2{3, 4}})
+  F5{z0, z1, z2, z3, z4, +s} = five_arr_loop(16n, 0, Array.new(U32, 4n, 0), Array.new(U32, 4n, 0), Array.new(U32, 4n, 0), Array.new(U32, 4n, 0), Array.new(U32, 4n, 0), 0)
+  U32.add(U32.add(a, b), U32.add(U32.add(c, d), s))
+"""
+
+HOLDOUT_W22_SOUND_BOR_SRC = """\
+import Base
+
+type BTree is Data:
+  BLeaf{k: U32, v: U32}
+  BNode{lo: U32, hi: U32, total: U32, l: BTree, r: BTree}
+
+type Visit is Data:
+  VSkip{}
+  VFull{}
+  VPart{}
+
+def tree_sum(t: BTree) -> U32:
+  match t:
+    case BLeaf{k, +v}: v
+    case BNode{lo, hi, +total, l, r}: total
+
+def build_tree(+depth: Nat, +base: U32) -> BTree:
+  match depth:
+    case 0n:
+      BLeaf{base, U32.add(U32.mul(base, 7), 3)}
+    case 1n+p:
+      +half = U32.shln(1, p)
+      +hi = U32.sub(U32.add(base, U32.shln(half, 1n)), 1)
+      +lt = build_tree(p, base)
+      +rt = build_tree(p, U32.add(base, half))
+      BNode{base, hi, U32.add(tree_sum(lt), tree_sum(rt)), lt, rt}
+
+def classify_range(+lo: U32, +hi: U32, +qlo: U32, +qhi: U32) -> Visit:
+  +disj = Bool.or(U32.is_lt(hi, qlo), U32.is_gt(lo, qhi))
+  +full = Bool.and(U32.is_ge(lo, qlo), U32.is_le(hi, qhi))
+  Bool.pick(Visit, disj, VSkip{}, Bool.pick(Visit, full, VFull{}, VPart{}))
+
+def classify_tree(t: BTree, +qlo: U32, +qhi: U32) -> Visit:
+  match t:
+    case BLeaf{+k, v}: classify_range(k, k, qlo, qhi)
+    case BNode{+lo, +hi, total, l, r}: classify_range(lo, hi, qlo, qhi)
+
+def range_sum(t: BTree, mode: Visit, +qlo: U32, +qhi: U32) -> U32:
+  match t mode:
+    case _ VSkip{}: 0
+    case BLeaf{k, +v} VFull{}: v
+    case BLeaf{k, +v} VPart{}: v
+    case BNode{lo, hi, +total, l, r} VFull{}: total
+    case BNode{lo, hi, total, +l, +r} VPart{}:
+      +ml = classify_tree(l, qlo, qhi)
+      +mr = classify_tree(r, qlo, qhi)
+      U32.add(range_sum(l, ml, qlo, qhi), range_sum(r, mr, qlo, qhi))
+
+def run_q(+rem: Nat, +t: BTree, +acc: U32) -> U32:
+  match rem:
+    case 0n: acc
+    case 1n+p:
+      +v = range_sum(t, VPart{}, 10, 40)
+      run_q(p, t, U32.add(acc, v))
+
+def main() -> U32:
+  +t = build_tree(6n, 0)
+  run_q(10n, t, 0)
+"""
+
+HOLDOUT_W22_SOUND_P5BOOL_SRC = """\
+import Base
+
+type PSt is Type:
+  PSt{a: Array<U32>, b: Array<U32>, i: U32, acc: U32, flag: Bool}
+
+def step_inner(flag: Bool, a: Array<U32>, b: Array<U32>, +i: U32, +acc: U32) -> PSt:
+  match flag:
+    case False{}:
+      +idx = U32.and(i, 15)
+      na = Array.set(U32, a, idx, U32.add(i, 1))
+      PSt{na, b, U32.add(i, 1), U32.add(acc, i), True{}}
+    case True{}:
+      +idx = U32.and(i, 15)
+      nb = Array.set(U32, b, idx, U32.xor(i, 7))
+      PSt{a, nb, U32.add(i, 1), U32.xor(acc, U32.mul(i, 3)), False{}}
+
+def step_pst(+rem: Nat, st: PSt) -> PSt:
+  match rem:
+    case 0n: st
+    case 1n+p:
+      PSt{a, b, +i, +acc, flag} = st
+      step_pst(p, step_inner(flag, a, b, i, acc))
+
+def finish_flag(flag: Bool, +acc: U32, +i: U32) -> U32:
+  match flag:
+    case False{}: U32.add(acc, i)
+    case True{}: U32.xor(acc, i)
+
+def finish(st: PSt) -> U32:
+  PSt{a1, b1, +i, +acc, flag} = st
+  finish_flag(flag, acc, i)
+
+def main() -> U32:
+  a = Array.new(U32, 4n, 1)
+  b = Array.new(U32, 4n, 7)
+  finish(step_pst(200n, PSt{a, b, 0, 123, False{}}))
+"""
+
+
+def check_contract_q(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract Q (W22 Recursive Multi-Level WW Unboxing & 5-Array Hoist, STRICT PASS):
+    Verifies:
+      1. 2-level nested single-ctor record loop (`nested_rec_loop`) unboxes both levels
+         (0 hot_take_calls, back_branch=True).
+      2. 5-array self-tail loop (`five_arr_loop`) hoists all 5 arrays into the preheader
+         (pre_dec >= 5, loop_dec == 0, loop_op == 0, back_branch=True).
+    """
+    src = tmpdir / "holdout_w22_laws.bend"
+    src.write_text(HOLDOUT_W22_LAWS_SRC, encoding="utf-8")
+    obj = tmpdir / f"holdout_w22_laws_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    if "$direct.nested_rec_loop" not in fns or "$direct.five_arr_loop" not in fns:
+        return ContractResult("Contract Q (W22 NestWW+5Arr)", "FAIL", "missing target symbols")
+    mn = analyze_func("$direct.nested_rec_loop", fns["$direct.nested_rec_loop"])
+    m5 = analyze_func("$direct.five_arr_loop", fns["$direct.five_arr_loop"])
+    ok_n = mn.hot_take_calls == 0 and mn.has_back_branch
+    ok_5 = (
+        m5.preheader_arr_decodes >= 5
+        and m5.loop_arr_decodes == 0
+        and m5.loop_rt_op_calls == 0
+        and m5.has_back_branch
+    )
+    ok = ok_n and ok_5
+    detail = (
+        f"nested(hot_take={mn.hot_take_calls}, back={mn.has_back_branch}); "
+        f"five_arr(pre_dec={m5.preheader_arr_decodes}, loop_dec={m5.loop_arr_decodes}, "
+        f"loop_op={m5.loop_rt_op_calls}, back={m5.has_back_branch})"
+    )
+    return ContractResult("Contract Q (W22 NestWW+5Arr)", "PASS" if ok else "FAIL", detail)
+
+
+def check_contract_r(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract R (W22 -O0 == -O2 Soundness Regression: $bor non-tail + 5-field Type Bool):
+    Compiles, links, and runs both holdouts at -O0 and `opt_flag`, asserting exact stdout
+    equivalence and verifying `$bor.range_sum` specialization when `opt_flag == '-O2'`.
+    """
+    rt_obj = ROOT / "selfhost/build/agy/unified/runtime-agy.o"
+    cc = "/usr/bin/x86_64-linux-gnu-gcc-10"
+    cases = [
+        ("bor_prune", HOLDOUT_W22_SOUND_BOR_SRC, True),
+        ("p5_bool", HOLDOUT_W22_SOUND_P5BOOL_SRC, False),
+    ]
+    parts: list[str] = []
+    ok = True
+    for name, code, need_bor in cases:
+        src = tmpdir / f"holdout_w22_{name}.bend"
+        src.write_text(code, encoding="utf-8")
+        outs: dict[str, str] = {}
+        has_bor = False
+        for flag in ("-O0", opt_flag):
+            obj = tmpdir / f"holdout_w22_{name}_{flag}.o"
+            exe = tmpdir / f"holdout_w22_{name}_{flag}"
+            compile_to_obj(bend5k_bin, src, obj, flag, cpu_pin)
+            if flag == opt_flag and need_bor:
+                fns = disassemble_obj(obj)
+                has_bor = "$bor.range_sum" in fns
+            lnk = subprocess.run(
+                [cc, "-no-pie", str(obj), str(rt_obj), "-pthread", "-lm", "-o", str(exe)],
+                capture_output=True,
+                text=True,
+            )
+            if lnk.returncode != 0:
+                return ContractResult("Contract R (W22 O0==O2 Sound)", "FAIL", f"{name} link failed")
+            run_cmd = (["taskset", "-c", cpu_pin] if cpu_pin else []) + [str(exe)]
+            r = subprocess.run(run_cmd, capture_output=True, text=True, timeout=30)
+            if r.returncode != 0:
+                return ContractResult("Contract R (W22 O0==O2 Sound)", "FAIL", f"{name} {flag} rc={r.returncode}")
+            outs[flag] = r.stdout.strip()
+        eq = outs["-O0"] == outs[opt_flag] and outs["-O0"] != ""
+        bor_ok = (not need_bor) or has_bor
+        if not (eq and bor_ok):
+            ok = False
+        parts.append(f"{name}(O0={outs['-O0']}, {opt_flag}={outs[opt_flag]}" + (f", bor={has_bor})" if need_bor else ")"))
+    return ContractResult("Contract R (W22 O0==O2 Sound)", "PASS" if ok else "FAIL", "; ".join(parts))
+
+
 def run_fault_injection_self_test(
     bend5k_bin: Path, tmpdir: Path, cpu_pin: str | None
 ) -> bool:
@@ -1973,6 +2210,8 @@ def run_fault_injection_self_test(
         check_contract_n,
         check_contract_o,
         check_contract_p,
+        check_contract_q,
+        check_contract_r,
     ):
         res = fn(bend5k_bin, tmpdir, "-O0", cpu_pin)
         tripped = res.status == "FAIL"
@@ -2272,6 +2511,8 @@ def main() -> int:
             check_contract_n(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_o(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_p(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_q(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_r(bend5k_bin, tmpdir, "-O2", cpu_pin),
         ]
 
         failed = False

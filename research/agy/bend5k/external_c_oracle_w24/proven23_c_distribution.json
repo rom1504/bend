@@ -1,0 +1,1711 @@
+{
+  "schema_version": "external_c_oracle_w24_v1",
+  "timestamp_utc": "2026-11-28T04:26:23.417292+00:00",
+  "environment": {
+    "cpu_model": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+    "cpu_pin": "3",
+    "runs_per_program": 5,
+    "gcc_version": "gcc-10 (Debian 10.2.1-6) 10.2.1 20210110",
+    "clang_available": false,
+    "bend5k_compiler": "/home/ai/bend2_agy/selfhost/build/agy/bend5k/bend5k_o2",
+    "bend5k_sha256": "2489ac09c9918d2b804f1ce61dd1bc13d0704e51219462bf57377a5092d9fdf0",
+    "runtime_obj": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "runtime_sha256": "afdcbaa790b85f55548fc0dc7ab50dc11241765ff547fc98a13e0e45ea6bbeaf"
+  },
+  "verification": {
+    "total_programs": 20,
+    "zero_unsafe_all": true,
+    "bun_check_passed": 20,
+    "checksum_matched": 20,
+    "all_passed": true
+  },
+  "distribution": {
+    "bend_vs_c_o2": {
+      "n": 20,
+      "geomean": 2.86,
+      "bootstrap_95_ci": [
+        2.182,
+        3.7125
+      ],
+      "min": 0.922,
+      "p10": 1.1223,
+      "p25": 2.1756,
+      "p50_median": 2.9242,
+      "p75": 5.0401,
+      "p90": 6.1005,
+      "max": 7.6819
+    },
+    "bend_vs_c_o3_native": {
+      "n": 20,
+      "geomean": 3.3088,
+      "bootstrap_95_ci": [
+        2.506,
+        4.2921
+      ],
+      "min": 0.9357,
+      "p10": 1.2827,
+      "p25": 2.7022,
+      "p50_median": 3.354,
+      "p75": 5.5769,
+      "p90": 6.2393,
+      "max": 7.6507
+    },
+    "bend_vs_c_rss": {
+      "n": 20,
+      "min": 2.3624,
+      "p50_median": 2.4901,
+      "p90": 5.1486,
+      "max": 30.9512,
+      "geomean": 3.3343
+    }
+  },
+  "per_stratum": {
+    "S1": {
+      "name": "Bit / Integer / Crypto",
+      "n": 4,
+      "bend_vs_c_o2_geomean": 2.7977,
+      "bend_vs_c_o2_median": 2.6477,
+      "bend_vs_c_o3_native_geomean": 2.8673,
+      "bend_vs_c_o3_native_median": 2.6514,
+      "bend_vs_c_rss_median": 2.5031
+    },
+    "S2": {
+      "name": "Numeric / F32 / Stencil / Linear Algebra",
+      "n": 4,
+      "bend_vs_c_o2_geomean": 1.421,
+      "bend_vs_c_o2_median": 1.4045,
+      "bend_vs_c_o3_native_geomean": 2.5455,
+      "bend_vs_c_o3_native_median": 3.4487,
+      "bend_vs_c_rss_median": 3.6291
+    },
+    "S3": {
+      "name": "Array / Graph / String / Sort / DP",
+      "n": 4,
+      "bend_vs_c_o2_geomean": 3.6146,
+      "bend_vs_c_o2_median": 3.2939,
+      "bend_vs_c_o3_native_geomean": 3.6838,
+      "bend_vs_c_o3_native_median": 3.3025,
+      "bend_vs_c_rss_median": 3.0108
+    },
+    "S4": {
+      "name": "Trees / Allocator / Symbolic / Regex",
+      "n": 4,
+      "bend_vs_c_o2_geomean": 3.1147,
+      "bend_vs_c_o2_median": 4.0918,
+      "bend_vs_c_o3_native_geomean": 3.1116,
+      "bend_vs_c_o3_native_median": 4.0918,
+      "bend_vs_c_rss_median": 2.4658
+    },
+    "S5": {
+      "name": "Real Mini-Apps / Parsers / Codecs",
+      "n": 4,
+      "bend_vs_c_o2_geomean": 4.2751,
+      "bend_vs_c_o2_median": 4.3041,
+      "bend_vs_c_o3_native_geomean": 4.7407,
+      "bend_vs_c_o3_native_median": 4.7301,
+      "bend_vs_c_rss_median": 2.4773
+    }
+  },
+  "programs": [
+    {
+      "id": "s1_embench_crc32",
+      "stratum": "S1",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/crc32/crc_32.c",
+      "license": "GPL-3.0-or-later",
+      "description": "Table-driven IEEE 802.3 CRC-32 (3000 rounds x 1024 bytes)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "3004082208",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3004082208",
+        "median_ms": 10.82,
+        "raw_ms": [
+          10.73,
+          10.95,
+          10.83,
+          10.82,
+          10.65
+        ],
+        "peak_rss_kib": 4132,
+        "raw_rss_kib": [
+          4152,
+          4208,
+          4104,
+          4112,
+          4184
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3004082208",
+        "median_ms": 8.31,
+        "raw_ms": [
+          8.45,
+          8.25,
+          8.4,
+          8.31,
+          8.17
+        ],
+        "peak_rss_kib": 1616,
+        "raw_rss_kib": [
+          1556,
+          1648,
+          1584,
+          1724,
+          1552
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "3004082208",
+        "median_ms": 8.32,
+        "raw_ms": [
+          8.29,
+          8.49,
+          8.26,
+          8.32,
+          8.33
+        ],
+        "peak_rss_kib": 1712,
+        "raw_rss_kib": [
+          1652,
+          1724,
+          1700,
+          1724,
+          1560
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 1.302,
+      "bend_vs_c_o3_native": 1.3005,
+      "bend_vs_c_rss_ratio": 2.5569
+    },
+    {
+      "id": "s1_embench_sha256",
+      "stratum": "S1",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/nettle-sha256/nettle-sha256.c",
+      "license": "GPL-3.0-or-later",
+      "description": "Nettle SHA-256 iterated 24,000 times on 32-byte state",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "3676114525",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3676114525",
+        "median_ms": 59.15,
+        "raw_ms": [
+          59.39,
+          59.15,
+          60.89,
+          58.89,
+          58.6
+        ],
+        "peak_rss_kib": 4100,
+        "raw_rss_kib": [
+          4064,
+          4072,
+          4204,
+          4076,
+          4124
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3676114525",
+        "median_ms": 8.78,
+        "raw_ms": [
+          8.63,
+          8.78,
+          8.83,
+          8.65,
+          8.88
+        ],
+        "peak_rss_kib": 1652,
+        "raw_rss_kib": [
+          1584,
+          1648,
+          1780,
+          1652,
+          1744
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "3676114525",
+        "median_ms": 7.97,
+        "raw_ms": [
+          8.23,
+          8.71,
+          7.97,
+          7.97,
+          7.88
+        ],
+        "peak_rss_kib": 1690,
+        "raw_rss_kib": [
+          1780,
+          1660,
+          1584,
+          1724,
+          1656
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 6.7369,
+      "bend_vs_c_o3_native": 7.4216,
+      "bend_vs_c_rss_ratio": 2.4818
+    },
+    {
+      "id": "s1_embench_aes",
+      "stratum": "S1",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/nettle-aes/nettle-aes.c",
+      "license": "GPL-3.0-or-later",
+      "description": "Nettle AES-256 ECB (3000 rounds x 256 bytes)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "1368613011",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "1368613011",
+        "median_ms": 13.43,
+        "raw_ms": [
+          13.72,
+          13.19,
+          13.36,
+          13.71,
+          13.43
+        ],
+        "peak_rss_kib": 4322,
+        "raw_rss_kib": [
+          4344,
+          4300,
+          4188,
+          4356,
+          4244
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "1368613011",
+        "median_ms": 5.4,
+        "raw_ms": [
+          5.4,
+          5.39,
+          5.26,
+          6.4,
+          5.46
+        ],
+        "peak_rss_kib": 1712,
+        "raw_rss_kib": [
+          1716,
+          1708,
+          1692,
+          1780,
+          1700
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "1368613011",
+        "median_ms": 5.4,
+        "raw_ms": [
+          5.68,
+          5.4,
+          5.3,
+          5.34,
+          5.49
+        ],
+        "peak_rss_kib": 1654,
+        "raw_rss_kib": [
+          1784,
+          1656,
+          1648,
+          1736,
+          1648
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 2.487,
+      "bend_vs_c_o3_native": 2.487,
+      "bend_vs_c_rss_ratio": 2.5245
+    },
+    {
+      "id": "s1_xxhash32",
+      "stratum": "S1",
+      "upstream_repo": "Cyan4973/xxHash",
+      "upstream_file": "vendor/xxHash/xxhash.h",
+      "license": "BSD-2-Clause",
+      "description": "XXH32 non-cryptographic hash (24,000 rounds x 4096 bytes)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "1900869965",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "1900869965",
+        "median_ms": 42.49,
+        "raw_ms": [
+          42.29,
+          42.49,
+          42.55,
+          42.52,
+          42.15
+        ],
+        "peak_rss_kib": 4126,
+        "raw_rss_kib": [
+          4192,
+          4128,
+          4208,
+          4116,
+          4124
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "1900869965",
+        "median_ms": 15.13,
+        "raw_ms": [
+          14.98,
+          15.13,
+          14.88,
+          15.13,
+          15.17
+        ],
+        "peak_rss_kib": 1672,
+        "raw_rss_kib": [
+          1580,
+          1648,
+          1724,
+          1724,
+          1696
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "1900869965",
+        "median_ms": 15.09,
+        "raw_ms": [
+          15.09,
+          14.93,
+          14.99,
+          15.41,
+          15.26
+        ],
+        "peak_rss_kib": 1742,
+        "raw_rss_kib": [
+          1744,
+          1688,
+          1784,
+          1740,
+          1528
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 2.8083,
+      "bend_vs_c_o3_native": 2.8158,
+      "bend_vs_c_rss_ratio": 2.4677
+    },
+    {
+      "id": "s2_polybench_gemm",
+      "stratum": "S2",
+      "upstream_repo": "MatthiasJReisinger/PolyBenchC-4.2.1",
+      "upstream_file": "vendor/PolyBenchC-4.2.1/linear-algebra/blas/gemm/gemm.c",
+      "license": "BSD-style (OSU)",
+      "description": "PolyBench/C gemm (MEDIUM_DATASET NI=200,NJ=220,NK=240, float/F32)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "3069044833",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3069044833",
+        "median_ms": 18.83,
+        "raw_ms": [
+          18.73,
+          19.25,
+          18.83,
+          18.95,
+          18.57
+        ],
+        "peak_rss_kib": 6228,
+        "raw_rss_kib": [
+          6104,
+          6252,
+          6256,
+          6240,
+          6188
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3069044833",
+        "median_ms": 11.15,
+        "raw_ms": [
+          11.35,
+          10.95,
+          11.15,
+          10.91,
+          11.24
+        ],
+        "peak_rss_kib": 1724,
+        "raw_rss_kib": [
+          1724,
+          1660,
+          1648,
+          1724,
+          1784
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "3069044833",
+        "median_ms": 3.38,
+        "raw_ms": [
+          3.99,
+          3.31,
+          3.38,
+          3.3,
+          3.43
+        ],
+        "peak_rss_kib": 1714,
+        "raw_rss_kib": [
+          1720,
+          1696,
+          1564,
+          1720,
+          1784
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 1.6888,
+      "bend_vs_c_o3_native": 5.571,
+      "bend_vs_c_rss_ratio": 3.6125
+    },
+    {
+      "id": "s2_polybench_jacobi2d",
+      "stratum": "S2",
+      "upstream_repo": "MatthiasJReisinger/PolyBenchC-4.2.1",
+      "upstream_file": "vendor/PolyBenchC-4.2.1/stencils/jacobi-2d/jacobi-2d.c",
+      "license": "BSD-style (OSU)",
+      "description": "PolyBench/C jacobi-2d (MEDIUM_DATASET TSTEPS=100,N=250, float/F32)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "2721105752",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "2721105752",
+        "median_ms": 40.56,
+        "raw_ms": [
+          40.47,
+          40.53,
+          40.8,
+          41.09,
+          40.56
+        ],
+        "peak_rss_kib": 6210,
+        "raw_rss_kib": [
+          6124,
+          6172,
+          6136,
+          6256,
+          6248
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "2721105752",
+        "median_ms": 17.35,
+        "raw_ms": [
+          17.44,
+          17.32,
+          17.35,
+          17.02,
+          19.87
+        ],
+        "peak_rss_kib": 1582,
+        "raw_rss_kib": [
+          1652,
+          1580,
+          1652,
+          1584,
+          1524
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "2721105752",
+        "median_ms": 6.68,
+        "raw_ms": [
+          6.46,
+          6.74,
+          6.25,
+          6.68,
+          6.83
+        ],
+        "peak_rss_kib": 1614,
+        "raw_rss_kib": [
+          1784,
+          1692,
+          1580,
+          1528,
+          1648
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 2.3378,
+      "bend_vs_c_o3_native": 6.0719,
+      "bend_vs_c_rss_ratio": 3.9254
+    },
+    {
+      "id": "s2_polybench_seidel2d",
+      "stratum": "S2",
+      "upstream_repo": "MatthiasJReisinger/PolyBenchC-4.2.1",
+      "upstream_file": "vendor/PolyBenchC-4.2.1/stencils/seidel-2d/seidel-2d.c",
+      "license": "BSD-style (OSU)",
+      "description": "PolyBench/C seidel-2d (SMALL_DATASET TSTEPS=40,N=120, float/F32)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "3060348153",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3060348153",
+        "median_ms": 7.64,
+        "raw_ms": [
+          7.53,
+          8.02,
+          7.7,
+          7.57,
+          7.64
+        ],
+        "peak_rss_kib": 4120,
+        "raw_rss_kib": [
+          4104,
+          4124,
+          4116,
+          4176,
+          4096
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3060348153",
+        "median_ms": 6.82,
+        "raw_ms": [
+          6.72,
+          6.78,
+          6.82,
+          6.9,
+          6.86
+        ],
+        "peak_rss_kib": 1744,
+        "raw_rss_kib": [
+          1784,
+          1784,
+          1708,
+          1644,
+          1780
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "3060348153",
+        "median_ms": 5.76,
+        "raw_ms": [
+          5.75,
+          5.79,
+          5.76,
+          5.76,
+          5.8
+        ],
+        "peak_rss_kib": 1724,
+        "raw_rss_kib": [
+          1740,
+          1708,
+          1560,
+          1724,
+          1784
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 1.1202,
+      "bend_vs_c_o3_native": 1.3264,
+      "bend_vs_c_rss_ratio": 2.3624
+    },
+    {
+      "id": "s2_polybench_bicg",
+      "stratum": "S2",
+      "upstream_repo": "MatthiasJReisinger/PolyBenchC-4.2.1",
+      "upstream_file": "vendor/PolyBenchC-4.2.1/linear-algebra/kernels/bicg/bicg.c",
+      "license": "BSD-style (OSU)",
+      "description": "PolyBench/C bicg (MEDIUM_DATASET M=390,N=410 x 40 rounds, float/F32)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "4288055220",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "4288055220",
+        "median_ms": 16.31,
+        "raw_ms": [
+          16.27,
+          16.2,
+          16.37,
+          16.6,
+          16.31
+        ],
+        "peak_rss_kib": 6256,
+        "raw_rss_kib": [
+          6280,
+          6240,
+          6232,
+          6248,
+          6264
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "4288055220",
+        "median_ms": 17.69,
+        "raw_ms": [
+          17.69,
+          18.2,
+          17.66,
+          17.64,
+          17.69
+        ],
+        "peak_rss_kib": 1716,
+        "raw_rss_kib": [
+          1648,
+          1780,
+          1724,
+          1708,
+          1664
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "4288055220",
+        "median_ms": 17.43,
+        "raw_ms": [
+          17.57,
+          17.43,
+          17.55,
+          17.27,
+          17.26
+        ],
+        "peak_rss_kib": 1714,
+        "raw_rss_kib": [
+          1684,
+          1784,
+          1560,
+          1708,
+          1720
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 0.922,
+      "bend_vs_c_o3_native": 0.9357,
+      "bend_vs_c_rss_ratio": 3.6457
+    },
+    {
+      "id": "s3_polybench_floyd_warshall",
+      "stratum": "S3",
+      "upstream_repo": "MatthiasJReisinger/PolyBenchC-4.2.1",
+      "upstream_file": "vendor/PolyBenchC-4.2.1/medley/floyd-warshall/floyd-warshall.c",
+      "license": "BSD-style (OSU)",
+      "description": "PolyBench/C floyd-warshall (SMALL_DATASET N=180 integer APSP)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "712492213",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "712492213",
+        "median_ms": 23.31,
+        "raw_ms": [
+          23.55,
+          23.42,
+          23.31,
+          23.17,
+          23.15
+        ],
+        "peak_rss_kib": 4092,
+        "raw_rss_kib": [
+          4092,
+          4012,
+          4144,
+          4168,
+          4092
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "712492213",
+        "median_ms": 6.57,
+        "raw_ms": [
+          6.49,
+          6.62,
+          6.5,
+          7.09,
+          6.57
+        ],
+        "peak_rss_kib": 1724,
+        "raw_rss_kib": [
+          1648,
+          1784,
+          1724,
+          1584,
+          1724
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "712492213",
+        "median_ms": 6.67,
+        "raw_ms": [
+          6.67,
+          6.66,
+          10.08,
+          6.78,
+          6.64
+        ],
+        "peak_rss_kib": 1722,
+        "raw_rss_kib": [
+          1724,
+          1784,
+          1584,
+          1784,
+          1720
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 3.5479,
+      "bend_vs_c_o3_native": 3.4948,
+      "bend_vs_c_rss_ratio": 2.3735
+    },
+    {
+      "id": "s3_polybench_nussinov",
+      "stratum": "S3",
+      "upstream_repo": "MatthiasJReisinger/PolyBenchC-4.2.1",
+      "upstream_file": "vendor/PolyBenchC-4.2.1/medley/nussinov/nussinov.c",
+      "license": "BSD-style (OSU)",
+      "description": "PolyBench/C nussinov (MEDIUM_DATASET N=500 RNA folding 2D DP)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "2722428709",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "2722428709",
+        "median_ms": 63.26,
+        "raw_ms": [
+          64.25,
+          63.06,
+          63.26,
+          63.26,
+          62.05
+        ],
+        "peak_rss_kib": 6180,
+        "raw_rss_kib": [
+          6212,
+          6164,
+          6192,
+          6140,
+          6168
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "2722428709",
+        "median_ms": 24.1,
+        "raw_ms": [
+          24.11,
+          27.56,
+          24.01,
+          24.1,
+          24.04
+        ],
+        "peak_rss_kib": 1754,
+        "raw_rss_kib": [
+          1780,
+          1760,
+          1756,
+          1696,
+          1724
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "2722428709",
+        "median_ms": 20.34,
+        "raw_ms": [
+          20.16,
+          20.4,
+          20.31,
+          21.84,
+          20.34
+        ],
+        "peak_rss_kib": 1766,
+        "raw_rss_kib": [
+          1720,
+          1780,
+          1784,
+          1780,
+          1752
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 2.6249,
+      "bend_vs_c_o3_native": 3.1101,
+      "bend_vs_c_rss_ratio": 3.5234
+    },
+    {
+      "id": "s3_embench_matmult_int",
+      "stratum": "S3",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/matmult-int/matmult-int.c",
+      "license": "GPL-3.0-or-later",
+      "description": "Embench-IoT matmult-int (20x20 integer matmul x 2000 rounds)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "932836021",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "932836021",
+        "median_ms": 45.63,
+        "raw_ms": [
+          45.22,
+          45.42,
+          45.63,
+          45.96,
+          45.82
+        ],
+        "peak_rss_kib": 4192,
+        "raw_rss_kib": [
+          4192,
+          4168,
+          4216,
+          4192,
+          4116
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "932836021",
+        "median_ms": 15.01,
+        "raw_ms": [
+          14.82,
+          17.29,
+          15.08,
+          15.01,
+          14.99
+        ],
+        "peak_rss_kib": 1678,
+        "raw_rss_kib": [
+          1648,
+          1708,
+          1560,
+          1784,
+          1524
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "932836021",
+        "median_ms": 16.45,
+        "raw_ms": [
+          16.45,
+          16.54,
+          16.95,
+          16.11,
+          15.97
+        ],
+        "peak_rss_kib": 1728,
+        "raw_rss_kib": [
+          1656,
+          1740,
+          1736,
+          1720,
+          1780
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 3.04,
+      "bend_vs_c_o3_native": 2.7739,
+      "bend_vs_c_rss_ratio": 2.4982
+    },
+    {
+      "id": "s3_clbg_nsieve",
+      "stratum": "S3",
+      "upstream_repo": "hanabi1224/Programming-Language-Benchmarks",
+      "upstream_file": "vendor/clbg/bench/algorithm/nsieve/1.c",
+      "license": "MIT",
+      "description": "CLBG nsieve (m=7: primes up to 1.28M, 640K, 320K)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "3957226173",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3957226173",
+        "median_ms": 70.79,
+        "raw_ms": [
+          70.51,
+          69.06,
+          70.79,
+          70.79,
+          71.08
+        ],
+        "peak_rss_kib": 32800,
+        "raw_rss_kib": [
+          32768,
+          32888,
+          32772,
+          32748,
+          32828
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3957226173",
+        "median_ms": 11.74,
+        "raw_ms": [
+          11.68,
+          11.72,
+          11.93,
+          11.74,
+          11.91
+        ],
+        "peak_rss_kib": 2030,
+        "raw_rss_kib": [
+          2048,
+          2060,
+          1972,
+          2060,
+          2008
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "3957226173",
+        "median_ms": 11.59,
+        "raw_ms": [
+          11.86,
+          11.57,
+          11.71,
+          11.59,
+          11.49
+        ],
+        "peak_rss_kib": 2038,
+        "raw_rss_kib": [
+          2060,
+          2060,
+          2036,
+          2040,
+          1944
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 6.0298,
+      "bend_vs_c_o3_native": 6.1079,
+      "bend_vs_c_rss_ratio": 16.1576
+    },
+    {
+      "id": "s4_clbg_binary_trees",
+      "stratum": "S4",
+      "upstream_repo": "hanabi1224/Programming-Language-Benchmarks",
+      "upstream_file": "vendor/clbg/bench/algorithm/binarytrees/2.c",
+      "license": "MIT",
+      "description": "CLBG binary-trees (min=4, max=14 recursive tree alloc/check)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "2614006915",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "2614006915",
+        "median_ms": 27.85,
+        "raw_ms": [
+          27.86,
+          28.02,
+          27.81,
+          27.48,
+          27.85
+        ],
+        "peak_rss_kib": 6188,
+        "raw_rss_kib": [
+          6232,
+          6156,
+          6176,
+          6120,
+          6200
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "2614006915",
+        "median_ms": 24.81,
+        "raw_ms": [
+          24.77,
+          24.88,
+          25.03,
+          24.81,
+          24.65
+        ],
+        "peak_rss_kib": 2526,
+        "raw_rss_kib": [
+          2540,
+          2548,
+          2532,
+          2424,
+          2520
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "2614006915",
+        "median_ms": 24.81,
+        "raw_ms": [
+          24.64,
+          24.77,
+          26.19,
+          24.86,
+          24.81
+        ],
+        "peak_rss_kib": 2472,
+        "raw_rss_kib": [
+          2420,
+          2528,
+          2412,
+          2520,
+          2424
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 1.1225,
+      "bend_vs_c_o3_native": 1.1225,
+      "bend_vs_c_rss_ratio": 2.4497
+    },
+    {
+      "id": "s4_embench_slre",
+      "stratum": "S4",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/slre/libslre.c",
+      "license": "GPL-3.0-or-later",
+      "description": "Embench-IoT slre regex matcher (4000 rotations x 4 patterns)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "292184789",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "292184789",
+        "median_ms": 35.7,
+        "raw_ms": [
+          49.2,
+          48.82,
+          28.64,
+          35.7,
+          28.48
+        ],
+        "peak_rss_kib": 4244,
+        "raw_rss_kib": [
+          4292,
+          4232,
+          4148,
+          4328,
+          4244
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "292184789",
+        "median_ms": 11.11,
+        "raw_ms": [
+          11.11,
+          11.32,
+          11.15,
+          11.08,
+          11.02
+        ],
+        "peak_rss_kib": 1710,
+        "raw_rss_kib": [
+          1648,
+          1660,
+          1784,
+          1744,
+          1696
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "292184789",
+        "median_ms": 11.11,
+        "raw_ms": [
+          11.11,
+          11.07,
+          11.17,
+          11.07,
+          11.14
+        ],
+        "peak_rss_kib": 1688,
+        "raw_rss_kib": [
+          1648,
+          1560,
+          1724,
+          1784,
+          1664
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 3.2133,
+      "bend_vs_c_o3_native": 3.2133,
+      "bend_vs_c_rss_ratio": 2.4819
+    },
+    {
+      "id": "s4_embench_sglib_rbtree",
+      "stratum": "S4",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/sglib-combined/sglib.h",
+      "license": "GPL-3.0-or-later",
+      "description": "Embench-IoT sglib Red-Black Tree (300 rounds x 512 inserts + inorder)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "3514293893",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3514293893",
+        "median_ms": 115.06,
+        "raw_ms": [
+          117.76,
+          113.38,
+          118.34,
+          115.06,
+          113.18
+        ],
+        "peak_rss_kib": 53298,
+        "raw_rss_kib": [
+          53420,
+          53324,
+          53272,
+          53324,
+          53268
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3514293893",
+        "median_ms": 23.15,
+        "raw_ms": [
+          22.9,
+          23.39,
+          23.09,
+          23.42,
+          23.15
+        ],
+        "peak_rss_kib": 1722,
+        "raw_rss_kib": [
+          1784,
+          1724,
+          1720,
+          1720,
+          1724
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "3514293893",
+        "median_ms": 23.15,
+        "raw_ms": [
+          23.15,
+          23.48,
+          23.59,
+          23.12,
+          22.82
+        ],
+        "peak_rss_kib": 1714,
+        "raw_rss_kib": [
+          1720,
+          1728,
+          1708,
+          1720,
+          1652
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 4.9702,
+      "bend_vs_c_o3_native": 4.9702,
+      "bend_vs_c_rss_ratio": 30.9512
+    },
+    {
+      "id": "s4_embench_sglib_listsort",
+      "stratum": "S4",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/sglib-combined/sglib.h",
+      "license": "GPL-3.0-or-later",
+      "description": "Embench-IoT sglib singly-linked list mergesort (400 rounds x 512 nodes)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "283061905",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "283061905",
+        "median_ms": 65.78,
+        "raw_ms": [
+          65.78,
+          65.64,
+          66.47,
+          65.86,
+          65.43
+        ],
+        "peak_rss_kib": 4178,
+        "raw_rss_kib": [
+          4200,
+          4220,
+          4184,
+          4132,
+          4112
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "283061905",
+        "median_ms": 12.53,
+        "raw_ms": [
+          12.6,
+          12.38,
+          12.53,
+          12.47,
+          12.84
+        ],
+        "peak_rss_kib": 1712,
+        "raw_rss_kib": [
+          1564,
+          1708,
+          1740,
+          1652,
+          1716
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "283061905",
+        "median_ms": 12.58,
+        "raw_ms": [
+          12.58,
+          12.97,
+          12.63,
+          12.5,
+          12.47
+        ],
+        "peak_rss_kib": 1686,
+        "raw_rss_kib": [
+          1564,
+          1524,
+          1724,
+          1784,
+          1648
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 5.2498,
+      "bend_vs_c_o3_native": 5.2289,
+      "bend_vs_c_rss_ratio": 2.4404
+    },
+    {
+      "id": "s5_jsmn_json",
+      "stratum": "S5",
+      "upstream_repo": "zserge/jsmn",
+      "upstream_file": "vendor/jsmn/jsmn.h",
+      "license": "MIT",
+      "description": "zserge/jsmn JSON tokenizer (4000 rounds x 448-byte nested JSON)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "2505617285",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "2505617285",
+        "median_ms": 94.18,
+        "raw_ms": [
+          94.04,
+          96.06,
+          94.27,
+          94.18,
+          94.15
+        ],
+        "peak_rss_kib": 4324,
+        "raw_rss_kib": [
+          4300,
+          4300,
+          4416,
+          4212,
+          4420
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "2505617285",
+        "median_ms": 12.26,
+        "raw_ms": [
+          12.29,
+          13.14,
+          12.16,
+          12.26,
+          12.1
+        ],
+        "peak_rss_kib": 1758,
+        "raw_rss_kib": [
+          1740,
+          1784,
+          1696,
+          1784,
+          1724
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "2505617285",
+        "median_ms": 12.31,
+        "raw_ms": [
+          11.92,
+          15.76,
+          12.31,
+          12.15,
+          13.17
+        ],
+        "peak_rss_kib": 1714,
+        "raw_rss_kib": [
+          1784,
+          1700,
+          1692,
+          1648,
+          1728
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 7.6819,
+      "bend_vs_c_o3_native": 7.6507,
+      "bend_vs_c_rss_ratio": 2.4596
+    },
+    {
+      "id": "s5_embench_huffbench",
+      "stratum": "S5",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/huffbench/libhuffbench.c",
+      "license": "GPL-3.0-or-later",
+      "description": "Embench-IoT huffbench Huffman compress + decompress (80 rounds x 500 bytes)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "446085269",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "446085269",
+        "median_ms": 12.18,
+        "raw_ms": [
+          12.06,
+          12.18,
+          12.36,
+          12.56,
+          12.18
+        ],
+        "peak_rss_kib": 4248,
+        "raw_rss_kib": [
+          4240,
+          4288,
+          4280,
+          4224,
+          4256
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "446085269",
+        "median_ms": 3.87,
+        "raw_ms": [
+          4.07,
+          3.87,
+          4.25,
+          3.87,
+          3.84
+        ],
+        "peak_rss_kib": 1712,
+        "raw_rss_kib": [
+          1720,
+          1704,
+          1740,
+          1784,
+          1648
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "446085269",
+        "median_ms": 3.99,
+        "raw_ms": [
+          3.96,
+          3.99,
+          3.87,
+          4.06,
+          4.17
+        ],
+        "peak_rss_kib": 1684,
+        "raw_rss_kib": [
+          1520,
+          1584,
+          1780,
+          1648,
+          1720
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 3.1473,
+      "bend_vs_c_o3_native": 3.0526,
+      "bend_vs_c_rss_ratio": 2.4813
+    },
+    {
+      "id": "s5_embench_tarfind",
+      "stratum": "S5",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/tarfind/tarfind.c",
+      "license": "MIT",
+      "description": "Embench-IoT tarfind POSIX TAR header archive scanner (800 rounds x 35 files)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "1240508654",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "1240508654",
+        "median_ms": 16.0,
+        "raw_ms": [
+          16.0,
+          16.0,
+          16.0,
+          17.09,
+          16.02
+        ],
+        "peak_rss_kib": 4180,
+        "raw_rss_kib": [
+          4132,
+          4204,
+          4184,
+          4208,
+          4108
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "1240508654",
+        "median_ms": 2.93,
+        "raw_ms": [
+          3.06,
+          2.93,
+          2.98,
+          2.88,
+          2.9
+        ],
+        "peak_rss_kib": 1690,
+        "raw_rss_kib": [
+          1784,
+          1524,
+          1724,
+          1696,
+          1556
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "1240508654",
+        "median_ms": 2.86,
+        "raw_ms": [
+          2.83,
+          2.83,
+          2.89,
+          2.93,
+          2.86
+        ],
+        "peak_rss_kib": 1572,
+        "raw_rss_kib": [
+          1524,
+          1724,
+          1560,
+          1524,
+          1584
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 5.4608,
+      "bend_vs_c_o3_native": 5.5944,
+      "bend_vs_c_rss_ratio": 2.4734
+    },
+    {
+      "id": "s5_embench_edn",
+      "stratum": "S5",
+      "upstream_repo": "embench/embench-iot",
+      "upstream_file": "vendor/embench-iot/src/edn/libedn.c",
+      "license": "GPL-3.0-or-later",
+      "description": "Embench-IoT edn DSP filterbank (1200 rounds: vec_mpy1, mac, fir, latsynth, iir1, dct)",
+      "zero_unsafe": true,
+      "bun_check_ok": true,
+      "bun_check_err": "",
+      "checksum_match": true,
+      "oracle_checksum_u32": "3027768702",
+      "bend_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3027768702",
+        "median_ms": 17.28,
+        "raw_ms": [
+          17.28,
+          17.11,
+          17.85,
+          17.22,
+          17.39
+        ],
+        "peak_rss_kib": 4212,
+        "raw_rss_kib": [
+          4296,
+          4220,
+          4308,
+          4196,
+          4196
+        ]
+      },
+      "c_gcc10_o2": {
+        "ok": true,
+        "error": "",
+        "checksum": "3027768702",
+        "median_ms": 6.83,
+        "raw_ms": [
+          6.7,
+          6.83,
+          6.76,
+          6.89,
+          6.87
+        ],
+        "peak_rss_kib": 1650,
+        "raw_rss_kib": [
+          1648,
+          1524,
+          1780,
+          1652,
+          1728
+        ]
+      },
+      "c_gcc10_o3_native": {
+        "ok": true,
+        "error": "",
+        "checksum": "3027768702",
+        "median_ms": 4.47,
+        "raw_ms": [
+          4.47,
+          4.47,
+          4.48,
+          4.64,
+          4.33
+        ],
+        "peak_rss_kib": 1724,
+        "raw_rss_kib": [
+          1724,
+          1720,
+          1560,
+          1784,
+          1724
+        ]
+      },
+      "c_clang_o3_native": null,
+      "bend_vs_c_o2": 2.53,
+      "bend_vs_c_o3_native": 3.8658,
+      "bend_vs_c_rss_ratio": 2.5527
+    }
+  ]
+}

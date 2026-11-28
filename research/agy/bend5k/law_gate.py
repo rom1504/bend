@@ -2315,6 +2315,122 @@ def check_contract_t(
     )
 
 
+HOLDOUT_W24_ROL_SRC = """\
+import Base
+
+def arx_mix(+rem: Nat, +a: U32, +b: U32) -> U32:
+  match rem:
+    case 0n:
+      U32.xor(a, b)
+    case 1n+p:
+      +r1 = U32.or(U32.shln(a, 7n), U32.shrn(a, 25n))
+      +r2 = U32.or(U32.shrn(b, 13n), U32.shln(b, 19n))
+      +r3 = U32.xor(U32.shln(r1, 11n), U32.shrn(r1, 21n))
+      arx_mix(p, U32.add(r3, b), U32.xor(r2, r1))
+
+def main() -> U32:
+  arx_mix(64n, 305419896, 2271560481)
+"""
+
+HOLDOUT_W24_NEST_HOIST_SRC = """\
+import Base
+
+type InnerOut is Type:
+  IO{a: Array<U32>, b: Array<U32>, acc: U32}
+
+def inner_b(+va: U32, +acc: U32, a: Array<U32>, rb: Array<U32> & U32) -> InnerOut:
+  (b, +vb) = rb
+  IO{a, b, U32.add(acc, U32.xor(va, vb))}
+
+def inner_a(+idx: U32, +acc: U32, ra: Array<U32> & U32, b: Array<U32>) -> InnerOut:
+  (a, +va) = ra
+  inner_b(va, acc, a, Array.get(U32, b, idx))
+
+def inner_go(+rem: Nat, +idx: U32, io: InnerOut) -> InnerOut:
+  match rem:
+    case 0n:
+      io
+    case 1n+p:
+      IO{a, b, +acc} = io
+      inner_go(p, U32.and(U32.add(idx, 1), 63), inner_a(idx, acc, Array.get(U32, a, idx), b))
+
+def outer_step(+i: U32, io: InnerOut) -> InnerOut:
+  IO{a1, b1, +acc1} = io
+  a2 = Array.set(U32, a1, U32.and(i, 63), acc1)
+  IO{a2, b1, acc1}
+
+def outer_scan(+rem: Nat, +i: U32, io: InnerOut) -> U32:
+  match rem:
+    case 0n:
+      IO{a, b, +acc} = io
+      acc
+    case 1n+p:
+      IO{a, b, +acc} = io
+      outer_scan(p, U32.add(i, 1), outer_step(i, inner_go(4n, U32.and(i, 63), IO{a, b, acc})))
+
+def main() -> U32:
+  a = Array.new(U32, 6n, 3)
+  b = Array.new(U32, 6n, 5)
+  outer_scan(32n, 0, IO{a, b, 1})
+"""
+
+
+def check_contract_u(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract U (Law L24-3: Hardware 32-bit Rotate Fusion):
+    On an unrelated ARX mixing loop using left-rotate (`|`), right-rotate (`|`),
+    and XOR-rotate (`^`), verify `$direct.arx_mix` emits >= 3 hardware `rol`
+    instructions.
+    """
+    src = tmpdir / "holdout_w24_rol.bend"
+    obj = tmpdir / f"holdout_w24_rol_{opt_flag}.o"
+    src.write_text(HOLDOUT_W24_ROL_SRC, encoding="utf-8")
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    lines = fns.get("$direct.arx_mix", [])
+    rol_cnt = sum(
+        1 for ln in lines if "\t" in ln and re.search(r"\troll?\s", ln)
+    )
+    ok = len(lines) > 0 and rol_cnt >= 3
+    return ContractResult(
+        "Contract U (W24 Hardware rol)",
+        "PASS" if ok else "FAIL",
+        f"arx_mix(rol={rol_cnt}, insns={len(lines)})",
+    )
+
+
+def check_contract_v(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract V (Law L24-1: Guarded Nested Self-TCO Loop Inlining + Array Hoisting):
+    On an unrelated outer self-TCO loop calling a small inner self-TCO helper over
+    the same 2 Array<U32> params, verify `$direct.outer_scan` inlines `$direct.inner_go`
+    (0 out-of-line calls) and hoists both arrays in the preheader with 0 loop decodes.
+    """
+    src = tmpdir / "holdout_w24_nest_hoist.bend"
+    obj = tmpdir / f"holdout_w24_nest_hoist_{opt_flag}.o"
+    src.write_text(HOLDOUT_W24_NEST_HOIST_SRC, encoding="utf-8")
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    lines = fns.get("$direct.outer_scan", [])
+    m = analyze_func("$direct.outer_scan", lines)
+    inner_calls = sum(
+        1 for ln in lines if "$direct.inner_go" in ln and "R_X86_64_" in ln
+    )
+    ok = (
+        len(lines) > 0
+        and inner_calls == 0
+        and m.preheader_arr_decodes >= 2
+        and m.loop_arr_decodes == 0
+    )
+    return ContractResult(
+        "Contract V (W24 Nested-Loop Hoist)",
+        "PASS" if ok else "FAIL",
+        f"outer_scan(inner_calls={inner_calls}, pre_hoist={m.preheader_arr_decodes}, loop_dec={m.loop_arr_decodes})",
+    )
+
+
 def run_fault_injection_self_test(
     bend5k_bin: Path, tmpdir: Path, cpu_pin: str | None
 ) -> bool:
@@ -2340,6 +2456,8 @@ def run_fault_injection_self_test(
         check_contract_r,
         check_contract_s,
         check_contract_t,
+        check_contract_u,
+        check_contract_v,
     ):
         res = fn(bend5k_bin, tmpdir, "-O0", cpu_pin)
         tripped = res.status == "FAIL"
@@ -2502,7 +2620,7 @@ def run_fault_injection_self_test(
             all_tripped = False
 
     print(
-        f"=== FAULT-INJECTION RESULT: {'PASS (all 14 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
+        f"=== FAULT-INJECTION RESULT: {'PASS (all 16 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
     )
     return all_tripped
 
@@ -2643,6 +2761,8 @@ def main() -> int:
             check_contract_r(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_s(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_t(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_u(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_v(bend5k_bin, tmpdir, "-O2", cpu_pin),
         ]
 
         failed = False

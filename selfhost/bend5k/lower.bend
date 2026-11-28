@@ -459,18 +459,14 @@ def low_pat_is_dead_var(p: Pat, body: Expr) -> Bool:
     case PWild{}: True{}
     case PVar{s, _}: U32.is_zero(count_uses_go(U32.to_nat(2048), s, UIExpr{body}))
     case _: False{}
-def low_test_nat_ge(st: CfgSt, r: U32, k: U32, fail_blk: U32) -> CfgSt:
-  +st1 = cfg_alloc(st, False{})
-  +st2 = low_emit_arr_one(cfg_emit(st1, IConst{cfg_res(st1), k}), 167, [r, cfg_res(st1)])
-  low_test_bool(st2, False{}, cfg_res(st2), fail_blk)
 def low_pat_nat_succ(np: NatPat, st: CfgSt, +pt: List<&2, Pat>, +r: U32, +rt: List<&2, U32>, +st_tail: List<&2, U32>, +tr_tail: List<&2, U32>, body: Expr, +fail_blk: U32, has_fail: Bool) -> PatStep:
   match np:
     case NPConst{k}: PSNext{low_opt_test_eq(has_fail, st, r, k, fail_blk), pt, rt, st_tail, tr_tail}
     case NPSub{+k, +rem}:
       +st0 = st
-      +st1 = Bool.pick(CfgSt, has_fail, Bool.pick(CfgSt, U32.is_eq(k, 1), low_test_bool(st0, True{}, r, fail_blk), low_test_nat_ge(st0, r, k, fail_blk)), st0)
-      +st2 = cfg_alloc(st1, False{})
-      +st3 = low_emit_arr_one(cfg_emit(st2, IConst{cfg_res(st2), k}), 163, [r, cfg_res(st2)])
+      +st1 = Bool.pick(CfgSt, has_fail, Bool.pick(CfgSt, U32.is_eq(k, 1), low_test_bool(st0, True{}, r, fail_blk), low_test_cmp_const(st0, B5K_CMP_GE(), r, k, fail_blk)), st0)
+      +st2 = low_emit_const(st1, k)
+      +st3 = low_emit_bin_or_cmp(st2, False{}, 15, r, cfg_res(st2))
       Bool.pick(PatStep, low_pat_is_dead_var(rem, body), PSNext{st1, pt, rt, st_tail, tr_tail}, PSNext{st3, Con{rem, pt}, Con{cfg_res(st3), rt}, Con{1, st_tail}, Con{0, tr_tail}})
 def low_pat_arr_test(hf: Bool, +kind: U32, st: CfgSt, +r: U32, fb: U32) -> CfgSt:
   match hf:
@@ -492,8 +488,8 @@ def low_pat_ctr_step(kind: U32, +env: LowEnv, st: CfgSt, +sym: U32, +fs: List<&2
   match kind fs:
     case 4 Con{inner, Nil{}}: low_pat_nat_succ(low_peel_nat(U32.to_nat(1024), env_map(env, 6), 1, inner), st, pt, r, rt, st_tail, tr_tail, body, fail_blk, has_fail)
     case 4 _:
-      +st2 = cfg_alloc(low_opt_test_bool(has_fail, True{}, st, r, fail_blk), False{})
-      +st3 = low_emit_arr_one(cfg_emit(st2, IConst{cfg_res(st2), 1}), 163, [r, cfg_res(st2)])
+      +st2 = low_emit_const(low_opt_test_bool(has_fail, True{}, st, r, fail_blk), 1)
+      +st3 = low_emit_bin_or_cmp(st2, False{}, 15, r, cfg_res(st2))
       PSNext{st3, b5k_list_app(Pat, fs, pt), Con{cfg_res(st3), rt}, Con{1, st_tail}, Con{0, tr_tail}}
     case 20 _:
       +st1 = low_emit_const(st, 1)

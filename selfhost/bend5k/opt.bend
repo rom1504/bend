@@ -1389,6 +1389,7 @@ def opt_esc_scan_ops(+defc: U32Map, +ar: U32, +gh: U32Map, +gv: U32Map, ops: Lis
   match ops st:
     case Nil{} _: st
     case Con{IBin{+d, 1, +a, +b}, t} EscInfo{+decs, ors, zcs}: opt_esc_scan_ops(defc, ar, gh, gv, t, EscInfo{Bool.pick(U32Map, Bool.and(U32.is_eq(um_get(defc, d), 1), Bool.and(U32.is_lt(a, ar), Bool.and(U32.is_ne(um_get(gh, b), 0), U32.is_eq(um_get(gv, b), 1)))), um_set(decs, d, U32.add(a, 1)), decs), ors, zcs})
+    case Con{IBin{+d, 15, +a, +b}, t} EscInfo{+decs, ors, zcs}: opt_esc_scan_ops(defc, ar, gh, gv, t, EscInfo{Bool.pick(U32Map, Bool.and(U32.is_eq(um_get(defc, d), 1), Bool.and(U32.is_lt(a, ar), Bool.and(U32.is_ne(um_get(gh, b), 0), U32.is_eq(um_get(gv, b), 1)))), um_set(decs, d, U32.add(a, 1)), decs), ors, zcs})
     case Con{IBin{+d, 6, +a, +b}, t} EscInfo{decs, +ors, zcs}: (+p = Bool.pick(U32, U32.is_lt(a, ar), U32.add(a, 1), Bool.pick(U32, U32.is_lt(b, ar), U32.add(b, 1), 0)); opt_esc_scan_ops(defc, ar, gh, gv, t, EscInfo{decs, Bool.pick(U32Map, Bool.and(U32.is_eq(um_get(defc, d), 1), U32.is_ne(p, 0)), um_set(ors, d, p), ors), zcs}))
     case Con{ICmp{+d, 0, +a, +b}, t} EscInfo{decs, ors, +zcs}: (+ev = Bool.pick(U32, Bool.and(U32.is_ne(um_get(gh, b), 0), U32.is_zero(um_get(gv, b))), U32.add(a, 1), Bool.pick(U32, Bool.and(U32.is_ne(um_get(gh, a), 0), U32.is_zero(um_get(gv, a))), U32.add(b, 1), 0)); opt_esc_scan_ops(defc, ar, gh, gv, t, EscInfo{decs, ors, Bool.pick(U32Map, Bool.and(U32.is_eq(um_get(defc, d), 1), U32.is_ne(ev, 0)), um_set(zcs, d, ev), zcs)}))
     case Con{_, t} _: opt_esc_scan_ops(defc, ar, gh, gv, t, st)
@@ -1975,6 +1976,7 @@ def opt_lut_arm_ops(+gh: U32Map, +gv: U32Map, ops: List<&2, IrOp>, term: IrTerm)
     case Con{ICopy{+d, +s}, Nil{}} TJmp{j}: Bool.pick(OptLutArm, U32.is_ne(um_get(gh, s), 0), LutASome{False{}, d, j, um_get(gv, s)}, LutANo{})
     case Con{IConst{+d1, +v}, Con{ICopy{+d2, +s}, Nil{}}} TJmp{j}: Bool.pick(OptLutArm, U32.is_eq(d1, s), LutASome{False{}, d2, j, v}, LutANo{})
     case Con{IBin{_, 1, _, _}, rest} tm: opt_lut_arm_ops(gh, gv, rest, tm)
+    case Con{IBin{_, 15, _, _}, rest} tm: opt_lut_arm_ops(gh, gv, rest, tm)
     case _ _: LutANo{}
 def opt_lut_arm_blk(+gh: U32Map, +gv: U32Map, mb: Maybe<&2, IrBlock>) -> OptLutArm:
   match mb:

@@ -279,7 +279,7 @@ def ra_blks_info_walk(blks: List<&2, IrBlock>, ops: List<&2, IrOp>, +acc: U32) -
     case Nil{} Nil{}: acc
     case Con{IrBlock{_, ops1, _}, t} Nil{}: ra_blks_info_walk(t, ops1, U32.add(acc, 8))
     case _ Con{IFlt{_, _}, ot}: ra_blks_info_walk(blks, ot, U32.or(U32.add(acc, 8), 2))
-    case _ Con{IBin{_, bop, _, _}, ot}: ra_blks_info_walk(blks, ot, U32.or(U32.add(acc, 8), Bool.pick(U32, U32.is_ge(bop, 10), 2, 0)))
+    case _ Con{IBin{_, +bop, _, _}, ot}: ra_blks_info_walk(blks, ot, U32.or(U32.add(acc, 8), Bool.pick(U32, Bool.and(U32.is_ge(bop, 10), U32.is_le(bop, 13)), 2, 0)))
     case _ Con{IUn{_, uop, _}, ot}: ra_blks_info_walk(blks, ot, U32.or(U32.add(acc, 8), Bool.pick(U32, U32.is_ge(uop, 2), 2, 0)))
     case _ Con{ICmp{_, cop, _, _}, ot}: ra_blks_info_walk(blks, ot, U32.or(U32.add(acc, 8), Bool.pick(U32, U32.is_ge(cop, 6), 2, 0)))
     case _ Con{IArrOp{_, _, _}, ot}: ra_blks_info_walk(blks, ot, U32.or(U32.add(acc, 8), 1))

@@ -275,7 +275,9 @@ def lex_num_nat_emit(val: U32, rt: String, stk: List<&2, U32>, depth: U32, +line
 def lex_num_dec_tail_k(is_f: Bool, ovf: Bool, raw: String, val: U32, rc: Char, +rt: String, stk: List<&2, U32>, depth: U32, +line: U32, rev: List<&2, Tok>, +syms: SymTab, is_nat: Bool) -> LStep:
   match is_f is_nat:
     case True{} _: lex_flt_emit(stk, depth, line, rev, syms, lex_scan_flt_go(raw, 0, SNil{}))
-    case False{} True{}: lex_num_nat_emit(val, rt, stk, depth, line, rev, syms)
+    case False{} True{}:
+      Bool.pick(LStep, ovf, LDone{LexRes{Nil{}, syms, "nat literal overflow (up to 4294967295n)"}},
+        lex_num_nat_emit(val, rt, stk, depth, line, rev, syms))
     case False{} False{}:
       Bool.pick(LStep, ovf, LDone{LexRes{Nil{}, syms, "u32 literal overflow"}},
         LNext{SCon{rc, rt}, stk, False{}, False{}, depth, line, Con{Tok{TkNum{val}, line}, rev}, syms})

@@ -2500,7 +2500,7 @@ def run_pinned(cmd: list[str], timeout: int = 25) -> dict:
         }
 
 
-def run_case(c: Case, tmp: Path) -> dict:
+def run_case(c: Case, tmp: Path, bend5k_only: bool = False) -> dict:
     src = tmp / f"{c.id}.bend"
     src.write_text(c.code, encoding="utf-8")
 
@@ -2509,23 +2509,28 @@ def run_case(c: Case, tmp: Path) -> dict:
     c_gcc_path = tmp / f"{c.id}_gcc.c"
     c_bin = tmp / f"{c.id}_c"
 
-    up_emit = run_pinned(["bash", str(LOCKED_BUN), str(src), "-o", str(js_path), "-o", str(c_path)], timeout=90)
-
-    if up_emit["rc"] == 0 and js_path.exists():
-        up_js = run_pinned([str(NODE), str(js_path)], timeout=20)
+    if bend5k_only:
+        up_emit = {"rc": 0, "stdout": "", "stderr": "", "ms": 0.0, "timeout": False}
+        up_js = {"rc": 0, "stdout": c.py_oracle or "", "stderr": "", "ms": 0.0, "timeout": False}
+        up_c = {"rc": 0, "stdout": c.py_oracle or "", "stderr": "", "ms": 0.0, "timeout": False}
     else:
-        up_js = {"rc": up_emit["rc"], "stdout": "", "stderr": f"UP_EMIT_ERR: {up_emit['stderr'][:300]}", "ms": 0.0, "timeout": up_emit["timeout"]}
+        up_emit = run_pinned(["bash", str(LOCKED_BUN), str(src), "-o", str(js_path), "-o", str(c_path)], timeout=90)
 
-    if up_emit["rc"] == 0 and c_path.exists():
-        c_text = c_path.read_text(encoding="utf-8").replace("__attribute__((musttail)) ", "")
-        c_gcc_path.write_text(c_text, encoding="utf-8")
-        c_cc = run_pinned([GCC, "-std=c11", "-O2", str(c_gcc_path), "-lpthread", "-lm", "-o", str(c_bin)], timeout=30)
-        if c_cc["rc"] == 0:
-            up_c = run_pinned([str(c_bin)], timeout=20)
+        if up_emit["rc"] == 0 and js_path.exists():
+            up_js = run_pinned([str(NODE), str(js_path)], timeout=20)
         else:
-            up_c = {"rc": c_cc["rc"], "stdout": "", "stderr": f"UP_C_CC_ERR: {c_cc['stderr'][:300]}", "ms": c_cc["ms"], "timeout": c_cc["timeout"]}
-    else:
-        up_c = {"rc": up_emit["rc"], "stdout": "", "stderr": f"UP_EMIT_ERR: {up_emit['stderr'][:300]}", "ms": 0.0, "timeout": up_emit["timeout"]}
+            up_js = {"rc": up_emit["rc"], "stdout": "", "stderr": f"UP_EMIT_ERR: {up_emit['stderr'][:300]}", "ms": 0.0, "timeout": up_emit["timeout"]}
+
+        if up_emit["rc"] == 0 and c_path.exists():
+            c_text = c_path.read_text(encoding="utf-8").replace("__attribute__((musttail)) ", "")
+            c_gcc_path.write_text(c_text, encoding="utf-8")
+            c_cc = run_pinned([GCC, "-std=c11", "-O2", str(c_gcc_path), "-lpthread", "-lm", "-o", str(c_bin)], timeout=30)
+            if c_cc["rc"] == 0:
+                up_c = run_pinned([str(c_bin)], timeout=20)
+            else:
+                up_c = {"rc": c_cc["rc"], "stdout": "", "stderr": f"UP_C_CC_ERR: {c_cc['stderr'][:300]}", "ms": c_cc["ms"], "timeout": c_cc["timeout"]}
+        else:
+            up_c = {"rc": up_emit["rc"], "stdout": "", "stderr": f"UP_EMIT_ERR: {up_emit['stderr'][:300]}", "ms": 0.0, "timeout": up_emit["timeout"]}
 
     b5k = {}
     for opt, key in [("-O0", "bend5k_o0"), ("-O2", "bend5k_o2")]:
@@ -2583,12 +2588,21 @@ def run_case(c: Case, tmp: Path) -> dict:
 
 
 def main() -> int:
+    global BEND5K, RUNTIME_AGY, CPU_PIN
     ap = argparse.ArgumentParser()
     ap.add_argument("--group", choices=("all", "A", "B"), default="all")
     ap.add_argument("--ids", type=str, default="", help="Comma-separated case IDs to run (merges into --out if --merge)")
     ap.add_argument("--merge", action="store_true", help="Merge --ids results into existing --out JSON")
     ap.add_argument("--out", type=Path, default=OUT_DIR / "results.json")
+    ap.add_argument("--bend5k", type=Path, default=BEND5K)
+    ap.add_argument("--runtime", type=Path, default=RUNTIME_AGY)
+    ap.add_argument("--cpu", type=int, default=CPU_PIN)
+    ap.add_argument("--bend5k-only", action="store_true", help="Only run bend5k -O0/-O2 against py_oracle")
+    ap.add_argument("--no-reproducers", action="store_true", help="Do not overwrite reproducers/ directory")
     args = ap.parse_args()
+    BEND5K = args.bend5k
+    RUNTIME_AGY = args.runtime
+    CPU_PIN = args.cpu
 
     all_cases = build_all_cases()
     if args.group != "all":
@@ -2606,7 +2620,7 @@ def main() -> int:
     with tempfile.TemporaryDirectory(prefix="l22_oracle_") as td:
         tmp = Path(td)
         for idx, c in enumerate(selected, 1):
-            res = run_case(c, tmp)
+            res = run_case(c, tmp, bend5k_only=args.bend5k_only)
             new_results[c.id] = res
             status = "PASS" if res["all_5_agree"] else "DIFF"
             outs = {k: (v["rc"], v["stdout"].strip()[:40]) for k, v in res["lanes"].items()}
@@ -2675,18 +2689,18 @@ def main() -> int:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
 
-    # Clean old reproducers and write current ones
-    rep_dir = OUT_DIR / "reproducers"
-    rep_dir.mkdir(parents=True, exist_ok=True)
-    for old_f in rep_dir.glob("*.bend"):
-        old_f.unlink()
-    code_by_id = {c.id: c.code for c in all_cases}
-    for r in ga_diffs + gb_diffs:
-        if r["id"] in code_by_id:
-            (rep_dir / f"{r['group']}_{r['id']}.bend").write_text(code_by_id[r["id"]], encoding="utf-8")
-    # Also save metamorphic twin for #2181 so both sides are preserved!
-    if "b2_nat_2p48_issue2181_match_sub" in code_by_id:
-        (rep_dir / "B_b2_nat_2p48_issue2181_match_sub.bend").write_text(code_by_id["b2_nat_2p48_issue2181_match_sub"], encoding="utf-8")
+    if not args.no_reproducers:
+        rep_dir = OUT_DIR / "reproducers"
+        rep_dir.mkdir(parents=True, exist_ok=True)
+        for old_f in rep_dir.glob("*.bend"):
+            old_f.unlink()
+        code_by_id = {c.id: c.code for c in all_cases}
+        for r in ga_diffs + gb_diffs:
+            if r["id"] in code_by_id:
+                (rep_dir / f"{r['group']}_{r['id']}.bend").write_text(code_by_id[r["id"]], encoding="utf-8")
+        # Also save metamorphic twin for #2181 so both sides are preserved!
+        if "b2_nat_2p48_issue2181_match_sub" in code_by_id:
+            (rep_dir / "B_b2_nat_2p48_issue2181_match_sub.bend").write_text(code_by_id["b2_nat_2p48_issue2181_match_sub"], encoding="utf-8")
 
     print("\n=== SUMMARY ===")
     print(f"Elapsed: {elapsed}s | Total: {len(results)}")

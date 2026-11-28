@@ -1,0 +1,465 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v23",
+  "host_pin": "taskset -c 3",
+  "host_cpu": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz (Ivy Bridge)",
+  "host_isa": [
+    "sse4_1",
+    "sse4_2",
+    "popcnt",
+    "avx"
+  ],
+  "compiler_baseline": {
+    "description": "Proven-22 bend5k_o2 -O2 (base commit 8630548f)",
+    "path": "/home/ai/bend2_agy/selfhost/build/agy/bend5k/bend5k_o2",
+    "sha256": "b3d1cf3143f33d09a2e928e46f0d4d0b7861f391a2293f55ae5cd72c0e3fa9af"
+  },
+  "runtime": {
+    "path": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "sha256": "afdcbaa790b85f55548fc0dc7ab50dc11241765ff547fc98a13e0e45ea6bbeaf"
+  },
+  "c_baselines": {
+    "gcc10_o2": "gcc-10 -O2 -ffp-contract=off (5-run median on CPU 3)",
+    "gcc10_o3_native": "gcc-10 -O3 -march=native -ffp-contract=off (5-run median on CPU 3)"
+  },
+  "probes": [
+    {
+      "id": "1",
+      "name": "v4_aatree_persist_map",
+      "pool": "retired_w22_validation",
+      "description": "Persistent AA-Tree balanced BST (skew/split rotations + lookups, 140 rounds x 256 inserts + 512 lookups)",
+      "bend_file": "research/agy/bend5k/eval_split_w22/validation/v4_aatree_persist_map_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w22/validation/v4_aatree_persist_map.c",
+      "hot_symbol": "$direct.aa_insert + $direct.aa_lookup",
+      "checksum": "2883763830",
+      "baseline_ms": 42.77,
+      "c_o2_ms": 9.21,
+      "c_o3_native_ms": 8.7,
+      "baseline_vs_c_o2": 4.644,
+      "baseline_vs_c_o3_native": 4.916,
+      "raw_baseline_ms": [
+        42.29,
+        43.33,
+        42.77,
+        43.66,
+        42.48
+      ],
+      "raw_c_o2_ms": [
+        10.64,
+        9.21,
+        8.78,
+        8.77,
+        9.26
+      ],
+      "raw_c_o3_native_ms": [
+        8.66,
+        8.71,
+        8.56,
+        8.7,
+        8.95
+      ],
+      "variants": [
+        {
+          "name": "a_lookup_direct",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/v4_a_lookup_direct.S",
+          "redirected_symbols": [
+            "$direct.aa_lookup"
+          ],
+          "checksum": "2883763830",
+          "ms": 29.07,
+          "vs_c_o2": 3.156,
+          "vs_c_o3_native": 3.341,
+          "speedup_vs_base": 1.471,
+          "pct_saved": 32.0,
+          "raw_ms": [
+            29.59,
+            29.52,
+            28.83,
+            28.46,
+            29.07
+          ],
+          "note": "Deforest LookReq continuation-ADT in aa_lookup only; direct iterative BST traversal over unmodified AATree."
+        },
+        {
+          "name": "b_insert_and_lookup_direct",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/v4_b_insert_and_lookup_direct.S",
+          "redirected_symbols": [
+            "$direct.aa_insert",
+            "$direct.aa_lookup"
+          ],
+          "checksum": "2883763830",
+          "ms": 13.25,
+          "vs_c_o2": 1.439,
+          "vs_c_o3_native": 1.523,
+          "speedup_vs_base": 3.228,
+          "pct_saved": 69.0,
+          "raw_ms": [
+            13.25,
+            13.08,
+            13.37,
+            13.32,
+            12.85
+          ],
+          "note": "Variant A + deforest InsReq + zero-alloc match-as + FBIP unique-node reuse & in-place skew/split rotations in aa_insert (p111_rt_ctor at Leaf{} only)."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "t3_kmp_multi_scan",
+      "pool": "retired_w22_test_sealed",
+      "description": "KMP prefix-function builder + streaming multi-pattern scan (8192 haystack x 140 patterns = 1.15M chars)",
+      "bend_file": "research/agy/bend5k/eval_split_w22/test_sealed/t3_kmp_multi_scan_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w22/test_sealed/t3_kmp_multi_scan.c",
+      "hot_symbol": "$direct.scan_text",
+      "checksum": "1602941613",
+      "baseline_ms": 28.04,
+      "c_o2_ms": 8.81,
+      "c_o3_native_ms": 8.24,
+      "baseline_vs_c_o2": 3.183,
+      "baseline_vs_c_o3_native": 3.403,
+      "raw_baseline_ms": [
+        27.8,
+        28.03,
+        28.22,
+        28.04,
+        28.23
+      ],
+      "raw_c_o2_ms": [
+        8.85,
+        9.08,
+        8.38,
+        8.81,
+        8.75
+      ],
+      "raw_c_o3_native_ms": [
+        7.98,
+        8.25,
+        8.26,
+        8.24,
+        7.92
+      ],
+      "variants": [
+        {
+          "name": "a_scan_text_fused",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/t3_a_scan_text_fused.S",
+          "redirected_symbols": [
+            "$direct.scan_text"
+          ],
+          "checksum": "1602941613",
+          "ms": 9.21,
+          "vs_c_o2": 1.045,
+          "vs_c_o3_native": 1.118,
+          "speedup_vs_base": 3.045,
+          "pct_saved": 67.2,
+          "raw_ms": [
+            9.21,
+            9.42,
+            9.48,
+            8.82,
+            8.56
+          ],
+          "note": "Hoist text/pat/pi arrays once + fuse kmp_fallback_go inner loop inline (0 per-char p113_rt_array_pair, 0 per-char p111_rt_ctor)."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "t2_radix2_fft_f32",
+      "pool": "retired_w22_test_sealed",
+      "description": "Iterative Cooley-Tukey Radix-2 DIT FFT in F32 (N=512, 9 stages, 440 frames with bit-reversal & norm)",
+      "bend_file": "research/agy/bend5k/eval_split_w22/test_sealed/t2_radix2_fft_f32_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w22/test_sealed/t2_radix2_fft_f32.c",
+      "hot_symbol": "$direct.run_stages / $direct.run_frames",
+      "checksum": "4264586127",
+      "baseline_ms": 24.78,
+      "c_o2_ms": 7.33,
+      "c_o3_native_ms": 6.05,
+      "baseline_vs_c_o2": 3.381,
+      "baseline_vs_c_o3_native": 4.096,
+      "raw_baseline_ms": [
+        24.92,
+        24.43,
+        24.71,
+        24.92,
+        24.78
+      ],
+      "raw_c_o2_ms": [
+        6.95,
+        7.16,
+        7.51,
+        7.35,
+        7.33
+      ],
+      "raw_c_o3_native_ms": [
+        6.39,
+        5.94,
+        5.77,
+        6.05,
+        6.13
+      ],
+      "variants": [
+        {
+          "name": "a_stages_scalar_hoist",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/t2_a_stages_scalar_hoist.S",
+          "redirected_symbols": [
+            "$direct.run_stages"
+          ],
+          "checksum": "4264586127",
+          "ms": 10.13,
+          "vs_c_o2": 1.382,
+          "vs_c_o3_native": 1.674,
+          "speedup_vs_base": 2.446,
+          "pct_saved": 59.1,
+          "raw_ms": [
+            10.13,
+            9.71,
+            10.24,
+            10.06,
+            10.45
+          ],
+          "note": "Hoist 4 Array<F32>s (re,im,twr,twi) once + fuse 3-deep butterfly nest & 6-deep bfly_wr..ui chain in scalar F32 (0 allocs)."
+        },
+        {
+          "name": "b_frames_fused_sse",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/t2_b_frames_fused_sse.S",
+          "redirected_symbols": [
+            "$direct.run_frames"
+          ],
+          "checksum": "4264586127",
+          "ms": 7.83,
+          "vs_c_o2": 1.068,
+          "vs_c_o3_native": 1.294,
+          "speedup_vs_base": 3.165,
+          "pct_saved": 68.4,
+          "raw_ms": [
+            7.65,
+            7.83,
+            7.99,
+            7.7,
+            7.86
+          ],
+          "note": "Fuse bitrev_perm + run_stages (4-wide SSE mulps/addps/subps for half>=4) + 4-wide SSE norm_loop across all 440 frames."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "v3_dsu_kruskal_union",
+      "pool": "retired_w22_validation",
+      "description": "Disjoint-Set Union with path halving & union by rank (N=4096, 80 rounds x 8192 edges = 655K unions)",
+      "bend_file": "research/agy/bend5k/eval_split_w22/validation/v3_dsu_kruskal_union_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w22/validation/v3_dsu_kruskal_union.c",
+      "hot_symbol": "$direct.run_edges",
+      "checksum": "2423000577",
+      "baseline_ms": 31.41,
+      "c_o2_ms": 10.05,
+      "c_o3_native_ms": 8.96,
+      "baseline_vs_c_o2": 3.125,
+      "baseline_vs_c_o3_native": 3.506,
+      "raw_baseline_ms": [
+        30.26,
+        31.41,
+        32.3,
+        30.72,
+        32.54
+      ],
+      "raw_c_o2_ms": [
+        9.74,
+        10.31,
+        10.05,
+        10.24,
+        9.87
+      ],
+      "raw_c_o3_native_ms": [
+        8.94,
+        8.96,
+        9.02,
+        8.82,
+        9.0
+      ],
+      "variants": [
+        {
+          "name": "a_run_edges_fused",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/v3_a_run_edges_fused.S",
+          "redirected_symbols": [
+            "$direct.run_edges"
+          ],
+          "checksum": "2423000577",
+          "ms": 9.4,
+          "vs_c_o2": 0.935,
+          "vs_c_o3_native": 1.049,
+          "speedup_vs_base": 3.341,
+          "pct_saved": 70.1,
+          "raw_ms": [
+            9.14,
+            9.18,
+            9.41,
+            9.4,
+            9.59
+          ],
+          "note": "Hoist par & rnk once + inline both dsu_find(u)/dsu_find(v) path-halving loops & union-by-rank (0 per-edge array/ctor calls)."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "t1_lzw_dict_coder",
+      "pool": "retired_w22_test_sealed",
+      "description": "LZW dictionary compressor with open-addressed hash table (40 rounds x 16384 bytes, 4096-code dict + resets)",
+      "bend_file": "research/agy/bend5k/eval_split_w22/test_sealed/t1_lzw_dict_coder_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w22/test_sealed/t1_lzw_dict_coder.c",
+      "hot_symbol": "$direct.ht_probe_go / $direct.run_bytes",
+      "checksum": "683566485",
+      "baseline_ms": 29.24,
+      "c_o2_ms": 9.07,
+      "c_o3_native_ms": 9.46,
+      "baseline_vs_c_o2": 3.224,
+      "baseline_vs_c_o3_native": 3.091,
+      "raw_baseline_ms": [
+        29.43,
+        29.24,
+        29.11,
+        29.01,
+        29.76
+      ],
+      "raw_c_o2_ms": [
+        9.07,
+        9.34,
+        9.11,
+        9.02,
+        9.06
+      ],
+      "raw_c_o3_native_ms": [
+        9.46,
+        9.45,
+        9.41,
+        10.04,
+        9.75
+      ],
+      "variants": [
+        {
+          "name": "a_ht_probe_deforest",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/t1_a_ht_probe_deforest.S",
+          "redirected_symbols": [
+            "$direct.ht_probe_go"
+          ],
+          "checksum": "683566485",
+          "ms": 29.4,
+          "vs_c_o2": 3.241,
+          "vs_c_o3_native": 3.108,
+          "speedup_vs_base": 0.995,
+          "pct_saved": -0.5,
+          "raw_ms": [
+            30.19,
+            29.75,
+            29.2,
+            29.4,
+            29.18
+          ],
+          "note": "Deforest 3-ctor ProbeStep (PCont|PHit|PEmpty) + hoist hk/hv inside ht_probe_go only."
+        },
+        {
+          "name": "b_run_bytes_fused",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/t1_b_run_bytes_fused.S",
+          "redirected_symbols": [
+            "$direct.run_bytes"
+          ],
+          "checksum": "683566485",
+          "ms": 10.8,
+          "vs_c_o2": 1.191,
+          "vs_c_o3_native": 1.142,
+          "speedup_vs_base": 2.707,
+          "pct_saved": 63.1,
+          "raw_ms": [
+            10.8,
+            10.74,
+            10.81,
+            11.02,
+            10.52
+          ],
+          "note": "Variant A + hoist hk/hv across entire 16,383-byte round + inline ht_probe, handle_insert, clear_arr & branchless cmov byte gen."
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "v1_sha256_compress",
+      "pool": "retired_w22_validation",
+      "description": "FIPS 180-4 SHA-256 64-round ARX compression + message schedule (24,000 blocks x 64 rounds)",
+      "bend_file": "research/agy/bend5k/eval_split_w22/validation/v1_sha256_compress_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w22/validation/v1_sha256_compress.c",
+      "hot_symbol": "$direct.run_rounds / $direct.run_blocks",
+      "checksum": "1895370468",
+      "baseline_ms": 25.13,
+      "c_o2_ms": 11.17,
+      "c_o3_native_ms": 10.35,
+      "baseline_vs_c_o2": 2.25,
+      "baseline_vs_c_o3_native": 2.428,
+      "raw_baseline_ms": [
+        25.12,
+        24.91,
+        25.19,
+        25.32,
+        25.13
+      ],
+      "raw_c_o2_ms": [
+        11.46,
+        11.11,
+        11.11,
+        11.25,
+        11.17
+      ],
+      "raw_c_o3_native_ms": [
+        10.41,
+        10.11,
+        10.35,
+        10.42,
+        9.93
+      ],
+      "variants": [
+        {
+          "name": "a_rounds_regalloc_ror",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/v1_a_rounds_regalloc_ror.S",
+          "redirected_symbols": [
+            "$direct.run_rounds"
+          ],
+          "checksum": "1895370468",
+          "ms": 18.07,
+          "vs_c_o2": 1.618,
+          "vs_c_o3_native": 1.746,
+          "speedup_vs_base": 1.391,
+          "pct_saved": 28.1,
+          "raw_ms": [
+            17.36,
+            18.07,
+            18.58,
+            17.81,
+            18.17
+          ],
+          "note": "Keep 8-word state (a..h) + w/k pointers in registers (0 loop spills vs 276) + hardware rorl $6/$11/$25/$2/$13/$22."
+        },
+        {
+          "name": "b_run_blocks_fused",
+          "asm_file": "research/agy/bend5k/hand_asm_w23/probes/v1_b_run_blocks_fused.S",
+          "redirected_symbols": [
+            "$direct.run_blocks"
+          ],
+          "checksum": "1895370468",
+          "ms": 11.33,
+          "vs_c_o2": 1.014,
+          "vs_c_o3_native": 1.095,
+          "speedup_vs_base": 2.218,
+          "pct_saved": 54.9,
+          "raw_ms": [
+            11.44,
+            11.01,
+            11.39,
+            11.33,
+            11.22
+          ],
+          "note": "Fuse fill_w16 + expand_w (rorl) + run_rounds (rorl, regalloc) + add_state with w/k hoisted across all 24,000 blocks (0 allocs)."
+        }
+      ]
+    }
+  ]
+}

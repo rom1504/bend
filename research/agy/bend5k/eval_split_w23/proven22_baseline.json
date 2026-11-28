@@ -1,0 +1,697 @@
+{
+  "schema_version": "eval_split_w23_v1",
+  "timestamp_utc": "2026-11-28T02:16:39Z",
+  "mode": "freeze_baseline",
+  "cpu_pin": "7",
+  "runs_per_program": 5,
+  "compiler": {
+    "path": "/home/ai/bend2_agy/selfhost/build/agy/bend5k/bend5k_o2",
+    "sha256": "b3d1cf3143f33d09a2e928e46f0d4d0b7861f391a2293f55ae5cd72c0e3fa9af",
+    "flags": [
+      "-O2"
+    ],
+    "commit": "8630548f"
+  },
+  "runtime": {
+    "path": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "sha256": "afdcbaa790b85f55548fc0dc7ab50dc11241765ff547fc98a13e0e45ea6bbeaf"
+  },
+  "c_oracle": {
+    "compiler": "gcc-10 (Debian 10.2.1-6) 10.2.1 20210110",
+    "o2_flags": [
+      "-O2",
+      "-ffp-contract=off"
+    ],
+    "o3_native_flags": [
+      "-O3",
+      "-march=native",
+      "-ffp-contract=off"
+    ]
+  },
+  "scoring_rules": {
+    "oracle_gate": "Timing is counted ONLY when stdout matches the independent C oracle exactly.",
+    "failure_policy": "Any compile, link, runtime, timeout, nondeterminism, bun-check, or checksum failure invalidates the split aggregate.",
+    "aggregation": "Family-weighted geometric mean (each algorithm family weighted equally, computed as geomean of its per-config ratios), plus total fixed-batch wall time."
+  },
+  "splits": {
+    "validation": {
+      "split": "validation",
+      "summary": {
+        "status": "PASS",
+        "passed_configs": 8,
+        "total_configs": 8,
+        "passed_families": 4,
+        "total_families": 4,
+        "family_weighted_geomean_vs_proven22": null,
+        "family_weighted_geomean_vs_c_o2": 3.1555,
+        "family_weighted_geomean_vs_c_o3_native": 3.2126,
+        "total_bend_ms": 224.91,
+        "total_proven22_ms": null,
+        "total_c_o2_ms": 70.07,
+        "total_c_o3_native_ms": 68.36,
+        "total_batch_vs_proven22": null,
+        "failures": []
+      },
+      "families": [
+        {
+          "family": "v1_fenwick_bit_range",
+          "status": "PASS",
+          "family_geomean_vs_proven22": null,
+          "family_geomean_vs_c_o2": 3.1987,
+          "family_geomean_vs_c_o3_native": 3.2492,
+          "configs": [
+            {
+              "name": "std",
+              "status": "PASS",
+              "oracle_checksum": "996210161",
+              "bend_checksum": "996210161",
+              "bend_ms": 46.09,
+              "proven22_ms": null,
+              "c_o2_ms": 16.46,
+              "c_o3_native_ms": 16.34,
+              "vs_proven22": null,
+              "vs_c_o2": 2.8001,
+              "vs_c_o3_native": 2.8207,
+              "raw_bend_ms": [
+                49.33,
+                46.93,
+                45.81,
+                46.09,
+                45.81
+              ],
+              "raw_c_o2_ms": [
+                17.05,
+                16.46,
+                16.57,
+                16.08,
+                16.39
+              ],
+              "raw_c_o3_native_ms": [
+                16.07,
+                16.65,
+                16.38,
+                16.27,
+                16.34
+              ]
+            },
+            {
+              "name": "skew",
+              "status": "PASS",
+              "oracle_checksum": "2224571622",
+              "bend_checksum": "2224571622",
+              "bend_ms": 49.33,
+              "proven22_ms": null,
+              "c_o2_ms": 13.5,
+              "c_o3_native_ms": 13.18,
+              "vs_proven22": null,
+              "vs_c_o2": 3.6541,
+              "vs_c_o3_native": 3.7428,
+              "raw_bend_ms": [
+                49.33,
+                49.36,
+                49.37,
+                47.97,
+                47.95
+              ],
+              "raw_c_o2_ms": [
+                13.38,
+                13.52,
+                13.5,
+                13.37,
+                13.54
+              ],
+              "raw_c_o3_native_ms": [
+                13.18,
+                12.96,
+                13.25,
+                13.19,
+                12.74
+              ]
+            }
+          ]
+        },
+        {
+          "family": "v2_cholesky_solve_f32",
+          "status": "PASS",
+          "family_geomean_vs_proven22": null,
+          "family_geomean_vs_c_o2": 2.0958,
+          "family_geomean_vs_c_o3_native": 2.4487,
+          "configs": [
+            {
+              "name": "std",
+              "status": "PASS",
+              "oracle_checksum": "2969715120",
+              "bend_checksum": "2969715120",
+              "bend_ms": 17.37,
+              "proven22_ms": null,
+              "c_o2_ms": 7.99,
+              "c_o3_native_ms": 7.09,
+              "vs_proven22": null,
+              "vs_c_o2": 2.174,
+              "vs_c_o3_native": 2.4499,
+              "raw_bend_ms": [
+                27.21,
+                27.21,
+                17.37,
+                16.44,
+                16.91
+              ],
+              "raw_c_o2_ms": [
+                7.87,
+                8.02,
+                7.91,
+                8.16,
+                7.99
+              ],
+              "raw_c_o3_native_ms": [
+                7.09,
+                7.23,
+                7.19,
+                6.97,
+                7.07
+              ]
+            },
+            {
+              "name": "large",
+              "status": "PASS",
+              "oracle_checksum": "3585557119",
+              "bend_checksum": "3585557119",
+              "bend_ms": 17.72,
+              "proven22_ms": null,
+              "c_o2_ms": 8.77,
+              "c_o3_native_ms": 7.24,
+              "vs_proven22": null,
+              "vs_c_o2": 2.0205,
+              "vs_c_o3_native": 2.4475,
+              "raw_bend_ms": [
+                17.72,
+                17.89,
+                17.61,
+                17.76,
+                17.68
+              ],
+              "raw_c_o2_ms": [
+                8.82,
+                8.7,
+                8.64,
+                8.77,
+                8.98
+              ],
+              "raw_c_o3_native_ms": [
+                7.24,
+                7.52,
+                7.18,
+                7.35,
+                7.11
+              ]
+            }
+          ]
+        },
+        {
+          "family": "v3_bmh_string_search",
+          "status": "PASS",
+          "family_geomean_vs_proven22": null,
+          "family_geomean_vs_c_o2": 2.8964,
+          "family_geomean_vs_c_o3_native": 2.5314,
+          "configs": [
+            {
+              "name": "std",
+              "status": "PASS",
+              "oracle_checksum": "1488218080",
+              "bend_checksum": "1488218080",
+              "bend_ms": 15.59,
+              "proven22_ms": null,
+              "c_o2_ms": 5.09,
+              "c_o3_native_ms": 6.03,
+              "vs_proven22": null,
+              "vs_c_o2": 3.0629,
+              "vs_c_o3_native": 2.5854,
+              "raw_bend_ms": [
+                15.64,
+                15.53,
+                15.31,
+                15.59,
+                15.74
+              ],
+              "raw_c_o2_ms": [
+                5.13,
+                4.82,
+                5.09,
+                4.92,
+                5.31
+              ],
+              "raw_c_o3_native_ms": [
+                5.8,
+                6.1,
+                6.03,
+                6.09,
+                5.66
+              ]
+            },
+            {
+              "name": "skew",
+              "status": "PASS",
+              "oracle_checksum": "3331707518",
+              "bend_checksum": "3331707518",
+              "bend_ms": 16.68,
+              "proven22_ms": null,
+              "c_o2_ms": 6.09,
+              "c_o3_native_ms": 6.73,
+              "vs_proven22": null,
+              "vs_c_o2": 2.7389,
+              "vs_c_o3_native": 2.4785,
+              "raw_bend_ms": [
+                16.65,
+                17.23,
+                17.74,
+                16.68,
+                16.67
+              ],
+              "raw_c_o2_ms": [
+                5.76,
+                6.29,
+                6.13,
+                6.05,
+                6.09
+              ],
+              "raw_c_o3_native_ms": [
+                6.91,
+                6.59,
+                6.73,
+                6.7,
+                6.73
+              ]
+            }
+          ]
+        },
+        {
+          "family": "v4_leftist_heap_merge",
+          "status": "PASS",
+          "family_geomean_vs_proven22": null,
+          "family_geomean_vs_c_o2": 5.1058,
+          "family_geomean_vs_c_o3_native": 5.2886,
+          "configs": [
+            {
+              "name": "std",
+              "status": "PASS",
+              "oracle_checksum": "3003262286",
+              "bend_checksum": "3003262286",
+              "bend_ms": 30.9,
+              "proven22_ms": null,
+              "c_o2_ms": 6.19,
+              "c_o3_native_ms": 5.99,
+              "vs_proven22": null,
+              "vs_c_o2": 4.9919,
+              "vs_c_o3_native": 5.1586,
+              "raw_bend_ms": [
+                33.96,
+                30.85,
+                32.0,
+                30.9,
+                30.28
+              ],
+              "raw_c_o2_ms": [
+                5.9,
+                6.46,
+                6.09,
+                6.43,
+                6.19
+              ],
+              "raw_c_o3_native_ms": [
+                6.02,
+                6.06,
+                5.99,
+                5.95,
+                5.94
+              ]
+            },
+            {
+              "name": "deep",
+              "status": "PASS",
+              "oracle_checksum": "1916105117",
+              "bend_checksum": "1916105117",
+              "bend_ms": 31.23,
+              "proven22_ms": null,
+              "c_o2_ms": 5.98,
+              "c_o3_native_ms": 5.76,
+              "vs_proven22": null,
+              "vs_c_o2": 5.2224,
+              "vs_c_o3_native": 5.4219,
+              "raw_bend_ms": [
+                30.68,
+                31.31,
+                30.46,
+                31.23,
+                34.58
+              ],
+              "raw_c_o2_ms": [
+                6.11,
+                5.98,
+                5.99,
+                5.84,
+                5.84
+              ],
+              "raw_c_o3_native_ms": [
+                5.65,
+                5.76,
+                5.75,
+                5.94,
+                5.91
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "test_sealed": {
+      "split": "test_sealed",
+      "summary": {
+        "status": "PASS",
+        "passed_configs": 8,
+        "total_configs": 8,
+        "passed_families": 4,
+        "total_families": 4,
+        "family_weighted_geomean_vs_proven22": null,
+        "family_weighted_geomean_vs_c_o2": 2.9088,
+        "family_weighted_geomean_vs_c_o3_native": 4.1052,
+        "total_bend_ms": 185.69,
+        "total_proven22_ms": null,
+        "total_c_o2_ms": 62.18,
+        "total_c_o3_native_ms": 47.33,
+        "total_batch_vs_proven22": null,
+        "failures": []
+      },
+      "families": [
+        {
+          "family": "t1_golomb_rice_codec",
+          "status": "PASS",
+          "family_geomean_vs_proven22": null,
+          "family_geomean_vs_c_o2": 3.185,
+          "family_geomean_vs_c_o3_native": 3.3358,
+          "configs": [
+            {
+              "name": "std",
+              "status": "PASS",
+              "oracle_checksum": "2979838667",
+              "bend_checksum": "2979838667",
+              "bend_ms": 25.18,
+              "proven22_ms": null,
+              "c_o2_ms": 7.73,
+              "c_o3_native_ms": 7.41,
+              "vs_proven22": null,
+              "vs_c_o2": 3.2574,
+              "vs_c_o3_native": 3.3981,
+              "raw_bend_ms": [
+                25.52,
+                25.05,
+                24.52,
+                25.59,
+                25.18
+              ],
+              "raw_c_o2_ms": [
+                7.94,
+                8.05,
+                7.73,
+                7.73,
+                7.73
+              ],
+              "raw_c_o3_native_ms": [
+                7.54,
+                7.41,
+                7.43,
+                7.41,
+                7.39
+              ]
+            },
+            {
+              "name": "skew",
+              "status": "PASS",
+              "oracle_checksum": "136381632",
+              "bend_checksum": "136381632",
+              "bend_ms": 20.99,
+              "proven22_ms": null,
+              "c_o2_ms": 6.74,
+              "c_o3_native_ms": 6.41,
+              "vs_proven22": null,
+              "vs_c_o2": 3.1142,
+              "vs_c_o3_native": 3.2746,
+              "raw_bend_ms": [
+                21.25,
+                20.99,
+                20.67,
+                21.07,
+                20.75
+              ],
+              "raw_c_o2_ms": [
+                7.05,
+                7.33,
+                6.62,
+                6.64,
+                6.74
+              ],
+              "raw_c_o3_native_ms": [
+                6.28,
+                6.39,
+                6.48,
+                6.55,
+                6.41
+              ]
+            }
+          ]
+        },
+        {
+          "family": "t2_dct8x8_block_f32",
+          "status": "PASS",
+          "family_geomean_vs_proven22": null,
+          "family_geomean_vs_c_o2": 2.5051,
+          "family_geomean_vs_c_o3_native": 6.71,
+          "configs": [
+            {
+              "name": "std",
+              "status": "PASS",
+              "oracle_checksum": "3507576940",
+              "bend_checksum": "3507576940",
+              "bend_ms": 16.74,
+              "proven22_ms": null,
+              "c_o2_ms": 6.65,
+              "c_o3_native_ms": 2.57,
+              "vs_proven22": null,
+              "vs_c_o2": 2.5173,
+              "vs_c_o3_native": 6.5136,
+              "raw_bend_ms": [
+                16.73,
+                16.81,
+                16.74,
+                16.91,
+                16.43
+              ],
+              "raw_c_o2_ms": [
+                6.77,
+                6.45,
+                6.65,
+                6.53,
+                6.67
+              ],
+              "raw_c_o3_native_ms": [
+                2.57,
+                2.51,
+                2.62,
+                2.54,
+                2.72
+              ]
+            },
+            {
+              "name": "large",
+              "status": "PASS",
+              "oracle_checksum": "303560460",
+              "bend_checksum": "303560460",
+              "bend_ms": 21.29,
+              "proven22_ms": null,
+              "c_o2_ms": 8.54,
+              "c_o3_native_ms": 3.08,
+              "vs_proven22": null,
+              "vs_c_o2": 2.493,
+              "vs_c_o3_native": 6.9123,
+              "raw_bend_ms": [
+                21.59,
+                21.16,
+                21.18,
+                21.48,
+                21.29
+              ],
+              "raw_c_o2_ms": [
+                8.29,
+                8.32,
+                8.54,
+                8.71,
+                8.55
+              ],
+              "raw_c_o3_native_ms": [
+                3.08,
+                3.17,
+                2.94,
+                3.13,
+                2.87
+              ]
+            }
+          ]
+        },
+        {
+          "family": "t3_kahn_toposort_dag",
+          "status": "PASS",
+          "family_geomean_vs_proven22": null,
+          "family_geomean_vs_c_o2": 2.5927,
+          "family_geomean_vs_c_o3_native": 2.6802,
+          "configs": [
+            {
+              "name": "std",
+              "status": "PASS",
+              "oracle_checksum": "2553542921",
+              "bend_checksum": "2553542921",
+              "bend_ms": 21.24,
+              "proven22_ms": null,
+              "c_o2_ms": 8.93,
+              "c_o3_native_ms": 8.42,
+              "vs_proven22": null,
+              "vs_c_o2": 2.3785,
+              "vs_c_o3_native": 2.5226,
+              "raw_bend_ms": [
+                19.93,
+                19.7,
+                21.24,
+                26.48,
+                22.46
+              ],
+              "raw_c_o2_ms": [
+                8.93,
+                9.87,
+                8.88,
+                9.01,
+                8.48
+              ],
+              "raw_c_o3_native_ms": [
+                8.46,
+                8.37,
+                8.53,
+                8.42,
+                8.41
+              ]
+            },
+            {
+              "name": "skew",
+              "status": "PASS",
+              "oracle_checksum": "551465449",
+              "bend_checksum": "551465449",
+              "bend_ms": 22.61,
+              "proven22_ms": null,
+              "c_o2_ms": 8.0,
+              "c_o3_native_ms": 7.94,
+              "vs_proven22": null,
+              "vs_c_o2": 2.8262,
+              "vs_c_o3_native": 2.8476,
+              "raw_bend_ms": [
+                22.78,
+                22.61,
+                22.44,
+                22.29,
+                22.64
+              ],
+              "raw_c_o2_ms": [
+                7.75,
+                7.62,
+                8.0,
+                8.75,
+                8.67
+              ],
+              "raw_c_o3_native_ms": [
+                8.75,
+                7.94,
+                7.88,
+                7.8,
+                8.68
+              ]
+            }
+          ]
+        },
+        {
+          "family": "t4_brzozowski_regex",
+          "status": "PASS",
+          "family_geomean_vs_proven22": null,
+          "family_geomean_vs_c_o2": 3.4606,
+          "family_geomean_vs_c_o3_native": 4.7344,
+          "configs": [
+            {
+              "name": "std",
+              "status": "PASS",
+              "oracle_checksum": "2919121776",
+              "bend_checksum": "2919121776",
+              "bend_ms": 39.01,
+              "proven22_ms": null,
+              "c_o2_ms": 7.52,
+              "c_o3_native_ms": 6.55,
+              "vs_proven22": null,
+              "vs_c_o2": 5.1875,
+              "vs_c_o3_native": 5.9557,
+              "raw_bend_ms": [
+                28.67,
+                39.01,
+                40.66,
+                39.77,
+                32.13
+              ],
+              "raw_c_o2_ms": [
+                7.57,
+                7.44,
+                7.52,
+                7.27,
+                7.59
+              ],
+              "raw_c_o3_native_ms": [
+                6.73,
+                6.44,
+                6.55,
+                6.45,
+                6.68
+              ]
+            },
+            {
+              "name": "deep",
+              "status": "PASS",
+              "oracle_checksum": "802811446",
+              "bend_checksum": "802811446",
+              "bend_ms": 18.63,
+              "proven22_ms": null,
+              "c_o2_ms": 8.07,
+              "c_o3_native_ms": 4.95,
+              "vs_proven22": null,
+              "vs_c_o2": 2.3086,
+              "vs_c_o3_native": 3.7636,
+              "raw_bend_ms": [
+                18.63,
+                18.82,
+                18.59,
+                18.54,
+                18.68
+              ],
+              "raw_c_o2_ms": [
+                8.07,
+                8.22,
+                7.69,
+                8.07,
+                5.69
+              ],
+              "raw_c_o3_native_ms": [
+                4.95,
+                5.43,
+                4.94,
+                4.78,
+                5.36
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "harness_wall_s": 39.66
+}

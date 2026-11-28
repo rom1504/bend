@@ -28,7 +28,7 @@ def elf_inst_len(inst: X64Inst) -> U32:
     case XShift{10, dst, amt, False{}}: elf_shl32_len(dst, amt)
     case XShift{_, _, amt, by_cl}: Bool.pick(U32, Bool.or(by_cl, U32.is_eq(amt, 1)), 3, 4)
     case XMul{_, _}: 4
-    case XCmpRI{lhs, imm}: elf_alu_ri32_len(lhs, imm)
+    case XCmpRI{_, imm}: Bool.pick(U32, elf_is_simm8(imm), 4, 7)
     case XSetcc{_, dst}: Bool.pick(U32, U32.is_ge(dst, 4), 4, 3)
     case XCmov{_, _, _}: 4
     case XPush{reg}: Bool.pick(U32, U32.is_lt(reg, 8), 1, 2)
@@ -234,7 +234,7 @@ def elf_emit_inst_rev(inst: X64Inst, +rev: List<&2, U32>) -> List<&2, U32>:
     case XShift{op, dst, amt, by_cl}: elf_emit_shift(by_cl, Bool.pick(U32, U32.is_eq(op, 8), 4, 5), dst, amt, rev)
     case XDiv{+src, is_signed}: e_b3(rev, elf_rex(1, 0, 0, src), 247, elf_modrm(3, Bool.pick(U32, is_signed, 7, 6), src))
     case XCmpRR{+lhs, +rhs}: e_b3(rev, elf_rex(1, rhs, 0, lhs), 57, elf_modrm(3, rhs, lhs))
-    case XCmpRI{+lhs, +imm}: elf_emit_imm_rm(elf_is_simm8(imm), 7, lhs, imm, elf_opt_b(U32.is_ge(lhs, 8), elf_rex(0, 0, 0, lhs), rev))
+    case XCmpRI{+lhs, +imm}: elf_emit_imm_rm(elf_is_simm8(imm), 7, lhs, imm, Con{elf_rex(1, 0, 0, lhs), rev})
     case XTestRR{+lhs, +rhs}: e_b3(rev, elf_rex(1, rhs, 0, lhs), 133, elf_modrm(3, rhs, lhs))
     case XSetcc{cc, +dst}: e_b3(elf_opt_b(U32.is_ge(dst, 4), elf_rex(0, 0, 0, dst), rev), 15, U32.add(144, U32.and(cc, 15)), elf_modrm(3, 0, dst))
     case XCmov{cc, +dst, +src}: e_b4(rev, elf_rex(1, dst, 0, src), 15, U32.add(64, U32.and(cc, 15)), elf_modrm(3, dst, src))
